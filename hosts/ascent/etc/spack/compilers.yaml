@@ -1,0 +1,274 @@
+compilers:
+- compiler:
+    spec: gcc@core
+    operating_system: rhel7
+    modules: [gcc/4.8.5]
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran
+      fc: /usr/bin/gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+- compiler:
+    spec: gcc@4.8.5
+    operating_system: rhel7
+    modules: [gcc/4.8.5]
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran
+      fc: /usr/bin/gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: gcc@5.4.0
+    operating_system: rhel7
+    modules: [gcc/5.4.0]
+    paths:
+      cc: gcc
+      cxx: g++
+      f77: gfortran
+      fc: gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: gcc@6.4.0
+    operating_system: rhel7
+    modules: [gcc/6.4.0]
+    paths:
+      cc: gcc
+      cxx: g++
+      f77: gfortran
+      fc: gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: gcc@7.4.0
+    operating_system: rhel7
+    modules: [gcc/7.4.0]
+    paths:
+      cc: gcc
+      cxx: g++
+      f77: gfortran
+      fc: gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: gcc@8.1.0
+    operating_system: rhel7
+    modules: [gcc/8.1.0]
+    paths:
+      cc: gcc
+      cxx: g++
+      f77: gfortran
+      fc: gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: gcc@8.1.1
+    operating_system: rhel7
+    modules: [gcc/8.1.1]
+    paths:
+      cc: gcc
+      cxx: g++
+      f77: gfortran
+      fc: gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: pgi@18.5
+    operating_system: rhel7
+    modules: [pgi/18.5]
+    paths:
+      cc:  pgcc
+      cxx: pgc++
+      f77: pgfortran
+      fc:  pgfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: pgi@18.7
+    operating_system: rhel7
+    modules: [pgi/18.7]
+    paths:
+      cc:  pgcc
+      cxx: pgc++
+      f77: pgfortran
+      fc:  pgfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: pgi@18.10
+    operating_system: rhel7
+    modules: [pgi/18.10]
+    paths:
+      cc:  pgcc
+      cxx: pgc++
+      f77: pgfortran
+      fc:  pgfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: pgi@19.1
+    operating_system: rhel7
+    modules: [pgi/19.1]
+    paths:
+      cc:  pgcc
+      cxx: pgc++
+      f77: pgfortran
+      fc:  pgfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: pgi@19.4
+    operating_system: rhel7
+    modules: [pgi/19.4]
+    paths:
+      cc:  pgcc
+      cxx: pgc++
+      f77: pgfortran
+      fc:  pgfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: pgi@19.5
+    operating_system: rhel7
+    modules: [pgi/19.5]
+    paths:
+      cc:  pgcc
+      cxx: pgc++
+      f77: pgfortran
+      fc:  pgfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: clang@1.0-20190225
+    operating_system: rhel7
+    modules: [llvm/1.0-20190225]
+    paths:
+      cc:  /sw/ascent/llvm/1.0-20190225/bin/clang
+      cxx: /sw/ascent/llvm/1.0-20190225/bin/clang++
+      f77: /sw/ascent/xl/16.1.1-2/xlf/16.1.1/bin/xlf_r
+      fc:  /sw/ascent/xl/16.1.1-2/xlf/16.1.1/bin/xlf_r
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: clang@9.0.0-1
+    operating_system: rhel7
+    modules: [cuda/10.1.105, llvm/9.0.0-1]
+    paths:
+      cc:  /sw/ascent/llvm/9.0.0/9.0.0.patch001.cuda-10.1.105/bin/clang
+      cxx: /sw/ascent/llvm/9.0.0/9.0.0.patch001.cuda-10.1.105/bin/clang++
+      f77: /usr/bin/gfortran
+      fc:  /usr/bin/gfortran
+    extra_rpaths: []
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: xl@16.1.1-beta5
+    operating_system: rhel7
+    modules: [xl/16.1.1-beta5]
+    paths:
+      cc:  /sw/ascent/xl/16.1.1-beta5/xlC/16.1.1/bin/xlc
+      cxx: /sw/ascent/xl/16.1.1-beta5/xlC/16.1.1/bin/xlc++
+      f77: /sw/ascent/xl/16.1.1-beta5/xlf/16.1.1/bin/xlf
+      fc:  /sw/ascent/xl/16.1.1-beta5/xlf/16.1.1/bin/xlf
+    extra_rpaths:
+      - /sw/ascent/xl/16.1.1-beta5/lib
+      - /sw/ascent/xl/16.1.1-beta5/xlf/16.1.1/lib
+      - /sw/ascent/xl/16.1.1-beta5/xlC/16.1.1/lib
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: xl@16.1.1-beta6
+    operating_system: rhel7
+    modules: [xl/16.1.1-beta6]
+    paths:
+      cc:  /sw/ascent/xl/16.1.1-beta6/xlC/16.1.1/bin/xlc_r
+      cxx: /sw/ascent/xl/16.1.1-beta6/xlC/16.1.1/bin/xlc++_r
+      f77: /sw/ascent/xl/16.1.1-beta6/xlf/16.1.1/bin/xlf_r
+      fc:  /sw/ascent/xl/16.1.1-beta6/xlf/16.1.1/bin/xlf2008_r
+    extra_rpaths:
+      - /sw/ascent/xl/16.1.1-beta6/lib
+      - /sw/ascent/xl/16.1.1-beta6/xlf/16.1.1/lib
+      - /sw/ascent/xl/16.1.1-beta6/xlC/16.1.1/lib
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: xl@16.1.1-1
+    operating_system: rhel7
+    modules: [xl/16.1.1-1]
+    paths:
+      cc:  /sw/ascent/xl/16.1.1-1/xlC/16.1.1/bin/xlc_r
+      cxx: /sw/ascent/xl/16.1.1-1/xlC/16.1.1/bin/xlc++_r
+      f77: /sw/ascent/xl/16.1.1-1/xlf/16.1.1/bin/xlf_r
+      fc:  /sw/ascent/xl/16.1.1-1/xlf/16.1.1/bin/xlf2008_r
+    extra_rpaths:
+      - /sw/ascent/xl/16.1.1-1/lib
+      - /sw/ascent/xl/16.1.1-1/xlf/16.1.1/lib
+      - /sw/ascent/xl/16.1.1-1/xlC/16.1.1/lib
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: xl@16.1.1-2
+    operating_system: rhel7
+    modules: [xl/16.1.1-2]
+    paths:
+      cc:  /sw/ascent/xl/16.1.1-2/xlC/16.1.1/bin/xlc_r
+      cxx: /sw/ascent/xl/16.1.1-2/xlC/16.1.1/bin/xlc++_r
+      f77: /sw/ascent/xl/16.1.1-2/xlf/16.1.1/bin/xlf_r
+      fc:  /sw/ascent/xl/16.1.1-2/xlf/16.1.1/bin/xlf2008_r
+    extra_rpaths:
+      - /sw/ascent/xl/16.1.1-2/lib
+      - /sw/ascent/xl/16.1.1-2/xlf/16.1.1/lib
+      - /sw/ascent/xl/16.1.1-2/xlC/16.1.1/lib
+    environment: {}
+    flags: {}
+
+- compiler:
+    spec: xl@16.1.1-3
+    operating_system: rhel7
+    modules: [xl/16.1.1-3]
+    paths:
+      cc:  /sw/ascent/xl/16.1.1-3/xlC/16.1.1/bin/xlc_r
+      cxx: /sw/ascent/xl/16.1.1-3/xlC/16.1.1/bin/xlc++_r
+      f77: /sw/ascent/xl/16.1.1-3/xlf/16.1.1/bin/xlf_r
+      fc:  /sw/ascent/xl/16.1.1-3/xlf/16.1.1/bin/xlf2008_r
+    extra_rpaths:
+      - /sw/ascent/xl/16.1.1-3/lib
+      - /sw/ascent/xl/16.1.1-3/xlf/16.1.1/lib
+      - /sw/ascent/xl/16.1.1-3/xlC/16.1.1/lib
+    environment: {}
+    flags: {}

@@ -1,0 +1,118 @@
+compilers:
+# Login node compilers
+- compiler:
+    spec: login-gcc@4.8.5
+    operating_system: sles12
+    target: x86_64
+    modules: []
+    paths:
+      cc:  /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran  # Not actually installed!
+      fc:  /usr/bin/gfortran  # Not actually installed!
+    extra_rpaths: []
+    environment: {}
+    flags:
+      cflags:   -Wl,--disable-new-dtags
+      cxxflags: -Wl,--disable-new-dtags
+      fflags:   -Wl,--disable-new-dtags
+
+- compiler:
+    spec: login-gcc@6.3.0
+    operating_system: sles12
+    target: x86_64
+    modules: [gcc/6.3.0]
+    paths:
+      cc:  /opt/gcc/6.3.0/snos/bin/gcc
+      cxx: /opt/gcc/6.3.0/snos/bin/g++
+      f77: /opt/gcc/6.3.0/snos/bin/gfortran
+      fc:  /opt/gcc/6.3.0/snos/bin/gfortran
+    extra_rpaths:
+      - /opt/gcc/6.3.0/snos/lib
+      - /opt/gcc/6.3.0/snos/lib64
+    environment: {}
+    flags:
+      cflags:   -Wl,--disable-new-dtags
+      cxxflags: -Wl,--disable-new-dtags
+      fflags:   -Wl,--disable-new-dtags
+
+- compiler:
+    spec: login-gcc@6.1.0
+    operating_system: sles12
+    target: x86_64
+    modules: [gcc/6.1.0]
+    paths:
+      cc:  /opt/gcc/6.1.0/snos/bin/gcc
+      cxx: /opt/gcc/6.1.0/snos/bin/g++
+      f77: /opt/gcc/6.1.0/snos/bin/gfortran
+      fc:  /opt/gcc/6.1.0/snos/bin/gfortran
+    extra_rpaths:
+      - /opt/gcc/6.1.0/snos/lib
+      - /opt/gcc/6.1.0/snos/lib64
+    environment: {}
+    flags:
+      cflags:   -Wl,--disable-new-dtags
+      cxxflags: -Wl,--disable-new-dtags
+      fflags:   -Wl,--disable-new-dtags
+
+- compiler:
+    spec: login-gcc@5.3.0
+    operating_system: sles12
+    target: x86_64
+    modules: [gcc/5.3.0]
+    paths:
+      cc:  /opt/gcc/5.3.0/snos/bin/gcc
+      cxx: /opt/gcc/5.3.0/snos/bin/g++
+      f77: /opt/gcc/5.3.0/snos/bin/gfortran
+      fc:  /opt/gcc/5.3.0/snos/bin/gfortran
+    extra_rpaths:
+      - /opt/gcc/5.3.0/snos/lib
+      - /opt/gcc/5.3.0/snos/lib64
+    environment: {}
+    flags:
+      cflags:   -Wl,--disable-new-dtags
+      cxxflags: -Wl,--disable-new-dtags
+      fflags:   -Wl,--disable-new-dtags
+
+- compiler:
+    spec: login-gcc@4.9.3
+    operating_system: sles12
+    target: x86_64
+    modules: [gcc/4.9.3]
+    paths:
+      cc:  /opt/gcc/4.9.3/snos/bin/gcc
+      cxx: /opt/gcc/4.9.3/snos/bin/g++
+      f77: /opt/gcc/4.9.3/snos/bin/gfortran
+      fc:  /opt/gcc/4.9.3/snos/bin/gfortran
+    extra_rpaths:
+      - /opt/gcc/4.9.3/snos/lib
+      - /opt/gcc/4.9.3/snos/lib64
+    environment: {}
+    flags:
+      cflags:   -Wl,--disable-new-dtags
+      cxxflags: -Wl,--disable-new-dtags
+      fflags:   -Wl,--disable-new-dtags
+
+# Compute node compilers
+- compiler:
+    spec: gcc@4.9.3
+    modules:
+    - PrgEnv-gnu
+    - gcc/4.9.3
+    operating_system: cnl6
+    paths:
+      cc: /opt/cray/pe/craype/2.5.9/bin/cc
+      cxx: /opt/cray/pe/craype/2.5.9/bin/CC
+      f77: /opt/cray/pe/craype/2.5.9/bin/ftn
+      fc: /opt/cray/pe/craype/2.5.9/bin/ftn
+- compiler:
+    spec: gcc@6.3.0
+    modules:
+    - PrgEnv-gnu
+    - gcc/6.3.0
+    operating_system: cnl6
+    paths:
+      cc: /opt/cray/pe/craype/2.5.9/bin/cc
+      cxx: /opt/cray/pe/craype/2.5.9/bin/CC
+      f77: /opt/cray/pe/craype/2.5.9/bin/ftn
+      fc: /opt/cray/pe/craype/2.5.9/bin/ftn

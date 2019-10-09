@@ -1,0 +1,71 @@
+compilers:
+- compiler:
+    modules: [gcc/4.8.5]
+    operating_system: rhel7
+    paths:
+      cc: /usr/bin/gcc
+      cxx: /usr/bin/g++
+      f77: /usr/bin/gfortran
+      fc: /usr/bin/gfortran
+    spec: gcc@4.8.5
+    flags: {}
+- compiler:
+    modules: [gcc/6.2.0]
+    operating_system: rhel7
+    paths:
+      cc: /ccs/compilers/gcc/rhel7-x86_64/6.2.0/bin/gcc
+      cxx: /ccs/compilers/gcc/rhel7-x86_64/6.2.0/bin/g++
+      f77: /ccs/compilers/gcc/rhel7-x86_64/6.2.0/bin/gfortran
+      fc: /ccs/compilers/gcc/rhel7-x86_64/6.2.0/bin/gfortran
+    spec: gcc@6.2.0
+    flags: {}
+- compiler:
+    modules: [pgi/16.9]
+    operating_system: rhel7
+    paths:
+      cc: /ccs/compilers/pgi/rhel7-x86_64/16.9/linux86-64/16.9/bin/pgcc
+      cxx: /ccs/compilers/pgi/rhel7-x86_64/16.9/linux86-64/16.9/bin/pgc++
+      f77: /ccs/compilers/pgi/rhel7-x86_64/16.9/linux86-64/16.9/bin/pgf77
+      fc: /ccs/compilers/pgi/rhel7-x86_64/16.9/linux86-64/16.9/bin/pgfortran
+    spec: pgi@16.9
+    flags: {}
+- compiler:
+    modules: [pgi/17.1]
+    operating_system: rhel7
+    paths:
+      cc: /ccs/compilers/pgi/rhel7-x86_64/17.1/linux86-64/17.1/bin/pgcc
+      cxx: /ccs/compilers/pgi/rhel7-x86_64/17.1/linux86-64/17.1/bin/pgc++
+      f77: /ccs/compilers/pgi/rhel7-x86_64/17.1/linux86-64/17.1/bin/pgf77
+      fc: /ccs/compilers/pgi/rhel7-x86_64/17.1/linux86-64/17.1/bin/pgfortran
+    spec: pgi@17.1
+    flags: {}
+- compiler:
+    modules: [pgi/18.10]
+    operating_system: rhel7
+    paths:
+      cc: /ccs/compilers/pgi/rhel7-x86_64/18.10/linux86-64/18.10/bin/pgcc
+      cxx: /ccs/compilers/pgi/rhel7-x86_64/18.10/linux86-64/18.10/bin/pgc++
+      f77: /ccs/compilers/pgi/rhel7-x86_64/18.10/linux86-64/18.10/bin/pgf77
+      fc: /ccs/compilers/pgi/rhel7-x86_64/18.10/linux86-64/18.10/bin/pgfortran
+    spec: pgi@18.10
+    flags: {}
+- compiler:
+    modules: [pgi/19.1]
+    operating_system: rhel7
+    paths:
+      cc: /ccs/compilers/pgi/rhel7-x86_64/19.1/linux86-64-llvm/19.1/bin/pgcc
+      cxx: /ccs/compilers/pgi/rhel7-x86_64/19.1/linux86-64-llvm/19.1/bin/pgc++
+      f77: /ccs/compilers/pgi/rhel7-x86_64/19.1/linux86-64-llvm/19.1/bin/pgf77
+      fc: /ccs/compilers/pgi/rhel7-x86_64/19.1/linux86-64-llvm/19.1/bin/pgfortran
+    spec: pgi@19.1
+    flags: {}
+- compiler:
+    modules: [intel/19.0.0]
+    operating_system: rhel7
+    paths:
+      cc: /ccs/compilers/intel/rhel7-x86_64/19.0.0/bin/icc
+      cxx: /ccs/compilers/intel/rhel7-x86_64/19.0.0/bin/icpc
+      f77: /ccs/compilers/intel/rhel7-x86_64/19.0.0/bin/ifort
+      fc: /ccs/compilers/intel/rhel7-x86_64/19.0.0/bin/ifort
+    spec: intel@19.0.0
+    flags: {}
