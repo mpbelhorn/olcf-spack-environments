@@ -1,0 +1,70 @@
+diff --git a/darshan-runtime/darshan-core.h b/darshan-runtime/darshan-core.h
+index 5b7dc33..c5eb077 100644
+--- a/darshan-runtime/darshan-core.h
++++ b/darshan-runtime/darshan-core.h
+@@ -30,6 +30,8 @@
+ /* Environment variable to override memory per module */
+ #define DARSHAN_MOD_MEM_OVERRIDE "DARSHAN_MODMEM"
+ 
++#define DARSHAN_LOGFILE_PREPEND_OVERRIDE "DARSHAN_LOGFILE_PREPEND"
++
+ #ifdef __DARSHAN_ENABLE_MMAP_LOGS
+ /* Environment variable to override default mmap log path */
+ #define DARSHAN_MMAP_LOG_PATH_OVERRIDE "DARSHAN_MMAP_LOGPATH"
+diff --git a/darshan-runtime/lib/darshan-core.c b/darshan-runtime/lib/darshan-core.c
+index 024548d..89bc6fe 100644
+--- a/darshan-runtime/lib/darshan-core.c
++++ b/darshan-runtime/lib/darshan-core.c
+@@ -1313,6 +1313,7 @@ static void darshan_get_logfile_name(char* logfile_name, int jobid, struct tm* s
+     char* user_logfile_name;
+     char* logpath;
+     char* logpath_override = NULL;
++    char* logfile_prepend = NULL;
+ #ifdef __DARSHAN_LOG_ENV
+     char env_check[256];
+     char* env_tok;
+@@ -1352,6 +1353,8 @@ static void darshan_get_logfile_name(char* logfile_name, int jobid, struct tm* s
+ 
+         darshan_get_user_name(cuser);
+ 
++        logfile_prepend = getenv(DARSHAN_LOGFILE_PREPEND_OVERRIDE);
++
+         /* generate a random number to help differentiate the log */
+         hlevel=PMPI_Wtime() * 1000000;
+         (void)gethostname(hname, sizeof(hname));
+@@ -1387,14 +1390,27 @@ static void darshan_get_logfile_name(char* logfile_name, int jobid, struct tm* s
+ 
+         if(logpath_override)
+         {
+-            ret = snprintf(logfile_name, PATH_MAX,
+-                "%s/%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
+-                logpath_override,
+-                cuser, __progname, jobid,
+-                (start_tm->tm_mon+1),
+-                start_tm->tm_mday,
+-                (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
+-                logmod);
++            if (!logfile_prepend){
++                ret = snprintf(logfile_name, PATH_MAX,
++                    "%s/%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
++                    logpath_override,
++                    cuser, __progname, jobid,
++                    (start_tm->tm_mon+1),
++                    start_tm->tm_mday,
++                    (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
++                    logmod);
++            }else
++            {
++                ret = snprintf(logfile_name, PATH_MAX,
++                    "%s/%s_%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
++                    logpath_override,
++                    logfile_prepend,
++                    cuser, __progname, jobid,
++                    (start_tm->tm_mon+1),
++                    start_tm->tm_mday,
++                    (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
++                    logmod);
++            }
+             if(ret == (PATH_MAX-1))
+             {
+                 /* file name was too big; squish it down */

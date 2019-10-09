@@ -1,0 +1,20 @@
+--- old/darshan-runtime/lib/pkgconfig/darshan-runtime.pc.in    2017-09-28 16:24:48.628307000 -0400
++++ new/darshan-runtime/lib/pkgconfig/darshan-runtime.pc.in    2017-09-28 16:26:30.850845000 -0400
+@@ -5,7 +5,7 @@
+ Description: Darshan runtime library
+ Version: @DARSHAN_VERSION@
+ 
+-Requires: zlib mpich
++Requires: zlib 
+ Requires.private:
+ 
+ darshan_prefix=@prefix@
+@@ -15,5 +15,5 @@
+ darshan_linkopts="-Wl,@${darshan_share}/ld-opts/darshan-base-ld-opts"
+ 
+ Cflags:
+-Libs:
+-Libs.private: ${darshan_linkopts} ${darshan_libdir} -lfmpich -lmpichcxx -Wl,--start-group -ldarshan -ldarshan-stubs -Wl,--end-group
++Libs: ${darshan_linkopts} ${darshan_libdir} -lfmpich -lmpichcxx -Wl,--start-group -ldarshan -ldarshan-stubs -Wl,--end-group
++Libs.private:
+

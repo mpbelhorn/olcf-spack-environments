@@ -1,0 +1,333 @@
+--- darshan-3.1.4/darshan-runtime/lib/darshan-core.c	2017-04-11 12:39:18.000000000 -0400
++++ darshan-3.1.4-modified/darshan-runtime/lib/darshan-core.c	2017-05-05 10:49:33.776175732 -0400
+@@ -1262,6 +1262,7 @@
+     char* user_logfile_name;
+     char* logpath;
+     char* logpath_override = NULL;
++    char* logfile_prepend = NULL;
+ #ifdef __DARSHAN_LOG_ENV
+     char env_check[256];
+     char* env_tok;
+@@ -1301,6 +1302,8 @@
+ 
+         darshan_get_user_name(cuser);
+ 
++        logfile_prepend = getenv(DARSHAN_LOGFILE_PREPEND_OVERRIDE);
++
+         /* generate a random number to help differentiate the log */
+         hlevel=DARSHAN_MPI_CALL(PMPI_Wtime)() * 1000000;
+         (void)gethostname(hname, sizeof(hname));
+@@ -1336,6 +1339,7 @@
+ 
+         if(logpath_override)
+         {
++            if (!logfile_prepend){
+             ret = snprintf(logfile_name, PATH_MAX,
+                 "%s/%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
+                 logpath_override,
+@@ -1344,31 +1348,43 @@
+                 start_tm->tm_mday,
+                 (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
+                 logmod);
++            }else {
++                ret = snprintf(logfile_name, PATH_MAX,
++                        "%s/%s_%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
++                        logpath_override,
++                        logfile_prepend,
++                        cuser, __progname, jobid,
++                        (start_tm->tm_mon+1),
++                        start_tm->tm_mday,
++                        (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
++                        logmod);
++
++            }
+             if(ret == (PATH_MAX-1))
+             {
+                 /* file name was too big; squish it down */
+                 snprintf(logfile_name, PATH_MAX,
+-                    "%s/id%d.darshan_partial",
+-                    logpath_override, jobid);
++                        "%s/id%d.darshan_partial",
++                        logpath_override, jobid);
+             }
+         }
+         else if(logpath)
+         {
+             ret = snprintf(logfile_name, PATH_MAX,
+-                "%s/%d/%d/%d/%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
+-                logpath, (start_tm->tm_year+1900),
+-                (start_tm->tm_mon+1), start_tm->tm_mday,
+-                cuser, __progname, jobid,
+-                (start_tm->tm_mon+1),
+-                start_tm->tm_mday,
+-                (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
+-                logmod);
++                    "%s/%d/%d/%d/%s_%s_id%d_%d-%d-%d-%" PRIu64 ".darshan_partial",
++                    logpath, (start_tm->tm_year+1900),
++                    (start_tm->tm_mon+1), start_tm->tm_mday,
++                    cuser, __progname, jobid,
++                    (start_tm->tm_mon+1),
++                    start_tm->tm_mday,
++                    (start_tm->tm_hour*60*60 + start_tm->tm_min*60 + start_tm->tm_sec),
++                    logmod);
+             if(ret == (PATH_MAX-1))
+             {
+                 /* file name was too big; squish it down */
+                 snprintf(logfile_name, PATH_MAX,
+-                    "%s/id%d.darshan_partial",
+-                    logpath, jobid);
++                        "%s/id%d.darshan_partial",
++                        logpath, jobid);
+             }
+         }
+         else
+@@ -1381,7 +1397,7 @@
+ }
+ 
+ static void darshan_get_shared_records(struct darshan_core_runtime *core,
+-    darshan_record_id **shared_recs, int *shared_rec_cnt)
++        darshan_record_id **shared_recs, int *shared_rec_cnt)
+ {
+     int i, j;
+     int tmp_cnt = HASH_CNT(hlink, core->name_hash);
+@@ -1416,7 +1432,7 @@
+ 
+     /* broadcast root's list of records to all other processes */
+     DARSHAN_MPI_CALL(PMPI_Bcast)(id_array, (tmp_cnt * sizeof(darshan_record_id)),
+-        MPI_BYTE, 0, MPI_COMM_WORLD);
++            MPI_BYTE, 0, MPI_COMM_WORLD);
+ 
+     /* everyone looks to see if they opened the same records as root */
+     for(i=0; i<tmp_cnt; i++)
+@@ -1433,7 +1449,7 @@
+      * which modules accessed them collectively
+      */
+     DARSHAN_MPI_CALL(PMPI_Allreduce)(mod_flags, global_mod_flags, tmp_cnt,
+-        MPI_UINT64_T, MPI_BAND, MPI_COMM_WORLD);
++            MPI_UINT64_T, MPI_BAND, MPI_COMM_WORLD);
+ 
+     j = 0;
+     for(i=0; i<tmp_cnt; i++)
+@@ -1512,7 +1528,7 @@
+ 
+     /* open the darshan log file for writing */
+     ret = DARSHAN_MPI_CALL(PMPI_File_open)(MPI_COMM_WORLD, logfile_name,
+-        MPI_MODE_CREATE | MPI_MODE_WRONLY | MPI_MODE_EXCL, info, log_fh);
++            MPI_MODE_CREATE | MPI_MODE_WRONLY | MPI_MODE_EXCL, info, log_fh);
+     if(ret != MPI_SUCCESS)
+         return(-1);
+ 
+@@ -1521,7 +1537,7 @@
+ }
+ 
+ static int darshan_deflate_buffer(void **pointers, int *lengths, int count,
+-    char *comp_buf, int *comp_buf_length)
++        char *comp_buf, int *comp_buf_length)
+ {
+     int ret = 0;
+     int i;
+@@ -1550,8 +1566,8 @@
+ 
+     /* initialize the zlib compression parameters */
+     /* TODO: check these parameters? */
+-//    ret = deflateInit2(&tmp_stream, Z_DEFAULT_COMPRESSION, Z_DEFLATED,
+-//        15 + 16, 8, Z_DEFAULT_STRATEGY);
++    //    ret = deflateInit2(&tmp_stream, Z_DEFAULT_COMPRESSION, Z_DEFLATED,
++    //        15 + 16, 8, Z_DEFAULT_STRATEGY);
+     ret = deflateInit(&tmp_stream, Z_DEFAULT_COMPRESSION);
+     if(ret != Z_OK)
+     {
+@@ -1610,7 +1626,7 @@
+  *       record is opened by multiple ranks, but not all ranks
+  */
+ static int darshan_log_write_name_record_hash(MPI_File log_fh,
+-    struct darshan_core_runtime *core, uint64_t *inout_off)
++        struct darshan_core_runtime *core, uint64_t *inout_off)
+ {
+     struct darshan_core_name_record_ref *ref;
+     struct darshan_name_record *name_rec;
+@@ -1632,7 +1648,7 @@
+         while(name_rec_buf_len > 0)
+         {
+             HASH_FIND(hlink, core->name_hash, &(name_rec->id),
+-                sizeof(darshan_record_id), ref);
++                    sizeof(darshan_record_id), ref);
+             assert(ref);
+             rec_len = sizeof(darshan_record_id) + strlen(name_rec->name) + 1;
+ 
+@@ -1645,7 +1661,7 @@
+                 memcpy(shared_buf, name_rec, rec_len);
+                 ref->name_record = (struct darshan_name_record *)shared_buf;
+                 HASH_ADD(hlink, core->name_hash, name_record->id,
+-                    sizeof(darshan_record_id), ref);
++                        sizeof(darshan_record_id), ref);
+ 
+                 shared_buf += rec_len;
+                 shared_buf_len += rec_len;
+@@ -1661,7 +1677,7 @@
+                     memcpy(my_buf, name_rec, rec_len);
+                     ref->name_record =(struct darshan_name_record *)my_buf;
+                     HASH_ADD(hlink, core->name_hash, name_record->id,
+-                        sizeof(darshan_record_id), ref);
++                            sizeof(darshan_record_id), ref);
+                 }
+                 my_buf += rec_len;
+             }
+@@ -1680,7 +1696,7 @@
+         while(shared_buf_len > 0)
+         {
+             HASH_FIND(hlink, core->name_hash, &(name_rec->id),
+-                sizeof(darshan_record_id), ref);
++                    sizeof(darshan_record_id), ref);
+             assert(ref);
+             rec_len = sizeof(darshan_record_id) + strlen(name_rec->name) + 1;
+ 
+@@ -1688,7 +1704,7 @@
+             memcpy(my_buf, name_rec, rec_len);
+             ref->name_record = (struct darshan_name_record *)my_buf;
+             HASH_ADD(hlink, core->name_hash, name_record->id,
+-                sizeof(darshan_record_id), ref);
++                    sizeof(darshan_record_id), ref);
+ 
+             tmp_p = (char *)name_rec + rec_len;
+             name_rec = (struct darshan_name_record *)tmp_p;
+@@ -1699,7 +1715,7 @@
+ 
+     /* collectively write out the record hash to the darshan log */
+     ret = darshan_log_append_all(log_fh, core, core->log_name_p,
+-        name_rec_buf_len, inout_off);
++            name_rec_buf_len, inout_off);
+ 
+     return(ret);
+ }
+@@ -1709,7 +1725,7 @@
+  *       This variable is only valid on the root rank (rank 0).
+  */
+ static int darshan_log_append_all(MPI_File log_fh, struct darshan_core_runtime *core,
+-    void *buf, int count, uint64_t *inout_off)
++        void *buf, int count, uint64_t *inout_off)
+ {
+     MPI_Offset send_off, my_off;
+     MPI_Status status;
+@@ -1718,7 +1734,7 @@
+ 
+     /* compress the input buffer */
+     ret = darshan_deflate_buffer((void **)&buf, &count, 1,
+-        core->comp_buf, &comp_buf_sz);
++            core->comp_buf, &comp_buf_sz);
+     if(ret < 0)
+         comp_buf_sz = 0;
+ 
+@@ -1730,7 +1746,7 @@
+     }
+ 
+     DARSHAN_MPI_CALL(PMPI_Scan)(&send_off, &my_off, 1, MPI_OFFSET,
+-        MPI_SUM, MPI_COMM_WORLD);
++            MPI_SUM, MPI_COMM_WORLD);
+     /* scan is inclusive; subtract local size back out */
+     my_off -= comp_buf_sz;
+ 
+@@ -1738,7 +1754,7 @@
+     {
+         /* no compression errors, proceed with the collective write */
+         ret = DARSHAN_MPI_CALL(PMPI_File_write_at_all)(log_fh, my_off,
+-            core->comp_buf, comp_buf_sz, MPI_BYTE, &status);
++                core->comp_buf, comp_buf_sz, MPI_BYTE, &status);
+     }
+     else
+     {
+@@ -1746,7 +1762,7 @@
+          * but participate in collective write to avoid deadlock.
+          */
+         (void)DARSHAN_MPI_CALL(PMPI_File_write_at_all)(log_fh, my_off,
+-            core->comp_buf, comp_buf_sz, MPI_BYTE, &status);
++                core->comp_buf, comp_buf_sz, MPI_BYTE, &status);
+     }
+ 
+     if(nprocs > 1)
+@@ -1756,12 +1772,12 @@
+         {
+             my_off += comp_buf_sz;
+             DARSHAN_MPI_CALL(PMPI_Send)(&my_off, 1, MPI_OFFSET, 0, 0,
+-                MPI_COMM_WORLD);
++                    MPI_COMM_WORLD);
+         }
+         if(my_rank == 0)
+         {
+             DARSHAN_MPI_CALL(PMPI_Recv)(&my_off, 1, MPI_OFFSET, (nprocs-1), 0,
+-                MPI_COMM_WORLD, &status);
++                    MPI_COMM_WORLD, &status);
+ 
+             *inout_off = my_off;
+         }
+@@ -1894,11 +1910,11 @@
+ /* ********************************************************* */
+ 
+ void darshan_core_register_module(
+-    darshan_module_id mod_id,
+-    darshan_module_shutdown mod_shutdown_func,
+-    int *inout_mod_buf_size,
+-    int *rank,
+-    int *sys_mem_alignment)
++        darshan_module_id mod_id,
++        darshan_module_shutdown mod_shutdown_func,
++        int *inout_mod_buf_size,
++        int *rank,
++        int *sys_mem_alignment)
+ {
+     struct darshan_core_module* mod;
+     int mod_mem_req = *inout_mod_buf_size;
+@@ -1908,8 +1924,8 @@
+ 
+     DARSHAN_CORE_LOCK();
+     if((darshan_core == NULL) ||
+-       (mod_id >= DARSHAN_MAX_MODS) ||
+-       (darshan_core->mod_array[mod_id] != NULL))
++            (mod_id >= DARSHAN_MAX_MODS) ||
++            (darshan_core->mod_array[mod_id] != NULL))
+     {
+         /* just return if darshan not initialized, the module id
+          * is invalid, or if the module is already registered
+@@ -1963,7 +1979,7 @@
+  * not attempt to call into it at shutdown time
+  */
+ void darshan_core_unregister_module(
+-    darshan_module_id mod_id)
++        darshan_module_id mod_id)
+ {
+     DARSHAN_CORE_LOCK();
+     if(!darshan_core)
+@@ -1986,18 +2002,18 @@
+ }
+ 
+ darshan_record_id darshan_core_gen_record_id(
+-    const char *name)
++        const char *name)
+ {
+     /* hash the input name to get a unique id for this record */
+     return darshan_hash((unsigned char *)name, strlen(name), 0);
+ }
+ 
+ void *darshan_core_register_record(
+-    darshan_record_id rec_id,
+-    const char *name,
+-    darshan_module_id mod_id,
+-    int rec_len,
+-    struct darshan_fs_info *fs_info)
++        darshan_record_id rec_id,
++        const char *name,
++        darshan_module_id mod_id,
++        int rec_len,
++        struct darshan_fs_info *fs_info)
+ {
+     struct darshan_core_name_record_ref *ref;
+     void *rec_buf;
+@@ -2025,7 +2041,7 @@
+          * this record, and add a new name record if not
+          */
+         HASH_FIND(hlink, darshan_core->name_hash, &rec_id,
+-            sizeof(darshan_record_id), ref);
++                sizeof(darshan_record_id), ref);
+         if(!ref)
+         {
+             ret = darshan_add_name_record_ref(darshan_core, rec_id, name, mod_id);

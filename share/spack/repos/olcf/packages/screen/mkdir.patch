@@ -1,0 +1,13 @@
+--- a/etc/mkinstalldirs	2017-10-30 09:49:53.096494803 -0400
++++ b/etc/mkinstalldirs	2017-10-30 09:52:24.266299708 -0400
+@@ -22,8 +22,8 @@
+      pathcomp="${pathcomp}${d}"
+ 
+      if test ! -d "${pathcomp}"; then
+-        echo "mkdir $pathcomp" 1>&2
+-        mkdir "${pathcomp}" || errstatus=$?
++        echo "mkdir -p $pathcomp" 1>&2
++        mkdir -p "${pathcomp}" || errstatus=$?
+      fi
+ 
+      pathcomp="${pathcomp}/"

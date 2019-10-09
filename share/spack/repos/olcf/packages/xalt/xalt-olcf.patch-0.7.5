@@ -1,0 +1,136 @@
+diff --git a/configure b/configure
+index 18aa7b5..061798c 100755
+--- a/configure
++++ b/configure
+@@ -1319,7 +1319,7 @@ if test -n "$ac_init_help"; then
+ Optional Packages:
+   --with-PACKAGE[=ARG]    use PACKAGE [ARG=yes]
+   --without-PACKAGE       do not use PACKAGE (same as --with-PACKAGE=no)
+-  --with-transmission=ans transmission style (file,syslog,directdb) [[file]]
++  --with-transmission=ans transmission style (file,syslog,directdb,broker) [[file]]
+   --with-site=ans         Site name [[default]]
+   --with-etcDir=ans       Directory where xalt_db.conf and reverseMapD can be
+                           found [[.]]
+diff --git a/configure.ac b/configure.ac
+index 15dbf79..1ca8d04 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -3,7 +3,7 @@ AC_PREFIX_DEFAULT(/usr/local)
+ 
+ AC_SUBST(TRANSMISSION)
+ AC_ARG_WITH(transmission,
+-    AC_HELP_STRING([--with-transmission=ans],[transmission style (file,syslog,directdb) [[file]]]),
++    AC_HELP_STRING([--with-transmission=ans],[transmission style (file,syslog,directdb,broker) [[file]]]),
+     TRANSMISSION="$withval"
+     AC_MSG_RESULT([TRANSMISSION=$with_transmission])
+     AC_DEFINE_UNQUOTED(TRANSMISSION, "$with_transmission")dnl
+diff --git a/src/xalt_global.py b/src/xalt_global.py
+index 46eb69f..0c7bef8 100644
+--- a/src/xalt_global.py
++++ b/src/xalt_global.py
+@@ -33,6 +33,7 @@ XALT_Stack              = Stack()
+ # XALT_TRANSMISSION_STYLE:  Controls where the json data is sent:
+ #                           "file"     : writes a file ~/.xalt.d
+ #                           "syslog"   : writes data to syslog
++#                           "broker"   : writes data to a message broker
+ #                           "directdb" : Calls db directly
+ #------------------------------------------------------------------------
+ 
+diff --git a/src/xalt_transmission_factory.py b/src/xalt_transmission_factory.py
+index 3054c61..a51dafa 100644
+--- a/src/xalt_transmission_factory.py
++++ b/src/xalt_transmission_factory.py
+@@ -20,7 +20,7 @@
+ #-----------------------------------------------------------------------
+ from __future__  import division
+ from __future__  import print_function
+-import os, sys, json, base64, zlib
++import os, sys, json, base64, zlib, httplib
+ 
+ try:
+   from XALTdb      import XALTdb
+@@ -66,7 +66,7 @@ class XALT_transmission_factory(object):
+     """
+     The static factory build routine that returns the transmission object.
+ 
+-    @param name: Name of the factory: syslog, directdb, file
++    @param name: Name of the factory: syslog, directdb, broker, file
+     @param syshost: The system name.  Should be stampede or darter not login1.stampede....
+     @param kind: Type of record: link, run
+     @param fn:  file name (only used by file transport object
+@@ -78,6 +78,8 @@ class XALT_transmission_factory(object):
+       obj = Syslog(syshost, kind)
+     elif (name == "syslogv1"):
+       obj = SyslogV1(syshost, kind)
++    elif (name == "broker"):
++      obj = Broker(syshost, kind)
+     elif (name == "directdb"):
+       obj = DirectDB(syshost, kind)
+     else:                 
+@@ -86,6 +88,37 @@ class XALT_transmission_factory(object):
+       
+     return obj
+ 
++class Broker(XALT_transmission_factory):
++  """
++  This class writes to a message broker
++  """
++
++  def __init__(self, syshost, kind):
++    """
++    This is the ctor for Broker transmission method
++    @param syshost: Name of the system.
++    @param kind:  Type of record: link or run
++    """
++
++    super(Broker, self).__init__(syshost, kind)
++  def save(self, resultT, key):
++    """
++    The json table is written to syslog with the text converted to base64.
++    @param resultT: The json record table
++    """
++    sA = []
++    sA.append("XALT_LOGGING")
++    sA.append(" \"")
++    sA.append(self._kind())
++    sA.append(":")
++    sA.append(self._syshost())
++    sA.append(":")
++    sA.append(base64.b64encode(json.dumps(resultT)))
++    s = "".join(sA)
++    h1=httplib.HTTPConnection('ua-prod2.ccs.ornl.gov')
++    headers={"Content-Type":"text/plain"}
++    h1.request("POST","/cgi-bin/slacker-mq.cgi/XALT-LOGGING",s,headers)
++
+ class SyslogV1(XALT_transmission_factory):
+   """
+   This class write the json record to syslog
+diff --git a/src/xalt_util.py b/src/xalt_util.py
+index 40c229d..f12ceee 100644
+--- a/src/xalt_util.py
++++ b/src/xalt_util.py
+@@ -65,21 +65,21 @@ def extract_compiler():
+       Determine the name of a parent of Process instance.
+       Check whether parent is a function (psutil > v2) or a property (psutil < v2)
+       """
+-      return (callable(p.parent) and p.parent().name()) or p.parent.name()
++      return (callable(p.parent) and p.parent().name()) or p.parent.name
+ 
+     def p_parent_exe():
+       """
+       Determine the absolute path of the executable.
+       Check whether parent is a function (psutil > v2) or a property (psutil < v2)
+       """
+-      return (callable(p.parent) and p.parent().exe()) or p.parent.exe()
++      return (callable(p.parent) and p.parent().exe()) or p.parent.exe
+ 
+     def p_parent_cmdline():
+       """
+       Determine the command line of the the parent process.
+       Check whether parent is a function (psutil > v2) or a property (psutil < v2)
+       """
+-      return (callable(p.parent) and p.parent().cmdline()) or p.parent.cmdline()
++      return (callable(p.parent) and p.parent().cmdline()) or p.parent.cmdline
+ 
+     while p_parent():
+       if p_parent_name() not in ignore_programs:
