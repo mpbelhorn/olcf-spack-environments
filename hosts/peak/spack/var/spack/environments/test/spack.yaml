@@ -78,6 +78,7 @@ spack:
       - - $gcc_compilers
       exclude:
       - '%gcc@:4'
+      - '%gcc@8.1.1' # See NOTE (NOTES.md)
       - '%gcc@9:'
     - matrix:
       - - magma
