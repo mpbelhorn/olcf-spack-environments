@@ -83,6 +83,8 @@ spack:
     - matrix:
       - - magma
       - - $gcc_compilers
+      exclude:
+      - '%gcc@9:'
     - matrix:
       - - nco
       - - $gcc_compilers
