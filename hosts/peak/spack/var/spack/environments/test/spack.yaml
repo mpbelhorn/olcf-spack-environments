@@ -318,6 +318,7 @@ spack:
       buildable: true
       modules:
         cmake@3.14.2%pgi: cmake/3.14.2
+        cmake%clang: cmake
       version: []
       target: []
       providers: {}
