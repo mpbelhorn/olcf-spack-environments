@@ -72,6 +72,11 @@ spack:
       - - $gcc_compilers
       exclude:
       - '%gcc@9:'
+    - matrix:
+      - - amgx +mpi~openmp
+      - - $gcc_compilers
+      exclude:
+      - '%gcc@9:'
     - raja@0.1.0%gcc@4.8.5 +cuda
     - matrix:
       - - raja+cuda
@@ -91,7 +96,6 @@ spack:
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
-    - amgx +mpi~openmp
     - fftw +mpi+openmp
     - hdf5 ~mpi
     - hdf5 +mpi
@@ -142,7 +146,6 @@ spack:
       - - $general_compute_packages
       - - $all_compilers
       exclude:
-      - 'amgx%gcc@9:'
       - fftw%pgi
       - adios2%pgi
       - mpip%pgi
