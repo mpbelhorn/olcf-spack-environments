@@ -19,16 +19,20 @@ class Ncl(Package):
 
     url = "https://github.com/NCAR/ncl/archive/6.4.0.tar.gz"
 
+    version('6.6.2', 'cad4ee47fbb744269146e64298f9efa206bc03e7b86671e9729d8986bb4bc30e')
     version('6.5.0', '133446f3302eddf237db56bf349e1ebf228240a7320699acc339a3d7ee414591')
     version('6.4.0', 'd891452cda7bb25afad9b6c876c73986')
     version('6.3.0', 'd2cd8a1de1c498c1832f0765113ad58086d1d3b29bf5d2cc9b1ba60f1919951c')
 
-    patch('configure_v6.5.0.patch', when="@6.5.0")
-    patch('configure_v6.4.0.patch', when="@:6.4.0")
+    patch('spack_ncl.patch')
+    # patch('configure_v6.5.0.patch', when="@6.5.0")
+    # patch('configure_v6.4.0.patch', when="@:6.4.0")
     # Make ncl compile with hdf5 1.10 (upstream as of 6.5.0)
     patch('hdf5.patch', when="@6.4.0")
     # ymake-filter's buffer may overflow (upstream as of 6.5.0)
     patch('ymake-filter.patch', when="@6.4.0")
+    # ymake additional local library and includes will be filtered improperly
+    patch('ymake.patch', when="@6.4.0:")
 
     # This installation script is implemented according to this manual:
     # http://www.ncl.ucar.edu/Download/build_from_src.shtml
@@ -60,6 +64,9 @@ class Ncl(Package):
     depends_on('libx11')
     depends_on('libxaw')
     depends_on('libxmu')
+    depends_on('pixman')
+    depends_on('bzip2')
+    depends_on('freetype')
 
     # In Spack, we do not have an option to compile netcdf without netcdf-4
     # support, so we will tell the ncl configuration script that we want
@@ -78,7 +85,7 @@ class Ncl(Package):
     # Some of the optional dependencies according to the manual:
     depends_on('hdf', when='+hdf4')
     depends_on('netcdf+hdf4', when='+hdf4')
-    depends_on('gdal', when='+gdal')
+    depends_on('gdal+proj@:2.4', when='+gdal')
     depends_on('udunits2', when='+udunits2')
 
     # We need src files of triangle to appear in ncl's src tree if we want
@@ -89,6 +96,9 @@ class Ncl(Package):
         md5='10aff8d7950f5e0e2fb6dd2e340be2c9',
         placement='triangle_src',
         when='+triangle')
+
+    # Check by hand
+    # sanity_check_is_file = ['bin/ncl']
 
     def patch(self):
         # Make configure scripts use Spack's tcsh
@@ -219,8 +229,9 @@ class Ncl(Package):
             # Build GRIB2 support (optional) into NCL?
             'n\n',
             # Enter local library search path(s) :
-            # The paths will be passed by the Spack wrapper.
-            " \n",
+            "%s\n" % ' '.join([
+                self.spec[key].prefix.lib for key in ('pixman', 'bzip2')
+                ]),
             # Enter local include search path(s) :
             # All other paths will be passed by the Spack wrapper.
             "'%s'\n" % join_path(self.spec['freetype'].prefix.include,

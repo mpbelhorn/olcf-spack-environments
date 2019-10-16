@@ -68,14 +68,14 @@ class Magma(CMakePackage):
             (spec['lapack'].libs + spec['blas'].libs).joined(';')
         ])
 
+        options += ['-DBUILD_SHARED_LIBS=%s' %
+                    ('ON' if ('+shared' in spec) else 'OFF')]
+
         if spec.satisfies('+shared'):
-            options.extend(['-DBUILD_SHARED_LIBS=ON',
-                            '-DCMAKE_C_FLAGS=%s' % pic_flag,
+            options.extend(['-DCMAKE_C_FLAGS=%s' % pic_flag,
                             '-DCMAKE_CXX_FLAGS=%s' % pic_flag,
                             '-DCMAKE_Fortran_FLAGS=%s' % pic_flag,
                             ])
-        else:
-            options.append('-DBUILD_SHARED_LIBS=OFF')
 
         if '+fortran' in spec:
             options.extend([

@@ -14,6 +14,7 @@ class Nco(AutotoolsPackage):
     url      = "https://github.com/nco/nco/archive/4.6.7.tar.gz"
 
     version('4.8.1', '547209b355cc20b87f6e093fbf810557')
+    version('4.7.9', '048f6298bceb40913c3ae433f875dea1e9129b1c86019128e7271d08f274a879')
     version('4.6.9', 'e7fa2b6d62d1eb34b721160f4e35caa2')
     version('4.6.7', 'b04c92aa715d3fad3ebebd1fd178ce32')
     version('4.6.6', 'df6fa47aaf6e41adfc0631912a7a341f')

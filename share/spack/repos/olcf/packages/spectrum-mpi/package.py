@@ -8,7 +8,7 @@ from shutil import copytree
 class SpectrumMpi(Package):
     """IBM MPI implementation from Spectrum MPI."""
 
-    homepage = "http://www.ibm.com"
+    homepage = "http://www-03.ibm.com/systems/spectrum-computing/products/mpi"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
     version('10.3.0.1-20190611', '94a7e1efdf9df18ebb6e4b184251de01',
