@@ -1,3 +1,4 @@
 /hosts/*/spack
 /hosts/*/var/cache/
 /hosts/*/var/mcache/
+/*.log
