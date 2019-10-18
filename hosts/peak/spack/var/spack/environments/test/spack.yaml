@@ -69,7 +69,7 @@ spack:
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
-    - fftw +mpi+openmp
+    - fftw +mpi
     - hdf5 ~mpi
     - hdf5 +mpi
     - hdf5@1.8.18 ~mpi
@@ -146,9 +146,7 @@ spack:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
       - - $llvm_compilers
-    - matrix:
-      - - fftw +mpi+openmp simd=skip
-      - - $pgi_compilers
+      - - ^elfutils%gcc@4.8.5
     - matrix:
       - - $general_compute_packages
         - petsc +mpi~mumps~int64~superlu-dist~metis
@@ -159,7 +157,6 @@ spack:
       - - ^zeromq%gcc@4.8.5
       - - ^zfp%gcc@4.8.5
       exclude:
-      - fftw%pgi
       - mpip%pgi
   #############################################################################
   mirrors:
@@ -239,6 +236,59 @@ spack:
       providers: {}
       modules: {}
       compiler: []
+    # Self-provided GCC-only build dependencies.
+    cmake:
+      variants: +ownlibs
+      buildable: true
+      modules:
+        cmake%xl: cmake
+        cmake%pgi: cmake
+        cmake%clang: cmake
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      compiler: []
+    autoconf:
+      version: []
+      buildable: true
+      paths: {}
+      target: []
+      providers: {}
+      modules:
+        autoconf%xl: autoconf
+        autoconf%pgi: autoconf
+      compiler: []
+    automake:
+      version: []
+      buildable: true
+      paths: {}
+      target: []
+      providers: {}
+      modules:
+        automake%xl: automake
+        automake%pgi: automake
+      compiler: []
+    pkg-config:
+      version: []
+      buildable: true
+      paths: {}
+      target: []
+      providers: {}
+      modules:
+        pkg-config%xl: pkg-config
+        pkg-config%pgi: pkg-config
+      compiler: []
+    diffutils:
+      version: []
+      buildable: true
+      paths: {}
+      target: []
+      providers: {}
+      modules:
+        diffutils%xl: diffutils
+        diffutils%pgi: diffutils
+      compiler: []
     # Machine-specific Customizations
     openblas:
       buildable: true
@@ -250,7 +300,7 @@ spack:
       modules: {}
       compiler: []
     fftw:
-      variants: +float+long_double+openmp+fma simd=vsx
+      variants: precision=float,double,long_double
       buildable: true
       version: []
       target: []
@@ -313,17 +363,6 @@ spack:
       modules: {}
       compiler: []
     # PGI Exceptions
-    cmake:
-      variants: +ownlibs
-      buildable: true
-      modules:
-        cmake@3.14.2%pgi: cmake/3.14.2
-        cmake%clang: cmake
-      version: []
-      target: []
-      providers: {}
-      paths: {}
-      compiler: []
     python:
       version: [3.7.0, 2.7.15]
       modules:
@@ -408,11 +447,11 @@ spack:
         environment:
           unset: []
         conflict: []
-      blacklist_implicits: true
+      blacklist_implicits: false
       verbose: true
       whitelist: []
       blacklist: []
-      hash_length: 7
+      hash_length: 0
       hierarchy: []
   #############################################################################
   config:
@@ -441,10 +480,10 @@ spack:
     db_lock_timeout: 120
     package_lock_timeout:
   #############################################################################
-  upstreams:
-    peak-compute:
-      install_tree: /sw/peak/.swci/1-compute/opt/spack/20180914
-      modules:
-        lmod: /sw/peak/modulefiles/site
+  # upstreams:
+  #   peak-compute:
+  #     install_tree: /sw/peak/.swci/1-compute/opt/spack/20180914
+  #     modules:
+  #       lmod: /sw/peak/modulefiles/site
   #############################################################################
   concretization: separately
