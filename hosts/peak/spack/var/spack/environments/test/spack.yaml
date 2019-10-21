@@ -455,17 +455,17 @@ spack:
       hierarchy: []
   #############################################################################
   config:
-    install_tree: /gpfs/alpine/stf007/scratch/belhorn/spack/stacks/peak/production/opt
+    install_tree: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/opt
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
     - /sw/.testing/belhorn/spack/site-stacks/hosts/peak/templates
     - /sw/.testing/belhorn/spack/site-stacks/share/spack/templates
     - $spack/share/spack/templates
     module_roots:
-      tcl: /gpfs/alpine/stf007/scratch/belhorn/spack/stacks/peak/production/modules/tmod
-      lmod: /gpfs/alpine/stf007/scratch/belhorn/spack/stacks/peak/production/modules/lmod
+      tcl: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/tmod
+      lmod: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/lmod
     build_stage:
-    - /gpfs/alpine/stf007/scratch/belhorn/spack/stacks/peak/production/tmp
+    - /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/tmp
     - $tmpdir
     - $spack/var/spack/stage
     source_cache: /sw/.testing/belhorn/spack/site-stacks/hosts/peak/var/cache
@@ -487,3 +487,4 @@ spack:
   #       lmod: /sw/peak/modulefiles/site
   #############################################################################
   concretization: separately
+  upstreams: {}
