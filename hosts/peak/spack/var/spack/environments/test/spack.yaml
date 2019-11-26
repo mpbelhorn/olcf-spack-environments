@@ -54,6 +54,9 @@ spack:
     - c-blosc +avx2
     - lz4
     - zfp bsws=64 +shared
+    - pgi@19.7 +mpi+mpigpu+managed+nvidia+single~network
+    - pgi@19.5 +mpi+mpigpu+managed+nvidia+single~network
+    - pgi@18.10 +mpi+mpigpu+managed+nvidia+single~network
   - core_only_compute_packages:
     - matrix:
       - - py-nose
@@ -158,6 +161,7 @@ spack:
       - - ^zfp%gcc@4.8.5
       exclude:
       - mpip%pgi
+    - papi@5.7.0%gcc@4.8.5 cpu=POWER9
   #############################################################################
   mirrors:
     peak_builds: /sw/sources/spack/mirrors/builds/peak
@@ -170,7 +174,7 @@ spack:
     all:
       compiler: [gcc@4.8.5, gcc, clang, xl, pgi]
       providers:
-        mpi: [spectrum-mpi]
+        mpi: [olcf.spectrum-mpi]
         lapack: [netlib-lapack]
         blas: [netlib-lapack]
         scalapack: [netlib-scalapack]
@@ -190,15 +194,14 @@ spack:
       paths: {}
       compiler: []
     spectrum-mpi:
-      buildable: false
       version:
       - 10.3.0.1-20190611
-      modules:
-        spectrum-mpi@10.3.0.1-20190611: spectrum-mpi/10.3.0.1-20190611
       target: []
+      compiler: []
+      buildable: true
+      modules: {}
       providers: {}
       paths: {}
-      compiler: []
     go-bootstrap:
       buildable: false
       version: [1.7.1-bootstrap]
@@ -353,6 +356,14 @@ spack:
       paths: {}
       modules: {}
       compiler: []
+    netcdf-fortran:
+      version: [4.4.4]
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
     darshan-runtime:
       variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/peak
       buildable: true
@@ -464,10 +475,10 @@ spack:
     module_roots:
       tcl: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/tmod
       lmod: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/lmod
-    build_stage:
-    - /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/tmp
-    - $tmpdir
-    - $spack/var/spack/stage
+    # build_stage:
+    # - $tempdir/$user/spack-stage
+    # - $spack/var/spack/stage
+    # # - /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/tmp
     source_cache: /sw/.testing/belhorn/spack/site-stacks/hosts/peak/var/cache
     misc_cache: /sw/.testing/belhorn/spack/site-stacks/hosts/peak/var/mcache
     verify_ssl: true
