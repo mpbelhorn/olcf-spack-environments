@@ -23,10 +23,6 @@
   && echo "Please restart shell to change configuration." \
   && return 1
 
-if [ -n "${ZSH_VERSION:-}" ]; then
-    emulate -L sh
-fi
-
 _spack_host="$(hostname --long \
                | sed -e 's/\.\(olcf\|ccs\)\..*//' \
                      -e 's/[-]\?\(login\|ext\|batch\)[^\.]*[\.]\?//' \
@@ -61,8 +57,8 @@ fi
 # Setup alternate module environment
 module purge
 export MODULEPATH="$ENV_MODROOT/linux-rhel7-power8le/Core:$ENV_MODROOT/site/Core:/sw/peak/modulefiles/core"
-module load python
+module load python/3.7.0-anaconda3-5.3.0
 export PYTHONDONTWRITEBYTECODE=1
-
 source ./hosts/${_spack_host}/spack/share/spack/setup-env.sh
 echo "Spack initialized for ${_spack_host:-Unknown host} at ${SPACK_ROOT}"
+spack env activate test
