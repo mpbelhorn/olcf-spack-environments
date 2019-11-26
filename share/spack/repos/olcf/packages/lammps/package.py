@@ -146,4 +146,7 @@ class Lammps(CMakePackage):
         if '+kspace' in spec:
             args.append('-DFFT=FFTW3')
 
+        if +gpu in spec:
+            args.append('-DGPU_API=cuda')
+
         return args

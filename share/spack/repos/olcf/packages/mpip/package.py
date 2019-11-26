@@ -18,6 +18,7 @@ class Mpip(AutotoolsPackage):
     depends_on("libdwarf")
     depends_on('libunwind', when=os.uname()[4] == "x86_64")
     depends_on("mpi")
+    depends_on("python@:2.99", when='@:3.4.1', type=('build',))
 
     build_targets = ['default', 'shared']
 

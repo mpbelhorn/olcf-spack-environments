@@ -1,27 +1,7 @@
-##############################################################################
-# Copyright (c) 2013-2016, Lawrence Livermore National Security, LLC.
-# Produced at the Lawrence Livermore National Laboratory.
+# Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
+# Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
-# This file is part of Spack.
-# Created by Todd Gamblin, tgamblin@llnl.gov, All rights reserved.
-# LLNL-CODE-647188
-#
-# For details, see https://github.com/llnl/spack
-# Please also see the LICENSE file for our notice and the LGPL.
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License (as
-# published by the Free Software Foundation) version 2.1, February 1999.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the IMPLIED WARRANTY OF
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the terms and
-# conditions of the GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public
-# License along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-##############################################################################
+# SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 
 from spack import *
@@ -43,14 +23,24 @@ class ParallelIo(CMakePackage):
     homepage = "http://ncar.github.io/ParallelIO"
     url      = "https://github.com/NCAR/ParallelIO/archive/pio2_2_0.tar.gz"
  
+    version('2.4.4', 'd72a431c6ce07201ae7b1a52f7af054b')
     version('2.3.0', 'e1d89747130702a81dbc425b08b75ef9')
     version('2.2.2', '7040b864ccc693e806f2bf07659aa080')
     version('2.2.0', '43297a4aaa034a7d0c70452fcd999a00')
 
+    variant('examples', default=False, description='Builds the examples')
+
     depends_on('mpi')
     depends_on('netcdf+mpi+parallel-netcdf')
-    depends_on('netcdf-fortran')
-    depends_on('parallel-netcdf+pic')
+    depends_on('netcdf-fortran+pic')
+    depends_on('parallel-netcdf+pic+fortran')
+    depends_on('hdf5+fortran+mpi')
+    depends_on('zlib')
+
+    # The examples have issues with XL
+    conflicts('+examples', when='@:2.3.0%xl')
+    conflicts('+examples', when='@:2.3.0%xl_r')
+
 
     def url_for_version(self, version):
         base_url = "https://github.com/NCAR/ParallelIO/archive"
@@ -63,21 +53,20 @@ class ParallelIo(CMakePackage):
         args.extend([
             '-DCMAKE_C_COMPILER:FILEPATH=%s' % spec['mpi'].mpicc,
             '-DCMAKE_Fortran_COMPILER:FILEPATH=%s' % spec['mpi'].mpifc,
-            '-DCMAKE_C_STANDARD:STRING=99',
-            ])
-
-        if spec.satisfies('%xl'):
-            args.extend([
-                '-DCMAKE_C_COMPILER_ID=XL',
-                # The examples have some issues with XL, so skip them for this
-                # compiler.
-                '-DPIO_ENABLE_EXAMPLES:BOOL=OFF',
-                ])
-
-        args.extend([
+            # '-DCMAKE_C_STANDARD:STRING=99',
             '-DNetCDF_C_PATH:FILEPATH=%s' % spec['netcdf'].prefix,
             '-DNetCDF_Fortran_PATH:FILEPATH=%s' % spec['netcdf-fortran'].prefix,
             '-DPnetCDF_PATH:FILEPATH=%s' % spec['parallel-netcdf'].prefix,
+            '-DHDF5_PATH=%s' % spec['hdf5'].prefix,
+            '-DLIBZ_PATH=%s' % spec['zlib'].prefix,
             ])
+
+        if spec.satisfies('~examples'):
+            args.append('-DPIO_ENABLE_EXAMPLES:BOOL=OFF')
+
+        if spec.satisfies('%xl') or spec.satisfies('%xl_r'):
+            args.extend([
+                '-DCMAKE_C_COMPILER_ID=XL',
+                ])
 
         return args

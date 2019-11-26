@@ -66,12 +66,13 @@ class Pgi(Package):
     def true_prefix(self):
         prefix = getattr(self, '_true_prefix', None)
         if not prefix:
-            if 'ppc' in self.spec.architecture.target.lower():
+            target = str(self.spec.architecture.target).lower()
+            if any((i in target for i in ('power', 'ppc'))):
                 if 'linux' in self.spec.architecture.platform:
                     prefix = join_path(self.prefix,
                                        'linuxpower',
                                        str(self.spec.version).split('-')[0])
-            elif 'x86_64' in self.spec.architecture.target.lower():
+            elif 'x86_64' in target:
                     prefix = join_path(self.prefix,
                                        'linux86-64',
                                        str(self.spec.version).split('-')[0])

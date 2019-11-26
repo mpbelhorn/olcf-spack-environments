@@ -4,10 +4,12 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
+import mmap
 import glob
 import os
 import sys
 from llnl.util.filesystem import fix_darwin_install_name
+from llnl.util import tty
 
 
 class Papi(Package):
@@ -63,7 +65,18 @@ class Papi(Package):
             # Don't use <malloc.h>
             for level in [".", "*", "*/*"]:
                 files = glob.iglob(join_path(level, "*.[ch]"))
-                filter_file(r"\<malloc\.h\>", "<stdlib.h>", *files)
+                # filter_file has a problem processing so many files that don't
+                # contain a match. Not sure what the real problem is, but
+                # checking that the file contains "malloc.h" first seems to
+                # solve the issue. An mmap would be nice here, but isn't py2/3
+                # compatible.
+                for file_ in list(files):
+                    process = False
+                    with open(file_, 'rb') as bfile:
+                        if b'malloc.h' in bfile.read():
+                            process = True
+                    if process:
+                        filter_file(r"\<malloc\.h\>", r"<stdlib.h>", file_)
 
             make()
             make("install")
