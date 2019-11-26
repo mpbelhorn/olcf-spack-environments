@@ -1,4 +1,8 @@
 /hosts/*/spack
 /hosts/*/var/cache/
 /hosts/*/var/mcache/
+/share/spack/repos/builtin
+/share/spack/repos/production-builtin
+/share/spack/repos/production-olcf
+/var/
 /*.log
