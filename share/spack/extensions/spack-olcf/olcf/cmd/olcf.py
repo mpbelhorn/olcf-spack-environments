@@ -131,7 +131,7 @@ def olcf_show_env(args):
 
 def olcf_deploy(args):
     '''Install concretized specs in the environment.'''
-    if args.package or args.specfiles:
+    if hasattr(args, 'package') or hasattr(args, 'specfiles'):
         tty.die("olcf deploy acts on an environment, not individual packages")
     env, env_arg = None, getattr(args, 'env', None)
     if env_arg:
@@ -143,7 +143,7 @@ def olcf_deploy(args):
         else:
             raise SpackEnvironmentError('no environment in %s' % env_arg)
     if ev._active_environment:
-        env = _active_environment
+        env = ev._active_environment
     else:
         tty.die(
             '`spack olcf deploy` requires an environment',
@@ -152,7 +152,7 @@ def olcf_deploy(args):
             'or use:',
             '    spack -e ENV %s ...' % cmd_name)
     if env:
-        if not args.only_concrete:
+        if not hasattr(args, 'only_concrete'):
             # Concretize new specs
             concretized_specs = env.concretize()
             display_specs(concretized_specs)

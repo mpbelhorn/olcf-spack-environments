@@ -31,7 +31,7 @@ class ParallelIo(CMakePackage):
     variant('examples', default=False, description='Builds the examples')
 
     depends_on('mpi')
-    depends_on('netcdf+mpi+parallel-netcdf')
+    depends_on('netcdf-c+mpi+parallel-netcdf')
     depends_on('netcdf-fortran+pic')
     depends_on('parallel-netcdf+pic+fortran')
     depends_on('hdf5+fortran+mpi')
@@ -54,7 +54,7 @@ class ParallelIo(CMakePackage):
             '-DCMAKE_C_COMPILER:FILEPATH=%s' % spec['mpi'].mpicc,
             '-DCMAKE_Fortran_COMPILER:FILEPATH=%s' % spec['mpi'].mpifc,
             # '-DCMAKE_C_STANDARD:STRING=99',
-            '-DNetCDF_C_PATH:FILEPATH=%s' % spec['netcdf'].prefix,
+            '-DNetCDF_C_PATH:FILEPATH=%s' % spec['netcdf-c'].prefix,
             '-DNetCDF_Fortran_PATH:FILEPATH=%s' % spec['netcdf-fortran'].prefix,
             '-DPnetCDF_PATH:FILEPATH=%s' % spec['parallel-netcdf'].prefix,
             '-DHDF5_PATH=%s' % spec['hdf5'].prefix,

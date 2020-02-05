@@ -48,7 +48,7 @@ spack:
     - valgrind ~mpi~boost
     - papi
     - gdb
-    - zeromq
+    - libzmq
     - gnupg
     - gsl
     - c-blosc +avx2
@@ -79,7 +79,7 @@ spack:
     - hdf5@1.8.18 +mpi
     - boost ~mpi
     - boost +mpi
-    - netcdf
+    - netcdf-c
     - netcdf-fortran
     - netcdf-cxx
     - parallel-netcdf
@@ -141,6 +141,7 @@ spack:
       exclude:
       - boost%xl
       - boost%pgi
+      - parallel-io%xl
     - matrix:
       - - boost@1.59.0 ~mpi
         - boost@1.59.0 +mpi
@@ -157,7 +158,7 @@ spack:
       - - ^bzip2%gcc@4.8.5
       - - ^perl%gcc@4.8.5
       - - ^pkgconf%gcc@4.8.5
-      - - ^zeromq%gcc@4.8.5
+      - - ^libzmq%gcc@4.8.5
       - - ^zfp%gcc@4.8.5
       exclude:
       - mpip%pgi
@@ -165,12 +166,10 @@ spack:
   #############################################################################
   mirrors:
     peak_builds: /sw/sources/spack/mirrors/builds/peak
-  #############################################################################
   repos:
   - /sw/.testing/belhorn/spack/site-stacks/share/spack/repos/olcf
   #############################################################################
   packages:
-    # General Settings
     all:
       compiler: [gcc@4.8.5, gcc, clang, xl, pgi]
       providers:
@@ -180,10 +179,9 @@ spack:
         scalapack: [netlib-scalapack]
       buildable: true
       version: []
-      target: []
+      target: [power9le, ppc64le]
       paths: {}
       modules: {}
-    # Site-provided Packages
     cuda:
       buildable: false
       version: [10.1.168]
@@ -193,6 +191,15 @@ spack:
       providers: {}
       paths: {}
       compiler: []
+    elfutils:
+      version: [0.178]
+      buildable: true
+      modules:
+        elfutils@0.178%xl: elfutils/0.178
+      target: []
+      compiler: []
+      providers: {}
+      paths: {}
     spectrum-mpi:
       version:
       - 10.3.0.1-20190611
@@ -211,7 +218,6 @@ spack:
       providers: {}
       modules: {}
       compiler: []
-    # OS-Provided Packages
     gtkplus:
       version: [2.10.0]
       buildable: false
@@ -239,7 +245,6 @@ spack:
       providers: {}
       modules: {}
       compiler: []
-    # Self-provided GCC-only build dependencies.
     cmake:
       variants: +ownlibs
       buildable: true
@@ -259,8 +264,8 @@ spack:
       target: []
       providers: {}
       modules:
-        autoconf%xl: autoconf
-        autoconf%pgi: autoconf
+        autoconf%xl: autoconf/2.69
+        autoconf%pgi: autoconf/2.69
       compiler: []
     automake:
       version: []
@@ -292,7 +297,6 @@ spack:
         diffutils%xl: diffutils
         diffutils%pgi: diffutils
       compiler: []
-    # Machine-specific Customizations
     openblas:
       buildable: true
       variants: cpu_target=POWER9
@@ -338,7 +342,7 @@ spack:
       paths: {}
       modules: {}
       compiler: []
-    netcdf:
+    netcdf-c:
       variants: ~hdf4+mpi+parallel-netcdf+shared
       buildable: true
       version: []
@@ -347,6 +351,16 @@ spack:
       paths: {}
       modules: {}
       compiler: []
+    numactl:
+      buildable: true
+      version: [2.0.12]
+      modules:
+        numactl@2.0.12%xl: numactl/2.0.12
+        numactl@2.0.12%pgi: numactl/2.0.12
+      target: []
+      compiler: []
+      providers: {}
+      paths: {}
     parallel-netcdf:
       variants: +cxx+fortran+fpic
       buildable: true
@@ -373,7 +387,6 @@ spack:
       paths: {}
       modules: {}
       compiler: []
-    # PGI Exceptions
     python:
       version: [3.7.0, 2.7.15]
       modules:
@@ -384,9 +397,8 @@ spack:
       providers: {}
       paths: {}
       compiler: []
-  #############################################################################
+      variants: +libxml2
   view: false
-  #############################################################################
   modules:
     enable:
     - lmod
@@ -406,7 +418,6 @@ spack:
         conflict: []
       pgi:
         filter:
-          # Exclude changes to any of these variables
           environment_blacklist: [CPATH, LIBRARY_PATH]
         load: []
         environment:
@@ -464,7 +475,6 @@ spack:
       blacklist: []
       hash_length: 0
       hierarchy: []
-  #############################################################################
   config:
     install_tree: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/opt
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
@@ -475,10 +485,6 @@ spack:
     module_roots:
       tcl: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/tmod
       lmod: /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/lmod
-    # build_stage:
-    # - $tempdir/$user/spack-stage
-    # - $spack/var/spack/stage
-    # # - /gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/tmp
     source_cache: /sw/.testing/belhorn/spack/site-stacks/hosts/peak/var/cache
     misc_cache: /sw/.testing/belhorn/spack/site-stacks/hosts/peak/var/mcache
     verify_ssl: true
@@ -490,12 +496,5 @@ spack:
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout:
-  #############################################################################
-  # upstreams:
-  #   peak-compute:
-  #     install_tree: /sw/peak/.swci/1-compute/opt/spack/20180914
-  #     modules:
-  #       lmod: /sw/peak/modulefiles/site
-  #############################################################################
   concretization: separately
   upstreams: {}

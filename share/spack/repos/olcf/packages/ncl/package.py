@@ -45,7 +45,7 @@ class Ncl(Package):
 
     # Non-optional dependencies according to the manual:
     depends_on('jpeg')
-    depends_on('netcdf~mpi~parallel-netcdf')
+    depends_on('netcdf-c~mpi~parallel-netcdf')
     depends_on('cairo+X+pdf')
 
     # Extra dependencies that may be missing from build system:
@@ -84,9 +84,9 @@ class Ncl(Package):
 
     # Some of the optional dependencies according to the manual:
     depends_on('hdf', when='+hdf4')
-    depends_on('netcdf+hdf4', when='+hdf4')
+    depends_on('netcdf-c+hdf4', when='+hdf4')
     depends_on('gdal+proj@:2.4', when='+gdal')
-    depends_on('udunits2', when='+udunits2')
+    depends_on('udunits', when='+udunits2')
 
     # We need src files of triangle to appear in ncl's src tree if we want
     # triangle's features.

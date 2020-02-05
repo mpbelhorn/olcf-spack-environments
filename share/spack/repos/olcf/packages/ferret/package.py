@@ -18,7 +18,7 @@ class Ferret(MakefilePackage):
     version('7.4.4', '7d18b906e4f1a0f6401d2f765ce3013c573e69ecd346167ac8af1e5cc5e3f2f7')
 
     depends_on("hdf5~mpi+fortran+szip")
-    depends_on("netcdf~mpi")
+    depends_on("netcdf-c~mpi")
     depends_on("netcdf-fortran")
     depends_on("readline")
 
@@ -36,7 +36,7 @@ class Ferret(MakefilePackage):
                              'INSTALL_FER_DIR = %s' % self.prefix)
         site_specific.filter('HDF5_LIBDIR = .*', 'HDF5_LIBDIR = ')
                              # 'HDF5_LIBDIR = %s' % spec['hdf5'].prefix.lib)
-        site_specific.filter('NETCDF_LIBDIR = .*', 'NETCDF_LIBDIR = %s' % spec['netcdf'].prefix.lib)
+        site_specific.filter('NETCDF_LIBDIR = .*', 'NETCDF_LIBDIR = %s' % spec['netcdf-c'].prefix.lib)
         site_specific.filter('READLINE_LIBDIR = .*', 'READLINE_LIBDIR = ')
                              # 'READLINE_LIBDIR = %s' % spec['readline'].prefix.lib)
 

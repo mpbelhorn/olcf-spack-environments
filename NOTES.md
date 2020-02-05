@@ -27,3 +27,196 @@
       or partial spec fails to find them.
 
 - `blacklist_implicits: True` fails to publish any modulefiles for LMOD.
+
+- deleted environment, but not lock file:
+  ```
+  $ spack -v -d find
+  ==> [2020-02-03-10:30:13.053760] Imported find from built-in commands
+  ==> [2020-02-03-10:30:13.054995] Imported find from built-in commands
+  ==> [2020-02-03-10:30:13.055733] Reading config file /autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/var/spack/environments/test/spack.yaml
+  Traceback (most recent call last):
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/bin/spack", line 64, in <module>
+      sys.exit(spack.main.main())
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/lib/spack/spack/main.py", line 752, in main
+      return _invoke_command(command, parser, args, unknown)
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/lib/spack/spack/main.py", line 486, in _invoke_command
+      return_val = command(parser, args)
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/lib/spack/spack/cmd/find.py", line 203, in find
+      results = args.specs(**q_args)
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/lib/spack/spack/cmd/common/arguments.py", line 75, in _specs
+      kwargs['hashes'] = set(env.all_hashes())
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/lib/spack/spack/environment.py", line 1232, in all_hashes
+      return list(self.all_specs_by_hash().keys())
+    File "/autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/lib/spack/spack/environment.py", line 1221, in all_specs_by_hash
+      specs = self.specs_by_hash[h].traverse(deptype=('link', 'run'))
+  KeyError: 'gdd24gc5segaupqphgmu5bky4n4jxlai'
+
+  $ grep gdd24gc5segaupqphgmu5bky4n4jxlai hosts/peak/spack/var/spack/environments/test/spack.lock                                                                                                                                                
+   "hash": "gdd24gc5segaupqphgmu5bky4n4jxlai",
+  "gdd24gc5segaupqphgmu5bky4n4jxlai": {
+      "hash": "gdd24gc5segaupqphgmu5bky4n4jxlai",
+      "hash": "gdd24gc5segaupqphgmu5bky4n4jxlai",
+
+  ```
+
+- package default variants do not pass thorugh environment concretization as
+    expected. For example, `python` by default does not build with libxml2
+    support and requests `gettext~libxml2` as a dependency. Gettext has
+    `+libxml2` by default. The resulting error is:
+
+    ```
+    $ spack concretize
+    # ....
+    ==> Error: An unsatisfiable variant constraint has been detected for spec:
+        gettext@0.20.1%gcc@4.8.5+bzip2+curses+git~libunistring+libxml2+tar+xz arch=linux-rhel7-power8le
+            ^bzip2@1.0.8%gcc@4.8.5+shared arch=linux-rhel7-power8le
+                ^diffutils@3.7%gcc@4.8.5 arch=linux-rhel7-power8le
+                    ^libiconv@1.16%gcc@4.8.5 arch=linux-rhel7-power8le
+            ^libxml2@2.9.9%gcc@4.8.5~python arch=linux-rhel7-power8le
+                ^pkgconf@1.6.3%gcc@4.8.5 arch=linux-rhel7-power8le
+                ^xz@5.2.4%gcc@4.8.5 arch=linux-rhel7-power8le
+                ^zlib@1.2.11%gcc@4.8.5+optimize+pic+shared arch=linux-rhel7-power8le
+            ^ncurses@6.1%gcc@4.8.5~symlinks~termlib arch=linux-rhel7-power8le
+            ^tar@1.32%gcc@4.8.5 arch=linux-rhel7-power8le
+
+
+    while trying to concretize the partial spec:
+
+        python@3.7.0%gcc@4.8.5+bz2+ctypes+dbm~debug~libxml2+lzma~nis~optimizations+pic+pyexpat+pythoncmd+readline+shared+sqlite3+ssl~tix~tkinter~ucs4~uuid+zlib arch=linux-rhel7-power8le
+            ^pkgconf@1.6.3%gcc@4.8.5 arch=linux-rhel7-power8le
+
+
+    python requires gettext variant ~libxml2, but spec asked for +libxml2
+    ```
+
+    However, classical spec concretization still works:
+    ```
+    $ spack spec "python@3.7.0%gcc@4.8.5+bz2+ctypes+dbm~debug~libxml2+lzma~nis~optimizations+pic+pyexpat+pythoncmd+readline+shared+sqlite3+ssl~tix~tkinter~ucs4~uuid+zlib arch=linux-rhel7-power8le"                                               
+    Input spec
+    --------------------------------
+    python@3.7.0%gcc@4.8.5+bz2+ctypes+dbm~debug~libxml2+lzma~nis~optimizations+pic+pyexpat+pythoncmd+readline+shared+sqlite3+ssl~tix~tkinter~ucs4~uuid+zlib arch=linux-rhel7-power8le
+
+    Concretized
+    --------------------------------
+    ==> Warning: Using GCC 4.8 to optimize for Power 8 might not work if you are not on Red Hat Enterprise Linux 7, where a custom backport of the feature has been done. Upstream support from GCC starts in version 4.9
+    python@3.7.0%gcc@4.8.5+bz2+ctypes+dbm~debug~libxml2+lzma~nis~optimizations+pic+pyexpat+pythoncmd+readline+shared+sqlite3+ssl~tix~tkinter~ucs4~uuid+zlib arch=linux-rhel7-power8le
+        ^bzip2@1.0.8%gcc@4.8.5+shared arch=linux-rhel7-power8le
+            ^diffutils@3.7%gcc@4.8.5 arch=linux-rhel7-power8le
+                ^libiconv@1.16%gcc@4.8.5 arch=linux-rhel7-power8le
+        ^expat@2.2.9%gcc@4.8.5+libbsd arch=linux-rhel7-power8le
+            ^libbsd@0.10.0%gcc@4.8.5 arch=linux-rhel7-power8le
+        ^gdbm@1.18.1%gcc@4.8.5 arch=linux-rhel7-power8le
+            ^readline@8.0%gcc@4.8.5 arch=linux-rhel7-power8le
+                ^ncurses@6.1%gcc@4.8.5~symlinks~termlib arch=linux-rhel7-power8le
+                    ^pkgconf@1.6.3%gcc@4.8.5 arch=linux-rhel7-power8le
+        ^gettext@0.20.1%gcc@4.8.5+bzip2+curses+git~libunistring~libxml2+tar+xz arch=linux-rhel7-power8le
+            ^tar@1.32%gcc@4.8.5 arch=linux-rhel7-power8le
+            ^xz@5.2.4%gcc@4.8.5 arch=linux-rhel7-power8le
+        ^libffi@3.2.1%gcc@4.8.5 arch=linux-rhel7-power8le
+        ^openssl@1.0.2%gcc@4.8.5+systemcerts arch=linux-rhel7-power8le
+        ^sqlite@3.30.1%gcc@4.8.5~column_metadata+fts~functions~rtree arch=linux-rhel7-power8le
+            ^zlib@1.2.11%gcc@4.8.5+optimize+pic+shared arch=linux-rhel7-power8le
+    ```
+
+- Fallback target microarchitecture should be most generic instead of most
+    specific possible:
+  ```
+  Warning: gcc@4.8.5 cannot build optimized binaries for "power9le". Using best target possible: "power8le"
+  ```
+  I'd rather have this fallback to `ppc64le`. Setting package defaults in `spack.yaml` to:
+  ```
+    packages:
+      # General Settings
+      all:
+        compiler: [gcc@4.8.5, gcc, clang, xl, pgi]
+        providers:
+          mpi: [olcf.spectrum-mpi]
+          lapack: [netlib-lapack]
+          blas: [netlib-lapack]
+          scalapack: [netlib-scalapack]
+        buildable: true
+        version: []
+        target: ['power9le', 'ppc64le']
+        paths: {}
+        modules: {}
+  ```
+  does not concretize specs incapabable of targetting `power9le` as `ppc64le`,
+  but does the default behavior described at the top of this issue. Even putting
+  the `arch` target in the compiler spec or as a separate vector in an
+  environmnent/stack matrix outer-product fails to propogate the requested
+  target to specs.
+
+- `spack clean -s` in an environment doesn't seem to actually clear the staging
+    directories?
+
+- Lost packages? CMake for XL is installed in 'None':
+  ```
+  $ spack install -v
+  ==> Installing environment test
+  ==> cmake@3.16.2 : has external module in cmake
+  ==> cmake@3.16.2 : is actually installed in None
+  ==> cmake@3.16.2 : already registered in DB
+  ==> Installing netlib-lapack
+  ==> Searching for binary cache of netlib-lapack
+  ==> Finding buildcaches in /sw/sources/spack/mirrors/builds/peak/build_cache
+  ==> Fetching file:///sw/sources/spack/mirrors/builds/peak/build_cache/linux-rhel7-power9le-xl-16.1.1-4-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v.spec.yaml
+  curl: (37) Couldn't open file /sw/sources/spack/mirrors/builds/peak/build_cache/linux-rhel7-power9le-xl-16.1.1-4-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v.spec.yaml
+  ==> Failed to fetch file from URL: file:///sw/sources/spack/mirrors/builds/peak/build_cache/linux-rhel7-power9le-xl-16.1.1-4-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v.spec.yaml
+      Curl failed with error 37
+  ==> Fetching from file:///sw/sources/spack/mirrors/builds/peak/build_cache/linux-rhel7-power9le-xl-16.1.1-4-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v.spec.yaml failed.
+  ==> No binary for netlib-lapack found: installing from source
+  ==> Using cached archive: /sw/.testing/belhorn/spack/site-stacks/hosts/peak/var/cache/netlib-lapack/netlib-lapack-3.8.0.tar.gz
+  ==> Staging archive: /tmp/belhorn/spack-stage/spack-stage-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/lapack-3.8.0.tar.gz
+  ==> Created stage in /tmp/belhorn/spack-stage/spack-stage-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v
+  ==> Applied patch /autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/var/spack/repos/builtin/packages/netlib-lapack/ibm-xl.patch
+  ==> Applied patch /autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/var/spack/repos/builtin/packages/netlib-lapack/undefined_declarations.patch
+  ==> Applied patch /autofs/nccs-svm1_sw/.testing/belhorn/spack/site-stacks/hosts/peak/spack/var/spack/repos/builtin/packages/netlib-lapack/testing.patch
+  ==> Ran patch() for netlib-lapack
+  ==> Building netlib-lapack [CMakePackage]
+  ==> Executing phase: 'cmake'
+  ==> [2020-02-04-10:26:41.375818] 'cmake' '/tmp/belhorn/spack-stage/spack-stage-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/spack-src' '-G' 'Unix Makefiles' '-DCMAKE_INSTALL_PREFIX:PATH=/gpfs/alpine/world-shared/stf007/belhorn/spac
+  k/stacks/peak/production/opt/linux-rhel7-power9le/xl-16.1.1-4/netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v' '-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo' '-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON' '-DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=FAL
+  SE' '-DCMAKE_INSTALL_RPATH:STRING=/gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/opt/linux-rhel7-power9le/xl-16.1.1-4/netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/lib;/gpfs/alpine/world-shared/stf007/belhorn/
+  spack/stacks/peak/production/opt/linux-rhel7-power9le/xl-16.1.1-4/netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/lib64' '-DCMAKE_PREFIX_PATH:STRING=None' '-DBUILD_SHARED_LIBS:BOOL=OFF' '-DLAPACKE:BOOL=ON' '-DLAPACKE_WITH_TMG:BOOL=ON'
+   '-DCBLAS=ON' '-DCMAKE_Fortran_COMPILER=/sw/peak/xl/16.1.1-4/xlf/16.1.1/bin/xlf_r' '-DCMAKE_Fortran_FLAGS= -O3 -qnohot' '-DBUILD_DEPRECATED:BOOL=ON' '-DBUILD_TESTING:BOOL=OFF'
+  ==> Error: ProcessError: cmake: No such file or directory: 'cmake'
+      Command: 'cmake' '/tmp/belhorn/spack-stage/spack-stage-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/spack-src' '-G' 'Unix Makefiles' '-DCMAKE_INSTALL_PREFIX:PATH=/gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/produc
+  tion/opt/linux-rhel7-power9le/xl-16.1.1-4/netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v' '-DCMAKE_BUILD_TYPE:STRING=RelWithDebInfo' '-DCMAKE_VERBOSE_MAKEFILE:BOOL=ON' '-DCMAKE_INSTALL_RPATH_USE_LINK_PATH:BOOL=FALSE' '-DCMAKE_INSTALL
+  _RPATH:STRING=/gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/opt/linux-rhel7-power9le/xl-16.1.1-4/netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/lib;/gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/pr
+  oduction/opt/linux-rhel7-power9le/xl-16.1.1-4/netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/lib64' '-DCMAKE_PREFIX_PATH:STRING=None' '-DBUILD_SHARED_LIBS:BOOL=OFF' '-DLAPACKE:BOOL=ON' '-DLAPACKE_WITH_TMG:BOOL=ON' '-DCBLAS=ON' '-DCMA
+  KE_Fortran_COMPILER=/sw/peak/xl/16.1.1-4/xlf/16.1.1/bin/xlf_r' '-DCMAKE_Fortran_FLAGS= -O3 -qnohot' '-DBUILD_DEPRECATED:BOOL=ON' '-DBUILD_TESTING:BOOL=OFF'
+  See build log for details:
+    /tmp/belhorn/spack-stage/spack-stage-netlib-lapack-3.8.0-ej4quc7ch3dovus2mkgu7wqxwzyns52v/spack-build-out.txt
+
+  ```
+- Autoconf \_make_exectuable does not honor external module-based installs or concretization through externals picks up the incorrect version
+  ```
+  def _make_executable(self, name):
+      return Executable(join_path(self.prefix.bin, name))
+
+  ```
+```
+$ spack spec -lINt "parallel-io%xl@16.1.1-4"
+Input spec
+--------------------------------
+ -   [    ]  .parallel-io%xl@16.1.1-4
+
+Concretized
+--------------------------------
+ -   inp6ftz  [    ]  olcf.parallel-io@2.4.4%xl@16.1.1-4 build_type=RelWithDebInfo ~examples arch=linux-rhel7-power9le
+ -   laisp5g  [b   ]      ^builtin.cmake@3.16.2%xl@16.1.1-5~doc+ncurses+openssl+ownlibs~qt arch=linux-rhel7-power9le
+ -   qryybog  [bl  ]      ^builtin.hdf5@1.10.6%xl@16.1.1-4~cxx~debug+fortran+hl+mpi+pic+shared~szip~threadsafe arch=linux-rhel7-power9le
+ -   s2uo2br  [bl  ]          ^builtin.numactl@2.0.12%xl@16.1.1-4 arch=linux-rhel7-power9le
+ -   qkkibm2  [b   ]              ^builtin.autoconf@2.69%xl@16.1.1-5 arch=linux-rhel7-power9le
+ -   7sy5q7a  [b   ]              ^builtin.automake@1.16.1%xl@16.1.1-5 arch=linux-rhel7-power9le
+[+]  b55sxnw  [b   ]              ^builtin.libtool@2.4.2%xl@16.1.1-4 arch=linux-rhel7-power9le
+[+]  6djryqh  [b   ]              ^builtin.m4@1.4.18%xl@16.1.1-4 patches=3877ab548f88597ab2327a2230ee048d2d07ace1062efe81fc92e91b7f39cd00,fc9b61654a3ba1a8d6cd78ce087e7c96366c290bc8d2c299f09828d793b853c8 +sigsegv arch=linux-rhel7-power9le
+[+]  lqvz5ns  [bl  ]                  ^builtin.libsigsegv@2.12%xl@16.1.1-4 arch=linux-rhel7-power9le
+[+]  3y2htop  [bl  ]          ^olcf.spectrum-mpi@10.3.0.1-20190611%xl@16.1.1-4 arch=linux-rhel7-power9le
+[+]  rsnev7o  [bl  ]          ^builtin.zlib@1.2.11%xl@16.1.1-4+optimize+pic+shared arch=linux-rhel7-power9le
+ -   2eob7sc  [bl  ]      ^builtin.netcdf-c@4.7.3%xl@16.1.1-4~dap~hdf4 maxdims=1024 maxvars=8192 +mpi+parallel-netcdf+pic+shared arch=linux-rhel7-power9le
+[+]  rjst2ob  [bl  ]          ^builtin.parallel-netcdf@1.12.1%xl@16.1.1-4+cxx+fortran+pic arch=linux-rhel7-power9le
+ -   k37xmd4  [bl  ]      ^builtin.netcdf-fortran@4.4.4%xl@16.1.1-4+mpi+pic arch=linux-rhel7-power9le
+
+
+```

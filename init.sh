@@ -37,7 +37,7 @@ _spack_host="$(hostname --long \
 #  - sync hooks
 #  - sync configs/environments
 # FIXME : Ensure a python3 interpereter is available for all systems.
-[ -n "${LMOD_SYSTEM_NAME}" ] && module purge && module load python
+[ -n "${LMOD_SYSTEM_NAME:-}" ] && module purge && module load python
 export PYTHONDONTWRITEBYTECODE=1
 source ./hosts/${_spack_host}/spack/share/spack/setup-env.sh
 echo "Spack initialized for ${_spack_host:-Unknown host} at ${SPACK_ROOT}"
