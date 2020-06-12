@@ -6,3 +6,4 @@
 /share/spack/repos/production-olcf
 /var/
 /*.log
+*.pyc
