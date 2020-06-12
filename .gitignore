@@ -7,3 +7,5 @@
 /var/
 /*.log
 *.pyc
+share/mirrors
+/**/.spack-env/
