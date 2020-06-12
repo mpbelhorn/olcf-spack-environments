@@ -21,6 +21,35 @@
   - Generally do not wish to change the spec list, just remove the old builds
       and modules.
 
+- Matrix stacks of conflict builds should warn that a spec conflicts with a
+    compiler but continue concretizing the env with allowed specs. For example,
+    the following error should not be fatal:
+
+  ```
+  ==> Error: Conflicts in concretized spec "raja@0.8.0%gcc@4.8.5 build_type=RelWithDebInfo ~cuda+openmp arch=linux-rhel7-power8le/xymlav5"
+  
+  List of matching conflicts for spec:
+
+      raja@0.8.0%gcc@4.8.5 build_type=RelWithDebInfo ~cuda+openmp arch=linux-rhel7-power8le
+          ^cmake@3.16.2%gcc@4.8.5~doc+ncurses+openssl+ownlibs~qt arch=linux-rhel7-power8le
+              ^ncurses@6.1%gcc@4.8.5~symlinks~termlib arch=linux-rhel7-power8le
+                  ^pkgconf@1.6.3%gcc@4.8.5 arch=linux-rhel7-power8le
+              ^openssl@1.0.2%gcc@4.8.5+systemcerts arch=linux-rhel7-power8le
+
+  1. "%gcc@:4.999" conflicts with "raja@0.5:"
+  ```
+  for the matrix:
+  ```
+  - definitions:
+    - gcc_compilers:
+      - '%gcc@4.8.5'
+      - '%gcc@6.4.0'
+    - manifest:
+      - matrix:
+        - - raja
+        - - $gcc_compilers
+  ```
+
 - Cannot `spack find` one-off specs, notably built with CLI cflags and fflags
     arguments.
   - `spec -lINt` shows them as installed, but `find` with either a hash argument

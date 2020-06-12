@@ -33,11 +33,11 @@ _spack_host="$(hostname --long \
 #  - sync hooks
 #  - sync configs/environments
 
-ENV_MODROOT="/gpfs/alpine/world-shared/stf007/belhorn/spack/stacks/peak/production/modules/lmod"
+ENV_MODROOT="/gpfs/alpine/world-shared/stf007/belhorn/spack/facility-spack/peak/production/modules/lmod"
 
 # Copy git tracked modules to module root.
 mkdir -p "${ENV_MODROOT}"
-cp -dRu --preserve=mode,timestamps "./hosts/${_spack_host}/etc/lmod/modulefiles/static/site" "${ENV_MODROOT}/."
+cp -dRu --preserve=mode,timestamps "./hosts/${_spack_host}/share/lmod/modulefiles/static/site" "${ENV_MODROOT}/."
 
 # TODO: correct symlinks current tracked in git repo. This really ought to be an
 # OLCF spack extension.
@@ -56,8 +56,7 @@ fi
 
 # Setup alternate module environment
 module purge
-export
-MODULEPATH="${ENV_MODROOT}/linux-rhel7-ppc64le/Core:$ENV_MODROOT/linux-rhel7-power8le/Core:$ENV_MODROOT/site/Core:/sw/peak/modulefiles/core"
+export MODULEPATH="${ENV_MODROOT}/linux-rhel7-ppc64le/Core:$ENV_MODROOT/linux-rhel7-power8le/Core:$ENV_MODROOT/site/Core:/sw/peak/modulefiles/core"
 module load python/3.7.0-anaconda3-5.3.0
 export PYTHONDONTWRITEBYTECODE=1
 source ./hosts/${_spack_host}/spack/share/spack/setup-env.sh

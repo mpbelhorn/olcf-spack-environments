@@ -42,7 +42,8 @@ class Amgx(CMakePackage):
     """
 
     homepage = "https://developer.nvidia.com/amgx"
-    url      = "https://github.com/NVIDIA/AMGX/tarball/89e2ace04d906fc2382d490c5ac762ae7915dbc8"
+    url = "https://github.com/NVIDIA/AMGX/archive/v2.1.0.tar.gz"
+    git = 'https://github.com/NVIDIA/AMGX.git'
 
     # MPB (2017-12-04): NVIDIA's github repo does not currently issue releases
     # nor tag releases in the single master branch for AMGX. When updating
@@ -51,6 +52,10 @@ class Amgx(CMakePackage):
     # updated. If multiple versions are needed of commits between updates to
     # ReleaseVersion, add an integer to indicate the build is effectively a
     # "nightly" build.
+    version('2.1.0-1',
+            commit='11af85608ea0f4720e03cbcc920521745f9e40e5')
+    version('2.1.0',
+            sha256='6245112b768a1dc3486b2b3c049342e232eb6281a6021fffa8b20c11631f63cc')
     version('2.0.0.130.2', 'b6ab6ddd4ea922ee1423f9d324775aa9',
             url='https://github.com/NVIDIA/AMGX/tarball/a46b3112bc563592b8d794ba95e57350d282d584')
     version('2.0.0.130.1', '0db4f2962fe7333a39c614b3f2b7a246',
@@ -61,7 +66,13 @@ class Amgx(CMakePackage):
     variant('mpi', default=False, description='Build with MPI support')
     variant('magma', default=False, description='Build with magma support')
     variant('openmp', default=True, description='Build with OpenMP support')
+    
+    variant('gpus', default='auto',
+            values=('auto', '35', '52', '60', '70'),
+            multi=True,
+            description='Target specific CUDA GPU architectures')
 
+    depends_on('cuda@9:10.99', when='@2.1.0')
     depends_on('cuda@7:10.99', when='@:2.0.0.130.2')
     depends_on('cuda@7:9.99', when='@:2.0.0.130.1')
     depends_on('magma', when="+magma")
@@ -69,7 +80,6 @@ class Amgx(CMakePackage):
     depends_on('mpi', when='+mpi')
 
     conflicts('%gcc@:4.8.2', when='%gcc')
-    conflicts('%gcc@9:', when='@:2.0.0.130.2')
     conflicts('%pgi', when='+openmp')
     conflicts('%xl', when='+openmp')
     conflicts('%xl_r', when='+openmp')
@@ -113,5 +123,9 @@ class Amgx(CMakePackage):
             args.append('-DCMAKE_DISABLE_FIND_PACKAGE_OpenMP:BOOL=False')
         else:
             args.append('-DCMAKE_DISABLE_FIND_PACKAGE_OpenMP:BOOL=True')
+
+        if not self.spec.satisfies('gpus=auto'):
+            args.append('-DCUDA_ARCH=%s' % ' '.join(
+                [i for i in self.spec.variants['gpus'].value if i != 'auto']))
 
         return args

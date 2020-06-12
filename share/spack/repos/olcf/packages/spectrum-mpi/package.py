@@ -8,9 +8,11 @@ from shutil import copytree
 class SpectrumMpi(Package):
     """IBM MPI implementation from Spectrum MPI."""
 
-    homepage = "http://www-03.ibm.com/systems/spectrum-computing/products/mpi"
+    homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
+    version('10.3.1.2-20200121', '94c6c95693f736373590ec3d3a2398f7',
+        url='file:///ccs/packages/IBM/02-2020/SMPI/ibm_smpi-10.3.1.2-20200121-rh7.ppc64le.tar.gz')
     version('10.3.0.1-20190611', '94a7e1efdf9df18ebb6e4b184251de01',
         url='file:///ccs/packages/IBM/06-2019/SMPI/ibm_smpi-10.3.0.1-20190628-rh7.ppc64le_with_license.tar.gz')
     version('10.3.0.0-20190419', '23a91acf1d7d47d447379e29f103b280',
@@ -157,3 +159,25 @@ class SpectrumMpi(Package):
         run_env.set('OMPI_CXX', self.compiler.cxx)
         run_env.set('OMPI_FC', self.compiler.fc)
 
+    @when('@10.3.1.2-20200121')
+    @run_after('install')
+    def smpi_conf(self):
+        '''Correct the symlink to smpi.conf for current MOFED version.
+        
+        This function always updates the conf to v4.7.3 but should probably
+        parse `ofed_info` and adjust it as necessary.
+        '''
+        etc_dir = self.spec.prefix.etc
+        (link_name, tmp_link_name, link_target) = [
+            join_path(etc_dir, name) for name in ('smpi.conf',
+                                                  'tmp_smpi.conf',
+                                                  'smpi-MOFED-4_7_3.conf')
+            ]
+
+        if not os.path.exists(link_target):
+            return
+
+        # Create symlink to target and then move it over existing symlink to
+        # update link atomically.
+        os.symlink(link_target, tmp_link_name)
+        os.rename(tmp_link_name, link_name)

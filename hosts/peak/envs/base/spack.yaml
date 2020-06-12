@@ -1,0 +1,1088 @@
+# OLCF Peak Spack Environment
+
+spack:
+  #############################################################################
+  definitions:
+  - core_compilers:
+    - '%gcc@4.8.5'
+  - gcc_compilers:
+    - '%gcc@4.8.5'
+    - '%gcc@5.4.0'
+    - '%gcc@6.4.0'
+    - '%gcc@8.1.1'
+    - '%gcc@9.1.0'
+  - xl_compilers:
+    - '%xl@16.1.1-5'
+    - '%xl@16.1.1-6'
+    - '%xl@16.1.1-7'
+  - llvm_compilers:
+    - '%clang@9.0.0-2'
+  - pgi_compilers:
+    - '%pgi@18.10'
+    - '%pgi@19.9'
+    - '%pgi@19.10'
+    - '%pgi@20.1'
+  - all_compilers:
+    - $gcc_compilers
+    - $xl_compilers
+    - $llvm_compilers
+    - $pgi_compilers
+  - core_packages:
+    - git
+    - htop
+    - tmux
+    - cmake
+    - go
+    - git-lfs
+    - screen
+    - vim
+    - emacs ~X
+    - nano
+    - gnuplot
+    - subversion
+    - darshan-util
+    - python@2.7.15
+    - python@3.7.0
+    - mercurial ^python@2.7.15
+    - gnuplot@5.0.1
+    - libevent@2.0.21 +openssl
+    - valgrind ~mpi~boost
+    - ccache
+    - papi
+    - gdb
+    
+    # - spectral
+    - libzmq
+    - gnupg
+    - gsl
+    
+    # - c-blosc +avx2
+    # - lz4
+    # - zfp bsws=64 +shared
+    - nco~mpi-deps
+    - libfabric fabrics=verbs
+  - core_only_compute_packages:
+    
+    # - matrix:
+    #   - - py-nose
+    #     - py-numpy
+    #     - py-h5py~mpi
+    #     - py-mpi4py
+    #   - - ^python@3.7.0
+    - darshan-runtime
+    - darshan-runtime hdf5=pre1.10
+    - darshan-runtime hdf5=post1.10
+    - valgrind +mpi+boost
+    - adios2 +python ^python@3.7.0
+  - gcc_only_compute_packages:
+    - amgx +mpi+openmp gpus=70
+    - raja
+    - magma
+    - nco
+    - openmpi@4.0.3 ^hwloc+cuda
+  - general_compute_packages:
+    - netlib-lapack
+    - netlib-scalapack ^netlib-lapack
+    - amgx +mpi~openmp gpus=70
+    - fftw +mpi+openmp
+    - hdf5 ~mpi
+    - hdf5 +mpi
+    - hdf5@1.8.18 ~mpi
+    - hdf5@1.8.18 +mpi
+    - boost ~mpi
+    - boost +mpi
+    - netcdf-c
+    - netcdf-fortran
+    - netcdf-cxx
+    - parallel-netcdf
+    - parallel-io
+    - hypre
+    - mpip
+    - adios2 ~python
+  - manifest:
+    - matrix:
+      - - $core_packages
+      - - $core_compilers
+    - matrix:
+      - - spectrum-mpi
+      - - $all_compilers
+    - matrix:
+      - - $core_only_compute_packages
+      - - $core_compilers
+    - matrix:
+      - - openblas@0.3.5 threads=openmp cpu_target=POWER8
+        - openblas@0.3.5 threads=none cpu_target=POWER8
+      - - '%gcc@4.8.5'
+        - '%gcc@5.4.0'
+    - matrix:
+      - - openblas threads=openmp
+        - openblas threads=none
+      - - '%gcc@6.4.0'
+        - '%gcc@8.1.1'
+        - '%gcc@9.1.0'
+    - matrix:
+      - - netlib-scalapack ^openblas@0.3.5 threads=openmp cpu_target=POWER8
+      - - '%gcc@4.8.5'
+        - '%gcc@5.4.0'
+    - matrix:
+      - - netlib-scalapack ^openblas threads=openmp
+      - - '%gcc@6.4.0'
+        - '%gcc@8.1.1'
+        - '%gcc@9.1.0'
+    - matrix:
+      - - $gcc_only_compute_packages
+      - - $gcc_compilers
+      exclude:
+      - 'amgx%gcc@9:'
+      - raja@0.5:%gcc@:4.999
+    - matrix:
+      - - $general_compute_packages
+      - - $all_compilers
+      exclude:
+      - 'amgx%gcc@9:'
+      - adios2%pgi
+      - mpip%pgi
+      - mpip%clang
+    # Compute package exceptions and One-offs
+    - hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0
+    - hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0
+    - matrix:
+      - - fftw +mpi+openmp precision=float,double,long_double
+      - - $pgi_compilers
+    - adios2@2.4.0%pgi@19.7 ~python ^pkgconf%gcc@4.8.5 ^bzip2%gcc@4.8.5 ^libzmq%gcc@4.8.5
+      ^zfp%gcc@4.8.5
+    - matrix:
+      - - petsc +mpi+mumps~int64~superlu-dist
+      - - $gcc_compilers
+        - $llvm_compilers
+    - matrix:
+      - - petsc +mpi~mumps~int64~superlu-dist~metis
+      - - $pgi_compilers
+    - matrix:
+      - - mpip
+      - - $llvm_compilers
+      - - ^elfutils%gcc@4.8.5
+  specs:
+  - $manifest
+  #############################################################################
+  mirrors:
+    peak_builds: /sw/.testing/belhorn/spack/facility-spack/share/mirrors/builds
+  repos:
+  - /sw/.testing/belhorn/spack/facility-spack/share/spack/repos/olcf
+  #############################################################################
+  packages:
+    spectrum-mpi:
+      version: [10.3.1.2-20200121]
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    cuda:
+      buildable: false
+      version:
+      - 10.1.243
+      - 10.1.168
+      modules:
+        cuda@10.1.243: cuda/10.1.243
+        cuda@10.1.105: cuda/10.1.168
+      target: []
+      providers: {}
+      paths: {}
+      compiler: []
+    go-bootstrap:
+      buildable: false
+      version: [1.7.1-bootstrap]
+      paths:
+        go-bootstrap@1.7.1-bootstrap: /sw/peak/go/1.7.1-bootstrap
+      target: []
+      providers: {}
+      modules: {}
+      compiler: []
+    gtkplus:
+      version: [2.10.0]
+      buildable: false
+      paths:
+        gtkplus@2.10.0: /usr
+      target: []
+      providers: {}
+      modules: {}
+      compiler: []
+    openssl:
+      buildable: false
+      version: [1.0.2]
+      paths:
+        openssl@1.0.2: /usr
+      target: []
+      providers: {}
+      modules: {}
+      compiler: []
+    libtool:
+      version: [2.4.6, 2.4.2]
+      paths:
+        libtool@2.4.2: /usr
+      buildable: true
+      target: []
+      providers: {}
+      modules: {}
+      compiler: []
+    openblas:
+      buildable: true
+      variants: cpu_target=POWER9
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    fftw:
+      variants: +openmp precision=float,double,long_double
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    papi:
+      variants: cpu=POWER9
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    magma:
+      variants: gpus=volta
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    netlib-scalapack:
+      variants: +fpic
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    netcdf-c:
+      variants: ~hdf4+mpi+parallel-netcdf+shared
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    parallel-netcdf:
+      variants: +cxx+fortran+fpic
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    darshan-runtime:
+      variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/peak
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    all:
+      compiler: [gcc@4.8.5, gcc, clang, xl, pgi]
+      providers:
+        mpi: [olcf.spectrum-mpi]
+        lapack: [netlib-lapack]
+        blas: [netlib-lapack]
+        scalapack: [netlib-scalapack]
+      buildable: true
+      version: []
+      target: []
+      paths: {}
+      modules: {}
+  view: false
+  modules:
+    enable:
+    - lmod
+    lmod:
+      core_compilers: [gcc@4.8.5]
+      all:
+        suffixes:
+          ^python@2.0:2.99: py2
+          ^python@3.0:3.99: py3
+        environment:
+          set:
+            OLCF_${PACKAGE}_ROOT: ${PREFIX}
+          unset: []
+        filter:
+          environment_blacklist: []
+        load: []
+        conflict: []
+      pgi:
+        filter:
+          environment_blacklist: [CPATH, LIBRARY_PATH]
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      spectrum-mpi:
+        environment:
+          set:
+            PAMI_IBV_ENABLE_OOO_AR: '1'
+            PAMI_IBV_QP_SERVICE_LEVEL: '8'
+          unset: []
+        filter:
+          environment_blacklist: []
+        load: []
+        conflict: []
+      pcre:
+        suffixes:
+          pcre+jit: jit
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      amgx:
+        suffixes:
+          amgx~openmp: unthreaded
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      spectral:
+        template: olcf/modules/spectral.lua
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      darshan-runtime:
+        suffixes:
+          hdf5=pre1.10: hdf5pre110
+          hdf5=post1.10: hdf5post110
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      blacklist_implicits: true
+      verbose: true
+      whitelist: []
+      blacklist: []
+      hash_length: 7
+      hierarchy: []
+  config:
+    install_tree: /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/opt
+    install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
+    template_dirs:
+    - /sw/.testing/belhorn/spack/facility-spack/hosts/peak/templates
+    - /sw/.testing/belhorn/spack/facility-spack/share/spack/templates
+    - $spack/share/spack/templates
+    module_roots:
+      tcl: /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/modules/tmod
+      lmod: /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/modules/lmod
+    build_stage:
+    - /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/tmp
+    - $tmpdir
+    - $spack/var/spack/stage
+    source_cache: /sw/.testing/belhorn/spack/facility-spack/share/mirrors/sources
+    extensions:
+    - /sw/.testing/belhorn/spack/facility-spack/share/spack/extensions/spack-olcf
+    misc_cache: $spack/../var/mcache
+    verify_ssl: true
+    install_missing_compilers: false
+    checksum: true
+    dirty: false
+    build_language: C
+    build_jobs: 6
+    ccache: false
+    db_lock_timeout: 120
+    package_lock_timeout:
+  concretization: separately
+  compilers:
+  - compiler:
+      spec: gcc@4.8.5
+      operating_system: rhel7
+      modules: [gcc/4.8.5]
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment: {unset: []}
+      flags: {}
+  - compiler:
+      spec: gcc@5.4.0
+      operating_system: rhel7
+      modules: [gcc/5.4.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: gcc@6.4.0
+      operating_system: rhel7
+      modules: [gcc/6.4.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: gcc@8.1.0
+      operating_system: rhel7
+      modules: [gcc/8.1.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: gcc@8.1.1
+      operating_system: rhel7
+      modules: [gcc/8.1.1]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: gcc@9.1.0
+      operating_system: rhel7
+      modules: [gcc/9.1.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@17.9
+      operating_system: rhel7
+      modules: [pgi/17.9]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@17.10
+      operating_system: rhel7
+      modules: [pgi/17.10]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@18.1
+      operating_system: rhel7
+      modules: [pgi/18.1]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@18.3
+      operating_system: rhel7
+      modules: [pgi/18.3]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@18.4
+      operating_system: rhel7
+      modules: [pgi/18.4]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@18.5
+      operating_system: rhel7
+      modules: [pgi/18.5]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@18.7
+      operating_system: rhel7
+      modules: [pgi/18.7]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@18.10
+      operating_system: rhel7
+      modules: [pgi/18.10]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.1
+      operating_system: rhel7
+      modules: [pgi/19.1]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.3
+      operating_system: rhel7
+      modules: [pgi/19.3]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.4
+      operating_system: rhel7
+      modules: [pgi/19.4]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.5
+      operating_system: rhel7
+      modules: [pgi/19.5]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.7
+      operating_system: rhel7
+      modules: [pgi/19.7]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.9
+      operating_system: rhel7
+      modules: [pgi/19.9]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.10
+      operating_system: rhel7
+      modules: [pgi/19.10]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@20.1
+      operating_system: rhel7
+      modules: [pgi/20.1]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@1.0-20171110
+      operating_system: rhel7
+      modules: [llvm/1.0-20171110]
+      paths:
+        cc: /sw/peak/llvm/1.0-20171110/bin/clang
+        cxx: /sw/peak/llvm/1.0-20171110/bin/clang++
+        f77: /sw/peak/llvm/1.0-20171110/bin/xlflang
+        fc: /sw/peak/llvm/1.0-20171110/bin/xlflang
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@1.0-20180406
+      operating_system: rhel7
+      modules: [llvm/1.0-20180406]
+      paths:
+        cc: /sw/peak/llvm/1.0-20180406/bin/clang
+        cxx: /sw/peak/llvm/1.0-20180406/bin/clang++
+        f77: /sw/peak/xl/20180502/xlf/16.1.0/bin/xlf
+        fc: /sw/peak/xl/20180502/xlf/16.1.0/bin/xlf
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@1.0-20180531
+      operating_system: rhel7
+      modules: [llvm/1.0-20180531]
+      paths:
+        cc: /sw/peak/llvm/1.0-20180531/bin/clang
+        cxx: /sw/peak/llvm/1.0-20180531/bin/clang++
+        f77: /sw/peak/xl/20180502/xlf/16.1.0/bin/xlf
+        fc: /sw/peak/xl/20180502/xlf/16.1.0/bin/xlf
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@9.0.0-1
+      operating_system: rhel7
+      modules: [llvm/9.0.0-1]
+      paths:
+        cc: /sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.105/bin/clang
+        cxx: /sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.105/bin/clang++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@9.0.0-2
+      operating_system: rhel7
+      modules: [llvm/9.0.0-2]
+      paths:
+        cc: /sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168/bin/clang
+        cxx: /sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168/bin/clang++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20171023-beta
+      operating_system: rhel7
+      modules: [xl/20171023-beta]
+      paths:
+        cc: /sw/peak/xl/20171023-beta/xlC/13.1.6/bin/xlc
+        cxx: /sw/peak/xl/20171023-beta/xlC/13.1.6/bin/xlc++
+        f77: /sw/peak/xl/20171023-beta/xlf/15.1.6/bin/xlf
+        fc: /sw/peak/xl/20171023-beta/xlf/15.1.6/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20171023-beta/lib
+      - /sw/peak/xl/20171023-beta/xlf/15.1.6/lib
+      - /sw/peak/xl/20171023-beta/xlC/13.1.6/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20171120-beta
+      operating_system: rhel7
+      modules: [xl/20171120-beta]
+      paths:
+        cc: /sw/peak/xl/20171120-beta/xlC/13.1.6/bin/xlc
+        cxx: /sw/peak/xl/20171120-beta/xlC/13.1.6/bin/xlc++
+        f77: /sw/peak/xl/20171120-beta/xlf/15.1.6/bin/xlf
+        fc: /sw/peak/xl/20171120-beta/xlf/15.1.6/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20171120-beta/lib
+      - /sw/peak/xl/20171120-beta/xlf/15.1.6/lib
+      - /sw/peak/xl/20171120-beta/xlC/13.1.6/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20171127-beta
+      operating_system: rhel7
+      modules: [xl/20171127-beta]
+      paths:
+        cc: /sw/peak/xl/20171127-beta/xlC/13.1.6/bin/xlc
+        cxx: /sw/peak/xl/20171127-beta/xlC/13.1.6/bin/xlc++
+        f77: /sw/peak/xl/20171127-beta/xlf/15.1.6/bin/xlf
+        fc: /sw/peak/xl/20171127-beta/xlf/15.1.6/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20171127-beta/lib
+      - /sw/peak/xl/20171127-beta/xlf/15.1.6/lib
+      - /sw/peak/xl/20171127-beta/xlC/13.1.6/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180125
+      operating_system: rhel7
+      modules: [xl/20180125]
+      paths:
+        cc: /sw/peak/xl/20180125/xlC/13.1.6/bin/xlc
+        cxx: /sw/peak/xl/20180125/xlC/13.1.6/bin/xlc++
+        f77: /sw/peak/xl/20180125/xlf/15.1.6/bin/xlf
+        fc: /sw/peak/xl/20180125/xlf/15.1.6/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180125/lib
+      - /sw/peak/xl/20180125/xlf/15.1.6/lib
+      - /sw/peak/xl/20180125/xlC/13.1.6/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180213-beta
+      operating_system: rhel7
+      modules: [xl/20180213-beta]
+      paths:
+        cc: /sw/peak/xl/20180213-beta/xlC/13.1.7/bin/xlc
+        cxx: /sw/peak/xl/20180213-beta/xlC/13.1.7/bin/xlc++
+        f77: /sw/peak/xl/20180213-beta/xlf/15.1.7/bin/xlf
+        fc: /sw/peak/xl/20180213-beta/xlf/15.1.7/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180213-beta/lib
+      - /sw/peak/xl/20180213-beta/xlf/15.1.7/lib
+      - /sw/peak/xl/20180213-beta/xlC/13.1.7/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180223-beta
+      operating_system: rhel7
+      modules: [xl/20180223-beta]
+      paths:
+        cc: /sw/peak/xl/20180223-beta/xlC/13.1.7/bin/xlc
+        cxx: /sw/peak/xl/20180223-beta/xlC/13.1.7/bin/xlc++
+        f77: /sw/peak/xl/20180223-beta/xlf/15.1.7/bin/xlf
+        fc: /sw/peak/xl/20180223-beta/xlf/15.1.7/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180223-beta/lib
+      - /sw/peak/xl/20180223-beta/xlf/15.1.7/lib
+      - /sw/peak/xl/20180223-beta/xlC/13.1.7/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180319-beta
+      operating_system: rhel7
+      modules: [xl/20180319-beta]
+      paths:
+        cc: /sw/peak/xl/20180319-beta/xlC/13.1.7/bin/xlc
+        cxx: /sw/peak/xl/20180319-beta/xlC/13.1.7/bin/xlc++
+        f77: /sw/peak/xl/20180319-beta/xlf/15.1.7/bin/xlf
+        fc: /sw/peak/xl/20180319-beta/xlf/15.1.7/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180319-beta/lib
+      - /sw/peak/xl/20180319-beta/xlf/15.1.7/lib
+      - /sw/peak/xl/20180319-beta/xlC/13.1.7/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180406-beta
+      operating_system: rhel7
+      modules: [xl/20180406-beta]
+      paths:
+        cc: /sw/peak/xl/20180406-beta/xlC/16.1.0/bin/xlc
+        cxx: /sw/peak/xl/20180406-beta/xlC/16.1.0/bin/xlc++
+        f77: /sw/peak/xl/20180406-beta/xlf/16.1.0/bin/xlf
+        fc: /sw/peak/xl/20180406-beta/xlf/16.1.0/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180406-beta/lib
+      - /sw/peak/xl/20180406-beta/xlf/16.1.0/lib
+      - /sw/peak/xl/20180406-beta/xlC/16.1.0/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180430
+      operating_system: rhel7
+      modules: [xl/20180430]
+      paths:
+        cc: /sw/peak/xl/20180430/xlC/16.1.0/bin/xlc
+        cxx: /sw/peak/xl/20180430/xlC/16.1.0/bin/xlc++
+        f77: /sw/peak/xl/20180430/xlf/16.1.0/bin/xlf
+        fc: /sw/peak/xl/20180430/xlf/16.1.0/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180430/lib
+      - /sw/peak/xl/20180430/xlf/16.1.0/lib
+      - /sw/peak/xl/20180430/xlC/16.1.0/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@20180502
+      operating_system: rhel7
+      modules: [xl/20180502]
+      paths:
+        cc: /sw/peak/xl/20180502/xlC/16.1.0/bin/xlc
+        cxx: /sw/peak/xl/20180502/xlC/16.1.0/bin/xlc++
+        f77: /sw/peak/xl/20180502/xlf/16.1.0/bin/xlf
+        fc: /sw/peak/xl/20180502/xlf/16.1.0/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/20180502/lib
+      - /sw/peak/xl/20180502/xlf/16.1.0/lib
+      - /sw/peak/xl/20180502/xlC/16.1.0/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta1
+      operating_system: rhel7
+      modules: [xl/16.1.1-beta1]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta1/xlC/16.1.1/bin/xlc
+        cxx: /sw/peak/xl/16.1.1-beta1/xlC/16.1.1/bin/xlc++
+        f77: /sw/peak/xl/16.1.1-beta1/xlf/16.1.1/bin/xlf
+        fc: /sw/peak/xl/16.1.1-beta1/xlf/16.1.1/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta1/lib
+      - /sw/peak/xl/16.1.1-beta1/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-beta1/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta2
+      operating_system: rhel7
+      modules: [xl/16.1.1-beta2]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta2/xlC/16.1.1/bin/xlc
+        cxx: /sw/peak/xl/16.1.1-beta2/xlC/16.1.1/bin/xlc++
+        f77: /sw/peak/xl/16.1.1-beta2/xlf/16.1.1/bin/xlf
+        fc: /sw/peak/xl/16.1.1-beta2/xlf/16.1.1/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta2/lib
+      - /sw/peak/xl/16.1.1-beta2/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-beta2/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta3
+      operating_system: rhel7
+      modules: [xl/16.1.1-beta3]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta3/xlC/16.1.1/bin/xlc
+        cxx: /sw/peak/xl/16.1.1-beta3/xlC/16.1.1/bin/xlc++
+        f77: /sw/peak/xl/16.1.1-beta3/xlf/16.1.1/bin/xlf
+        fc: /sw/peak/xl/16.1.1-beta3/xlf/16.1.1/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta3/lib
+      - /sw/peak/xl/16.1.1-beta3/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-beta3/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta4
+      operating_system: rhel7
+      modules: [xl/16.1.1-beta4]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta4/xlC/16.1.1/bin/xlc
+        cxx: /sw/peak/xl/16.1.1-beta4/xlC/16.1.1/bin/xlc++
+        f77: /sw/peak/xl/16.1.1-beta4/xlf/16.1.1/bin/xlf
+        fc: /sw/peak/xl/16.1.1-beta4/xlf/16.1.1/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta4/lib
+      - /sw/peak/xl/16.1.1-beta4/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-beta4/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta5
+      operating_system: rhel7
+      modules: [xl/16.1.1-beta5]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta5/xlC/16.1.1/bin/xlc
+        cxx: /sw/peak/xl/16.1.1-beta5/xlC/16.1.1/bin/xlc++
+        f77: /sw/peak/xl/16.1.1-beta5/xlf/16.1.1/bin/xlf
+        fc: /sw/peak/xl/16.1.1-beta5/xlf/16.1.1/bin/xlf
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta5/lib
+      - /sw/peak/xl/16.1.1-beta5/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-beta5/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta6
+      operating_system: rhel7
+      modules: [xl/16.1.1-beta6]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta6/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-beta6/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-beta6/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-beta6/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta6/lib
+      - /sw/peak/xl/16.1.1-beta6/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-beta6/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-1
+      operating_system: rhel7
+      modules: [xl/16.1.1-1]
+      paths:
+        cc: /sw/peak/xl/16.1.1-1/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-1/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-1/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-1/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-1/lib
+      - /sw/peak/xl/16.1.1-1/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-1/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-2
+      operating_system: rhel7
+      modules: [xl/16.1.1-2]
+      paths:
+        cc: /sw/peak/xl/16.1.1-2/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-2/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-2/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-2/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-2/lib
+      - /sw/peak/xl/16.1.1-2/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-2/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-3
+      operating_system: rhel7
+      modules: [xl/16.1.1-3]
+      paths:
+        cc: /sw/peak/xl/16.1.1-3/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-3/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-3/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-3/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-3/lib
+      - /sw/peak/xl/16.1.1-3/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-3/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-4
+      operating_system: rhel7
+      modules: [xl/16.1.1-4]
+      paths:
+        cc: /sw/peak/xl/16.1.1-4/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-4/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-4/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-4/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-4/lib
+      - /sw/peak/xl/16.1.1-4/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-4/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-5
+      operating_system: rhel7
+      modules: [xl/16.1.1-5]
+      paths:
+        cc: /sw/peak/xl/16.1.1-5/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-5/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-5/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-5/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-5/lib
+      - /sw/peak/xl/16.1.1-5/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-5/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-6
+      operating_system: rhel7
+      modules: [xl/16.1.1-6]
+      paths:
+        cc: /sw/peak/xl/16.1.1-6/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-6/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-6/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-6/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-6/lib
+      - /sw/peak/xl/16.1.1-6/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-6/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-7
+      operating_system: rhel7
+      modules: [xl/16.1.1-7]
+      paths:
+        cc: /sw/peak/xl/16.1.1-7/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-7/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-7/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-7/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-7/lib
+      - /sw/peak/xl/16.1.1-7/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-7/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
