@@ -20,6 +20,11 @@
       is initially for an "external" build.
   - Generally do not wish to change the spec list, just remove the old builds
       and modules.
+- Using generic full anaconda installation to provide base python exposes
+    unwanted tools from anaconda distro. For example:
+    ```
+    /sw/peak/python/3.7/anaconda3/5.3.0/bin/fc-cache /sw/.b2/envs/peak/base/opt/linux-rhel7-power8le/gcc-4.8.5/font-util-1.3.2-tdhbdp4kjq2rxokfsfn6giwzsr42greu/share/fonts/X11/cyrillic
+    ```
 
 - Matrix stacks of conflict builds should warn that a spec conflicts with a
     compiler but continue concretizing the env with allowed specs. For example,

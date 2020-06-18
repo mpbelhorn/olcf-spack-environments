@@ -78,6 +78,7 @@ class Openmpi(AutotoolsPackage):
     version('develop', branch='master')
 
     # Current
+    version('4.0.3', sha256='1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03')
     version('4.0.1', sha256='cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709')  # libmpi.so.40.20.1
 
     # Still supported

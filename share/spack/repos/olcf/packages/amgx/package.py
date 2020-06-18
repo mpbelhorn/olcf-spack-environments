@@ -104,7 +104,8 @@ class Amgx(CMakePackage):
         # On other systems, be suspisious of this for complile and runtime
         # errors. Here's to hoping this works.
         if not self.spec.satisfies('%gcc'):
-            del env['CPATH']
+            if env.get('CPATH'):
+                del env['CPATH']
             args.append('-DCMAKE_C_COMPILER=gcc')
             args.append('-DCMAKE_CXX_COMPILER=g++')
 

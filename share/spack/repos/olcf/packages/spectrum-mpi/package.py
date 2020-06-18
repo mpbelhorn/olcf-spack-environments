@@ -71,7 +71,7 @@ class SpectrumMpi(Package):
                          stdout=PIPE)
             cpio.communicate()
         chmod = which('chmod')
-        unpacked = 'opt/ibm/spectrum_mpi'
+        unpacked = join_path(self.stage.source_path, 'opt/ibm/spectrum_mpi')
         chmod('-R', 'ug+rwX', unpacked)
         for f in os.listdir(unpacked):
             src = join_path(unpacked, f)
@@ -87,11 +87,15 @@ class SpectrumMpi(Package):
             #         '--prefix=%s' % self.prefix,
             #         '--replacepkgs',
             #         '*.ppc64le.rpm')
+
+    @run_after('install')
+    def rebuild_mpi_mod(self):
+        # Post install
+        # Accept license
         accept_license = Executable(join_path(self.prefix, 'lap_se/lapc'))
         lap_se = '%s/lap_se/' % self.prefix
         accept_license('-l', lap_se, '-s', lap_se, '-t', '5', ignore_errors=(9,))
 
-        # Post install
         # Rebuild fortran module with lib/module/build.sh
         with working_dir(join_path(self.prefix, 'lib', 'module')):
             module_build = Executable('./build.sh')
