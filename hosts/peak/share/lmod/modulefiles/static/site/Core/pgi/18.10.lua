@@ -19,10 +19,12 @@ a mirror, see http://spack.readthedocs.io/en/latest/mirrors.html]])
 -- Services provided by the package
 family("compiler")
 
--- Loading this module unlocks the path below unconditionally
-prepend_path("MODULEPATH", "/autofs/nccs-svm1_sw/peak/modulefiles/site/linux-rhel7-ppc64le/pgi/18.10")
+local platform = 'linux-rhel7-ppc64le'
+local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '')
+local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 
-
+-- Setup Modulepath for packages built by this compiler
+prepend_path( "MODULEPATH", spack_modules)
 
 prepend_path("CMAKE_PREFIX_PATH", "/autofs/nccs-svm1_sw/peak/.swci/0-core/opt/spack/20180914/linux-rhel7-ppc64le/gcc-4.8.5/pgi-18.10-w2qkfaill2olnyrfykr5a3kmwaz6pjur/", ":")
 setenv("CC", "/autofs/nccs-svm1_sw/peak/.swci/0-core/opt/spack/20180914/linux-rhel7-ppc64le/gcc-4.8.5/pgi-18.10-w2qkfaill2olnyrfykr5a3kmwaz6pjur/linuxpower/18.10/bin/pgcc")

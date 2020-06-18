@@ -1,3 +1,6 @@
+-- Package family
+family("compiler")
+
 -- Internal variables
 local swroot  = "/sw/peak/xl/16.1.1-4"
 local xlfbase    = pathJoin(swroot, "xlf", "16.1.1")
@@ -5,14 +8,12 @@ local xlcbase    = pathJoin(swroot, "xlC", "16.1.1")
 local xlmassbase = pathJoin(swroot, "xlmass", "9.1.1")
 local xlsmpbase  = pathJoin(swroot, "xlsmp", "5.1.1")
 
-
--- Package family
-family("compiler")
+local platform = 'linux-rhel7-ppc64le'
+local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '')
+local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 
 -- Setup Modulepath for packages built by this compiler
----- use only one version sublevel
-local moduleroot = myFileName():sub(1,myFileName():find(myModuleFullName(),1,true)-7)
-prepend_path( "MODULEPATH",  pathJoin(moduleroot, 'xl', '16.1.1-4' ) )
+prepend_path( "MODULEPATH", spack_modules)
 
 
 -- Setup center variables
