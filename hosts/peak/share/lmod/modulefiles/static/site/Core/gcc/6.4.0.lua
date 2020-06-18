@@ -10,7 +10,7 @@ local package = "gcc"
 local version = "6.4.0"
 local gccdir = "/sw/peak/gcc/6.4.0"
 local platform = 'linux-rhel7-ppc64le'
-local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '')
+local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 
 -- Setup Modulepath for packages built by this compiler

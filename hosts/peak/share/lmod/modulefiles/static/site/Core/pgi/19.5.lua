@@ -20,7 +20,7 @@ a mirror, see http://spack.readthedocs.io/en/latest/mirrors.html]])
 family("compiler")
 
 local platform = 'linux-rhel7-ppc64le'
-local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '')
+local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 
 -- Setup Modulepath for packages built by this compiler

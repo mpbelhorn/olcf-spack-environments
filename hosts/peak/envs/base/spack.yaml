@@ -382,25 +382,31 @@ spack:
         environment:
           unset: []
         conflict: []
-      blacklist_implicits: true
+      blacklist_implicits: false
       verbose: true
       whitelist: []
-      blacklist: []
+      blacklist:
+      - cuda
+      - go-bootstrap
+      - gtkplus
+      - openssl
+      - libtool@2.4.2
       hash_length: 7
       hierarchy: []
   config:
-    install_tree: /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/opt
+    install_tree: /sw/.b2/envs/peak/base/opt
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
     - /sw/.testing/belhorn/spack/facility-spack/hosts/peak/templates
     - /sw/.testing/belhorn/spack/facility-spack/share/spack/templates
     - $spack/share/spack/templates
     module_roots:
-      tcl: /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/modules/tmod
-      lmod: /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/modules/lmod
+      tcl: /sw/.b2/envs/peak/base/modules/tmod/spack
+      lmod: /sw/.b2/envs/peak/base/modules/lmod/spack
     build_stage:
-    - /gpfs/alpine/stf007/scratch/belhorn/spack/facility-spack/peak/production/tmp
-    - $tmpdir
+    
+    # - /gpfs/alpine/stf007/world-shared/belhorn/spack/facility-spack/peak/production/tmp
+    - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: /sw/.testing/belhorn/spack/facility-spack/share/mirrors/sources
     extensions:
