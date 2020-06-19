@@ -36,7 +36,6 @@ spack:
     - tmux
     - cmake
     - go
-    - git-lfs
     - screen
     - vim
     - emacs ~X
@@ -53,15 +52,9 @@ spack:
     - ccache
     - papi
     - gdb
-    
-    # - spectral
     - libzmq
     - gnupg
     - gsl
-    
-    # - c-blosc +avx2
-    # - lz4
-    # - zfp bsws=64 +shared
     - nco~mpi-deps
     - libfabric fabrics=verbs
   - core_only_compute_packages:
@@ -90,8 +83,6 @@ spack:
     - fftw +mpi+openmp
     - hdf5 ~mpi
     - hdf5 +mpi
-    - hdf5@1.8.18 ~mpi
-    - hdf5@1.8.18 +mpi
     - boost ~mpi
     - boost +mpi
     - netcdf-c
@@ -101,7 +92,7 @@ spack:
     - parallel-io
     - hypre
     - mpip
-    - adios2 ~python
+    - adios2 ~python~zfp
   - manifest:
     - matrix:
       - - $core_packages
@@ -223,6 +214,14 @@ spack:
       providers: {}
       modules: {}
       compiler: []
+    perl:
+      version: [5.30.1]
+      modules: {}
+      buildable: true
+      target: []
+      providers: {}
+      compiler: []
+      paths: {}
     openblas:
       buildable: true
       variants: cpu_target=POWER9
@@ -241,6 +240,15 @@ spack:
       paths: {}
       modules: {}
       compiler: []
+    hdf5:
+      variants: +hl+cxx+fortran
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
     papi:
       variants: cpu=POWER9
       buildable: true
@@ -251,7 +259,7 @@ spack:
       modules: {}
       compiler: []
     magma:
-      variants: gpus=volta
+      variants: gpus=pascal,volta
       buildable: true
       version: []
       target: []
@@ -277,6 +285,14 @@ spack:
       paths: {}
       modules: {}
       compiler: []
+    netcdf-fortran:
+      buildable: true
+      version: [4.4.5]
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+      paths: {}
     parallel-netcdf:
       variants: +cxx+fortran+fpic
       buildable: true
