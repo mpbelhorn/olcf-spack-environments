@@ -4,10 +4,10 @@ spack:
   #############################################################################
   definitions:
   - core_compilers:
-    - '%gcc@4.8.5'
+    - '%gcc@4.8.5 arch=linux-rhel7-power8le'
   - gcc_compilers:
-    - '%gcc@4.8.5'
-    - '%gcc@5.4.0'
+    - '%gcc@4.8.5 arch=linux-rhel7-power8le'
+    - '%gcc@5.4.0 arch=linux-rhel7-power8le'
     - '%gcc@6.4.0'
     - '%gcc@8.1.1'
     - '%gcc@9.1.0'
@@ -115,20 +115,13 @@ spack:
     - matrix:
       - - openblas@0.3.5 threads=openmp cpu_target=POWER8
         - openblas@0.3.5 threads=none cpu_target=POWER8
-      - - '%gcc@4.8.5'
-        - '%gcc@5.4.0'
+        - netlib-scalapack ^openblas@0.3.5 threads=openmp cpu_target=POWER8
+      - - '%gcc@4.8.5 arch=linux-rhel7-power8le'
+        - '%gcc@5.4.0 arch=linux-rhel7-power8le'
     - matrix:
       - - openblas threads=openmp
         - openblas threads=none
-      - - '%gcc@6.4.0'
-        - '%gcc@8.1.1'
-        - '%gcc@9.1.0'
-    - matrix:
-      - - netlib-scalapack ^openblas@0.3.5 threads=openmp cpu_target=POWER8
-      - - '%gcc@4.8.5'
-        - '%gcc@5.4.0'
-    - matrix:
-      - - netlib-scalapack ^openblas threads=openmp
+        - netlib-scalapack ^openblas threads=openmp
       - - '%gcc@6.4.0'
         - '%gcc@8.1.1'
         - '%gcc@9.1.0'
