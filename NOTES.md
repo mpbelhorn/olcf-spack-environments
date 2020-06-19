@@ -1,3 +1,44 @@
+# Lessons Learned and Best Practices
+
+- Specs for large `defnitions:` sets of target applications that should be built with each
+    compiler should be expressed as a separate matrix for each compiler class to
+    more easily exclude problem builds and include more verbose exceptional
+    specs near the block in which packages are handled for a given class of
+    toolchain. IE:
+    ```
+    - matrix:
+      - - $general_compute_packages
+      - - $gcc_compilers
+      exclude:
+      - 'amgx%gcc@9:'
+    - hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0
+    - hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0
+    - matrix:
+      - - $general_compute_packages
+      - - $llvm_compilers
+      - - arch=linux-rhel7-power9le
+      - - ^elfutils%gcc@4.8.5 arch=linux-rhel7-power8le
+    - matrix:
+      - - $general_compute_packages
+      - - $xl_compilers
+      - - arch=linux-rhel7-power9le
+      - - ^numactl%gcc@4.8.5 arch=linux-rhel7-power8le
+      exclude:
+      - boost@1.63.0:%xl
+    ```
+    is better than:
+    ```
+    - matrix:
+      - - $general_compute_packages
+      - - $all_compilers
+      exclude:
+      # lots of exceptions and separate matrixes for problem builds.
+    ```
+    This way, specs for a given package that needs to be done differently for
+    each toolchain are not widely spread out across the manifest. This also
+    allows deployment of the whole stack for compiler classes that can do all
+    the builds reliably sooner than the tricky edge cases. Ie, we'll always have
+    at least one compiler environment that has everything.
 
 # Build Problems
 
@@ -9,6 +50,40 @@
     `Spec('netcdf)['hdf5']` libraries despite those paths being in
     `SPACK_LINK_DIRS` and `SPACK_RPATH_DIRS`
   - Solution(?): enforce hdf5 dependency when building with xl?
+- Using generic full anaconda installation to provide base python exposes
+    unwanted tools from anaconda distro. For example:
+    ```
+    /sw/peak/python/3.7/anaconda3/5.3.0/bin/fc-cache /sw/.b2/envs/peak/base/opt/linux-rhel7-power8le/gcc-4.8.5/font-util-1.3.2-tdhbdp4kjq2rxokfsfn6giwzsr42greu/share/fonts/X11/cyrillic
+    ```
+- Linking against ZFP built with GCC >=6.4.0 fails to find the right libstdc++;
+    probably a library search error when building zfp?
+
+## IBM-specific problems
+
+In spectrum-mpi-10.3.1.2-20200121-*/include/mpi.h:268:
+
+```c
+#if (1 == SMPI_HAVE_PRAGMA_WEAK)
+   /*   
+                    
+    * test_version() is put into user's object files as
+    * a weak symbol, so users can use a utility such as
+    * strings to see what SMPI version it was built with.
+    */
+  #if defined(c_plusplus) || defined(__cplusplus)
+    extern "C"
+    {    
+  #endif
+      #pragma weak smpi_built_against_version
+      OMPI_DECLSPEC const char * smpi_built_against_version(void);
+      OMPI_DECLSPEC const char * smpi_built_against_version(void) { return "SMPI_BUILT_AGAINST_VERSION=" SMPI_VERSION_STR; }
+  #if defined(c_plusplus) || defined(__cplusplus)
+    } /* extern "C" */
+  #endif
+#endif
+```
+
+first declaration of `OMPI_DECLSPEC const char * smpi_built_against_version(void);` is redundant and problematic.
 
 # Maintenance problems
 
@@ -20,11 +95,6 @@
       is initially for an "external" build.
   - Generally do not wish to change the spec list, just remove the old builds
       and modules.
-- Using generic full anaconda installation to provide base python exposes
-    unwanted tools from anaconda distro. For example:
-    ```
-    /sw/peak/python/3.7/anaconda3/5.3.0/bin/fc-cache /sw/.b2/envs/peak/base/opt/linux-rhel7-power8le/gcc-4.8.5/font-util-1.3.2-tdhbdp4kjq2rxokfsfn6giwzsr42greu/share/fonts/X11/cyrillic
-    ```
 
 - Matrix stacks of conflict builds should warn that a spec conflicts with a
     compiler but continue concretizing the env with allowed specs. For example,
