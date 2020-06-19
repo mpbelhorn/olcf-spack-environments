@@ -18,15 +18,18 @@ spack:
   - llvm_compilers:
     - '%clang@9.0.0-2'
   - pgi_compilers:
-    - '%pgi@18.10'
-    - '%pgi@19.9'
-    - '%pgi@19.10'
+    
+    ## Cannot build smpi for this toolchain due to long-path
+    ## header inclusion bug for fortran codes.
+    # - '%pgi@18.10' 
+    # - '%pgi@19.9'
+    # - '%pgi@19.10'
     - '%pgi@20.1'
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
     - $llvm_compilers
-    - $pgi_compilers
+    # - $pgi_compilers
   - core_packages:
     - git
     - htop
