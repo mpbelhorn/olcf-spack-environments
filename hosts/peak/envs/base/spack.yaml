@@ -166,33 +166,38 @@ spack:
       exclude:
       - 'amgx%gcc@9:'
       - raja@0.5:%gcc@:4.999
+      - 'magma@2.5.1%gcc@9.0.0:'
+      - nco%gcc@:4.8.5
     - matrix:
       - - $general_compute_packages
-      - - $all_compilers
+      - - $gcc_compilers
       exclude:
       - 'amgx%gcc@9:'
-      - adios2%pgi
-      - mpip%pgi
-      - mpip%clang
-    # Compute package exceptions and One-offs
     - hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0
     - hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0
     - matrix:
-      - - fftw +mpi+openmp precision=float,double,long_double
+      - - $general_compute_packages
+      - - $llvm_compilers
+      - - arch=linux-rhel7-power9le
+      - - ^elfutils%gcc@4.8.5 arch=linux-rhel7-power8le
+    - matrix:
+      - - $general_compute_packages
+      - - $xl_compilers
+      - - arch=linux-rhel7-power9le
+      - - ^numactl%gcc@4.8.5 arch=linux-rhel7-power8le
+      exclude:
+      - boost@1.63.0:%xl
+    - matrix:
+      - - $general_compute_packages
       - - $pgi_compilers
-    - adios2@2.4.0%pgi@19.7 ~python ^pkgconf%gcc@4.8.5 ^bzip2%gcc@4.8.5 ^libzmq%gcc@4.8.5
-      ^zfp%gcc@4.8.5
+      exclude:
+      - adios2%pgi
+      - mpip%pgi
+    # Compute package exceptions and One-offs
     - matrix:
       - - petsc +mpi+mumps~int64~superlu-dist
       - - $gcc_compilers
         - $llvm_compilers
-    - matrix:
-      - - petsc +mpi~mumps~int64~superlu-dist~metis
-      - - $pgi_compilers
-    - matrix:
-      - - mpip
-      - - $llvm_compilers
-      - - ^elfutils%gcc@4.8.5
   specs:
   - $manifest
   #############################################################################
