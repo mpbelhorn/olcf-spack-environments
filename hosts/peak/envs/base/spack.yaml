@@ -93,6 +93,50 @@ spack:
     - hypre
     - mpip
     - adios2 ~python~zfp
+  - e4s:
+    - openpmd-api
+    - py-libensemble^python@3.7.3
+    - hypre
+    - mfem
+    - trilinos@12.14.1+dtk+intrepid2+shards
+    - sundials
+    - strumpack
+    - superlu-dist
+    - superlu
+    - tasmanian
+    - mercury
+    - hdf5
+    - adios2
+    - adios
+    - darshan-runtime
+    - darshan-util
+    - veloc
+    - scr
+    - parallel-netcdf
+    - qthreads
+    - papyrus@develop
+    - bolt
+    - raja
+    - upcxx
+    - kokkos+openmp
+    - openmpi
+    - umpire
+    - libquo
+    - globalarrays
+    - pdt
+    - tau
+    - hpctoolkit
+    - dyninst
+    - gotcha
+    - caliper
+    - papi
+    - py-jupyterhub
+    - zfp
+    - sz
+    - libnrm
+    - rempi
+    - ninja
+    - kokkos-kernels
   - manifest:
     - matrix:
       - - $core_packages
