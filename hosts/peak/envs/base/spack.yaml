@@ -18,9 +18,6 @@ spack:
   - llvm_compilers:
     - '%clang@9.0.0-2'
   - pgi_compilers:
-    
-    ## Cannot build smpi for this toolchain due to long-path
-    ## header inclusion bug for fortran codes.
     # - '%pgi@18.10' 
     # - '%pgi@19.9'
     # - '%pgi@19.10'
@@ -29,7 +26,7 @@ spack:
     - $gcc_compilers
     - $xl_compilers
     - $llvm_compilers
-    # - $pgi_compilers
+    - $pgi_compilers
   - core_packages:
     - git
     - htop
@@ -58,13 +55,6 @@ spack:
     - nco~mpi-deps
     - libfabric fabrics=verbs
   - core_only_compute_packages:
-    
-    # - matrix:
-    #   - - py-nose
-    #     - py-numpy
-    #     - py-h5py~mpi
-    #     - py-mpi4py
-    #   - - ^python@3.7.0
     - darshan-runtime
     - darshan-runtime hdf5=pre1.10
     - darshan-runtime hdf5=post1.10
@@ -170,34 +160,45 @@ spack:
       - nco%gcc@:4.8.5
     - matrix:
       - - $general_compute_packages
+        - petsc +mpi+mumps~int64~superlu-dist
       - - $gcc_compilers
       exclude:
       - 'amgx%gcc@9:'
-    - hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0
-    - hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0
+    - 'hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0:'
+    - 'hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0:'
     - matrix:
       - - $general_compute_packages
+        - petsc +mpi+mumps~int64~superlu-dist
       - - $llvm_compilers
       - - arch=linux-rhel7-power9le
       - - ^elfutils%gcc@4.8.5 arch=linux-rhel7-power8le
     - matrix:
       - - $general_compute_packages
+        - "parallel-io@2.3.0"
+        - boost@1.62.0 ~mpi
+        - boost@1.62.0 +mpi
       - - $xl_compilers
       - - arch=linux-rhel7-power9le
       - - ^numactl%gcc@4.8.5 arch=linux-rhel7-power8le
+      - - ^libfabric%gcc@4.8.5 arch=linux-rhel7-power8le
+      - - ^libzmq%gcc@4.8.5 arch=linux-rhel7-power8le
       exclude:
       - boost@1.63.0:%xl
+      - 'parallel-io@2.4.4:'
+      - 'mpip'
     - matrix:
       - - $general_compute_packages
       - - $pgi_compilers
+      - - arch=linux-rhel7-power9le
+      - - ^cmake%gcc@4.8.5 arch=linux-rhel7-power8le
+      - - ^python%gcc@4.8.5 arch=linux-rhel7-power8le
+      - - ^numactl%gcc@4.8.5 arch=linux-rhel7-power8le
+      - - ^perl%gcc@4.8.5 arch=linux-rhel7-power8le
       exclude:
       - adios2%pgi
       - mpip%pgi
-    # Compute package exceptions and One-offs
-    - matrix:
-      - - petsc +mpi+mumps~int64~superlu-dist
-      - - $gcc_compilers
-        - $llvm_compilers
+      - amgx%pgi
+      - boost%pgi
   specs:
   - $manifest
   #############################################################################
