@@ -1,0 +1,3 @@
+[submodule "spack"]
+	path = spack
+	url = gitlab@gitlab.ccs.ornl.gov:belhorn/facility-spack.git
