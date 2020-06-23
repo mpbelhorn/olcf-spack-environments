@@ -203,9 +203,10 @@ spack:
   - $manifest
   #############################################################################
   mirrors:
+    # FIXME: cannot use envvars in config for filesystem paths
     peak_builds: /sw/.testing/belhorn/spack/facility-spack/share/mirrors/builds
   repos:
-  - /sw/.testing/belhorn/spack/facility-spack/share/spack/repos/olcf
+  - ${FACILITY_SPACK_ROOT}/share/spack/repos/olcf
   #############################################################################
   packages:
     spectrum-mpi:
@@ -456,24 +457,24 @@ spack:
       hash_length: 7
       hierarchy: []
   config:
-    install_tree: /sw/.b2/envs/peak/base/opt
+    install_tree: ${ENV_ROOT}/opt
+    module_roots:
+      tcl: ${ENV_ROOT}/modules/tmod/spack
+      lmod: ${ENV_ROOT}/modules/lmod/spack
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
-    - /sw/.testing/belhorn/spack/facility-spack/hosts/peak/templates
-    - /sw/.testing/belhorn/spack/facility-spack/share/spack/templates
+    - ${FACILITY_SPACK_ROOT}/hosts/peak/templates
+    - ${FACILITY_SPACK_ROOT}/share/spack/templates
     - $spack/share/spack/templates
-    module_roots:
-      tcl: /sw/.b2/envs/peak/base/modules/tmod/spack
-      lmod: /sw/.b2/envs/peak/base/modules/lmod/spack
     build_stage:
     
     # - /gpfs/alpine/stf007/world-shared/belhorn/spack/facility-spack/peak/production/tmp
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
-    source_cache: /sw/.testing/belhorn/spack/facility-spack/share/mirrors/sources
+    source_cache: ${FACILITY_SPACK_ROOT}/share/mirrors/sources
     extensions:
     - /sw/.testing/belhorn/spack/facility-spack/share/spack/extensions/spack-olcf
-    misc_cache: $spack/../var/mcache
+    misc_cache: ${FACILITY_SPACK_ROOT}/var/mcache
     verify_ssl: true
     install_missing_compilers: false
     checksum: true
