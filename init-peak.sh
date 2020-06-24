@@ -28,8 +28,8 @@ while [ -h "$_THIS" ]; do
   [[ $_THIS != /* ]] && _THIS="$_THIS_DIR/$_THIS" 
 done
 _THIS_DIR="$( cd -P "$( dirname "$_THIS" )" >/dev/null && pwd )"
-FACILITY_SPACK_ROOT="${_THIS_DIR/#\/autofs\/nccs-svm*_sw//sw}"
-export FACILITY_SPACK_ROOT="${FACILITY_SPACK_ROOT/#\/autofs\/nccs-svm*_home*\///ccs/home/}"
+FACILITY_SPACK_ROOT="${_THIS_DIR/#\/autofs\/nccs-svm[0-9]_sw//sw}"
+export FACILITY_SPACK_ROOT="${FACILITY_SPACK_ROOT/#\/autofs\/nccs-svm[0-9]_home[0-9]\///ccs/home/}"
 #####################
 
 # This script must be sourced.
