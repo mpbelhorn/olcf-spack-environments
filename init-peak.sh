@@ -8,7 +8,11 @@
 if [[ "$0" != "${BASH_SOURCE:-}" ]]; then
   # Script is sourced
   _SOURCED=1
-  _THIS="$(which $0)"
+  if [ -z "${BASH_SOURCE:-}" ]; then
+    _THIS="$(which $0)"
+  else
+    _THIS="${BASH_SOURCE[0]}"
+  fi
 else
   # Script is executed
   _SOURCED=0
