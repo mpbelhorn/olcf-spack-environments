@@ -97,6 +97,6 @@ export MODULEPATH="${ENV_LMOD_ROOT}/spack/linux-rhel7-ppc64le/Core:${ENV_LMOD_RO
 module load python/3.7.0-anaconda3-5.3.0
 
 export PYTHONDONTWRITEBYTECODE=1
-source "${_THIS_DIR}/spack/share/spack/setup-env.sh"
+source "${FACILITY_SPACK_ROOT}/spack/share/spack/setup-env.sh"
 echo "Spack initialized for ${_THIS_HOST:-Unknown host} at ${SPACK_ROOT}"
 spack env activate -d "${_HOST_CONF_DIR}/envs/${ENV_NAME}"
