@@ -1,0 +1,542 @@
+# OLCF Peak Spack Environment
+
+spack:
+  #############################################################################
+  definitions:
+  - core_compilers:
+    - '%gcc@8.3.1 arch=linux-rhel8-zen'
+  - gcc_compilers:
+    - '%gcc@8.3.1 arch=linux-rhel8-zen'
+    - '%gcc@9.3.0'
+    - '%gcc@10.1.0'
+  - intel_compilers:
+    - '%intel@19.0.3'
+  - aocc_compilers:
+    - '%clang@9.0.0-aocc2.1.0'
+  - pgi_compilers:
+    - '%pgi@19.10'
+  - all_compilers:
+    - $gcc_compilers
+    - $pgi_compilers
+    - $intel_compilers
+    - $aocc_compilers
+  - core_packages:
+    - git
+    - htop
+    - tmux
+    - cmake
+    - go
+    - screen
+    - vim
+    - emacs ~X
+    - nano
+    - gnuplot +X
+    - subversion
+    
+    # - darshan-util
+    # - python@2.7.15
+    # - python@3.7.0
+    - mercurial ^python@2.7.15
+    - valgrind ~mpi~boost~ubsan
+    - ccache
+    - papi
+    - gdb
+    - libzmq
+    - gnupg
+    - gsl
+    - nco~mpi-deps
+    - libfabric fabrics=verbs
+    - imagemagick ^ncurses+termlib
+    
+    # - octave
+    # - matlab
+    - cuda
+    
+    # - gromacs@2020.2+hwloc~cuda+rdtscp+mpi ^hwloc@:1.999
+    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi ^hwloc@:1.999
+    # - gromacs@2020.2+hwloc~cuda~rdtscp~mpi ^hwloc@:1.999
+    - atlas
+    - r@4.0.0
+    - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran~mpi
+    - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi ^netcdf-c~mpi~parallel-netcdf
+    - vmd
+    - sbt
+    - spark+hadoop
+    # - vtk~mpi~qt
+    # - vtk~mpi+qt
+    # - vtk+mpi~qt
+    # - vtk+mpi+qt
+  - gcc_only_compute_packages:
+    - raja
+    - magma
+    - nco
+    - openblas threads=none
+    - openblas threads=openmp
+  - general_compute_packages:
+    - openmpi
+    - netlib-lapack
+    - netlib-scalapack ^netlib-lapack
+    - fftw +mpi+openmp
+    - hdf5 ~mpi
+    - hdf5 +mpi
+    - boost ~mpi
+    - boost +mpi
+    - netcdf-c
+    - netcdf-fortran
+    - netcdf-cxx
+    - parallel-netcdf
+    - parallel-io
+    - hypre
+    - mpip
+    - adios2
+  - e4s:
+    - openpmd-api
+    - py-libensemble^python@3.7.3
+    - hypre
+    - mfem
+    - trilinos@12.14.1+dtk+intrepid2+shards
+    - sundials
+    - strumpack
+    - superlu-dist
+    - superlu
+    - tasmanian
+    - mercury
+    - hdf5
+    - adios2
+    - adios
+    - darshan-runtime
+    - darshan-util
+    - veloc
+    - scr
+    - parallel-netcdf
+    - qthreads
+    - papyrus@develop
+    - bolt
+    - raja
+    - upcxx
+    - kokkos+openmp
+    - openmpi
+    - umpire
+    - libquo
+    - globalarrays
+    - pdt
+    - tau
+    - hpctoolkit
+    - dyninst
+    - gotcha
+    - caliper
+    - papi
+    - py-jupyterhub
+    - zfp
+    - sz
+    - libnrm
+    - rempi
+    - ninja
+    - kokkos-kernels
+  - manifest:
+    - matrix:
+      - - $core_packages
+      - - $core_compilers
+    - matrix:
+      - - $gcc_only_compute_packages
+      - - $gcc_compilers
+      exclude:
+      - 'magma@2.5.1%gcc@9.0.0:'
+    # - paraview+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi
+    - matrix:
+      - - $general_compute_packages
+      - - $gcc_compilers
+    - matrix:
+      - - $general_compute_packages
+      - - $intel_compilers
+      - - arch=linux-rhel8-zen2
+      - - ^rdma-core%gcc@8.3.1 arch=linux-rhel8-zen
+    - matrix:
+      - - $general_compute_packages
+      - - $aocc_compilers
+      - - arch=linux-rhel8-x86_64
+      - - ^elfutils%gcc@8.3.1 arch=linux-rhel8-zen
+    - matrix:
+      - - $general_compute_packages
+      - - $pgi_compilers
+      - - arch=linux-rhel8-zen2
+      - - ^libpciaccess@0.13.5%gcc@8.3.1 arch=linux-rhel8-zen
+      - - ^cmake%gcc@8.3.1 arch=linux-rhel8-zen
+      - - ^python%gcc@8.3.1 arch=linux-rhel8-zen
+      - - ^numactl%gcc@8.3.1 arch=linux-rhel8-zen
+      - - ^perl%gcc@8.3.1 arch=linux-rhel8-zen
+      exclude:
+      - adios2%pgi
+      - mpip%pgi
+      - boost%pgi
+  specs:
+  - $manifest
+  #############################################################################
+  mirrors:
+    peak_builds: /sw/andes/spack-env/mirrors/builds
+  repos:
+  - ${FACILITY_SPACK_ROOT}/share/spack/repos/olcf
+  #############################################################################
+  packages:
+    openmpi:
+      version: [4.0.1]
+      variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx schedulers=slurm
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    slurm:
+      buildable: false
+      version: [20-02-0-0]
+      paths:
+        slurm@20-02-0-0: /usr
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+    openssl:
+      buildable: false
+      version: [1.1.1]
+      paths:
+        openssl@1.1.1: /usr
+      target: []
+      providers: {}
+      modules: {}
+      compiler: []
+    octave:
+      variants: +magick+arpack+curl+fftw+fontconfig+freetype+glpk+gnuplot+hdf5+opengl+qhull+qrupdate+qt+readline+suitesparse+zlib
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    libtool:
+      version: [2.4.6]
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    openblas:
+      buildable: true
+      variants: cpu_target=ZEN
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    r:
+      variants: ~X
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    fftw:
+      variants: +openmp precision=float,double,long_double
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    hdf5:
+      variants: +hl+cxx+fortran
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    papi:
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    magma:
+      variants: gpus=kepler
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    netlib-scalapack:
+      variants: +fpic
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    netcdf-c:
+      variants: ~hdf4+mpi+parallel-netcdf+shared
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    netcdf-fortran:
+      buildable: true
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+      paths: {}
+      version: []
+    parallel-netcdf:
+      variants: +cxx+fortran+fpic
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    darshan-runtime:
+      variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/andes
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+    all:
+      compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
+      providers:
+        mpi: [olcf.openmpi]
+        lapack: [openblas, mkl]
+        blas: [openblas, mlk]
+        scalapack: [netlib-scalapack]
+      buildable: true
+      version: []
+      target: []
+      paths: {}
+      modules: {}
+  view: false
+  modules:
+    enable:
+    - lmod
+    lmod:
+      core_compilers: [gcc@8.3.1]
+      all:
+        suffixes:
+          ^python@2.0:2.99: py2
+          ^python@3.0:3.99: py3
+        environment:
+          set:
+            OLCF_${PACKAGE}_ROOT: ${PREFIX}
+          unset: []
+        filter:
+          environment_blacklist: []
+        load: []
+        conflict: []
+      openmpi:
+        template: olcf/modules/openmpi-lmod.lua
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      openblas:
+        suffixes:
+          openblas threads=openmp: omp
+          openblas threads=pthreads: pthreads
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      darshan-runtime:
+        suffixes:
+          hdf5=pre1.10: hdf5pre110
+          hdf5=post1.10: hdf5post110
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+          set:
+            SRUN_EXPORT_ENV: ALL,LD_PRELOAD=${PREFIX}/lib/libdarshan.so
+        conflict: []
+      cdo:
+        suffixes:
+          cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      gromacs:
+        suffixes:
+          gromacs+cuda: cuda
+          gromacs~rdtscp: rdtscp_off
+          gromacs~mpi: analysis
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      vtk:
+        suffixes:
+          vtk+mpi: parallel
+          vtk~mpi: serial
+          vtk+qt: qt
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      ferret:
+        suffixes:
+          ferret^hdf5+mpi^netcdf+mpi: parallel
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      ncl:
+        suffixes:
+          builtin.ncl ^hdf5+mpi^netcdf+mpi: parallel
+          olcf.ncl: serial
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      blacklist_implicits: false
+      verbose: true
+      whitelist: []
+      blacklist:
+      - slurm
+      - go-bootstrap
+      - openssl
+      hash_length: 7
+      hierarchy: []
+  config:
+    install_tree: ${ENV_ROOT}/opt
+    module_roots:
+      tcl: ${ENV_ROOT}/modules/.tcl/spack
+      lmod: ${ENV_ROOT}/modules/spack
+    install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
+    template_dirs:
+    - ${FACILITY_SPACK_ROOT}/hosts/peak/templates
+    - ${FACILITY_SPACK_ROOT}/share/spack/templates
+    - $spack/share/spack/templates
+    build_stage:
+    - /gpfs/alpine/stf007/world-shared/belhorn/spack/facility-spack/andes/production/tmp
+    - /run/user/12126
+    - $tempdir/$user/spack-stage
+    - $spack/var/spack/stage
+    source_cache: ${FACILITY_SPACK_ROOT}/share/mirrors/sources
+    extensions:
+    - /sw/.testing/belhorn/spack/facility-spack/share/spack/extensions/spack-olcf
+    misc_cache: ${FACILITY_SPACK_ROOT}/var/mcache
+    verify_ssl: true
+    install_missing_compilers: false
+    checksum: true
+    dirty: false
+    build_language: C
+    build_jobs: 16
+    ccache: false
+    db_lock_timeout: 120
+    package_lock_timeout:
+  concretization: separately
+  compilers:
+  - compiler:
+      spec: gcc@8.3.1
+      operating_system: rhel8
+      modules: [gcc/8.3.1]
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment: {unset: []}
+      flags: {}
+  - compiler:
+      spec: gcc@9.3.0
+      operating_system: rhel8
+      modules: [gcc/9.3.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: gcc@10.1.0
+      operating_system: rhel8
+      modules: [gcc/10.1.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: intel@19.0.3
+      operating_system: rhel8
+      modules: [intel/19.0.3]
+      paths:
+        cc: icc
+        cxx: icpc
+        f77: ifort
+        fc: ifort
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: pgi@19.10
+      operating_system: rhel8
+      modules: [pgi/19.10]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@9.0.0-aocc2.1.0
+      operating_system: rhel8
+      modules: [aocc/2.1.0]
+      paths:
+        cc: clang
+        cxx: clang++
+        f77: flang
+        fc: flang
+      extra_rpaths: []
+      environment: {}
+      flags: {}
