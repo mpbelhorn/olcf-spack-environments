@@ -3,7 +3,7 @@
 spack:
   #############################################################################
   definitions:
-  - core_compilers:
+  - core_compiler:
     - '%gcc@8.3.1 arch=linux-rhel8-zen'
   - gcc_compilers:
     - '%gcc@8.3.1 arch=linux-rhel8-zen'
@@ -55,7 +55,7 @@ spack:
     # - gromacs@2020.2+hwloc~cuda+rdtscp+mpi ^hwloc@:1.999
     # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi ^hwloc@:1.999
     # - gromacs@2020.2+hwloc~cuda~rdtscp~mpi ^hwloc@:1.999
-    - atlas
+    - r
     - r@4.0.0
     - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran~mpi
     - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi ^netcdf-c~mpi~parallel-netcdf
@@ -136,16 +136,16 @@ spack:
   - manifest:
     - matrix:
       - - $core_packages
-      - - $core_compilers
+      - - $core_compiler
     - matrix:
-      - - $gcc_only_compute_packages
+      - - $general_compute_packages
+        - $gcc_only_compute_packages
       - - $gcc_compilers
       exclude:
       - 'magma@2.5.1%gcc@9.0.0:'
-    # - paraview+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi
-    - matrix:
-      - - $general_compute_packages
-      - - $gcc_compilers
+      - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
+      - '^netlib-scalapack@:2.1.0%gcc@10.0.0:'
+    - paraview+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi ^ncurses+termlib
     - matrix:
       - - $general_compute_packages
       - - $intel_compilers
@@ -179,7 +179,7 @@ spack:
   #############################################################################
   packages:
     openmpi:
-      version: [4.0.1]
+      version: [4.0.4]
       variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx schedulers=slurm
       target: []
       compiler: []
@@ -196,6 +196,30 @@ spack:
       compiler: []
       modules: {}
       providers: {}
+    ucx:
+      version: [1.8.0]
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+      buildable: true
+      paths: {}
+    rdma-core:
+      version: [28.0]
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+      buildable: true
+      paths: {}
+    libfabric:
+      version: [1.8.0]
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+      buildable: true
+      paths: {}
     openssl:
       buildable: false
       version: [1.1.1]
@@ -350,7 +374,6 @@ spack:
         load: []
         conflict: []
       openmpi:
-        template: olcf/modules/openmpi-lmod.lua
         filter:
           environment_blacklist: []
         conflict: []
