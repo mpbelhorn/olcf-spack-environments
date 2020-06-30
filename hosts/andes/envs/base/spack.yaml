@@ -535,11 +535,11 @@ spack:
       operating_system: rhel8
       modules: [gcc/9.3.0]
       paths:
-        cc: gcc
-        cxx: g++
-        f77: gfortran
-        fc: gfortran
-      extra_rpaths: []
+        cc: /sw/andes/gcc/9.3.0/bin/gcc
+        cxx: /sw/andes/gcc/9.3.0/bin/g++
+        f77: /sw/andes/gcc/9.3.0/bin/gfortran
+        fc: /sw/andes/gcc/9.3.0/bin/gfortran
+      extra_rpaths: [/sw/andes/gcc/9.3.0/lib64]
       environment: {}
       flags: {}
   - compiler:
@@ -547,11 +547,11 @@ spack:
       operating_system: rhel8
       modules: [gcc/10.1.0]
       paths:
-        cc: gcc
-        cxx: g++
-        f77: gfortran
-        fc: gfortran
-      extra_rpaths: []
+        cc: /sw/andes/gcc/10.1.0/bin/gcc
+        cxx: /sw/andes/gcc/10.1.0/bin/g++
+        f77: /sw/andes/gcc/10.1.0/bin/gfortran
+        fc: /sw/andes/gcc/10.1.0/bin/gfortran
+      extra_rpaths: [/sw/andes/gcc/10.1.0/lib64]
       environment: {}
       flags: {}
   - compiler:
@@ -559,11 +559,11 @@ spack:
       operating_system: rhel8
       modules: [intel/19.0.3]
       paths:
-        cc: icc
-        cxx: icpc
-        f77: ifort
-        fc: ifort
-      extra_rpaths: []
+        cc: /sw/andes/intel/19.0.3/bin/icc
+        cxx: /sw/andes/intel/19.0.3/bin/icpc
+        f77: /sw/andes/intel/19.0.3/bin/ifort
+        fc: /sw/andes/intel/19.0.3/bin/ifort
+      extra_rpaths: [/sw/andes/intel/19.0.3/lib/intel64]
       environment: {}
       flags: {}
   - compiler:
@@ -571,11 +571,11 @@ spack:
       operating_system: rhel8
       modules: [pgi/19.10]
       paths:
-        cc: pgcc
-        cxx: pgc++
-        f77: pgfortran
-        fc: pgfortran
-      extra_rpaths: []
+        cc: /sw/andes/pgi/19.10/linux86-64-llvm/19.10/bin/pgcc
+        cxx: /sw/andes/pgi/19.10/linux86-64-llvm/19.10/bin/pgc++
+        f77: /sw/andes/pgi/19.10/linux86-64-llvm/19.10/bin/pgfortran
+        fc: /sw/andes/pgi/19.10/linux86-64-llvm/19.10/bin/pgfortran
+      extra_rpaths: [/sw/andes/pgi/19.10/linux86-64-llvm/19.10/lib]
       environment: {}
       flags: {}
   - compiler:
@@ -583,10 +583,10 @@ spack:
       operating_system: rhel8
       modules: [aocc/2.1.0]
       paths:
-        cc: clang
-        cxx: clang++
-        f77: flang
-        fc: flang
-      extra_rpaths: []
+        cc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang
+        cxx: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang++
+        f77: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
+        fc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
+      extra_rpaths: [/sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib]
       environment: {}
       flags: {}
