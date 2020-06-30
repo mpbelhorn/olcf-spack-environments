@@ -78,6 +78,7 @@ class Openmpi(AutotoolsPackage):
     version('develop', branch='master')
 
     # Current
+    version('4.0.4', sha256='47e24eb2223fe5d24438658958a313b6b7a55bb281563542e1afc9dec4a31ac4')
     version('4.0.3', sha256='1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03')
     version('4.0.1', sha256='cce7b6d20522849301727f81282201d609553103ac0b09162cf28d102efb9709')  # libmpi.so.40.20.1
 
@@ -271,8 +272,8 @@ class Openmpi(AutotoolsPackage):
     depends_on('zlib', when='@3.0.0:')
     depends_on('valgrind~mpi', when='+memchecker')
     depends_on('ucx', when='fabrics=ucx')
-    depends_on('ucx+multithread', when='@3: fabrics=ucx')
-    depends_on('ucx+multithread', when='+thread_multiple@:3 fabrics=ucx')
+    depends_on('ucx+thread_multiple', when='@3: fabrics=ucx')
+    depends_on('ucx+thread_multiple', when='+thread_multiple@:3 fabrics=ucx')
     depends_on('libfabric', when='fabrics=libfabric')
     depends_on('slurm', when='schedulers=slurm')
     depends_on('lsf', when='schedulers=lsf')
