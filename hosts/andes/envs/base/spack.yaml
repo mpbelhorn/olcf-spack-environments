@@ -359,6 +359,7 @@ spack:
   modules:
     enable:
     - lmod
+    - tcl
     lmod:
       core_compilers: [gcc@8.3.1]
       all:
@@ -454,17 +455,43 @@ spack:
           unset: []
       blacklist_implicits: false
       verbose: true
-      whitelist: []
+      whitelist:
+      - imagemagick ^ncurses@6.1%gcc@8.3.1~symlinks+termlib
       blacklist:
       - slurm
       - go-bootstrap
       - openssl
-      hash_length: 7
+      - ^ncurses@6.1%gcc@8.3.1~symlinks+termlib
+      hash_length: 2
       hierarchy: []
+    tcl:
+      hash_length: 3
+      naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
+      blacklist:
+      - slurm
+      - go-bootstrap
+      - openssl
+      all:
+        conflict:
+        - '{name}'
+        suffixes:
+          ^openmpi@4.0.4: openmpi-4.0.4
+          ^python@2.0:2.99: py2
+          ^python@3.0:3.99: py3
+        environment:
+          set:
+            OLCF_${PACKAGE}_ROOT: ${PREFIX}
+          unset: []
+        filter:
+          environment_blacklist: []
+        load: []
+      verbose: false
+      whitelist: []
+      blacklist_implicits: false
   config:
     install_tree: ${ENV_ROOT}/opt
     module_roots:
-      tcl: ${ENV_ROOT}/modules/.tcl/spack
+      tcl: ${ENV_ROOT}/modules/flat
       lmod: ${ENV_ROOT}/modules/spack
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
