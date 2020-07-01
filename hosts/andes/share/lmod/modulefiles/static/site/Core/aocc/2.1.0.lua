@@ -7,10 +7,10 @@ AMD AOCC Compiler
 
 local package = "aocc"
 local version = "2.1.0"
-local prefix = "/autofs/nccs-svm1_sw/andes/aocc/2.1.0/aocc-compiler-2.1.0"
+local prefix = "/sw/andes/aocc/2.1.0/aocc-compiler-2.1.0"
 local platform = 'linux-rhel8-x86_64'
 local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
-local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
+local spack_modules = pathJoin(spack_module_root, platform, 'clang/9.0.0-aocc2.1.0')
 
 whatis("Description: ", "AMD AOCC EPYC Optimizing compiler " .. version)
 
