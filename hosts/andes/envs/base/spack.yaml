@@ -433,6 +433,16 @@ spack:
         load: []
         environment:
           unset: []
+      hdf5:
+        suffixes:
+          hdf5~mpi+szip: sz
+          hdf5~mpi+threadsafe: threadsafe
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       darshan-runtime:
         suffixes:
           hdf5=pre1.10: hdf5pre110
@@ -448,6 +458,16 @@ spack:
       cdo:
         suffixes:
           cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      cairo:
+        suffixes:
+          cairo+X: X
+          cairo+pdf: pdf
         filter:
           environment_blacklist: []
         conflict: []
@@ -495,16 +515,31 @@ spack:
         load: []
         environment:
           unset: []
+      pango:
+        suffixes:
+          pango+X: X
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       blacklist_implicits: false
       verbose: true
       whitelist:
-      - imagemagick ^ncurses@6.1%gcc@8.3.1~symlinks+termlib
+        - "gobject-introspection%gcc@8.3.1 ^cairo~X~pdf"
       blacklist:
+      - python
+      - "py-"
       - slurm
       - go-bootstrap
       - openssl
-      - ^ncurses@6.1%gcc@8.3.1~symlinks+termlib
-      hash_length: 2
+      - "harfbuzz ^cairo~X"
+      - "pango ^cairo~pdf"
+      - "netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip"
+      - "netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe"
+      - "gobject-introspection%gcc@8.3.1"
+      hash_length: 0
       hierarchy: []
     tcl:
       hash_length: 3
