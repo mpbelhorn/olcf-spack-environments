@@ -49,7 +49,8 @@ export FACILITY_SPACK_ROOT="${FACILITY_SPACK_ROOT/#\/autofs\/nccs-svm[0-9]_home[
 # environment and possibly use an envvar-passed environment name in conjunction
 # with the identified host or fallback to using the base env if a specific env is
 # not given.
-export ENV_PREFIX="${ENV_PREFIX:-/sw/andes/spack-envs}"
+FACILITY_ENV_PREFIX="/sw/andes/spack-envs"
+export ENV_PREFIX="${ENV_PREFIX:-${FACILITY_ENV_PREFIX}}"
 export ENV_NAME="${ENV_NAME:-base}"
 
 _THIS_HOST="$(hostname --long \
@@ -88,11 +89,17 @@ cp -dRu --preserve=mode,timestamps \
    "${ENV_LMOD_ROOT}/."
 
 # Setup alternate module environment
-unset $__Init_Default_Modules
-. /sw/andes/init/profile
-module purge
-# FIXME: Need to generalize this across multiple hosts.
-export MODULEPATH="${ENV_LMOD_ROOT}/spack/linux-rhel8-x86_64/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
+if [[ "${ENV_PREFIX:-YY}" == "${FACILITY_ENV_PREFIX:-XX}" ]]; then
+  module reset
+  module purge
+  echo "Using facility module root"
+else
+  module reset
+  module purge
+  echo "Using custom module root '${ENV_LMOD_ROOT}'"
+  # FIXME: Need to generalize this across multiple hosts.
+  export MODULEPATH="${ENV_LMOD_ROOT}/spack/linux-rhel8-x86_64/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
+fi
 
 # FIXME: We should use a different python interpretor or a generic one that is
 # portable across all hosts.
