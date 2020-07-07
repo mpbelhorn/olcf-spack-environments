@@ -174,16 +174,25 @@ spack:
     - matrix:
       - - $general_compute_packages
       - - $pgi_compilers
-      - - arch=linux-rhel8-zen2
-      - - ^libpciaccess@0.13.5%gcc@8.3.1 arch=linux-rhel8-zen
-      - - ^cmake%gcc@8.3.1 arch=linux-rhel8-zen
-      - - ^python%gcc@8.3.1 arch=linux-rhel8-zen
-      - - ^numactl%gcc@8.3.1 arch=linux-rhel8-zen
-      - - ^perl%gcc@8.3.1 arch=linux-rhel8-zen
+      - - arch=linux-rhel8-x86_64
+      - - ^libpciaccess%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^m4%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^python%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^perl%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64
       exclude:
-      - adios2%pgi
-      - mpip%pgi
-      - boost%pgi
+      - adios2
+      - boost
+      - mpip
   specs:
   - $manifest
   #############################################################################
@@ -536,6 +545,7 @@ spack:
       - openssl
       - "harfbuzz ^cairo~X"
       - "pango ^cairo~pdf"
+      - '%gcc@8-pgi'
       - "netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip"
       - "netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe"
       - "gobject-introspection%gcc@8.3.1"
@@ -597,6 +607,21 @@ spack:
   compilers:
   - compiler:
       spec: gcc@8.3.1
+      operating_system: rhel8
+      modules: [gcc/8.3.1]
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+        unset: []
+      flags: {}
+  - compiler:
+      spec: gcc@8-pgi
       operating_system: rhel8
       modules: [gcc/8.3.1]
       paths:
