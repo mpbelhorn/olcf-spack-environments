@@ -44,6 +44,15 @@
 
 ## Andes
 
+- rdma-core with intel compilers:
+  The path set via `buildlib/config.h.in` for `#define ACM_CONF_DIR "@CMAKE_INSTALL_FULL_SYSCONFDIR@/rdma"` can be exceptionally long under spack.
+  For example, in file `ibacm/prov/acmp/src/acmp.c`, the line (274) `static char route_data_file[128] = ACM_CONF_DIR "/ibacm_route.data";` sets a string 134+
+  characters long (ie `len("/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/clang-9.0.1/rdma-core-28.0-2ixcucck7eb4fzbd3t6imjrhz5qahxui/etc/rdma/ibacm_route.data")`).
+
+  This causes the intel comppilers to choke when trying to shove that string
+  into a 128-character array. Patching the source code to allow for a path up to
+  192 characters in length lets the build succeed, but I do not know if this
+  breaks other things.
 - AOCC 2.2.0 (and possibly earlier) has issues with OMP and some expected GCC
   math libraries if using the build of flang provided by the module when
   building with spack. For example, building HDF5:
