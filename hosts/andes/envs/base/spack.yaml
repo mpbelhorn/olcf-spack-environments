@@ -27,6 +27,7 @@ spack:
     - htop
     - tmux
     - cmake
+    - wget
     - go
     - screen
     - vim
