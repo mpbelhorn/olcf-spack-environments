@@ -156,7 +156,9 @@ spack:
       - - $general_compute_packages
       - - $intel_compilers
       - - arch=linux-rhel8-zen2
-      - - ^rdma-core%gcc@8.3.1 arch=linux-rhel8-zen
+      exclude:
+      - boost
+      - fftw
     - matrix:
       - - $general_compute_packages
         - fftw+mpi~openmp
@@ -567,7 +569,10 @@ spack:
         f77: /usr/bin/gfortran
         fc: /usr/bin/gfortran
       extra_rpaths: []
-      environment: {unset: []}
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+        unset: []
       flags: {}
   - compiler:
       spec: gcc@9.3.0
