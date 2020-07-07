@@ -11,8 +11,10 @@ spack:
     - '%gcc@10.1.0'
   - intel_compilers:
     - '%intel@19.0.3'
+  - llvm_compilers:
+    - '%clang@9.0.1'
   - aocc_compilers:
-    - '%clang@9.0.0-aocc2.1.0'
+    - '%clang@10.0.0-aocc2.2.0'
   - pgi_compilers:
     - '%pgi@19.10'
   - all_compilers:
@@ -32,10 +34,6 @@ spack:
     - nano
     - gnuplot +X
     - subversion
-    
-    # - darshan-util
-    # - python@2.7.15
-    # - python@3.7.0
     - mercurial ^python@2.7.15
     - valgrind ~mpi~boost~ubsan
     - ccache
@@ -47,21 +45,22 @@ spack:
     - nco~mpi-deps
     - libfabric fabrics=verbs
     - imagemagick ^ncurses+termlib
-    
-    # - octave
-    # - matlab
     - cuda
-    
-    # - gromacs@2020.2+hwloc~cuda+rdtscp+mpi ^hwloc@:1.999
-    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi ^hwloc@:1.999
-    # - gromacs@2020.2+hwloc~cuda~rdtscp~mpi ^hwloc@:1.999
     - r
     - r@4.0.0
     - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran~mpi
-    - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi ^netcdf-c~mpi~parallel-netcdf
+    - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - vmd
     - sbt
     - spark+hadoop
+    # - darshan-util
+    # - python@2.7.15
+    # - python@3.7.0
+    # - octave
+    # - matlab
+    # - gromacs@2020.2+hwloc~cuda+rdtscp+mpi ^hwloc@:1.999
+    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi ^hwloc@:1.999
+    # - gromacs@2020.2+hwloc~cuda~rdtscp~mpi ^hwloc@:1.999
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -145,7 +144,14 @@ spack:
       - 'magma@2.5.1%gcc@9.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
       - '^netlib-scalapack@:2.1.0%gcc@10.0.0:'
-    - paraview+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi ^ncurses+termlib
+    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-zen
+    - matrix:
+      - - $general_compute_packages
+      - - $llvm_compilers
+      - - arch=linux-rhel8-x86_64
+      - - ^elfutils@0.176
+      exclude:
+      - mpip
     - matrix:
       - - $general_compute_packages
       - - $intel_compilers
@@ -153,9 +159,15 @@ spack:
       - - ^rdma-core%gcc@8.3.1 arch=linux-rhel8-zen
     - matrix:
       - - $general_compute_packages
+        - fftw+mpi~openmp
+        - adios2~zfp
       - - $aocc_compilers
       - - arch=linux-rhel8-x86_64
-      - - ^elfutils%gcc@8.3.1 arch=linux-rhel8-zen
+      - - ^elfutils@0.176
+      exclude:
+      - adios2+zfp
+      - fftw+openmp
+      - mpip
     - matrix:
       - - $general_compute_packages
       - - $pgi_compilers
@@ -187,6 +199,15 @@ spack:
       modules: {}
       providers: {}
       paths: {}
+    ncurses:
+      variants: +termlib
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
     slurm:
       buildable: false
       version: [20-02-0-0]
@@ -194,6 +215,24 @@ spack:
         slurm@20-02-0-0: /usr
       target: []
       compiler: []
+      modules: {}
+      providers: {}
+    elfutils:
+      paths:
+        elfutils@0.176%clang: /usr
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+    m4:
+      version: [1.4.18]
+      paths:
+        m4%intel: /usr
+      target: []
+      compiler: []
+      buildable: true
       modules: {}
       providers: {}
     ucx:
@@ -265,7 +304,7 @@ spack:
       providers: {}
       paths: {}
     fftw:
-      variants: +openmp precision=float,double,long_double
+      variants: precision=float,double,long_double
       buildable: true
       version: []
       target: []
@@ -587,6 +626,38 @@ spack:
         cxx: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang++
         f77: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
         fc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
-      extra_rpaths: [/sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib]
+      extra_rpaths:
+      - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib32
+      - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@10.0.0-aocc2.2.0
+      operating_system: rhel8
+      modules: [aocc/2.2.0]
+      paths:
+        cc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang
+        cxx: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+        # f77: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
+        # fc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
+      extra_rpaths:
+      - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib32
+      - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@9.0.1
+      operating_system: rhel8
+      modules: [llvm/9.0.1]
+      paths:
+        cc: /sw/andes/llvm/9.0.1/9.0.1-0/bin/clang
+        cxx: /sw/andes/llvm/9.0.1/9.0.1-0/bin/clang++
+        f77: /sw/andes/llvm/9.0.1/9.0.1-0/bin/gfortran
+        fc: /sw/andes/llvm/9.0.1/9.0.1-0/bin/gfortran
+      extra_rpaths:
+      - /sw/andes/llvm/9.0.1/9.0.1-0/lib64
+      - /sw/andes/llvm/9.0.1/9.0.1-0/lib
       environment: {}
       flags: {}

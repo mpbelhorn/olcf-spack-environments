@@ -54,5 +54,10 @@ class Ucx(AutotoolsPackage):
                 ['--with-cuda=%s' % spec['cuda'].prefix,
                  '--with-gdrcopy=%s' % spec['gdrcopy'].prefix]
                 )
+        if spec.satisfies('%clang'):
+            if 'aocc' in str(spec.compiler.version):
+                config_args.append('LDFLAGS=-fuse-ld=bfd')
+            else:
+                config_args.append('LDFLAGS=-fuse-ld=lld')
 
         return config_args

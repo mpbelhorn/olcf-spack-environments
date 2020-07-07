@@ -42,6 +42,35 @@
 
 # Build Problems
 
+## Andes
+
+- AOCC 2.2.0 (and possibly earlier) has issues with OMP and some expected GCC
+  math libraries if using the build of flang provided by the module when
+  building with spack. For example, building HDF5:
+  ```
+  /autofs/nccs-svm1_sw/.testing/belhorn/spack/facility-spack/spack/lib/spack/env/clang/flang  -I. -I../../src -I../../fortran/src     -I../../fortran/src -I../../fortran/src -fPIC -c -o fortranlib_test.o fortranlib_test.F90
+    FCLD     fortranlib_test
+  ld.lld: error: undefined symbol: fabsq
+  >>> referenced by tf_gen.F90:172
+  >>>               tf_gen.o:(th5_misc_gen_real_eq_kind_16_) in archive ./.libs/libh5test_fortran.a
+  >>> referenced by tf_gen.F90:172
+  >>>               tf_gen.o:(th5_misc_gen_real_eq_kind_16_) in archive ./.libs/libh5test_fortran.a
+  >>> referenced by tf_gen.F90:172
+  >>>               tf_gen.o:(th5_misc_gen_real_eq_kind_16_) in archive ./.libs/libh5test_fortran.a
+  >>> did you mean: fabsf
+  >>> defined in: /lib64/libm.so.6
+
+  ld.lld: error: undefined symbol: fmaxq
+  >>> referenced by tf_gen.F90:172
+  >>>               tf_gen.o:(th5_misc_gen_real_eq_kind_16_) in archive ./.libs/libh5test_fortran.a
+  clang-10: error: linker command failed with exit code 1 (use -v to see invocation)
+  make[2]: *** [Makefile:931: fortranlib_test] Error 1
+  make[2]: Leaving directory '/run/user/12126/belhorn/spack-stage-hdf5-1.10.6-gt27bq6cih6futelz3i3tekfwylx52t7/spack-src/fortran/test'
+  make[1]: *** [Makefile:820: all-recursive] Error 1
+  make[1]: Leaving directory '/run/user/12126/belhorn/spack-stage-hdf5-1.10.6-gt27bq6cih6futelz3i3tekfwylx52t7/spack-src/fortran'
+  make: *** [Makefile:660: all-recursive] Error 1
+  ```
+
 ## Peak
 
 - raja@0.5.3%gcc@8.1.1 on peak: `__ieee128` C++ error.
