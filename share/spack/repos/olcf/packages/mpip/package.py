@@ -27,10 +27,9 @@ class Mpip(AutotoolsPackage):
         config_args.append("--with-cc=%s" % self.spec['mpi'].mpicc)
         config_args.append("--with-cxx=%s" % self.spec['mpi'].mpicxx)
 
-        if self.spec.satisfies('%intel'):
-            config_args += [
-                'CFLAGS={0}'.format(self.compiler.pic_flag),
-                'CXXFLAGS={0}'.format(self.compiler.pic_flag),
-                'FCFLAGS={0}'.format(self.compiler.pic_flag)]
+        config_args += [
+            'CFLAGS={0}'.format(self.compiler.pic_flag),
+            'CXXFLAGS={0}'.format(self.compiler.pic_flag),
+            'FCFLAGS={0}'.format(self.compiler.pic_flag)]
 
         return config_args
