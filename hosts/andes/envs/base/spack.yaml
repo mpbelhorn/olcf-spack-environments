@@ -195,6 +195,7 @@ spack:
       exclude:
       - adios2
       - boost
+      - hypre
       - mpip
   specs:
   - $manifest
