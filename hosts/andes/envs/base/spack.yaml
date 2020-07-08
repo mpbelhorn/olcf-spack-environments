@@ -146,6 +146,8 @@ spack:
       - - $general_compute_packages
       - - $gcc_compilers
       exclude:
+      - 'adios2%gcc@10.0.0:'
+      - 'mpip%gcc@10.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
     - matrix:
       - - $gcc_only_compute_packages
@@ -202,6 +204,7 @@ spack:
       - boost
       - hypre
       - mpip
+      - openblas
   specs:
   - $manifest
   #############################################################################
