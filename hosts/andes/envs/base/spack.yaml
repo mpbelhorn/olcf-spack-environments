@@ -90,32 +90,33 @@ spack:
     - nco
     - magma
   - e4s:
+    ## Already in general compute packages list
+    # - openmpi
+    # - hypre
+    # - hdf5
+    # - parallel-netcdf
+    # - adios2
+    # - adios
+    # - darshan-runtime
+    # - darshan-util
+    # - raja
+    - zfp
+    - sz
+    - ninja
+    - qthreads
     - openpmd-api
-    - py-libensemble^python@3.7.3
-    - hypre
     - mfem
-    - trilinos@12.14.1+dtk+intrepid2+shards
     - sundials
     - strumpack
     - superlu-dist
     - superlu
+    - trilinos@12.14.1+dtk+intrepid2+shards
     - tasmanian
     - mercury
-    - hdf5
-    - adios2
-    - adios
-    - darshan-runtime
-    - darshan-util
     - veloc
     - scr
-    - parallel-netcdf
-    - qthreads
-    - papyrus@develop
     - bolt
-    - raja
     - upcxx
-    - kokkos+openmp
-    - openmpi
     - umpire
     - libquo
     - globalarrays
@@ -126,13 +127,16 @@ spack:
     - gotcha
     - caliper
     - papi
-    - py-jupyterhub
-    - zfp
-    - sz
     - libnrm
     - rempi
-    - ninja
+    - kokkos+openmp
     - kokkos-kernels
+    ## Excluded E4S packages ------
+    ### No packages should be pinned @develop
+    # - papyrus@develop
+    ### Python extensions.
+    # - py-jupyterhub
+    # - 'py-libensemble^python@3.7.3:'
   - manifest:
     - matrix:
       - - $core_packages
