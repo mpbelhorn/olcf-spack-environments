@@ -1,4 +1,4 @@
-# OLCF Peak Spack Environment
+# OLCF Andes Spack Environment
 
 spack:
   #############################################################################
@@ -66,12 +66,6 @@ spack:
     # - vtk~mpi+qt
     # - vtk+mpi~qt
     # - vtk+mpi+qt
-  - gcc_only_compute_packages:
-    - raja
-    - magma
-    - nco
-    - openblas threads=none
-    - openblas threads=openmp
   - general_compute_packages:
     - openmpi
     - netlib-lapack
@@ -89,6 +83,12 @@ spack:
     - hypre
     - mpip
     - adios2
+  - gcc_only_compute_packages:
+    # - darshan-runtime
+    - openblas threads=openmp
+    - raja
+    - nco
+    - magma
   - e4s:
     - openpmd-api
     - py-libensemble^python@3.7.3
@@ -139,12 +139,15 @@ spack:
       - - $core_compiler
     - matrix:
       - - $general_compute_packages
-        - $gcc_only_compute_packages
+      - - $gcc_compilers
+      exclude:
+      - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
+    - matrix:
+      - - $gcc_only_compute_packages
       - - $gcc_compilers
       exclude:
       - 'magma@2.5.1%gcc@9.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
-      - '^netlib-scalapack@:2.1.0%gcc@10.0.0:'
     - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-zen
     - matrix:
       - - $general_compute_packages
