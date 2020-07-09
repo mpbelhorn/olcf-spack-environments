@@ -129,6 +129,14 @@
    "spec": "spark%gcc@8.3.1+hadoop arch=linux-rhel8-zen"
   },
   {
+   "hash": "ezjrj6mzp6lpwjx4jtcuttquxzmnu2kk",
+   "spec": "python@2.7.15%gcc@8.3.1 arch=linux-rhel8-zen"
+  },
+  {
+   "hash": "hyrbwtgcg4hvx2s657eh6gmti7rwux3l",
+   "spec": "python%gcc@8.3.1 arch=linux-rhel8-zen"
+  },
+  {
    "hash": "jxl652x4ljindvhhb5wyszghewujkqfm",
    "spec": "openmpi%gcc@8.3.1 arch=linux-rhel8-zen"
   },
@@ -357,6 +365,10 @@
    "spec": "paraview%gcc@8.3.1+hdf5+mpi+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-zen"
   },
   {
+   "hash": "e4nuhp4skpb2nz66iik4gohbug4rqrkv",
+   "spec": "octave%gcc@8.3.1 arch=linux-rhel8-zen ^arpack-ng~mpi ^fftw~mpi ^gnuplot+X ^hdf5~mpi"
+  },
+  {
    "hash": "4n4ydorr7q7it2jr3zo2vh7ir5rkohya",
    "spec": "openmpi%clang@9.0.1 arch=linux-rhel8-x86_64 ^elfutils@0.176"
   },
@@ -583,6 +595,14 @@
   {
    "hash": "kcenczx3oery4py6nbx2bf7hq2jtfist",
    "spec": "parallel-io%pgi@19.10 arch=linux-rhel8-x86_64 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi arch=linux-rhel8-x86_64 ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi arch=linux-rhel8-x86_64 ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "wewjqne7qtjnmrksxp7jh3q7igm3znwi",
+   "spec": "gromacs@2020.2%gcc@8.3.1~cuda+hwloc~mpi~rdtscp arch=linux-rhel8-zen ^hwloc@:1.999"
+  },
+  {
+   "hash": "34byq7yk62nehe2ropgu64wb6vaphhnt",
+   "spec": "gromacs@2020.2%gcc@8.3.1~cuda+hwloc+mpi+rdtscp arch=linux-rhel8-zen ^hwloc@:1.999"
   }
  ],
  "concrete_specs": {
@@ -32116,6 +32136,2008 @@
     "hash": "3r2v2nk7dqkoh6au45ka6qrd53uzh4vn"
    }
   },
+  "e4nuhp4skpb2nz66iik4gohbug4rqrkv": {
+   "octave": {
+    "version": "5.2.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "arpack": true,
+     "curl": true,
+     "fftw": true,
+     "fltk": false,
+     "fontconfig": true,
+     "freetype": true,
+     "gl2ps": false,
+     "glpk": true,
+     "gnuplot": true,
+     "hdf5": true,
+     "jdk": false,
+     "llvm": false,
+     "magick": true,
+     "opengl": true,
+     "qhull": true,
+     "qrupdate": true,
+     "qscintilla": false,
+     "qt": true,
+     "readline": true,
+     "suitesparse": true,
+     "zlib": true,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "arpack-ng": {
+      "hash": "lvkqr6yjmdsdcsrtb6ytpkrhzpp5mxz3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "curl": {
+      "hash": "q4uiclqsm5wp4gm5duja4scgwku5nhl3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "fftw": {
+      "hash": "yirv2mux3nbsyc3u4ea2m6pcthbkqgyr",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "fontconfig": {
+      "hash": "crcpoagb4jtwh3tfplgnjpup3xjzthbk",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "freetype": {
+      "hash": "hxbore65g6aggpzosc4ktc6kphbpp33o",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "glpk": {
+      "hash": "myuwtw634rrhosj7d5xrzwf32jbkagvx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "gnuplot": {
+      "hash": "vr46fknd5mpoj3y6fyo6trkmf7yc7drb",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "hdf5": {
+      "hash": "3hurujdegi4shpipieucliflsudmtgpk",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "imagemagick": {
+      "hash": "fbziqqbetecwqqrolvivtrbe4tuw7guh",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "openblas": {
+      "hash": "qw2uib6uxvsh4jfmu77k72u4psdwplad",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pcre": {
+      "hash": "nrtjovcslaqglz52225ohtyo22ewkm7c",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "qhull": {
+      "hash": "xq2l75gqsfyexijbzr3jxkzviroicxjp",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "qrupdate": {
+      "hash": "s7fjku26mui3hg3o7lo27k5h7fjit6d7",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "qt": {
+      "hash": "kbgoafspt53po3nzsax46qrtj2ivnqdq",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "readline": {
+      "hash": "b4bwh4iy5u47vmadnagzsiwvzvcw7eyr",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "suite-sparse": {
+      "hash": "jfnsqijrxid2gtgsdggm3siixzpo2wfx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "ycvigzupvsonkwhztwne3rzqtadio3sl",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "6um6e73rwlejzpgfhegem3y3onrbbeet"
+   }
+  },
+  "lvkqr6yjmdsdcsrtb6ytpkrhzpp5mxz3": {
+   "arpack-ng": {
+    "version": "3.7.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "shared": true,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     },
+     "openblas": {
+      "hash": "qw2uib6uxvsh4jfmu77k72u4psdwplad",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "s4letjbgn3ibz4wt6zmxbxa3gbxki4lv"
+   }
+  },
+  "yirv2mux3nbsyc3u4ea2m6pcthbkqgyr": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "yirv2mux3nbsyc3u4ea2m6pcthbkqgyr"
+   }
+  },
+  "myuwtw634rrhosj7d5xrzwf32jbkagvx": {
+   "glpk": {
+    "version": "4.65",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "gmp": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "myuwtw634rrhosj7d5xrzwf32jbkagvx"
+   }
+  },
+  "vr46fknd5mpoj3y6fyo6trkmf7yc7drb": {
+   "gnuplot": {
+    "version": "5.2.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "X": true,
+     "cairo": true,
+     "gd": true,
+     "libcerf": true,
+     "patches": [
+      "ad89f23815fd925889ae78009ba22e6f9e4b12fea389280040cef519deafb052"
+     ],
+     "pbm": false,
+     "qt": false,
+     "wx": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "ad89f23815fd925889ae78009ba22e6f9e4b12fea389280040cef519deafb052"
+    ],
+    "dependencies": {
+     "cairo": {
+      "hash": "f5tlgwoz6u5t3y4vf6zwnjlpivdowcf6",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libcerf": {
+      "hash": "jccng7t56rdw44icmgvlihwtbfk6a74w",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libgd": {
+      "hash": "wkuj4gfhgzwsofuveiho4jgudrjoqmrt",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libiconv": {
+      "hash": "k4uqlcroyotcnslrhqvgotolnuhk2ccg",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libx11": {
+      "hash": "pylvpb5usw2bvzjbezxpttfnlvebplf3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxpm": {
+      "hash": "st7kykrxmacdfknqrdgl5q4wocxgdpzh",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pango": {
+      "hash": "nqdn47i7uv7luyahp2ldql6lpluso654",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "readline": {
+      "hash": "b4bwh4iy5u47vmadnagzsiwvzvcw7eyr",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "y2pvhf3jpkbuj6bcsi6p4bt5uc5hmh36"
+   }
+  },
+  "xq2l75gqsfyexijbzr3jxkzviroicxjp": {
+   "qhull": {
+    "version": "2015.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "patches": [
+      "10ddc62a1600b0ede23fb0502e29dca389d18689fd8dfe7a849e3a989c0e607e"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "10ddc62a1600b0ede23fb0502e29dca389d18689fd8dfe7a849e3a989c0e607e"
+    ],
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "sxn4zubghkj3oxebamqewdrsrwvdxpaq"
+   }
+  },
+  "s7fjku26mui3hg3o7lo27k5h7fjit6d7": {
+   "qrupdate": {
+    "version": "1.1.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openblas": {
+      "hash": "qw2uib6uxvsh4jfmu77k72u4psdwplad",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "s7fjku26mui3hg3o7lo27k5h7fjit6d7"
+   }
+  },
+  "kbgoafspt53po3nzsax46qrtj2ivnqdq": {
+   "qt": {
+    "version": "5.14.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "dbus": false,
+     "examples": false,
+     "framework": false,
+     "freetype": "spack",
+     "gtk": false,
+     "opengl": true,
+     "patches": [
+      "7f34d48d2faaa108dc3fcc47187af1ccd1d37ee0f931b42597b820f03a99864c"
+     ],
+     "phonon": false,
+     "shared": true,
+     "sql": true,
+     "ssl": false,
+     "tools": true,
+     "webkit": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "7f34d48d2faaa108dc3fcc47187af1ccd1d37ee0f931b42597b820f03a99864c"
+    ],
+    "dependencies": {
+     "double-conversion": {
+      "hash": "36sw7a7ey45m5cy7gt52ezx67bga2ax5",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "fontconfig": {
+      "hash": "crcpoagb4jtwh3tfplgnjpup3xjzthbk",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "freetype": {
+      "hash": "hxbore65g6aggpzosc4ktc6kphbpp33o",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "glib": {
+      "hash": "h2k4qt2y4gbsb6o622hpvsvntr6oduri",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "harfbuzz": {
+      "hash": "kjcwezjm2t4f3l64blrhn5gtto3bxkqj",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "icu4c": {
+      "hash": "yzkspzkdjppvn6az5gjtclxrc6wumtgv",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libjpeg-turbo": {
+      "hash": "k6e2yptxpdqhbpzdazfmwrvsat7txktx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libmng": {
+      "hash": "fumecvc2l2qnp2iowuqqnp3jvocydt4b",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libpng": {
+      "hash": "i76wihrqlkxgesabjqdsj55x7giitx7m",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libtiff": {
+      "hash": "4hsopd6pkup2i2q55wwum6v3xfmmv7ii",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libuuid": {
+      "hash": "gxy7f2wphq6dxfsmjyztjb5sr6znba2n",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libx11": {
+      "hash": "pylvpb5usw2bvzjbezxpttfnlvebplf3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxext": {
+      "hash": "7zr2eqxcpfnn3nwt4jy3bhtmg77aqnvw",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxkbcommon": {
+      "hash": "dowqbv6fey44dmdsjxy2mbo7l75heaxk",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxml2": {
+      "hash": "skcls6ndeemymcukanpi243dpjxidrxh",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxrender": {
+      "hash": "57z2mz4byg5gkx24onfiydtmkhnodwpu",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "mesa": {
+      "hash": "vdjpre2bb6iltqot7w27f35bxnzuwwow",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pcre2": {
+      "hash": "s23josd3gnwt4lcx2cnzf4fyaacghicd",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "hyrbwtgcg4hvx2s657eh6gmti7rwux3l",
+      "type": [
+       "build"
+      ]
+     },
+     "sqlite": {
+      "hash": "a4rtqlpkwpeyucvrbuhjfg7sgbguzew6",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "xcb-util-image": {
+      "hash": "hyl776cumzcvn4eahhs6mq3usninj6q4",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xcb-util-keysyms": {
+      "hash": "qo7hwzow7wmhtbqai2ei7hpaoty45n7q",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xcb-util-renderutil": {
+      "hash": "run2xilw5iycfybvq7zbcelgo75yfvkd",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xcb-util-wm": {
+      "hash": "hffqyueyjnsym6rkowwxxywbq2wyes7v",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "ycvigzupvsonkwhztwne3rzqtadio3sl",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "7gcaj64nokfcfhdla25zi57icgh4ydx4"
+   }
+  },
+  "36sw7a7ey45m5cy7gt52ezx67bga2ax5": {
+   "double-conversion": {
+    "version": "2.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "uolpja4sc7du3zklranac4bctycnwe3v"
+   }
+  },
+  "fumecvc2l2qnp2iowuqqnp3jvocydt4b": {
+   "libmng": {
+    "version": "2.0.3",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     },
+     "lcms": {
+      "hash": "wghr4ltsp7wavmc7rpgpcfkzxh5i2oa3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libjpeg-turbo": {
+      "hash": "k6e2yptxpdqhbpzdazfmwrvsat7txktx",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "ycvigzupvsonkwhztwne3rzqtadio3sl",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "yix3ookyhltnas2wx2bqarx7lmd7j2vs"
+   }
+  },
+  "dowqbv6fey44dmdsjxy2mbo7l75heaxk": {
+   "libxkbcommon": {
+    "version": "0.8.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "bison": {
+      "hash": "2s2p4qtlngqmtl5zabseacsllmd77562",
+      "type": [
+       "build"
+      ]
+     },
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "3ycj4fzjtxzxe4r3oqmce3syzwruhnzq",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xkbdata": {
+      "hash": "oktdrrsksims5lmq6zsxqbcoq4qwincr",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "kcuesqyfy6pgugulae7kdvnrv6beqeim"
+   }
+  },
+  "oktdrrsksims5lmq6zsxqbcoq4qwincr": {
+   "xkbdata": {
+    "version": "1.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "xkbcomp": {
+      "hash": "4av6ie3cwqitm3bv5i4plda7sydufoff",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "v7zokvye3xmvsa7tyjm2mzeomlfwieoe"
+   }
+  },
+  "4av6ie3cwqitm3bv5i4plda7sydufoff": {
+   "xkbcomp": {
+    "version": "1.3.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "bison": {
+      "hash": "2s2p4qtlngqmtl5zabseacsllmd77562",
+      "type": [
+       "build"
+      ]
+     },
+     "libx11": {
+      "hash": "pylvpb5usw2bvzjbezxpttfnlvebplf3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libxkbfile": {
+      "hash": "rmj4hjtprosc7ro2p4utbttclxjs3rpp",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "3ycj4fzjtxzxe4r3oqmce3syzwruhnzq",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "bdvpqw4jkbxg3dt2qevusfr34pskxzeg",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "rai6tgye44xekjky7u6zmv3qlnbs7max"
+   }
+  },
+  "rmj4hjtprosc7ro2p4utbttclxjs3rpp": {
+   "libxkbfile": {
+    "version": "1.0.9",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "kbproto": {
+      "hash": "7pfbtojp2inhwnowv4e3rpk6tcdqaeov",
+      "type": [
+       "build"
+      ]
+     },
+     "libx11": {
+      "hash": "pylvpb5usw2bvzjbezxpttfnlvebplf3",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "util-macros": {
+      "hash": "3ycj4fzjtxzxe4r3oqmce3syzwruhnzq",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "rsgg4qsawgyrg7jdi5dcp4dbkcvefakr"
+   }
+  },
+  "hyl776cumzcvn4eahhs6mq3usninj6q4": {
+   "xcb-util-image": {
+    "version": "0.4.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "xcb-util": {
+      "hash": "o4243cabbrsc4imi72imafpgtfc6db6h",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "xproto": {
+      "hash": "bdvpqw4jkbxg3dt2qevusfr34pskxzeg",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "i6qfgyzapguex5pj5nsizv3ho627a4n4"
+   }
+  },
+  "o4243cabbrsc4imi72imafpgtfc6db6h": {
+   "xcb-util": {
+    "version": "0.4.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "wzubav2ckonrlmnohkbu4qp5ieeog7p4"
+   }
+  },
+  "qo7hwzow7wmhtbqai2ei7hpaoty45n7q": {
+   "xcb-util-keysyms": {
+    "version": "0.4.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     },
+     "xproto": {
+      "hash": "bdvpqw4jkbxg3dt2qevusfr34pskxzeg",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "yatlwfoitdmwuffsxsi57tqu6kztsaqp"
+   }
+  },
+  "run2xilw5iycfybvq7zbcelgo75yfvkd": {
+   "xcb-util-renderutil": {
+    "version": "0.3.9",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "yq2wmc3xaci6v5hfydpcoxr3vpev54ol"
+   }
+  },
+  "hffqyueyjnsym6rkowwxxywbq2wyes7v": {
+   "xcb-util-wm": {
+    "version": "0.4.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libxcb": {
+      "hash": "3s4t7youdqiugsc7klovih73lkr5tcgs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "m4": {
+      "hash": "tazcqiroew5um3tpyqwmuhe2qmax5lwa",
+      "type": [
+       "build"
+      ]
+     },
+     "pkgconf": {
+      "hash": "odffbk44cd4c6n6oxnsdeg274ggwtw77",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "vmi3dkuxibua7g2px6ohl5acfuaiucpz"
+   }
+  },
+  "jfnsqijrxid2gtgsdggm3siixzpo2wfx": {
+   "suite-sparse": {
+    "version": "5.6.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cuda": false,
+     "openmp": false,
+     "pic": true,
+     "tbb": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     },
+     "m4": {
+      "hash": "tazcqiroew5um3tpyqwmuhe2qmax5lwa",
+      "type": [
+       "build"
+      ]
+     },
+     "metis": {
+      "hash": "5tb447ic3cv6wsa66epcvpky4xk7n7fv",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "openblas": {
+      "hash": "qw2uib6uxvsh4jfmu77k72u4psdwplad",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "q36ir5e6wo25pxftmqdtqfuntvpew7gj"
+   }
+  },
+  "5tb447ic3cv6wsa66epcvpky4xk7n7fv": {
+   "metis": {
+    "version": "5.1.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "Release",
+     "gdb": false,
+     "int64": false,
+     "patches": [
+      "4991da938c1d3a1d3dea78e49bbebecba00273f98df2a656e38b83d55b281da1",
+      "b1225da886605ea558db7ac08dd8054742ea5afe5ed61ad4d0fe7a495b1270d2"
+     ],
+     "real64": false,
+     "shared": true,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "4991da938c1d3a1d3dea78e49bbebecba00273f98df2a656e38b83d55b281da1",
+     "b1225da886605ea558db7ac08dd8054742ea5afe5ed61ad4d0fe7a495b1270d2"
+    ],
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "isvufrvlyaqm7bly6mx6pemckftdx5r5"
+   }
+  },
   "4n4ydorr7q7it2jr3zo2vh7ir5rkohya": {
    "openmpi": {
     "version": "4.0.4",
@@ -44526,6 +46548,274 @@
      }
     },
     "hash": "3vwckvyjrieyizd3shakqkxgeyi6fsw2"
+   }
+  },
+  "wewjqne7qtjnmrksxp7jh3q7igm3znwi": {
+   "gromacs": {
+    "version": "2020.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "cuda": false,
+     "debug": false,
+     "double": false,
+     "double_precision": false,
+     "hwloc": true,
+     "mdrun_only": false,
+     "mpi": false,
+     "openmp": true,
+     "plumed": false,
+     "rdtscp": false,
+     "shared": true,
+     "simd": "auto",
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     },
+     "fftw": {
+      "hash": "yirv2mux3nbsyc3u4ea2m6pcthbkqgyr",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "hwloc": {
+      "hash": "jife7cgnbzyjrrggywhieuuquql3mmex",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "wwg73dvt3gauskirttsn3yqp67gvgnf3"
+   }
+  },
+  "34byq7yk62nehe2ropgu64wb6vaphhnt": {
+   "gromacs": {
+    "version": "2020.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "cuda": false,
+     "debug": false,
+     "double": false,
+     "double_precision": false,
+     "hwloc": true,
+     "mdrun_only": false,
+     "mpi": true,
+     "openmp": true,
+     "plumed": false,
+     "rdtscp": true,
+     "shared": true,
+     "simd": "auto",
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "jbzruj2gjbwb5nvlkh4hkio75ptei5rk",
+      "type": [
+       "build"
+      ]
+     },
+     "fftw": {
+      "hash": "ikcd7kgqqejsvyb4arzn4wxl73any3td",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "hwloc": {
+      "hash": "jife7cgnbzyjrrggywhieuuquql3mmex",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "openmpi": {
+      "hash": "jxl652x4ljindvhhb5wyszghewujkqfm",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "aw5hbkadoqz5mtllgalcily5bm4j7ebm"
+   }
+  },
+  "ikcd7kgqqejsvyb4arzn4wxl73any3td": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": {
+      "name": "zen",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "x86_64"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "jxl652x4ljindvhhb5wyszghewujkqfm",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "pq4v5yaecuqblbpkzsuw5ihjqma3pvoe"
    }
   }
  }

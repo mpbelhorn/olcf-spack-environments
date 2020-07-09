@@ -54,14 +54,10 @@ spack:
     - vmd
     - sbt
     - spark+hadoop
+    - python@2.7.15
+    - python
     # - darshan-util
-    # - python@2.7.15
-    # - python@3.7.0
-    # - octave
     # - matlab
-    # - gromacs@2020.2+hwloc~cuda+rdtscp+mpi ^hwloc@:1.999
-    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi ^hwloc@:1.999
-    # - gromacs@2020.2+hwloc~cuda~rdtscp~mpi ^hwloc@:1.999
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -85,12 +81,14 @@ spack:
     - mpip
     - adios2
   - gcc_only_compute_packages:
+    
     # - darshan-runtime
     - openblas threads=openmp
     - raja
     - nco
     - magma
   - e4s:
+    
     ## Already in general compute packages list
     # - openmpi
     # - hypre
@@ -156,6 +154,10 @@ spack:
       - 'magma@2.5.1%gcc@9.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
     - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-zen
+    - octave%gcc@8.3.1 arch=linux-rhel8-zen ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
+    - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1 arch=linux-rhel8-zen ^hwloc@:1.999
+    - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-zen ^hwloc@:1.999
+    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-zen ^hwloc@:1.999
     - matrix:
       - - $general_compute_packages
       - - $llvm_compilers
@@ -217,6 +219,15 @@ spack:
     openmpi:
       version: [4.0.4]
       variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx schedulers=slurm
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
+    qt:
+      variants: ~ssl
+      version: []
       target: []
       compiler: []
       buildable: true
@@ -548,19 +559,19 @@ spack:
       blacklist_implicits: false
       verbose: true
       whitelist:
-        - "gobject-introspection%gcc@8.3.1 ^cairo~X~pdf"
+      - gobject-introspection%gcc@8.3.1 ^cairo~X~pdf
       blacklist:
       - python
-      - "py-"
+      - py-
       - slurm
       - go-bootstrap
       - openssl
-      - "harfbuzz ^cairo~X"
-      - "pango ^cairo~pdf"
+      - harfbuzz ^cairo~X
+      - pango ^cairo~pdf
       - '%gcc@8-pgi'
-      - "netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip"
-      - "netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe"
-      - "gobject-introspection%gcc@8.3.1"
+      - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip
+      - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe
+      - gobject-introspection%gcc@8.3.1
       hash_length: 0
       hierarchy: []
     tcl:
@@ -718,8 +729,6 @@ spack:
         cxx: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang++
         f77: /usr/bin/gfortran
         fc: /usr/bin/gfortran
-        # f77: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
-        # fc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
       extra_rpaths:
       - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib32
       - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib
