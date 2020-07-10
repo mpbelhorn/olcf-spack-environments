@@ -107,6 +107,10 @@ fi
 # module load python/3.7.0-anaconda3-5.3.0
 
 export PYTHONDONTWRITEBYTECODE=1
+# FIXME - ensure spack instance is checked out to appropriate commit
+# WARNING - checking out new branches of spack while other instances are using
+#           it will certainly cause problems. Need a way to lock the spack repo
+#           while it is in use.
 source "${FACILITY_SPACK_ROOT}/spack/share/spack/setup-env.sh"
 echo "Spack initialized for ${_THIS_HOST:-Unknown host} at ${SPACK_ROOT}"
 spack env activate -d "${_HOST_CONF_DIR}/envs/${ENV_NAME}"

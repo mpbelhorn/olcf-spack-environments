@@ -42,6 +42,11 @@
 
 # Build Problems
 
+## Spack bugs
+
+- Changes to a preferred package version in an environment does not get applied
+    when concretizing matrix specs without `spack concretize -f`.
+
 ## Andes
 
 - rdma-core with intel compilers:

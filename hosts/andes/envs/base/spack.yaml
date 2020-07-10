@@ -35,7 +35,7 @@ spack:
     - nano
     - gnuplot +X
     - subversion
-    - mercurial ^python@2.7.15
+    - mercurial
     - valgrind ~mpi~boost~ubsan
     - ccache
     - papi
@@ -155,9 +155,9 @@ spack:
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
     - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-x86_64
     - octave%gcc@8.3.1 arch=linux-rhel8-x86_64 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
-    - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1 arch=linux-rhel8-x86_64 ^hwloc@:1.999
-    - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-x86_64 ^hwloc@:1.999
-    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-x86_64 ^hwloc@:1.999
+    - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1
+    - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1
+    - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1
     - matrix:
       - - $general_compute_packages
       - - $llvm_compilers
@@ -217,118 +217,126 @@ spack:
   #############################################################################
   packages:
     openmpi:
-      version: [4.0.4]
       variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx schedulers=slurm
-      target: []
-      compiler: []
       buildable: true
-      modules: {}
+      version: [4.0.4]
+      target: []
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
+    cuda:
+      buildable: true
+      version: [11.0.2]
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
     qt:
       variants: ~ssl
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     ncurses:
       variants: +termlib
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     slurm:
       buildable: false
       version: [20-02-0-0]
+      target: []
+      providers: {}
       paths:
         slurm@20-02-0-0: /usr
-      target: []
-      compiler: []
       modules: {}
-      providers: {}
+      compiler: []
     elfutils:
-      paths:
-        elfutils@0.176%clang: /usr
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
+      paths:
+        elfutils@0.176%clang: /usr
+      modules: {}
+      compiler: []
     m4:
+      buildable: true
       version: [1.4.18]
+      target: []
+      providers: {}
       paths:
         m4%intel: /usr
-      target: []
-      compiler: []
-      buildable: true
       modules: {}
-      providers: {}
+      compiler: []
     ucx:
+      buildable: true
       version: [1.8.0]
       target: []
-      compiler: []
-      modules: {}
       providers: {}
-      buildable: true
       paths: {}
+      modules: {}
+      compiler: []
     rdma-core:
+      buildable: true
       version: [28.0]
       target: []
-      compiler: []
-      modules: {}
       providers: {}
-      buildable: true
       paths: {}
+      modules: {}
+      compiler: []
     libfabric:
+      buildable: true
       version: [1.8.0]
       target: []
-      compiler: []
-      modules: {}
       providers: {}
-      buildable: true
       paths: {}
+      modules: {}
+      compiler: []
     openssl:
       buildable: false
       version: [1.1.1]
-      paths:
-        openssl@1.1.1: /usr
       target: []
       providers: {}
+      paths:
+        openssl@1.1.1: /usr
       modules: {}
       compiler: []
     octave:
       variants: +magick+arpack+curl+fftw+fontconfig+freetype+glpk+gnuplot+hdf5+opengl+qhull+qrupdate+qt+readline+suitesparse+zlib
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     libtool:
+      buildable: true
       version: [2.4.6]
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     r:
       variants: ~X
+      buildable: true
       version: []
       target: []
-      compiler: []
-      buildable: true
-      modules: {}
       providers: {}
       paths: {}
+      modules: {}
+      compiler: []
     fftw:
       variants: precision=float,double,long_double
       buildable: true
@@ -382,14 +390,6 @@ spack:
       paths: {}
       modules: {}
       compiler: []
-    netcdf-fortran:
-      buildable: true
-      target: []
-      compiler: []
-      modules: {}
-      providers: {}
-      paths: {}
-      version: []
     parallel-netcdf:
       variants: +cxx+fortran+fpic
       buildable: true
@@ -409,17 +409,17 @@ spack:
       modules: {}
       compiler: []
     all:
-      compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
+      buildable: true
+      version: []
+      target: [x86_64]
       providers:
         mpi: [olcf.openmpi]
         lapack: [openblas, mkl]
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
-      buildable: true
-      version: []
-      target: [x86_64]
       paths: {}
       modules: {}
+      compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
   view: false
   modules:
     enable:
@@ -431,6 +431,8 @@ spack:
         suffixes:
           ^python@2.0:2.99: py2
           ^python@3.0:3.99: py3
+          ^cuda@10.2.89: cuda10
+          ^cuda@11.0.2: cuda11
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
@@ -459,6 +461,12 @@ spack:
       fftw:
         suffixes:
           fftw+openmp: omp
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       hdf5:
         suffixes:
           hdf5~mpi+szip: sz
@@ -570,6 +578,8 @@ spack:
       - gnuplot%gcc@8.3.1 ^pango+X
       hash_length: 0
       hierarchy: []
+      projections: {}
+      core_specs: []
     tcl:
       hash_length: 3
       naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
@@ -594,6 +604,7 @@ spack:
       verbose: false
       whitelist: []
       blacklist_implicits: false
+      projections: {}
   config:
     install_tree: ${ENV_ROOT}/opt
     module_roots:
@@ -635,8 +646,6 @@ spack:
         fc: /usr/bin/gfortran
       extra_rpaths: []
       environment:
-        # append_path:
-        #   PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
       flags: {}
   - compiler:
