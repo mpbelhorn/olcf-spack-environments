@@ -4,9 +4,9 @@ spack:
   #############################################################################
   definitions:
   - core_compiler:
-    - '%gcc@8.3.1 arch=linux-rhel8-zen'
+    - '%gcc@8.3.1 arch=linux-rhel8-x86_64'
   - gcc_compilers:
-    - '%gcc@8.3.1 arch=linux-rhel8-zen'
+    - '%gcc@8.3.1 arch=linux-rhel8-x86_64'
     - '%gcc@9.3.0'
     - '%gcc@10.1.0'
   - intel_compilers:
@@ -153,11 +153,11 @@ spack:
       exclude:
       - 'magma@2.5.1%gcc@9.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
-    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-zen
-    - octave%gcc@8.3.1 arch=linux-rhel8-zen ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
-    - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1 arch=linux-rhel8-zen ^hwloc@:1.999
-    - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-zen ^hwloc@:1.999
-    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-zen ^hwloc@:1.999
+    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-x86_64
+    - octave%gcc@8.3.1 arch=linux-rhel8-x86_64 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
+    - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1 arch=linux-rhel8-x86_64 ^hwloc@:1.999
+    - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-x86_64 ^hwloc@:1.999
+    # - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 arch=linux-rhel8-x86_64 ^hwloc@:1.999
     - matrix:
       - - $general_compute_packages
       - - $llvm_compilers
@@ -168,7 +168,7 @@ spack:
     - matrix:
       - - $general_compute_packages
       - - $intel_compilers
-      - - arch=linux-rhel8-zen2
+      - - arch=linux-rhel8-x86_64
       exclude:
       - boost
       - fftw
@@ -320,15 +320,6 @@ spack:
       modules: {}
       providers: {}
       paths: {}
-    openblas:
-      buildable: true
-      variants: cpu_target=ZEN
-      version: []
-      target: []
-      providers: {}
-      paths: {}
-      modules: {}
-      compiler: []
     r:
       variants: ~X
       version: []
@@ -426,7 +417,7 @@ spack:
         scalapack: [netlib-scalapack]
       buildable: true
       version: []
-      target: []
+      target: [x86_64]
       paths: {}
       modules: {}
   view: false
@@ -465,6 +456,9 @@ spack:
         load: []
         environment:
           unset: []
+      fftw:
+        suffixes:
+          fftw+openmp: omp
       hdf5:
         suffixes:
           hdf5~mpi+szip: sz
@@ -572,6 +566,8 @@ spack:
       - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip
       - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe
       - gobject-introspection%gcc@8.3.1
+      - libfabric@1.8.0%gcc@8.3.1 fabrics=sockets,tcp,udp
+      - gnuplot%gcc@8.3.1 ^pango+X
       hash_length: 0
       hierarchy: []
     tcl:
@@ -639,8 +635,8 @@ spack:
         fc: /usr/bin/gfortran
       extra_rpaths: []
       environment:
-        append_path:
-          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+        # append_path:
+        #   PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
       flags: {}
   - compiler:
