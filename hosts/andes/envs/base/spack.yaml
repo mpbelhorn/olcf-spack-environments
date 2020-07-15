@@ -46,7 +46,8 @@ spack:
     - nco~mpi-deps
     - libfabric fabrics=verbs
     - imagemagick ^ncurses+termlib
-    - cuda
+    - cuda@10.2.89
+    - cuda@11.0.2
     - r
     - r@4.0.0
     - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran~mpi
@@ -86,7 +87,7 @@ spack:
     - openblas threads=openmp
     - raja
     - nco
-    - magma
+    - magma ^cuda@:10.99
   - e4s:
     
     ## Already in general compute packages list
@@ -157,7 +158,7 @@ spack:
     - octave%gcc@8.3.1 arch=linux-rhel8-x86_64 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
     - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1
-    - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1
+    - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 ^cuda@:10.99
     - matrix:
       - - $general_compute_packages
       - - $llvm_compilers
@@ -227,7 +228,7 @@ spack:
       compiler: []
     cuda:
       buildable: true
-      version: [11.0.2]
+      version: [10.2.89]
       target: []
       providers: {}
       paths: {}
