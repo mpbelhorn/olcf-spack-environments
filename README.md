@@ -18,16 +18,27 @@ or
 git clone --recurse-submodules https://gitlab.ccs.ornl.gov/belhorn/facility-spack-environments.git
 ```
 
-Next, modify the init script and environment on a new branch to point to
-locations where you can write.
-
-In `./init-peak.sh`, update `export ENV_PREFIX="${ENV_PREFIX:-/sw/.b2/envs}"`
-with a default `ENV_PREFIX` path under which you wish to install the
-environments tracked in this repo. From this variable, a unique path per system
-and environment name will be constructed:
+Next, initialize spack and the build environment. This is done by calling
 
 ```
-ENV_ROOT="${ENV_PREFIX}/${_THIS_HOST}/${ENV_NAME}"
+ENV_PREFIX=/path/to/host-specific/private/envs . ./init-facility-spack.sh
+```
+
+This will configure the spack build- and run-time environment build and install
+the facility spack environments tracked by this repo for the current machine in
+a private location based on the value of `ENV_PREFIX`. If the script is called
+without setting `ENV_PREFIX`, 
+
+```
+. ./init-facility-spack.sh
+```
+
+the runtime environment will be setup to manipulate the production environments
+on a given system according to a default value `ENV_PREFIX=/sw/${_THIS_HOST}/spack-envs`.
+From this variable, a unique path per each environment name will be constructed:
+
+```
+ENV_ROOT="${ENV_PREFIX}/${ENV_NAME}"
 ```
 
 By default, `ENV_NAME="base"` unless the variable `ENV_NAME` already exists in
