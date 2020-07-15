@@ -213,7 +213,8 @@ spack:
   - $manifest
   #############################################################################
   mirrors:
-    peak_builds: /sw/andes/spack-env/mirrors/builds
+    # FIXME: cannot use envvars in config for filesystem paths
+    facility_builds: /sw/andes/spack-env/mirrors/builds
   repos:
   - ${FACILITY_SPACK_ROOT}/share/spack/repos/olcf
   #############################################################################
@@ -616,18 +617,16 @@ spack:
       lmod: ${ENV_ROOT}/modules/spack
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
-    - ${FACILITY_SPACK_ROOT}/hosts/peak/templates
+    - ${FACILITY_SPACK_ROOT}/hosts/andes/templates
     - ${FACILITY_SPACK_ROOT}/share/spack/templates
     - $spack/share/spack/templates
     build_stage:
-    - /gpfs/alpine/stf007/world-shared/belhorn/spack/facility-spack/andes/production/tmp
-    - /run/user/12126
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACILITY_SPACK_ROOT}/share/mirrors/sources
     extensions:
     - /sw/.testing/belhorn/spack/facility-spack/share/spack/extensions/spack-olcf
-    misc_cache: ${FACILITY_SPACK_ROOT}/var/mcache
+    misc_cache: ${ENV_ROOT}/.mcache
     verify_ssl: true
     install_missing_compilers: false
     checksum: true
