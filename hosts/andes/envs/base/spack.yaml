@@ -170,6 +170,7 @@ spack:
       - - $general_compute_packages
       - - $intel_compilers
       - - arch=linux-rhel8-x86_64
+      - - ^cmake@3.16.2
       exclude:
       - boost
       - fftw
@@ -577,6 +578,8 @@ spack:
       - gobject-introspection%gcc@8.3.1
       - libfabric@1.8.0%gcc@8.3.1 fabrics=sockets,tcp,udp
       - gnuplot%gcc@8.3.1 ^pango+X
+      - mesa%gcc@8.3.1 ^hwloc@2.2.0
+      - llvm%gcc@8.3.1 ^hwloc@2.2.0
       hash_length: 0
       hierarchy: []
       projections: {}
