@@ -83,6 +83,7 @@ export ENV_LMOD_ROOT="${ENV_ROOT}/modules"
 
 # Copy git-tracked modules to module root.
 # FIXME: Need to sync this configuration with the spack environment in use.
+mkdir -p "${ENV_ROOT}/.mcache"
 mkdir -p "${ENV_LMOD_ROOT}"
 cp -dRu --preserve=mode,timestamps \
    "${_HOST_CONF_DIR}/share/lmod/modulefiles/static/site" \
@@ -106,6 +107,7 @@ function setup_alternate_module_environment {
 case "${_THIS_HOST}" in
   peak)
     setup_alternate_module_environment "${ENV_LMOD_ROOT}/spack/linux-rhel7-ppc64le/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
+    export MODULEPATH="${ENV_LMOD_ROOT}/spack/linux-rhel7-ppc64le/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
     module load python/3.7.0-anaconda3-5.3.0
     ;;
   andes)

@@ -3,7 +3,7 @@
 spack:
   #############################################################################
   definitions:
-  - core_compilers:
+  - core_compiler:
     - '%gcc@4.8.5 arch=linux-rhel7-power8le'
   - gcc_compilers:
     - '%gcc@4.8.5 arch=linux-rhel7-power8le'
@@ -18,6 +18,7 @@ spack:
   - llvm_compilers:
     - '%clang@9.0.0-2'
   - pgi_compilers:
+    
     # - '%pgi@18.10' 
     # - '%pgi@19.9'
     # - '%pgi@19.10'
@@ -42,7 +43,7 @@ spack:
     - darshan-util
     - python@2.7.15
     - python@3.7.0
-    - mercurial ^python@2.7.15
+    - mercurial
     - gnuplot@5.0.1
     - libevent@2.0.21 +openssl
     - valgrind ~mpi~boost
@@ -130,17 +131,17 @@ spack:
   - manifest:
     - matrix:
       - - $core_packages
-      - - $core_compilers
+      - - $core_compiler
     - matrix:
       - - spectrum-mpi
       - - $all_compilers
     - matrix:
       - - $core_only_compute_packages
-      - - $core_compilers
+      - - $core_compiler
     - matrix:
-      - - openblas@0.3.5 threads=openmp cpu_target=POWER8
-        - openblas@0.3.5 threads=none cpu_target=POWER8
-        - netlib-scalapack ^openblas@0.3.5 threads=openmp cpu_target=POWER8
+      - - openblas@0.3.5 threads=openmp
+        - openblas@0.3.5 threads=none
+        - netlib-scalapack ^openblas@0.3.5 threads=openmp
       - - '%gcc@4.8.5 arch=linux-rhel7-power8le'
         - '%gcc@5.4.0 arch=linux-rhel7-power8le'
     - matrix:
@@ -164,8 +165,8 @@ spack:
       - - $gcc_compilers
       exclude:
       - 'amgx%gcc@9:'
-    - 'hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0:'
-    - 'hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0:'
+    - hpx %gcc@8.1.1 cxxstd=14 ^boost@1.70.0:1.72.0
+    - hpx %gcc@8.1.1 cxxstd=17 ^boost@1.70.0:1.72.0
     - matrix:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
@@ -174,7 +175,7 @@ spack:
       - - ^elfutils%gcc@4.8.5 arch=linux-rhel7-power8le
     - matrix:
       - - $general_compute_packages
-        - "parallel-io@2.3.0"
+        - parallel-io@2.3.0
         - boost@1.62.0 ~mpi
         - boost@1.62.0 +mpi
       - - $xl_compilers
@@ -185,7 +186,7 @@ spack:
       exclude:
       - boost@1.63.0:%xl
       - 'parallel-io@2.4.4:'
-      - 'mpip'
+      - mpip
     - matrix:
       - - $general_compute_packages
       - - $pgi_compilers
@@ -203,8 +204,7 @@ spack:
   - $manifest
   #############################################################################
   mirrors:
-    # FIXME: cannot use envvars in config for filesystem paths
-    peak_builds: /sw/.testing/belhorn/spack/facility-spack/share/mirrors/builds
+    facility_builds: /sw/peak/spack-env/mirrors/builds
   repos:
   - ${FACILITY_SPACK_ROOT}/share/spack/repos/olcf
   #############################################################################
@@ -273,15 +273,6 @@ spack:
       providers: {}
       compiler: []
       paths: {}
-    openblas:
-      buildable: true
-      variants: cpu_target=POWER9
-      version: []
-      target: []
-      providers: {}
-      paths: {}
-      modules: {}
-      compiler: []
     fftw:
       variants: +openmp precision=float,double,long_double
       buildable: true
@@ -456,25 +447,25 @@ spack:
       - libtool@2.4.2
       hash_length: 7
       hierarchy: []
+      projections: {}
+      core_specs: []
   config:
     install_tree: ${ENV_ROOT}/opt
     module_roots:
-      tcl: ${ENV_ROOT}/modules/tmod/spack
-      lmod: ${ENV_ROOT}/modules/lmod/spack
+      tcl: ${ENV_ROOT}/modules/flat
+      lmod: ${ENV_ROOT}/modules/spack
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
     - ${FACILITY_SPACK_ROOT}/hosts/peak/templates
     - ${FACILITY_SPACK_ROOT}/share/spack/templates
     - $spack/share/spack/templates
     build_stage:
-    
-    # - /gpfs/alpine/stf007/world-shared/belhorn/spack/facility-spack/peak/production/tmp
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACILITY_SPACK_ROOT}/share/mirrors/sources
     extensions:
     - /sw/.testing/belhorn/spack/facility-spack/share/spack/extensions/spack-olcf
-    misc_cache: ${FACILITY_SPACK_ROOT}/var/mcache
+    misc_cache: ${ENV_ROOT}/.mcache
     verify_ssl: true
     install_missing_compilers: false
     checksum: true
