@@ -9,13 +9,13 @@ Clone this repo and it's facility-modified spack fork somewhere on an OLCF
 filesystem:
 
 ```
-git clone --recurse-submodules gitlab@gitlab.ccs.ornl.gov:belhorn/facility-spack-environments.git
+git clone --recurse-submodules git@github.com:mpbelhorn/olcf-spack-environments.git
 ```
 
 or
 
 ```
-git clone --recurse-submodules https://gitlab.ccs.ornl.gov/belhorn/facility-spack-environments.git
+git clone --recurse-submodules https://github.com/mpbelhorn/olcf-spack-environments
 ```
 
 Next, initialize spack and the build environment. This is done by calling
@@ -76,6 +76,6 @@ the OLCF filesystem populated with OLCF-maintained extensions and mirrors.
 
 The upstream development branch of spack is not used directly. Instead, the OLCF
 has implemented some customizations that are tracked in the "olcf-X.Y.Z"
-branches of a [facility fork of spack](https://gitlab.ccs.ornl.gov/belhorn/facility-spack)
+branches of a [facility fork of spack](https://github.com/mpbelhorn/olcf-spack/tree/olcf-0.15.0)
 where `X.Y.Z` refers to the tagged release of upstream spack from which the
 OLCF-modified branch is forked.
