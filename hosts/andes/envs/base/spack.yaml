@@ -4,9 +4,9 @@ spack:
   #############################################################################
   definitions:
   - core_compiler:
-    - '%gcc@8.3.1 arch=linux-rhel8-x86_64'
+    - '%gcc@8.3.1'
   - gcc_compilers:
-    - '%gcc@8.3.1 arch=linux-rhel8-x86_64'
+    - '%gcc@8.3.1'
     - '%gcc@9.3.0'
     - '%gcc@10.1.0'
   - intel_compilers:
@@ -88,7 +88,7 @@ spack:
     - raja
     - nco
     - magma ^cuda@:10.99
-  - e4s:
+  - e4s_packages:
     
     ## Already in general compute packages list
     # - openmpi
@@ -105,7 +105,9 @@ spack:
     - ninja
     - qthreads
     - openpmd-api
-    - mfem
+
+    
+    # - mfem ## Fails to build
     - sundials
     - strumpack
     - superlu-dist
@@ -122,75 +124,92 @@ spack:
     - globalarrays
     - pdt
     - tau
-    - hpctoolkit
     - dyninst
+    - hpctoolkit
     - gotcha
     - caliper
     - papi
-    - libnrm
     - rempi
     - kokkos+openmp
     - kokkos-kernels
     ## Excluded E4S packages ------
+    ### Explictly depends on mpich
+    # - libnrm
     ### No packages should be pinned @develop
     # - papyrus@develop
     ### Python extensions.
     # - py-jupyterhub
     # - 'py-libensemble^python@3.7.3:'
-  - manifest:
+  - core_specs:
     - matrix:
       - - $core_packages
       - - $core_compiler
+  - gcc_specs:
     - matrix:
       - - $general_compute_packages
       - - $gcc_compilers
       exclude:
       - 'adios2%gcc@10.0.0:'
+      - 'openpmd-api%gcc@10.0.0:'
       - 'mpip%gcc@10.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
+    - matrix:
+      - - $e4s_packages
+      - - '%gcc@8.3.1'
+        - '%gcc@9.3.0'
     - matrix:
       - - $gcc_only_compute_packages
       - - $gcc_compilers
       exclude:
       - 'magma@2.5.1%gcc@9.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
-    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi arch=linux-rhel8-x86_64
-    - octave%gcc@8.3.1 arch=linux-rhel8-x86_64 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
+    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi
+    - octave%gcc@8.3.1 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
     - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 ^cuda@:10.99
+  - llvm_specs:
     - matrix:
       - - $general_compute_packages
+        - $e4s_packages
       - - $llvm_compilers
-      - - arch=linux-rhel8-x86_64
-      - - ^elfutils@0.176
       exclude:
       - mpip
-    - matrix:
-      - - $general_compute_packages
-      - - $intel_compilers
-      - - arch=linux-rhel8-x86_64
-      - - ^cmake@3.16.2
-      exclude:
-      - boost
-      - fftw
+      - dyninst
+      - hpctoolkit
+  - aocc_specs:
     - matrix:
       - - $general_compute_packages
         - fftw+mpi~openmp
         - adios2~zfp
       - - $aocc_compilers
-      - - arch=linux-rhel8-x86_64
-      - - ^elfutils@0.176
       exclude:
       - adios2+zfp
+      - openpmd-api
       - fftw+openmp
       - mpip
+      - dyninst
+      - hpctoolkit
+  - intel_specs:
+    - matrix:
+      - - $general_compute_packages
+        - $e4s_packages
+      - - $intel_compilers
+      - - ^cmake@3.16.2
+      exclude:
+      - boost
+      - fftw
+      - trilinos
+      - mercury
+      - tau
+      - dyninst
+      - hpctoolkit
+  - pgi_specs:
     - matrix:
       - - $general_compute_packages
       - - $pgi_compilers
-      - - arch=linux-rhel8-x86_64
-      - - ^libpciaccess%gcc@8-pgi arch=linux-rhel8-x86_64
-      - - ^m4%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^libpciaccess%gcc@8-pgi
+      - - ^m4%gcc@8-pgi
       - - ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64
@@ -210,10 +229,14 @@ spack:
       - mpip
       - openblas
   specs:
-  - $manifest
+  - $core_specs
+  - $gcc_specs
+  - $llvm_specs
+  - $aocc_specs
+  - $intel_specs
+  - $pgi_specs
   #############################################################################
   mirrors:
-    # FIXME: cannot use envvars in config for filesystem paths
     facility_builds: /sw/andes/spack-env/mirrors/builds
   repos:
   - ${FACILITY_SPACK_ROOT}/share/spack/repos/olcf
@@ -261,15 +284,6 @@ spack:
       providers: {}
       paths:
         slurm@20-02-0-0: /usr
-      modules: {}
-      compiler: []
-    elfutils:
-      buildable: true
-      version: []
-      target: []
-      providers: {}
-      paths:
-        elfutils@0.176%clang: /usr
       modules: {}
       compiler: []
     m4:
@@ -573,6 +587,7 @@ spack:
       - openssl
       - harfbuzz ^cairo~X
       - pango ^cairo~pdf
+      - '%gcc@8-os'
       - '%gcc@8-pgi'
       - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip
       - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe
@@ -649,6 +664,21 @@ spack:
         fc: /usr/bin/gfortran
       extra_rpaths: []
       environment:
+        unset: []
+      flags: {}
+  - compiler:
+      spec: gcc@8-os
+      operating_system: rhel8
+      modules: [gcc/8.3.1]
+      paths:
+        cc: /usr/bin/gcc
+        cxx: /usr/bin/g++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
       flags: {}
   - compiler:
