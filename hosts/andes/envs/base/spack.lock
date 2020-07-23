@@ -1043,6 +1043,22 @@
   {
    "hash": "x6h7qpco6qnnkbacwnbn2urdjpyzsjqz",
    "spec": "parallel-io%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "mh2mbsoin7g5limiiwy2rbzih4gxxevs",
+   "spec": "darshan-util%gcc@8.3.1"
+  },
+  {
+   "hash": "z33qaapnrl7pwxvxgxg7ccmtzonweqx4",
+   "spec": "darshan-runtime%gcc@8.3.1"
+  },
+  {
+   "hash": "zas5bja4aety2f2gdjiscrqyidjxaef6",
+   "spec": "darshan-runtime%gcc@9.3.0"
+  },
+  {
+   "hash": "lvixk4r7aumopzmb2rw2dgcsu5cfijk6",
+   "spec": "darshan-runtime%gcc@10.1.0"
   }
  ],
  "concrete_specs": {
@@ -44980,6 +44996,202 @@
      }
     },
     "hash": "bmdi4i62dkxaxkqhl4ptjeo6qozoeu6s"
+   }
+  },
+  "mh2mbsoin7g5limiiwy2rbzih4gxxevs": {
+   "darshan-util": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "bzip2": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "zlib": {
+      "hash": "xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "mh2mbsoin7g5limiiwy2rbzih4gxxevs"
+   }
+  },
+  "z33qaapnrl7pwxvxgxg7ccmtzonweqx4": {
+   "darshan-runtime": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": "none",
+     "logpath": "/gpfs/alpine/darshan/andes",
+     "lsf": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "pcpatch": false,
+     "slurm": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "openmpi": {
+      "hash": "bnzl4mnovfe7tcq3pgihr7fe7d6mngko",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "znmisiucjjy5b4spy2baw2agpyjctw35"
+   }
+  },
+  "zas5bja4aety2f2gdjiscrqyidjxaef6": {
+   "darshan-runtime": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": "none",
+     "logpath": "/gpfs/alpine/darshan/andes",
+     "lsf": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "pcpatch": false,
+     "slurm": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "openmpi": {
+      "hash": "hppsims3hbdq727ftdn2w7jplvngmvmz",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lsl576wksruc6gisbaoile4ylb5ettxi",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "7atvrsp3zazvwjnefxp6v6zjnrskyrxf"
+   }
+  },
+  "lvixk4r7aumopzmb2rw2dgcsu5cfijk6": {
+   "darshan-runtime": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "10.1.0"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": "none",
+     "logpath": "/gpfs/alpine/darshan/andes",
+     "lsf": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "pcpatch": false,
+     "slurm": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "openmpi": {
+      "hash": "ihhy6onyzcframtq4vfqghp7lusgivvw",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "prqfoqbyz5fo4x6k5xqr3fhgherjav2f",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "4eqqhxguf4tfscdtaxb54hwsmwgzfg54"
    }
   }
  }

@@ -57,7 +57,7 @@ spack:
     - spark+hadoop
     - python@2.7.15
     - python
-    # - darshan-util
+    - darshan-util
     # - matlab
     # - vtk~mpi~qt
     # - vtk~mpi+qt
@@ -82,8 +82,7 @@ spack:
     - mpip
     - adios2
   - gcc_only_compute_packages:
-    
-    # - darshan-runtime
+    - darshan-runtime
     - openblas threads=openmp
     - raja
     - nco
@@ -105,7 +104,6 @@ spack:
     - ninja
     - qthreads
     - openpmd-api
-
     
     # - mfem ## Fails to build
     - sundials

@@ -84,6 +84,51 @@
   make[1]: Leaving directory '/run/user/12126/belhorn/spack-stage-hdf5-1.10.6-gt27bq6cih6futelz3i3tekfwylx52t7/spack-src/fortran'
   make: *** [Makefile:660: all-recursive] Error 1
   ```
+- mfem fails to build due to following error in simple build case:
+```
+==> Error: Failed to install mfem due to ChildError: ProcessError: Command exited with status 2:                                                                                                                                               
+    'make' '-j16' 'lib'                                                                                                                                                                                                                        
+1 error found in build log:                                                                                                                                                                                                                    
+     106    /sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/openmpi-4.0.4-wfz3nk67jzegocblvwhtmqjjqel                                                                                                                               
+            ridk5/bin/mpic++   -O3 -std=c++11 -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/hypre                                                                                                                               
+            -2.18.0-bammqydlgzcntddviulb6ndoixfwyg4h/include -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/       
+            gcc-8.3.1/metis-5.1.0-ahuci2nwesonop73arnq5uzvsyxnwsy4/include -I/sw/andes/spack-envs/base/opt/linux       
+            -rhel8-x86_64/gcc-8.3.1/zlib-1.2.11-xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b/include  -c linalg/sundials.cpp       
+             -o linalg/sundials.o                          
+     107    /sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/openmpi-4.0.4-wfz3nk67jzegocblvwhtmqjjqel       
+            ridk5/bin/mpic++   -O3 -std=c++11 -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/hypre       
+            -2.18.0-bammqydlgzcntddviulb6ndoixfwyg4h/include -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/       
+            gcc-8.3.1/metis-5.1.0-ahuci2nwesonop73arnq5uzvsyxnwsy4/include -I/sw/andes/spack-envs/base/opt/linux       
+            -rhel8-x86_64/gcc-8.3.1/zlib-1.2.11-xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b/include  -c linalg/ode.cpp -o l       
+            inalg/ode.o                                    
+     108    /sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/openmpi-4.0.4-wfz3nk67jzegocblvwhtmqjjqel       
+            ridk5/bin/mpic++   -O3 -std=c++11 -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/hypre       
+            -2.18.0-bammqydlgzcntddviulb6ndoixfwyg4h/include -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/       
+            gcc-8.3.1/metis-5.1.0-ahuci2nwesonop73arnq5uzvsyxnwsy4/include -I/sw/andes/spack-envs/base/opt/linux       
+            -rhel8-x86_64/gcc-8.3.1/zlib-1.2.11-xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b/include  -c linalg/hiop.cpp -o        
+            linalg/hiop.o                                  
+     109    /sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/openmpi-4.0.4-wfz3nk67jzegocblvwhtmqjjqel       
+            ridk5/bin/mpic++   -O3 -std=c++11 -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/hypre       
+            -2.18.0-bammqydlgzcntddviulb6ndoixfwyg4h/include -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/       
+            gcc-8.3.1/metis-5.1.0-ahuci2nwesonop73arnq5uzvsyxnwsy4/include -I/sw/andes/spack-envs/base/opt/linux       
+            -rhel8-x86_64/gcc-8.3.1/zlib-1.2.11-xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b/include  -c linalg/superlu.cpp        
+            -o linalg/superlu.o                            
+     110    /sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/openmpi-4.0.4-wfz3nk67jzegocblvwhtmqjjqel       
+            ridk5/bin/mpic++   -O3 -std=c++11 -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/gcc-8.3.1/hypre       
+            -2.18.0-bammqydlgzcntddviulb6ndoixfwyg4h/include -I/sw/andes/spack-envs/base/opt/linux-rhel8-x86_64/       
+            gcc-8.3.1/metis-5.1.0-ahuci2nwesonop73arnq5uzvsyxnwsy4/include -I/sw/andes/spack-envs/base/opt/linux       
+            -rhel8-x86_64/gcc-8.3.1/zlib-1.2.11-xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b/include  -c linalg/solvers.cpp        
+            -o linalg/solvers.o                            
+     111    linalg/hypre.cpp: In copy constructor 'mfem::HypreParMatrix::HypreParMatrix(const mfem::HypreParMatr       
+            ix&)':                                         
+  >> 112    linalg/hypre.cpp:822:8: error: 'hypre_ParCSRMatrixCompleteClone' was not declared in this scope            
+     113        A = hypre_ParCSRMatrixCompleteClone(Ph);                                                               
+     114            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~        
+     115    linalg/hypre.cpp:822:8: note: suggested alternative: 'hypre_ParCSRMatrixClone'                             
+     116        A = hypre_ParCSRMatrixCompleteClone(Ph);                                                               
+     117            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~        
+     118            hypre_ParCSRMatrixClone     
+```
 
 ## Peak
 
