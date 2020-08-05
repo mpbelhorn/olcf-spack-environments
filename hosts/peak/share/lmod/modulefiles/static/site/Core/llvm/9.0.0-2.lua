@@ -7,7 +7,7 @@ local package_spack = "clang"
 local version_spack = "9.0.0-2"
 local prefix = "/sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168"
 
-local platform = 'linux-rhel7-ppc64le'
+local platform = 'linux-rhel8-ppc64le'
 local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, package_spack, version_spack)
 

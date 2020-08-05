@@ -9,7 +9,7 @@ whatis("Description: ", "GCC compiler 8.1.1")
 local package = "gcc"
 local version = "8.1.1"
 local gccdir = "/sw/peak/gcc/8.1.1"
-local platform = 'linux-rhel7-ppc64le'
+local platform = 'linux-rhel8-ppc64le'
 local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 

@@ -8,7 +8,7 @@ local xlcbase    = pathJoin(swroot, "xlC", "16.1.1")
 local xlmassbase = pathJoin(swroot, "xlmass", "9.1.1")
 local xlsmpbase  = pathJoin(swroot, "xlsmp", "5.1.1")
 
-local platform = 'linux-rhel7-ppc64le'
+local platform = 'linux-rhel8-ppc64le'
 local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 

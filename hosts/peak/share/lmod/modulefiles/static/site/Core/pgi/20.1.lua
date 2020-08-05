@@ -19,7 +19,7 @@ a mirror, see http://spack.readthedocs.io/en/latest/mirrors.html]])
 -- Services provided by the package
 family("compiler")
 
-local platform = 'linux-rhel7-ppc64le'
+local platform = 'linux-rhel8-ppc64le'
 local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 

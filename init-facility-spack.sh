@@ -139,12 +139,11 @@ function setup_alternate_module_environment {
 # Host-specific environment modifications
 case "${FACSPACK_HOST}" in
   peak)
-    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
+    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core"
     _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
     _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
     setup_alternate_module_environment "${_FS_MP}"
     export MODULEPATH="${_FS_MP}"
-    module load python/3.7.0-anaconda3-5.3.0
     ;;
   andes)
     _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
