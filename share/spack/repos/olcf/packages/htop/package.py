@@ -20,6 +20,8 @@ class Htop(AutotoolsPackage):
     variant('unicode',  default=True,
             description='Enables Unicode character support')
 
+    patch('python2.patch', when='@2.2.0')
+
     depends_on('ncurses')
 
     def configure_args(self):
