@@ -11,6 +11,8 @@ class SpectrumMpi(Package):
     homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
+    version('10.4.0.0-20200604', 'da3e91ed89c151873c1825abf219960b',
+        url='file:///ccs/packages/IBM/08-2020/SMPI/ibm_smpi-10.4.0.0-20200604-rh8.ppc64le.tar.gz')
     version('10.3.1.2-20200121', '94c6c95693f736373590ec3d3a2398f7',
         url='file:///ccs/packages/IBM/02-2020/SMPI/ibm_smpi-10.3.1.2-20200121-rh7.ppc64le.tar.gz')
     version('10.3.0.1-20190611', '94a7e1efdf9df18ebb6e4b184251de01',
@@ -73,6 +75,9 @@ class SpectrumMpi(Package):
         chmod = which('chmod')
         unpacked = join_path(self.stage.source_path, 'opt/ibm/spectrum_mpi')
         chmod('-R', 'ug+rwX', unpacked)
+        if os.path.exists('patch.tgz'):
+            tar = which('tar')
+            tar('xzvf', 'patch.tgz')
         for f in os.listdir(unpacked):
             src = join_path(unpacked, f)
             dst = join_path(self.prefix, f)
@@ -107,6 +112,14 @@ class SpectrumMpi(Package):
             cp('-u', 'mpi.mod', '../.')
             if self.spec.satisfies('%pgi') and os.path.isdir('../PGI'):
                 cp('-u', 'mpi.mod', '../PGI/.')
+
+    @run_after('install')
+    def fix_syntax_error(self):
+        if self.spec.satisfies('@10.4:'):
+            filter_file(r'(#if\s*\(\s*)1(\s*==\s*SMPI_HAVE_PRAGMA_WEAK.*)',
+                        r'\12\2',
+                        '%s/mpi.h' % self.prefix.include)
+
 
 
     def setup_dependent_package(self, module, dspec):

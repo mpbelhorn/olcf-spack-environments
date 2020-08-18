@@ -110,7 +110,11 @@ class Amgx(CMakePackage):
             args.append('-DCMAKE_CXX_COMPILER=g++')
 
         # Need to force c++11 using gcc-style options.
-        args.append('-DCMAKE_CXX_FLAGS=-std=c++11')
+        args.extend(['-DCMAKE_BUILD_TYPE=RELEASE',
+                     '-DCMAKE_CXX_FLAGS=-std=c++11'])
+
+        if self.spec.satisfies('target=ppc64le'):
+            args.append('-DCUDA_NVCC_FLAGS=-Xcompiler=-mno-float128;-Xcompiler=-fPIC')
 
         if not self.spec.satisfies('+mpi'):
             args.append('-DCMAKE_NO_MPI:BOOL=True')
