@@ -20,6 +20,9 @@ class Pgi(Package):
 
     homepage = "http://www.pgroup.com/"
 
+    version('20.1',  '9653c1e5dd8622f21cc7d45e10dbbd27', url='file:///ccs/packages/IBM/02-2020/PGI/pgilinux-2020-201-ppc64le.tar.gz')
+    version('19.10',  '9afe557f3e80b8b0fe9a2894b9906989', url='file:///ccs/packages/IBM/10-2019/PGI/pgilinux-2019-1910-ppc64le.tar.gz')
+    version('19.9',  'a4f2b956f20a66745b5b51780a3573a8', url='file:///ccs/packages/IBM/09-2019/PGI/pgilinux-2019-199-ppc64le.tar.gz')
     version('19.7',  '7c3928b45a282d55ebb3c31a2dff214e', url='file:///ccs/packages/IBM/08-2019/PGI/pgilinux-2019-197-ppc64le.tar.gz')
     version('19.5',  'd75ea928c5f0385fd4ee4ba30d483ef1', url='file:///ccs/packages/IBM/05-2019/PGI/pgilinux-2019-195-ppc64le.tar.gz')
     version('19.4',  '50383cbf56ae154d6b3bdb7904ed0303', url='file:///ccs/packages/IBM/05-2019/PGI/pgilinux-2019-194-ppc64le.tar.gz')
