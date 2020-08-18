@@ -2,7 +2,7 @@
 family("compiler")
 
 -- Internal variables
-local swroot  = "/sw/peak/xl/16.1.1-8-1"
+local swroot  = "/sw/peak/xl/16.1.1-8"
 local xlfbase    = pathJoin(swroot, "xlf", "16.1.1")
 local xlcbase    = pathJoin(swroot, "xlC", "16.1.1")
 local xlmassbase = pathJoin(swroot, "xlmass", "9.1.1")

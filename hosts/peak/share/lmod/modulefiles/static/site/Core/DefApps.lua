@@ -5,5 +5,8 @@
 -- should only load modules
 -- should not include other commands that set/alter variables, path, ...
 
-load ("hsi")
-load ("lsf-tools")
+load("xl")
+load("spectrum-mpi")
+load("hsi")
+load("lsf-tools")
+-- load("darshan-runtime")
