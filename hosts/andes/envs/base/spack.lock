@@ -45,7 +45,7 @@
    "spec": "nano%gcc@8.3.1"
   },
   {
-   "hash": "jmzgzgpwj6ldomfzgdhneok4kea7rpbs",
+   "hash": "i2skjvlepuem3b4wu3tsfodfiif2avmm",
    "spec": "gnuplot%gcc@8.3.1+X"
   },
   {
@@ -93,7 +93,7 @@
    "spec": "libfabric%gcc@8.3.1 fabrics=verbs"
   },
   {
-   "hash": "63bv3m4pthvdkyyx7qvawk5rfflw3fst",
+   "hash": "o3asv76nllsbc4xvivsfefpd2wo4tiby",
    "spec": "imagemagick%gcc@8.3.1 ^ncurses+termlib"
   },
   {
@@ -105,11 +105,11 @@
    "spec": "cuda@11.0.2%gcc@8.3.1"
   },
   {
-   "hash": "dzowsee2vih344hohr27rpyin4q2ccj2",
+   "hash": "fpqxrglwuidse75l25734e2wxq2hk5av",
    "spec": "r%gcc@8.3.1"
   },
   {
-   "hash": "kh45yqus6rfbkgzz24noxmnnqkxgk3hq",
+   "hash": "2qie4dm44i4fko3rgpalk2mgc64snpdf",
    "spec": "r@4.0.0%gcc@8.3.1"
   },
   {
@@ -139,6 +139,10 @@
   {
    "hash": "v43zt35jq4hljllwvpsfrbnhtqhiyug4",
    "spec": "python%gcc@8.3.1"
+  },
+  {
+   "hash": "mh2mbsoin7g5limiiwy2rbzih4gxxevs",
+   "spec": "darshan-util%gcc@8.3.1"
   },
   {
    "hash": "bnzl4mnovfe7tcq3pgihr7fe7d6mngko",
@@ -557,6 +561,18 @@
    "spec": "kokkos-kernels%gcc@9.3.0"
   },
   {
+   "hash": "z33qaapnrl7pwxvxgxg7ccmtzonweqx4",
+   "spec": "darshan-runtime%gcc@8.3.1"
+  },
+  {
+   "hash": "zas5bja4aety2f2gdjiscrqyidjxaef6",
+   "spec": "darshan-runtime%gcc@9.3.0"
+  },
+  {
+   "hash": "lvixk4r7aumopzmb2rw2dgcsu5cfijk6",
+   "spec": "darshan-runtime%gcc@10.1.0"
+  },
+  {
    "hash": "sgrt3q2vmyqp6jcokdau7tojnrkcbgyu",
    "spec": "openblas%gcc@8.3.1 threads=openmp"
   },
@@ -593,11 +609,11 @@
    "spec": "nco%gcc@10.1.0"
   },
   {
-   "hash": "3nh66zmy5xtriao4hydoqleru5dwnv6b",
+   "hash": "z32jhyvyhr5hs3d3vq7dvrfiug2rbdzu",
    "spec": "paraview%gcc@8.3.1+hdf5+mpi+opengl2+osmesa+silo+visitbridge ^hdf5+mpi"
   },
   {
-   "hash": "3nwif7re4bh3t33aszplyvnlp2c7ipb3",
+   "hash": "ekjf76322xnbek4cposplf337u66yjgw",
    "spec": "octave%gcc@8.3.1 ^arpack-ng~mpi ^fftw~mpi ^gnuplot+X ^hdf5~mpi"
   },
   {
@@ -1009,7 +1025,7 @@
    "spec": "netlib-lapack%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "tsykdmztvy6oztrekmgipb6gu3uvmhwx",
+   "hash": "hdcqkb5jbm2p66rz43nhiraf5dwsusrq",
    "spec": "netlib-scalapack%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^netlib-lapack ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
@@ -1043,22 +1059,6 @@
   {
    "hash": "x6h7qpco6qnnkbacwnbn2urdjpyzsjqz",
    "spec": "parallel-io%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
-  },
-  {
-   "hash": "mh2mbsoin7g5limiiwy2rbzih4gxxevs",
-   "spec": "darshan-util%gcc@8.3.1"
-  },
-  {
-   "hash": "z33qaapnrl7pwxvxgxg7ccmtzonweqx4",
-   "spec": "darshan-runtime%gcc@8.3.1"
-  },
-  {
-   "hash": "zas5bja4aety2f2gdjiscrqyidjxaef6",
-   "spec": "darshan-runtime%gcc@9.3.0"
-  },
-  {
-   "hash": "lvixk4r7aumopzmb2rw2dgcsu5cfijk6",
-   "spec": "darshan-runtime%gcc@10.1.0"
   }
  ],
  "concrete_specs": {
@@ -2790,7 +2790,7 @@
     "hash": "epyfvfj265hnr26pmkcqlaesdycvryzb"
    }
   },
-  "jmzgzgpwj6ldomfzgdhneok4kea7rpbs": {
+  "i2skjvlepuem3b4wu3tsfodfiif2avmm": {
    "gnuplot": {
     "version": "5.2.8",
     "arch": {
@@ -2826,7 +2826,7 @@
     ],
     "dependencies": {
      "cairo": {
-      "hash": "mgkn42aaklexj7rqc2leboxkclax5e6c",
+      "hash": "nk3ojusfqevnufjepdpalyxr5bw7ulcp",
       "type": [
        "build",
        "link"
@@ -2840,7 +2840,7 @@
       ]
      },
      "libgd": {
-      "hash": "vwujjr2jfyvn3nmqququn6ych63z6lco",
+      "hash": "m43absjuytxvqrrcafg56s526pbqdjrs",
       "type": [
        "build",
        "link"
@@ -2868,7 +2868,7 @@
       ]
      },
      "pango": {
-      "hash": "igrqzsfyit7evc5m4shocx32uvyxjce7",
+      "hash": "lf3vvu3fxlsffp3quwlywfhlrb52cze2",
       "type": [
        "build",
        "link"
@@ -2888,10 +2888,10 @@
       ]
      }
     },
-    "hash": "rb6upitczmlhngeenxdeiozwqkwznjl7"
+    "hash": "d4hu5em35xalog2i44hdeunb2ebw4mwb"
    }
   },
-  "mgkn42aaklexj7rqc2leboxkclax5e6c": {
+  "nk3ojusfqevnufjepdpalyxr5bw7ulcp": {
    "cairo": {
     "version": "1.16.0",
     "arch": {
@@ -2939,7 +2939,7 @@
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -2985,12 +2985,12 @@
       ]
      }
     },
-    "hash": "qzzforrjigksmzqnmrfut223artppjks"
+    "hash": "q5r55d6yfr7x5sx66ezrthybg3vhygoq"
    }
   },
-  "rhdsp3bkcyxflbxcozas3hzspmskqbw5": {
+  "6qrdmkbeyarepr3ka33b3nz42rhospp7": {
    "fontconfig": {
-    "version": "2.13.1",
+    "version": "2.13.92",
     "arch": {
      "platform": "linux",
      "platform_os": "rhel8",
@@ -3058,7 +3058,7 @@
       ]
      }
     },
-    "hash": "uyxcwwrjrvji6hmeaf6zannoiei54loq"
+    "hash": "onzbvtzbsgdn6xjbqxjdsyjkjgtxjkj4"
    }
   },
   "q7f7mnq6aecgixzxzgnh7g4h2ypx2gww": {
@@ -4206,7 +4206,7 @@
     "hash": "tt3kkflvmpbuuawtgpitcxxj26lhdoog"
    }
   },
-  "vwujjr2jfyvn3nmqququn6ych63z6lco": {
+  "m43absjuytxvqrrcafg56s526pbqdjrs": {
    "libgd": {
     "version": "2.2.4",
     "arch": {
@@ -4241,7 +4241,7 @@
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -4300,7 +4300,7 @@
       ]
      }
     },
-    "hash": "k7urdtk47sez6txd65gqtw4yjg6my7p3"
+    "hash": "cbscvzsp6k7lvyhqsyfc2zrovdp6eu3z"
    }
   },
   "mbftibbortkdvqr4ax4vyfkgpk77mda5": {
@@ -4814,7 +4814,7 @@
     "hash": "omqo2urytsphm77zm2pj4bby3og4h5ah"
    }
   },
-  "igrqzsfyit7evc5m4shocx32uvyxjce7": {
+  "lf3vvu3fxlsffp3quwlywfhlrb52cze2": {
    "pango": {
     "version": "1.41.0",
     "arch": {
@@ -4838,14 +4838,14 @@
     },
     "dependencies": {
      "cairo": {
-      "hash": "mgkn42aaklexj7rqc2leboxkclax5e6c",
+      "hash": "nk3ojusfqevnufjepdpalyxr5bw7ulcp",
       "type": [
        "build",
        "link"
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -4866,14 +4866,14 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "gasmqigy3cdjzr4xniipzqxpj7gjsizr",
+      "hash": "r7dukz2p7ox4v5rtciett7wnwdjh3lv6",
       "type": [
        "build",
        "link"
       ]
      },
      "harfbuzz": {
-      "hash": "cnvze2wsrd2rdknbhu7i6gkddmbjg447",
+      "hash": "u4xegqlk6gc3nvgtbduludmrbwtgmqjw",
       "type": [
        "build",
        "link"
@@ -4893,10 +4893,10 @@
       ]
      }
     },
-    "hash": "ytm5osnixz2f74k3zmyedol44ekh45iq"
+    "hash": "kqkr5xd6sq4g46ouo3z7jfh2w7pnkcfa"
    }
   },
-  "gasmqigy3cdjzr4xniipzqxpj7gjsizr": {
+  "r7dukz2p7ox4v5rtciett7wnwdjh3lv6": {
    "gobject-introspection": {
     "version": "1.56.1",
     "arch": {
@@ -4931,7 +4931,7 @@
       ]
      },
      "cairo": {
-      "hash": "mgkn42aaklexj7rqc2leboxkclax5e6c",
+      "hash": "nk3ojusfqevnufjepdpalyxr5bw7ulcp",
       "type": [
        "build",
        "link"
@@ -4964,7 +4964,7 @@
       ]
      }
     },
-    "hash": "tobabaw3y6fsaqdffdeip5cecuaohmga"
+    "hash": "mfppdd4pyzhbjdpjwjoncscnflbm2gl7"
    }
   },
   "d54m7j774m32wruolpvcinqokxscjhhd": {
@@ -5150,7 +5150,7 @@
     "hash": "bbfh44cy7yrlpn4czh64z2haejbooekn"
    }
   },
-  "cnvze2wsrd2rdknbhu7i6gkddmbjg447": {
+  "u4xegqlk6gc3nvgtbduludmrbwtgmqjw": {
    "harfbuzz": {
     "version": "2.3.1",
     "arch": {
@@ -5174,7 +5174,7 @@
     },
     "dependencies": {
      "cairo": {
-      "hash": "mgkn42aaklexj7rqc2leboxkclax5e6c",
+      "hash": "nk3ojusfqevnufjepdpalyxr5bw7ulcp",
       "type": [
        "build",
        "link"
@@ -5215,7 +5215,7 @@
       ]
      }
     },
-    "hash": "5cyf3bl5r72fracya74t56kfzow55ahg"
+    "hash": "wo7kyp6mm76dmgay3j3rh7u6x3fvgmlb"
    }
   },
   "t23hszucdav2jonrau2u5vaagni6eew3": {
@@ -6894,7 +6894,7 @@
     "hash": "bdndlaohx3zkxjk5go3cwl27rpo5dbe2"
    }
   },
-  "63bv3m4pthvdkyyx7qvawk5rfflw3fst": {
+  "o3asv76nllsbc4xvivsfefpd2wo4tiby": {
    "imagemagick": {
     "version": "7.0.8-7",
     "arch": {
@@ -6917,7 +6917,7 @@
     },
     "dependencies": {
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -6931,7 +6931,7 @@
       ]
      },
      "ghostscript": {
-      "hash": "nbdydjtzzwqfuywnmon3gqie2gq3kyiy",
+      "hash": "tzrkazdvng2rjax2tdpm7455gxnsxrl7",
       "type": [
        "build",
        "link"
@@ -6979,17 +6979,17 @@
       ]
      },
      "pango": {
-      "hash": "cnm32syh27kc3cpbputeeda4vdzurwab",
+      "hash": "m57uuoxqnxazjyeomcr2i2rrtr4g4tbw",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "pvlxfn3lzgemsxbrga76vivtetp2usye"
+    "hash": "gziolhet6rrouilpzs6zmhy2lecornfa"
    }
   },
-  "nbdydjtzzwqfuywnmon3gqie2gq3kyiy": {
+  "tzrkazdvng2rjax2tdpm7455gxnsxrl7": {
    "ghostscript": {
     "version": "9.50",
     "arch": {
@@ -7019,7 +7019,7 @@
       ]
      },
      "gtkplus": {
-      "hash": "4tjtwbaquug6elmaw3u5amqizxyinwx3",
+      "hash": "kebvtxvmrcymgfmvsffuusvd24s6c6to",
       "type": [
        "build",
        "link"
@@ -7074,10 +7074,10 @@
       ]
      }
     },
-    "hash": "jzvhwmcu5yfo5plgio3a4ht5xskzyjog"
+    "hash": "5pinui6xubvwdu7zyfqost4i2rdrmpcw"
    }
   },
-  "4tjtwbaquug6elmaw3u5amqizxyinwx3": {
+  "kebvtxvmrcymgfmvsffuusvd24s6c6to": {
    "gtkplus": {
     "version": "3.20.10",
     "arch": {
@@ -7101,21 +7101,21 @@
     },
     "dependencies": {
      "at-spi2-atk": {
-      "hash": "wfsvd6ftbymkxqempnmlalghbfxvayjo",
+      "hash": "ueuxzqfuj6k7t234fagn7knexo4z7gfk",
       "type": [
        "build",
        "link"
       ]
      },
      "atk": {
-      "hash": "ihsfzqjsmtjo2kkwnz2wilaq7sritr6x",
+      "hash": "iphy5clp3jnoj6nokwuqcrkmynticjeo",
       "type": [
        "build",
        "link"
       ]
      },
      "cairo": {
-      "hash": "46ewageqroobkfxg33p5sirnuptjulmx",
+      "hash": "lncrsrcxezhnrxvdh42nvruv2gubgy7z",
       "type": [
        "build",
        "link"
@@ -7129,7 +7129,7 @@
       ]
      },
      "gdk-pixbuf": {
-      "hash": "rmsrxz5ufqcnwduiqxbirp6beho3fage",
+      "hash": "whqcid25ho4dtk5oou6hzbvfusfdkd3h",
       "type": [
        "build",
        "link"
@@ -7150,7 +7150,7 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "z5fnboft4wlgdyfe4aia3cmds7x2r57o",
+      "hash": "lxn7eapnwjjcxo3aph74cqv77xbxq7za",
       "type": [
        "build",
        "link"
@@ -7178,7 +7178,7 @@
       ]
      },
      "pango": {
-      "hash": "cnm32syh27kc3cpbputeeda4vdzurwab",
+      "hash": "m57uuoxqnxazjyeomcr2i2rrtr4g4tbw",
       "type": [
        "build",
        "link"
@@ -7198,10 +7198,10 @@
       ]
      }
     },
-    "hash": "xpdyqjnx6qqgsdaplmpimpjhjuqnjujr"
+    "hash": "srpqb6fhjidbryfnm3e4wx43fb7dz7gr"
    }
   },
-  "wfsvd6ftbymkxqempnmlalghbfxvayjo": {
+  "ueuxzqfuj6k7t234fagn7knexo4z7gfk": {
    "at-spi2-atk": {
     "version": "2.34.2",
     "arch": {
@@ -7225,14 +7225,14 @@
     },
     "dependencies": {
      "at-spi2-core": {
-      "hash": "q2m7qtzsmu7b4hf7fuv4srx7ixggnvkm",
+      "hash": "wsg35vxrdckbkisoy5ze5rlpu7tzsil3",
       "type": [
        "build",
        "link"
       ]
      },
      "atk": {
-      "hash": "ihsfzqjsmtjo2kkwnz2wilaq7sritr6x",
+      "hash": "iphy5clp3jnoj6nokwuqcrkmynticjeo",
       "type": [
        "build",
        "link"
@@ -7257,10 +7257,10 @@
       ]
      }
     },
-    "hash": "3gq7zpd3u6wjfkszzy6a4c4n7ukzdmv6"
+    "hash": "yvtuo6yavpkznudwkmh7rnrmqfmih4pq"
    }
   },
-  "q2m7qtzsmu7b4hf7fuv4srx7ixggnvkm": {
+  "wsg35vxrdckbkisoy5ze5rlpu7tzsil3": {
    "at-spi2-core": {
     "version": "2.36.0",
     "arch": {
@@ -7312,7 +7312,7 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "z5fnboft4wlgdyfe4aia3cmds7x2r57o",
+      "hash": "lxn7eapnwjjcxo3aph74cqv77xbxq7za",
       "type": [
        "build",
        "link"
@@ -7378,7 +7378,7 @@
       ]
      }
     },
-    "hash": "iuaqowhys6tljewwhu3cfc3t6otjl5ma"
+    "hash": "pbuesbmo5po5vqyprcotsdg3k5g5hp4o"
    }
   },
   "blp3n6344seqpa367sgzfql3ikeeipmm": {
@@ -7465,7 +7465,7 @@
     "hash": "tzjeo2pyhw7dnozz52kok7zfhggdtrqh"
    }
   },
-  "z5fnboft4wlgdyfe4aia3cmds7x2r57o": {
+  "lxn7eapnwjjcxo3aph74cqv77xbxq7za": {
    "gobject-introspection": {
     "version": "1.56.1",
     "arch": {
@@ -7500,7 +7500,7 @@
       ]
      },
      "cairo": {
-      "hash": "46ewageqroobkfxg33p5sirnuptjulmx",
+      "hash": "lncrsrcxezhnrxvdh42nvruv2gubgy7z",
       "type": [
        "build",
        "link"
@@ -7533,10 +7533,10 @@
       ]
      }
     },
-    "hash": "pqkcrw3nicskm4twq6bhhbqd4gdxraza"
+    "hash": "s3kjgqc4mrhjsbzqg7ij4fjlbrp2sktm"
    }
   },
-  "46ewageqroobkfxg33p5sirnuptjulmx": {
+  "lncrsrcxezhnrxvdh42nvruv2gubgy7z": {
    "cairo": {
     "version": "1.16.0",
     "arch": {
@@ -7584,7 +7584,7 @@
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -7664,7 +7664,7 @@
       ]
      }
     },
-    "hash": "mtususueyftqewsm3gyg6njevf6r6jmg"
+    "hash": "fbi37etsqquxuf4lbkr2sgp6dp4lsesj"
    }
   },
   "blhwhav5uioqsmhxvnqdobyi6mvbbats": {
@@ -8075,7 +8075,7 @@
     "hash": "giakp27groshjjbavgurx23qamvs4mci"
    }
   },
-  "ihsfzqjsmtjo2kkwnz2wilaq7sritr6x": {
+  "iphy5clp3jnoj6nokwuqcrkmynticjeo": {
    "atk": {
     "version": "2.36.0",
     "arch": {
@@ -8112,7 +8112,7 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "z5fnboft4wlgdyfe4aia3cmds7x2r57o",
+      "hash": "lxn7eapnwjjcxo3aph74cqv77xbxq7za",
       "type": [
        "build",
        "link"
@@ -8138,10 +8138,10 @@
       ]
      }
     },
-    "hash": "3r4vknwfawpbpnxs6elcla4fao3lbhgm"
+    "hash": "m5mr3ttuhanbav5qwbscmvevbfxtw4bv"
    }
   },
-  "rmsrxz5ufqcnwduiqxbirp6beho3fage": {
+  "whqcid25ho4dtk5oou6hzbvfusfdkd3h": {
    "gdk-pixbuf": {
     "version": "2.38.0",
     "arch": {
@@ -8190,7 +8190,7 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "z5fnboft4wlgdyfe4aia3cmds7x2r57o",
+      "hash": "lxn7eapnwjjcxo3aph74cqv77xbxq7za",
       "type": [
        "build",
        "link"
@@ -8255,7 +8255,7 @@
       ]
      }
     },
-    "hash": "mvgtl7dh3rq5eja37nafuallpihbtgph"
+    "hash": "h3rpijxeydeas4oig2mjwdptuhyue6ss"
    }
   },
   "rvlpfb745lzhuettpeii7j7zx624bixu": {
@@ -10224,7 +10224,7 @@
     "hash": "cn5exr4kawiyph5t73ymsga4mbbdv7el"
    }
   },
-  "cnm32syh27kc3cpbputeeda4vdzurwab": {
+  "m57uuoxqnxazjyeomcr2i2rrtr4g4tbw": {
    "pango": {
     "version": "1.41.0",
     "arch": {
@@ -10248,14 +10248,14 @@
     },
     "dependencies": {
      "cairo": {
-      "hash": "46ewageqroobkfxg33p5sirnuptjulmx",
+      "hash": "lncrsrcxezhnrxvdh42nvruv2gubgy7z",
       "type": [
        "build",
        "link"
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -10276,14 +10276,14 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "z5fnboft4wlgdyfe4aia3cmds7x2r57o",
+      "hash": "lxn7eapnwjjcxo3aph74cqv77xbxq7za",
       "type": [
        "build",
        "link"
       ]
      },
      "harfbuzz": {
-      "hash": "okg22aeifrvlbbp23q4xckoz2d2kecjg",
+      "hash": "bdpvnq5r7e73bzzv2toxpkaqlusya6m2",
       "type": [
        "build",
        "link"
@@ -10297,7 +10297,7 @@
       ]
      },
      "libxft": {
-      "hash": "3nnjt6mt3uolrkeurr4dc7f32am77j7m",
+      "hash": "k2bwt7tpdrk5aox32wox3ziyqlcugoed",
       "type": [
        "build",
        "link"
@@ -10310,10 +10310,10 @@
       ]
      }
     },
-    "hash": "oscyckxgdhba3tacjfnyodq5p3dzs4yb"
+    "hash": "qe4hkcvwtsmjm5nu2wpkmenedrdi22wb"
    }
   },
-  "okg22aeifrvlbbp23q4xckoz2d2kecjg": {
+  "bdpvnq5r7e73bzzv2toxpkaqlusya6m2": {
    "harfbuzz": {
     "version": "2.3.1",
     "arch": {
@@ -10337,7 +10337,7 @@
     },
     "dependencies": {
      "cairo": {
-      "hash": "46ewageqroobkfxg33p5sirnuptjulmx",
+      "hash": "lncrsrcxezhnrxvdh42nvruv2gubgy7z",
       "type": [
        "build",
        "link"
@@ -10378,10 +10378,10 @@
       ]
      }
     },
-    "hash": "wr5b6alonvnpm2nr7fead5srxvwfpuz7"
+    "hash": "j2gcgaff4s6jxnsblkyldpw2lxxjucj7"
    }
   },
-  "3nnjt6mt3uolrkeurr4dc7f32am77j7m": {
+  "k2bwt7tpdrk5aox32wox3ziyqlcugoed": {
    "libxft": {
     "version": "2.3.2",
     "arch": {
@@ -10404,7 +10404,7 @@
     },
     "dependencies": {
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -10444,7 +10444,7 @@
       ]
      }
     },
-    "hash": "fle6z3y2t5s3bl54fw7w7yqrfujasghm"
+    "hash": "4vdnnx7sjeydnwzhnfdobrs4arwjzy7d"
    }
   },
   "ma57u7yhv277i2jf5f56jop4g73545fd": {
@@ -10698,7 +10698,7 @@
     "hash": "gi4qtijjtx74jda4xa3ym5neako6deug"
    }
   },
-  "dzowsee2vih344hohr27rpyin4q2ccj2": {
+  "fpqxrglwuidse75l25734e2wxq2hk5av": {
    "r": {
     "version": "4.0.2",
     "arch": {
@@ -10732,7 +10732,7 @@
       ]
      },
      "cairo": {
-      "hash": "jqbys7jlkrz5bnaf5sbbgtml7jkrwwtr",
+      "hash": "b3tqk6vtd2uk56qtn6v2aptp7qu3jwyd",
       "type": [
        "build",
        "link"
@@ -10795,7 +10795,7 @@
       ]
      },
      "pango": {
-      "hash": "cmg2kigmimzlc6szyl5ogxabrcxt42zu",
+      "hash": "n2w2sddx5murf2rxdmrdpi6nsxhjvg7q",
       "type": [
        "build",
        "link"
@@ -10830,10 +10830,10 @@
       ]
      }
     },
-    "hash": "temdjoyycalhg2adrmy3jmwtzkkwuf2h"
+    "hash": "gesejalk2ff4b7actdcp7or6vhilv2aj"
    }
   },
-  "jqbys7jlkrz5bnaf5sbbgtml7jkrwwtr": {
+  "b3tqk6vtd2uk56qtn6v2aptp7qu3jwyd": {
    "cairo": {
     "version": "1.16.0",
     "arch": {
@@ -10881,7 +10881,7 @@
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -10927,7 +10927,7 @@
       ]
      }
     },
-    "hash": "ypone4ms4zdicj73t2qcfvpwe7homzza"
+    "hash": "6af4fklm2zq6genfvyekwnecqfxnn4bx"
    }
   },
   "vpwz4iqqcxwa574ncyewrzzljcku3y3a": {
@@ -10954,7 +10954,7 @@
     "hash": "vpwz4iqqcxwa574ncyewrzzljcku3y3a"
    }
   },
-  "cmg2kigmimzlc6szyl5ogxabrcxt42zu": {
+  "n2w2sddx5murf2rxdmrdpi6nsxhjvg7q": {
    "pango": {
     "version": "1.41.0",
     "arch": {
@@ -10978,14 +10978,14 @@
     },
     "dependencies": {
      "cairo": {
-      "hash": "jqbys7jlkrz5bnaf5sbbgtml7jkrwwtr",
+      "hash": "b3tqk6vtd2uk56qtn6v2aptp7qu3jwyd",
       "type": [
        "build",
        "link"
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -11006,14 +11006,14 @@
       ]
      },
      "gobject-introspection": {
-      "hash": "yn45zbfk5w7pm7kbuvhrqfkehhf3n3jw",
+      "hash": "qy6rklatpfv5aflb5cr4gdneehocwnej",
       "type": [
        "build",
        "link"
       ]
      },
      "harfbuzz": {
-      "hash": "lkfbbbwleyt55obhv7hft3oy7s3yfpq4",
+      "hash": "b4r45k3ddhqdc5hsmm5kjnpwf7xwzncb",
       "type": [
        "build",
        "link"
@@ -11033,10 +11033,10 @@
       ]
      }
     },
-    "hash": "f3ppx4vvwajr3y5ks6gph62355qlqoz5"
+    "hash": "xjkphvvjjsvklrhnlxkmpwdxqflghnmo"
    }
   },
-  "yn45zbfk5w7pm7kbuvhrqfkehhf3n3jw": {
+  "qy6rklatpfv5aflb5cr4gdneehocwnej": {
    "gobject-introspection": {
     "version": "1.56.1",
     "arch": {
@@ -11071,7 +11071,7 @@
       ]
      },
      "cairo": {
-      "hash": "jqbys7jlkrz5bnaf5sbbgtml7jkrwwtr",
+      "hash": "b3tqk6vtd2uk56qtn6v2aptp7qu3jwyd",
       "type": [
        "build",
        "link"
@@ -11104,10 +11104,10 @@
       ]
      }
     },
-    "hash": "tdi7qhpeu363ojlmdodg2w4nuo7qyqfx"
+    "hash": "32jii6m2p6lider4v5coowmo7z2sry5j"
    }
   },
-  "lkfbbbwleyt55obhv7hft3oy7s3yfpq4": {
+  "b4r45k3ddhqdc5hsmm5kjnpwf7xwzncb": {
    "harfbuzz": {
     "version": "2.3.1",
     "arch": {
@@ -11131,7 +11131,7 @@
     },
     "dependencies": {
      "cairo": {
-      "hash": "jqbys7jlkrz5bnaf5sbbgtml7jkrwwtr",
+      "hash": "b3tqk6vtd2uk56qtn6v2aptp7qu3jwyd",
       "type": [
        "build",
        "link"
@@ -11172,7 +11172,7 @@
       ]
      }
     },
-    "hash": "ib52jtvby2cl4tmesi67vsxq22xwue6z"
+    "hash": "k7dov6aenwebngqbuak6vdixxat2lwim"
    }
   },
   "miezutvd7m7hgabjqwcxlcmgtl47tmmv": {
@@ -11208,7 +11208,7 @@
     "hash": "miezutvd7m7hgabjqwcxlcmgtl47tmmv"
    }
   },
-  "kh45yqus6rfbkgzz24noxmnnqkxgk3hq": {
+  "2qie4dm44i4fko3rgpalk2mgc64snpdf": {
    "r": {
     "version": "4.0.0",
     "arch": {
@@ -11242,7 +11242,7 @@
       ]
      },
      "cairo": {
-      "hash": "jqbys7jlkrz5bnaf5sbbgtml7jkrwwtr",
+      "hash": "b3tqk6vtd2uk56qtn6v2aptp7qu3jwyd",
       "type": [
        "build",
        "link"
@@ -11305,7 +11305,7 @@
       ]
      },
      "pango": {
-      "hash": "cmg2kigmimzlc6szyl5ogxabrcxt42zu",
+      "hash": "n2w2sddx5murf2rxdmrdpi6nsxhjvg7q",
       "type": [
        "build",
        "link"
@@ -11340,7 +11340,7 @@
       ]
      }
     },
-    "hash": "qeh74b4m6civgdljxa3rej6xscs7s7kf"
+    "hash": "yqbjqleee5k5d4ojcqofdwwtxag7mx4q"
    }
   },
   "tjs6h4bqskb6dqrwbup4fs7rgxl47sr2": {
@@ -12173,6 +12173,40 @@
      }
     },
     "hash": "y6qxf7yzdispbu7daiubih6amdgavgox"
+   }
+  },
+  "mh2mbsoin7g5limiiwy2rbzih4gxxevs": {
+   "darshan-util": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "bzip2": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "zlib": {
+      "hash": "xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "mh2mbsoin7g5limiiwy2rbzih4gxxevs"
    }
   },
   "bnzl4mnovfe7tcq3pgihr7fe7d6mngko": {
@@ -26508,6 +26542,168 @@
     "hash": "cx7xwasn734ivbrm4uef6gimkzxbch5u"
    }
   },
+  "z33qaapnrl7pwxvxgxg7ccmtzonweqx4": {
+   "darshan-runtime": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": "none",
+     "logpath": "/gpfs/alpine/darshan/andes",
+     "lsf": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "pcpatch": false,
+     "slurm": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "openmpi": {
+      "hash": "bnzl4mnovfe7tcq3pgihr7fe7d6mngko",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "znmisiucjjy5b4spy2baw2agpyjctw35"
+   }
+  },
+  "zas5bja4aety2f2gdjiscrqyidjxaef6": {
+   "darshan-runtime": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": "none",
+     "logpath": "/gpfs/alpine/darshan/andes",
+     "lsf": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "pcpatch": false,
+     "slurm": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "openmpi": {
+      "hash": "hppsims3hbdq727ftdn2w7jplvngmvmz",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "lsl576wksruc6gisbaoile4ylb5ettxi",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "7atvrsp3zazvwjnefxp6v6zjnrskyrxf"
+   }
+  },
+  "lvixk4r7aumopzmb2rw2dgcsu5cfijk6": {
+   "darshan-runtime": {
+    "version": "3.1.7",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "10.1.0"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": "none",
+     "logpath": "/gpfs/alpine/darshan/andes",
+     "lsf": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "pcpatch": false,
+     "slurm": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "openmpi": {
+      "hash": "ihhy6onyzcframtq4vfqghp7lusgivvw",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "prqfoqbyz5fo4x6k5xqr3fhgherjav2f",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "4eqqhxguf4tfscdtaxb54hwsmwgzfg54"
+   }
+  },
   "sgrt3q2vmyqp6jcokdau7tojnrkcbgyu": {
    "openblas": {
     "version": "0.3.10",
@@ -27190,9 +27386,9 @@
     "hash": "vgjiaxlpiuojv2zza2qkqpg5sa7f7kpt"
    }
   },
-  "3nh66zmy5xtriao4hydoqleru5dwnv6b": {
+  "z32jhyvyhr5hs3d3vq7dvrfiug2rbdzu": {
    "paraview": {
-    "version": "5.6.2",
+    "version": "5.8.0",
     "arch": {
      "platform": "linux",
      "platform_os": "rhel8",
@@ -27211,6 +27407,7 @@
      ],
      "examples": false,
      "hdf5": true,
+     "kits": true,
      "mpi": true,
      "opengl2": true,
      "osmesa": true,
@@ -27218,6 +27415,7 @@
      "python": false,
      "python3": false,
      "qt": false,
+     "shared": true,
      "silo": true,
      "visitbridge": true,
      "cflags": [],
@@ -27333,7 +27531,7 @@
       ]
      }
     },
-    "hash": "6ebfhy64lhzz67ssef53bokg2joi7ebo"
+    "hash": "vkvvuuwkcact65v7hbcajun26etf5jky"
    }
   },
   "ozuvfrxzaoxuncm5bg55ka7oh6dakxte": {
@@ -27682,7 +27880,7 @@
     "hash": "mybyxhmnttzzeqkquqa3gcppmp7qvi3m"
    }
   },
-  "3nwif7re4bh3t33aszplyvnlp2c7ipb3": {
+  "ekjf76322xnbek4cposplf337u66yjgw": {
    "octave": {
     "version": "5.2.0",
     "arch": {
@@ -27747,7 +27945,7 @@
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -27768,7 +27966,7 @@
       ]
      },
      "gnuplot": {
-      "hash": "lkskq5pm2yx2itbaggoaehlnxda6hf4v",
+      "hash": "toqvqyyzxoov55urkvwwnmqb2jgrlaxu",
       "type": [
        "build",
        "link"
@@ -27782,7 +27980,7 @@
       ]
      },
      "imagemagick": {
-      "hash": "63bv3m4pthvdkyyx7qvawk5rfflw3fst",
+      "hash": "o3asv76nllsbc4xvivsfefpd2wo4tiby",
       "type": [
        "build",
        "link"
@@ -27823,7 +28021,7 @@
       ]
      },
      "qt": {
-      "hash": "s24354eguacbujvpb757pb7zpmw4pjlo",
+      "hash": "pkzqxtucnfhgwrsghhv2uyxxk4gvx6fo",
       "type": [
        "build",
        "link"
@@ -27851,7 +28049,7 @@
       ]
      }
     },
-    "hash": "i2h26j5qlf57q7evp6qimefgpadyxlnh"
+    "hash": "bmu67sixfrp4bqhcfwifjqlyeqrlxdyf"
    }
   },
   "5i5zz4f6jib4jdlc6pnsfdlrqw2ldu5h": {
@@ -27952,7 +28150,7 @@
     "hash": "4oejevuaz262hnaty3j2cf53ypgku6xb"
    }
   },
-  "lkskq5pm2yx2itbaggoaehlnxda6hf4v": {
+  "toqvqyyzxoov55urkvwwnmqb2jgrlaxu": {
    "gnuplot": {
     "version": "5.2.8",
     "arch": {
@@ -27988,7 +28186,7 @@
     ],
     "dependencies": {
      "cairo": {
-      "hash": "46ewageqroobkfxg33p5sirnuptjulmx",
+      "hash": "lncrsrcxezhnrxvdh42nvruv2gubgy7z",
       "type": [
        "build",
        "link"
@@ -28002,7 +28200,7 @@
       ]
      },
      "libgd": {
-      "hash": "vwujjr2jfyvn3nmqququn6ych63z6lco",
+      "hash": "m43absjuytxvqrrcafg56s526pbqdjrs",
       "type": [
        "build",
        "link"
@@ -28030,7 +28228,7 @@
       ]
      },
      "pango": {
-      "hash": "cnm32syh27kc3cpbputeeda4vdzurwab",
+      "hash": "m57uuoxqnxazjyeomcr2i2rrtr4g4tbw",
       "type": [
        "build",
        "link"
@@ -28050,7 +28248,7 @@
       ]
      }
     },
-    "hash": "3r6bjhkw6lw6vjkeuv4vs4acznz6yz76"
+    "hash": "vg4g4xszvh535gbgl4g437kqp2hllas2"
    }
   },
   "dya3d7l47nm523vcodwbij676lcsecz2": {
@@ -28125,7 +28323,7 @@
     "hash": "vexsogmpnwtr4yzu3ywh3337h56kjeje"
    }
   },
-  "s24354eguacbujvpb757pb7zpmw4pjlo": {
+  "pkzqxtucnfhgwrsghhv2uyxxk4gvx6fo": {
    "qt": {
     "version": "5.14.2",
     "arch": {
@@ -28174,7 +28372,7 @@
       ]
      },
      "fontconfig": {
-      "hash": "rhdsp3bkcyxflbxcozas3hzspmskqbw5",
+      "hash": "6qrdmkbeyarepr3ka33b3nz42rhospp7",
       "type": [
        "build",
        "link"
@@ -28195,7 +28393,7 @@
       ]
      },
      "harfbuzz": {
-      "hash": "okg22aeifrvlbbp23q4xckoz2d2kecjg",
+      "hash": "bdpvnq5r7e73bzzv2toxpkaqlusya6m2",
       "type": [
        "build",
        "link"
@@ -28347,7 +28545,7 @@
       ]
      }
     },
-    "hash": "spsb4qovw43qu3pbemw72grfrzntzf4u"
+    "hash": "osvmsx3mhqvkvokahu74oqe5adsvixo7"
    }
   },
   "apnxu7jfpgdflaqywokpb7dxcaqsdea5": {
@@ -44532,7 +44730,7 @@
     "hash": "3x66ile7zvhfk3aqegkpxbygvkcigfvw"
    }
   },
-  "tsykdmztvy6oztrekmgipb6gu3uvmhwx": {
+  "hdcqkb5jbm2p66rz43nhiraf5dwsusrq": {
    "netlib-scalapack": {
     "version": "2.1.0",
     "arch": {
@@ -44548,6 +44746,7 @@
     "parameters": {
      "build_type": "RelWithDebInfo",
      "patches": [
+      "74c238d023232b5f460de29675b8b0d0138c0e52cefdce869d6e2918aa21036e",
       "f2baedde688ffe4c20943c334f580eb298e04d6f35c86b90a1f4e8cb7ae344a2"
      ],
      "pic": false,
@@ -44560,7 +44759,8 @@
      "ldlibs": []
     },
     "patches": [
-     "f2baedde688ffe4c20943c334f580eb298e04d6f35c86b90a1f4e8cb7ae344a2"
+     "f2baedde688ffe4c20943c334f580eb298e04d6f35c86b90a1f4e8cb7ae344a2",
+     "74c238d023232b5f460de29675b8b0d0138c0e52cefdce869d6e2918aa21036e"
     ],
     "dependencies": {
      "cmake": {
@@ -44584,7 +44784,7 @@
       ]
      }
     },
-    "hash": "hfdq6rpvc66p6lonqpdzopfzavfcmmtp"
+    "hash": "d3ylrcy5ybldxmh5skfyb4hgjilzd2tr"
    }
   },
   "nsiqxsulfixyvgn2gsxa7cplbmtb3u3l": {
@@ -44996,202 +45196,6 @@
      }
     },
     "hash": "bmdi4i62dkxaxkqhl4ptjeo6qozoeu6s"
-   }
-  },
-  "mh2mbsoin7g5limiiwy2rbzih4gxxevs": {
-   "darshan-util": {
-    "version": "3.1.7",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "8.3.1"
-    },
-    "namespace": "olcf",
-    "parameters": {
-     "bzip2": false,
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "dependencies": {
-     "zlib": {
-      "hash": "xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b",
-      "type": [
-       "build",
-       "link"
-      ]
-     }
-    },
-    "hash": "mh2mbsoin7g5limiiwy2rbzih4gxxevs"
-   }
-  },
-  "z33qaapnrl7pwxvxgxg7ccmtzonweqx4": {
-   "darshan-runtime": {
-    "version": "3.1.7",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "8.3.1"
-    },
-    "namespace": "olcf",
-    "parameters": {
-     "cobalt": false,
-     "grouplogs": true,
-     "hdf5": "none",
-     "logpath": "/gpfs/alpine/darshan/andes",
-     "lsf": true,
-     "patches": [
-      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
-     ],
-     "pbs": false,
-     "pcpatch": false,
-     "slurm": false,
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "patches": [
-     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
-    ],
-    "dependencies": {
-     "openmpi": {
-      "hash": "bnzl4mnovfe7tcq3pgihr7fe7d6mngko",
-      "type": [
-       "build",
-       "link"
-      ]
-     },
-     "zlib": {
-      "hash": "xqjeqtupcfqqqlaw5ehjlfjjly7zoe3b",
-      "type": [
-       "build",
-       "link"
-      ]
-     }
-    },
-    "hash": "znmisiucjjy5b4spy2baw2agpyjctw35"
-   }
-  },
-  "zas5bja4aety2f2gdjiscrqyidjxaef6": {
-   "darshan-runtime": {
-    "version": "3.1.7",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "9.3.0"
-    },
-    "namespace": "olcf",
-    "parameters": {
-     "cobalt": false,
-     "grouplogs": true,
-     "hdf5": "none",
-     "logpath": "/gpfs/alpine/darshan/andes",
-     "lsf": true,
-     "patches": [
-      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
-     ],
-     "pbs": false,
-     "pcpatch": false,
-     "slurm": false,
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "patches": [
-     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
-    ],
-    "dependencies": {
-     "openmpi": {
-      "hash": "hppsims3hbdq727ftdn2w7jplvngmvmz",
-      "type": [
-       "build",
-       "link"
-      ]
-     },
-     "zlib": {
-      "hash": "lsl576wksruc6gisbaoile4ylb5ettxi",
-      "type": [
-       "build",
-       "link"
-      ]
-     }
-    },
-    "hash": "7atvrsp3zazvwjnefxp6v6zjnrskyrxf"
-   }
-  },
-  "lvixk4r7aumopzmb2rw2dgcsu5cfijk6": {
-   "darshan-runtime": {
-    "version": "3.1.7",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "10.1.0"
-    },
-    "namespace": "olcf",
-    "parameters": {
-     "cobalt": false,
-     "grouplogs": true,
-     "hdf5": "none",
-     "logpath": "/gpfs/alpine/darshan/andes",
-     "lsf": true,
-     "patches": [
-      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
-     ],
-     "pbs": false,
-     "pcpatch": false,
-     "slurm": false,
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "patches": [
-     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
-    ],
-    "dependencies": {
-     "openmpi": {
-      "hash": "ihhy6onyzcframtq4vfqghp7lusgivvw",
-      "type": [
-       "build",
-       "link"
-      ]
-     },
-     "zlib": {
-      "hash": "prqfoqbyz5fo4x6k5xqr3fhgherjav2f",
-      "type": [
-       "build",
-       "link"
-      ]
-     }
-    },
-    "hash": "4eqqhxguf4tfscdtaxb54hwsmwgzfg54"
    }
   }
  }
