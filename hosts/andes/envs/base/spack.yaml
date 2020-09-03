@@ -237,7 +237,7 @@ spack:
   mirrors:
     facility_builds: /sw/andes/spack-env/mirrors/builds
   repos:
-  - ${FACILITY_SPACK_ROOT}/share/spack/repos/olcf
+  - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
   packages:
     openmpi:
@@ -624,22 +624,22 @@ spack:
       blacklist_implicits: false
       projections: {}
   config:
-    install_tree: ${ENV_ROOT}/opt
+    install_tree: ${FACSPACK_ENV}/opt
     module_roots:
-      tcl: ${ENV_ROOT}/modules/flat
-      lmod: ${ENV_ROOT}/modules/spack
+      tcl: ${FACSPACK_ENV_MODULEROOT}/flat
+      lmod: ${FACSPACK_ENV_MODULEROOT}/spack
     install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
-    - ${FACILITY_SPACK_ROOT}/hosts/andes/templates
-    - ${FACILITY_SPACK_ROOT}/share/spack/templates
+    - ${FACSPACK_CONF_HOST}/templates
+    - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
-    source_cache: ${FACILITY_SPACK_ROOT}/share/mirrors/sources
+    source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
     extensions:
-    - /sw/.testing/belhorn/spack/facility-spack/share/spack/extensions/spack-olcf
-    misc_cache: ${ENV_ROOT}/.mcache
+    - /sw/sources/facspack/share/spack/extensions/spack-olcf
+    misc_cache: ${FACSPACK_ENV}/.mcache
     verify_ssl: true
     install_missing_compilers: false
     checksum: true

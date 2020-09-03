@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# User override-able variables:
+# FACSPACK_MY_ENVS   - Parent dir of spack environment prefixes.
+# FACSPACK_ENV_NAME  - Name of spack environment.
+
+# Variables permitted to be used in `spack.yaml` environment files:
+# FACSPACK_ENV            - Spack environment install prefix.
+# FACSPACK_ENV_MODULEROOT - Spack environment moduleroot.
+# FACSPACK_CONF_COMMON    - Site/Facility specific spack config files.
+# FACSPACK_CONF_HOST      - Host-specific config spack files.
+# FACSPACK_CONF_ENV       - Environment-specific spack config files.
+
 #####################
 # Obtain the path to this file.
 #   `_THIS`  : path to this file
@@ -28,8 +39,8 @@ while [ -h "$_THIS" ]; do
   [[ $_THIS != /* ]] && _THIS="$_THIS_DIR/$_THIS" 
 done
 _THIS_DIR="$( cd -P "$( dirname "$_THIS" )" >/dev/null && pwd )"
-FACILITY_SPACK_ROOT="${_THIS_DIR/#\/autofs\/nccs-svm[0-9]_sw//sw}"
-export FACILITY_SPACK_ROOT="${FACILITY_SPACK_ROOT/#\/autofs\/nccs-svm[0-9]_home[0-9]\///ccs/home/}"
+FACSPACK_SPACK_ROOT="${_THIS_DIR/#\/autofs\/nccs-svm[0-9]_sw//sw}"
+export FACSPACK_SPACK_ROOT="${FACSPACK_SPACK_ROOT/#\/autofs\/nccs-svm[0-9]_home[0-9]\///ccs/home/}"
 #####################
 
 # This script must be sourced.
@@ -38,90 +49,118 @@ export FACILITY_SPACK_ROOT="${FACILITY_SPACK_ROOT/#\/autofs\/nccs-svm[0-9]_home[
   && echo "usage: '. ./init-facility-spack.sh'" \
   && exit 1
 
-# Do nothing if a spack instance is already initialized.
+# Check if a spack instance is already setup in the environment. If so, do
+# nothing and abort.
 [[ -n "${SPACK_ROOT:-}" ]] \
   && echo "Spack is already initialized!" \
   && echo "  '${SPACK_ROOT}'" \
   && echo "Please restart shell to change configuration." \
   && return 1
 
+# Identify the compute resource on which this spack instance is being
+# initialized or fail.
 _THIS_HOST="$(hostname --long \
              | sed -e 's/\.\(olcf\|ccs\)\..*//' \
                    -e 's/[-]\?\(login\|ext\|batch\)[^\.]*[\.]\?//' \
                    -e 's/[-0-9]*$//')"
-
 [[ "${_THIS_HOST:-XX}" == "XX" ]] \
   && echo "ERROR: Current host '${_THIS_HOST}' could not be identified!" \
   && return 1
-[ ! -d "${FACILITY_SPACK_ROOT}/hosts/${_THIS_HOST}/envs/${ENV_NAME}" ] \
-  && echo "ERROR: Current host '${_THIS_HOST}' does not have an environment named 'ENV_NAME=${ENV_NAME}'!" \
-  && return 1
+export FACSPACK_HOST="${_THIS_HOST}"
 
-# FIXME: This should be non-user specific and inherited from the parent
-# environment and possibly use an envvar-passed environment name in conjunction
-# with the identified host or fallback to using the base env if a specific env is
-# not given.
-FACILITY_ENV_PREFIX="/sw/${_THIS_HOST}/spack-envs"
-export ENV_PREFIX="${ENV_PREFIX:-${FACILITY_ENV_PREFIX}}"
-export ENV_NAME="${ENV_NAME:-base}"
+# Define the location of the official facility-managed spack environments for
+# this system. This env prefix is used by default unless overridden by the user.
+_FS_DEFAULT_ENV_PREFIX="/sw/${FACSPACK_HOST}/spack-envs"
+_FS_DEFAULT_ENV_NAME="base"
+export FACSPACK_CONF_HOST="${FACSPACK_SPACK_ROOT}/hosts/${FACSPACK_HOST}"
+export FACSPACK_CONF_COMMON="${FACSPACK_SPACK_ROOT}/share"
 
-_HOST_CONF_DIR="${FACILITY_SPACK_ROOT}/hosts/${_THIS_HOST}"
-export ENV_ROOT="${ENV_PREFIX}/${ENV_NAME}"
-export ENV_LMOD_ROOT="${ENV_ROOT}/modules"
+# Setup the path to the spack environments prefix. All the spack envs for this
+# system will be installed under this path. The path must be non-blank, exist,
+# and be owned by the current user. The default value points to the production
+# spack environments for this machine and can be over-ridden by the user for
+# testing and private clones of the facility spack environments by setting the
+# `FACSPACK_MY_ENVS` variable prior to sourcing this script.
+export FACSPACK_MY_ENVS="${FACSPACK_MY_ENVS:-${_FS_DEFAULT_ENV_PREFIX}}"
+_FS_ERR_MSG="ERROR: Environment prefix "
+_FS_ERR_MSG+="'FACSPACK_MY_ENVS=${FACSPACK_MY_ENVS:-}'"
+if [[ -z "${FACSPACK_MY_ENVS:-}" ]]; then
+  echo  "${_FS_ERR_MSG} not set!"
+  return 1
+elif [[ ! -d "${FACSPACK_MY_ENVS:-}" ]]; then
+  echo "${_FS_ERR_MSG} does not exist!"
+  return 1
+elif [[ "$(stat -c '%U' ${FACSPACK_MY_ENVS})" != ${USER} ]]; then
+  echo "${_FS_ERR_MSG} is not owned by ${USER}!"
+  return 1
+fi
+unset _FS_ERR_MSG
 
-# Abort if ENV_PREFIX is not set to something the current user owns or doesn't
-# exist:
-[[ -z "${ENV_PREFIX:-}" ]] \
-  && echo "ERROR: Environment prefix 'ENV_PREFIX=${ENV_PREFIX:-}' not set!" \
-  && return 1
-[[ ! -d "${ENV_PREFIX:-}" ]] \
-  && echo "ERROR: Environment prefix 'ENV_PREFIX=${ENV_PREFIX:-}' does not exist!" \
-  && return 1
-[[ "$(stat -c '%U' ${ENV_PREFIX})" != ${USER} ]] \
-  && echo "ERROR: Environment prefix 'ENV_PREFIX=${ENV_PREFIX:-}' is not owned by ${USER}!" \
-  && return 1
+# Select the name of the spack environment tracked in this repo for which the
+# user will be modifying. All compute resources have a 'base' environment which
+# is the default. This repo must contain a directory of this name among the envs
+# for the current host. The default env name can be over-ridden by the user by
+# setting the `FACSPACK_ENV_NAME` variable prior to sourcing this script.
+export FACSPACK_ENV_NAME="${FACSPACK_ENV_NAME:-${_FS_DEFAULT_ENV_NAME}}"
+export FACSPACK_CONF_ENV="${FACSPACK_CONF_HOST}/envs/${FACSPACK_ENV_NAME}"
+if [ ! -d "${FACSPACK_CONF_ENV}" ]; then
+  _FS_ERR_MSG="ERROR: Current host '${FACSPACK_HOST}' does not have "
+  _FS_ERR_MSG+="an environment named 'FACSPACK_ENV_NAME=${FACSPACK_ENV_NAME}'!"
+  echo "${_FS_ERR_MSG}"
+  unset _FS_ERR_MSG
+  return 1
+fi
+
+# Set the paths to the spack environment and modulefiles.
+export FACSPACK_ENV="${FACSPACK_MY_ENVS}/${FACSPACK_ENV_NAME}"
+export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/modules"
 
 # Copy git-tracked modules to module root.
-# FIXME: Need to sync this configuration with the spack environment in use.
-mkdir -p "${ENV_ROOT}/.mcache"
-mkdir -p "${ENV_LMOD_ROOT}"
+mkdir -p "${FACSPACK_ENV}/.mcache"
+mkdir -p "${FACSPACK_ENV_MODULEROOT}"
 cp -dRu --preserve=mode,timestamps \
-   "${_HOST_CONF_DIR}/share/lmod/modulefiles/static/site" \
-   "${ENV_LMOD_ROOT}/."
+   "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
+   "${FACSPACK_ENV_MODULEROOT}/."
 
 function setup_alternate_module_environment {
   # Setup alternate module environment
-  if [[ "${ENV_PREFIX:-YY}" == "${FACILITY_ENV_PREFIX:-XX}" ]]; then
+  if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" ]]; then
     module reset
     module purge
     echo "Using facility module root"
   else
     module reset
     module purge
-    echo "Using custom module root '${ENV_LMOD_ROOT}'"
+    echo "Using custom module root '${FACSPACK_ENV_MODULEROOT}'"
     export MODULEPATH="$1"
   fi
 }
 
 # Host-specific environment modifications
-case "${_THIS_HOST}" in
+case "${FACSPACK_HOST}" in
   peak)
-    setup_alternate_module_environment "${ENV_LMOD_ROOT}/spack/linux-rhel7-ppc64le/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
-    export MODULEPATH="${ENV_LMOD_ROOT}/spack/linux-rhel7-ppc64le/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
+    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    setup_alternate_module_environment "${_FS_MP}"
+    export MODULEPATH="${_FS_MP}"
     module load python/3.7.0-anaconda3-5.3.0
     ;;
   andes)
-    setup_alternate_module_environment "${ENV_LMOD_ROOT}/spack/linux-rhel8-x86_64/Core:${ENV_LMOD_ROOT}/site/Core:/sw/${_THIS_HOST}/modulefiles/core"
+    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    setup_alternate_module_environment "${_FS_MP}"
     ;;
   *)
     ;;
 esac
 
 export PYTHONDONTWRITEBYTECODE=1
-# FIXME - ensure spack instance is checked out to appropriate commit
+# FIXME - ensure spack instance submodule is checked out to appropriate commit
 # WARNING - checking out new branches of spack while other instances are using
 #           it will certainly cause problems. Need a way to lock the spack repo
 #           while it is in use.
-source "${FACILITY_SPACK_ROOT}/spack/share/spack/setup-env.sh"
-echo "Spack initialized for ${_THIS_HOST:-Unknown host} at ${SPACK_ROOT}"
-spack env activate -d "${_HOST_CONF_DIR}/envs/${ENV_NAME}"
+source "${FACSPACK_SPACK_ROOT}/spack/share/spack/setup-env.sh"
+echo "Spack initialized for ${FACSPACK_HOST:-Unknown host} at ${SPACK_ROOT}"
+spack env activate -d "${FACSPACK_CONF_ENV}"
