@@ -20,24 +20,44 @@ class Pgi(Package):
 
     homepage = "http://www.pgroup.com/"
 
-    version('20.1',  '9653c1e5dd8622f21cc7d45e10dbbd27', url='file:///ccs/packages/IBM/02-2020/PGI/pgilinux-2020-201-ppc64le.tar.gz')
-    version('19.10',  '9afe557f3e80b8b0fe9a2894b9906989', url='file:///ccs/packages/IBM/10-2019/PGI/pgilinux-2019-1910-ppc64le.tar.gz')
-    version('19.9',  'a4f2b956f20a66745b5b51780a3573a8', url='file:///ccs/packages/IBM/09-2019/PGI/pgilinux-2019-199-ppc64le.tar.gz')
-    version('19.7',  '7c3928b45a282d55ebb3c31a2dff214e', url='file:///ccs/packages/IBM/08-2019/PGI/pgilinux-2019-197-ppc64le.tar.gz')
-    version('19.5',  'd75ea928c5f0385fd4ee4ba30d483ef1', url='file:///ccs/packages/IBM/05-2019/PGI/pgilinux-2019-195-ppc64le.tar.gz')
-    version('19.4',  '50383cbf56ae154d6b3bdb7904ed0303', url='file:///ccs/packages/IBM/05-2019/PGI/pgilinux-2019-194-ppc64le.tar.gz')
-    version('19.3',  '33fb9ac82e680b92c4a412c4f49fde3d', url='file:///ccs/packages/IBM/04-19-2019/PGI/pgilinux-2019-193-ppc64le.tar.gz')
-    version('19.1',  'de6cc7611c7fd3e6cc5d2a568c9e1c85', url='file:///ccs/packages/IBM/02-2019/PGI/pgilinux-2019-191-ppc64le.tar.gz')
-    version('18.10',  'fbaa8e380a6fa53700aec217b0bc4271', url='file:///ccs/packages/IBM/12-14-2018/PGI/pgilinux-2018-1810-ppc64le.tar.gz')
-    version('18.7',  '6cbec1d342bc522caa367875e410e033', url='file:///ccs/packages/IBM/08-2018/PGI/pgilinux-2018-187-ppc64le.tar.gz')
-    version('18.5',  '70393f462e143bbefd6940530c8d2475', url='file:///ccs/packages/IBM/07-2018/PGI/pgilinux-2018-185-ppc64le.tar.gz')
-    version('18.4',  '591c1d7ed80e9a392dcd19392c72b9dc', url='file:///ccs/packages/IBM/04-2018/PGI/pgilinux-2018-184-ppc64le.tar.gz')
-    version('18.3',  'a6bd64352af793526d1b0fd9206823e3', url='file:///ccs/packages/IBM/03-2018/PGI/pgilinux-2018-183-ppc64le.tar.gz')
-    version('18.1',  '5281f5772f8abe1374012208eeadef62', url='file:///ccs/packages/IBM/02-2018/PGI/pgilinux-2018-181-ppc64le.tar.gz')
-    version('17.10', 'bedb8a4fdfdbb7d023ac76437d41e8f9', url='file:///ccs/packages/IBM/11-2017/PGI/pgilinux-2017-1710-ppc64le.tar.gz')
-    version('17.9',  '9e0f2d22ddfb39d615b72e79e57bb76f', url='file:///ccs/packages/IBM/10-2017/PGI/pgilinux-2017-179-ppc64le.tar.gz')
-    version('17.7',  'b6bdfb968e24a9c69387bf002847df84', url='file:///ccs/packages/IBM/08-2017/PGI/pgilinux-2017-177-ppc64le.tar.gz')
-    version('17.5',  '32e1d566abc6a846ca39ca99777d21d4', url='file:///ccs/packages/IBM/05-2017/PGI/pgilinux-2017-175-ppc64le.tar.gz')
+    version('20.4',  'b907d114117e22a1c5ec80a86b8f4315',
+            url='file:///ccs/packages/IBM/09-2020/PGI/pgilinux-2020-204-ppc64le.tar.gz')
+    version('20.1',  '9653c1e5dd8622f21cc7d45e10dbbd27',
+            url='file:///ccs/packages/IBM/02-2020/PGI/pgilinux-2020-201-ppc64le.tar.gz')
+    version('19.10',  '9afe557f3e80b8b0fe9a2894b9906989',
+            url='file:///ccs/packages/IBM/10-2019/PGI/pgilinux-2019-1910-ppc64le.tar.gz')
+    version('19.9',  'a4f2b956f20a66745b5b51780a3573a8',
+            url='file:///ccs/packages/IBM/09-2019/PGI/pgilinux-2019-199-ppc64le.tar.gz')
+    version('19.7',  '7c3928b45a282d55ebb3c31a2dff214e',
+            url='file:///ccs/packages/IBM/08-2019/PGI/pgilinux-2019-197-ppc64le.tar.gz')
+    version('19.5',  'd75ea928c5f0385fd4ee4ba30d483ef1',
+            url='file:///ccs/packages/IBM/05-2019/PGI/pgilinux-2019-195-ppc64le.tar.gz')
+    version('19.4',  '50383cbf56ae154d6b3bdb7904ed0303',
+            url='file:///ccs/packages/IBM/05-2019/PGI/pgilinux-2019-194-ppc64le.tar.gz')
+    version('19.3',  '33fb9ac82e680b92c4a412c4f49fde3d',
+            url='file:///ccs/packages/IBM/04-19-2019/PGI/pgilinux-2019-193-ppc64le.tar.gz')
+    version('19.1',  'de6cc7611c7fd3e6cc5d2a568c9e1c85',
+            url='file:///ccs/packages/IBM/02-2019/PGI/pgilinux-2019-191-ppc64le.tar.gz')
+    version('18.10',  'fbaa8e380a6fa53700aec217b0bc4271',
+            url='file:///ccs/packages/IBM/12-14-2018/PGI/pgilinux-2018-1810-ppc64le.tar.gz')
+    version('18.7',  '6cbec1d342bc522caa367875e410e033',
+            url='file:///ccs/packages/IBM/08-2018/PGI/pgilinux-2018-187-ppc64le.tar.gz')
+    version('18.5',  '70393f462e143bbefd6940530c8d2475',
+            url='file:///ccs/packages/IBM/07-2018/PGI/pgilinux-2018-185-ppc64le.tar.gz')
+    version('18.4',  '591c1d7ed80e9a392dcd19392c72b9dc',
+            url='file:///ccs/packages/IBM/04-2018/PGI/pgilinux-2018-184-ppc64le.tar.gz')
+    version('18.3',  'a6bd64352af793526d1b0fd9206823e3',
+            url='file:///ccs/packages/IBM/03-2018/PGI/pgilinux-2018-183-ppc64le.tar.gz')
+    version('18.1',  '5281f5772f8abe1374012208eeadef62',
+            url='file:///ccs/packages/IBM/02-2018/PGI/pgilinux-2018-181-ppc64le.tar.gz')
+    version('17.10', 'bedb8a4fdfdbb7d023ac76437d41e8f9',
+            url='file:///ccs/packages/IBM/11-2017/PGI/pgilinux-2017-1710-ppc64le.tar.gz')
+    version('17.9',  '9e0f2d22ddfb39d615b72e79e57bb76f',
+            url='file:///ccs/packages/IBM/10-2017/PGI/pgilinux-2017-179-ppc64le.tar.gz')
+    version('17.7',  'b6bdfb968e24a9c69387bf002847df84',
+            url='file:///ccs/packages/IBM/08-2017/PGI/pgilinux-2017-177-ppc64le.tar.gz')
+    version('17.5',  '32e1d566abc6a846ca39ca99777d21d4',
+            url='file:///ccs/packages/IBM/05-2017/PGI/pgilinux-2017-175-ppc64le.tar.gz')
 
     variant('network', default=True,
             description="Perform a network install")

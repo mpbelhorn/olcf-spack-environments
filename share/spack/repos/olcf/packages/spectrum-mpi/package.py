@@ -11,7 +11,7 @@ class SpectrumMpi(Package):
     homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
-    version('10.4.0.0-20200604', 'da3e91ed89c151873c1825abf219960b',
+    version('10.4.0.0-20200604', 'd8e61f797f7fad885851d8f0b2662e84',
         url='file:///ccs/packages/IBM/08-2020/SMPI/ibm_smpi-10.4.0.0-20200604-rh8.ppc64le.tar.gz')
     version('10.3.1.2-20200121', '94c6c95693f736373590ec3d3a2398f7',
         url='file:///ccs/packages/IBM/02-2020/SMPI/ibm_smpi-10.3.1.2-20200121-rh7.ppc64le.tar.gz')
@@ -102,7 +102,10 @@ class SpectrumMpi(Package):
         accept_license('-l', lap_se, '-s', lap_se, '-t', '5', ignore_errors=(9,))
 
         # Rebuild fortran module with lib/module/build.sh
-        with working_dir(join_path(self.prefix, 'lib', 'module')):
+        mod_src_dir = join_path(self.prefix, 'lib', 'module')
+        if self.spec.satisfies('@10.4.0.0-20200604 %pgi'):
+            mod_src_dir = join_path(self.prefix, 'lib', 'pgi')
+        with working_dir(mod_src_dir):
             module_build = Executable('./build.sh')
             mod_env = os.environ
             mod_env.update({'MPI_ROOT': self.prefix.replace('/autofs/nccs-svm1_', '/'),

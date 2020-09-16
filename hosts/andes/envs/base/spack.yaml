@@ -88,7 +88,6 @@ spack:
     - nco
     - magma ^cuda@:10.99
   - e4s_packages:
-    
     ## Already in general compute packages list
     # - openmpi
     # - hypre
@@ -104,7 +103,6 @@ spack:
     - ninja
     - qthreads
     - openpmd-api
-    
     # - mfem ## Fails to build
     - sundials
     - strumpack

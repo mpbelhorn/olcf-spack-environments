@@ -11,17 +11,19 @@ spack:
   - xl_compilers:
     - '%xl@16.1.1-8'
   - llvm_compilers:
-    - '%clang@9.0.0-2'
-  - pgi_compilers: []
+    # - '%clang@9.0.0-2'
+    - '%clang@10.0.1-0'
+  - pgi_compilers:
     # - '%pgi@18.10' 
     # - '%pgi@19.9'
     # - '%pgi@19.10'
-    # - '%pgi@20.1'
+    - '%pgi@20.1'
+    - '%pgi@20.4'
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
     - $llvm_compilers
-    # - $pgi_compilers
+    - $pgi_compilers
   - core_packages:
     - git
     - htop
@@ -78,60 +80,68 @@ spack:
     - hypre
     - mpip
     - adios2 ~python~zfp
-  - e4s:
+  - e4s_packages:
+    ## Already in general compute packages list
+    # - openmpi
+    # - hypre
+    # - hdf5
+    # - parallel-netcdf
+    # - adios2
+    # - adios
+    # - darshan-runtime
+    # - darshan-util
+    # - raja
+    - zfp
+    - sz
+    - ninja
+    - qthreads
     - openpmd-api
-    - py-libensemble^python@3.7.3
-    - hypre
-    - mfem
-    - trilinos@12.14.1+dtk+intrepid2+shards
+    # - mfem ## Fails to build
     - sundials
     - strumpack
     - superlu-dist
     - superlu
+    - trilinos@12.14.1+dtk+intrepid2+shards
     - tasmanian
     - mercury
-    - hdf5
-    - adios2
-    - adios
-    - darshan-runtime
-    - darshan-util
     - veloc
-    - scr
-    - parallel-netcdf
-    - qthreads
-    - papyrus@develop
+    # - scr ## No slurm on Peak
     - bolt
-    - raja
     - upcxx
-    - kokkos+openmp
-    - openmpi
     - umpire
     - libquo
     - globalarrays
     - pdt
     - tau
-    - hpctoolkit
     - dyninst
+    # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
     - gotcha
     - caliper
     - papi
-    - py-jupyterhub
-    - zfp
-    - sz
-    - libnrm
     - rempi
-    - ninja
+    - kokkos+openmp
     - kokkos-kernels
-  - manifest:
+    ## Excluded E4S packages ------
+    ### Explictly depends on mpich
+    # - libnrm
+    ### No packages should be pinned @develop
+    # - papyrus@develop
+    ### Python extensions.
+    # - py-jupyterhub
+    # - 'py-libensemble^python@3.7.3:'
+  - core_specs:
     - matrix:
       - - $core_packages
       - - $core_compiler
+  - smpi_specs:
     - matrix:
       - - spectrum-mpi
       - - $all_compilers
+  - core_compute_specs:
     - matrix:
       - - $core_only_compute_packages
       - - $core_compiler
+  - gcc_specs:
     - matrix:
       - - openblas threads=openmp
         - openblas threads=none
@@ -146,16 +156,24 @@ spack:
     - matrix:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
+        - $e4s_packages
       - - $gcc_compilers
       exclude:
       - 'amgx%gcc@9:'
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0
+  - llvm_specs:
     - matrix:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
+        - $e4s_packages
       - - $llvm_compilers
-      - - ^elfutils%gcc@8-os
+      exclude:
+      - 'amgx%clang@10:' # FIXME missing math.h
+      - mpip   # ^elfutils !conflicts clang
+      - dyninst   # ^elfutils !conflicts clang
+      - hpctoolkit   # ^elfutils !conflicts clang
+  - xl_specs:
     - matrix:
       - - $general_compute_packages
         - parallel-io@2.3.0
@@ -175,24 +193,33 @@ spack:
       - boost@1.63.0:%xl
       - 'parallel-io@2.4.4:'
       - mpip
-    # - matrix:
-    #   - - $general_compute_packages
-    #   - - $pgi_compilers
-    #   - - ^cmake%gcc@8-os
-    #   - - ^python%gcc@8-os
-    #   - - ^numactl%gcc@8-os
-    #   - - ^perl%gcc@8-os
-    #   - - ^automake%gcc@8-os
-    #   - - ^autoconf%gcc@8-os
-    #   - - ^m4%gcc@8-os
-    #   exclude:
-    #   - adios2%pgi
-    #   - mpip%pgi
-    #   - amgx%pgi
-    #   - boost%pgi
+  - pgi_specs:
+    - matrix:
+      - - $general_compute_packages
+      - - $pgi_compilers
+      - - ^cmake%gcc@8-os
+      - - ^python%gcc@8-os
+      - - ^numactl%gcc@8-os
+      - - ^perl%gcc@8-os
+      - - ^automake%gcc@8-os
+      - - ^autoconf%gcc@8-os
+      - - ^m4%gcc@8-os
+      exclude:
+      - adios2%pgi
+      - mpip%pgi
+      - amgx%pgi
+      - boost%pgi
+      - netlib-scalapack%pgi@20.1
   specs:
   - pgi@20.1%gcc@8-os +mpi+mpigpu+managed+nvidia+single~network
-  - $manifest
+  - pgi@20.4%gcc@8-os +mpi+mpigpu+managed+nvidia+single~network
+  - $core_specs
+  - $smpi_specs
+  - $core_compute_specs
+  - $gcc_specs
+  - $llvm_specs
+  - $xl_specs
+  - $pgi_specs
   #############################################################################
   mirrors:
     facility_builds: /sw/peak/spack-env/mirrors/builds
@@ -593,6 +620,18 @@ spack:
       environment: {}
       flags: {}
   - compiler:
+      spec: pgi@20.4
+      operating_system: rhel8
+      modules: [pgi/20.4]
+      paths:
+        cc: pgcc
+        cxx: pgc++
+        f77: pgfortran
+        fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
       spec: clang@9.0.0-1
       operating_system: rhel8
       modules: [llvm/9.0.0-1]
@@ -611,6 +650,18 @@ spack:
       paths:
         cc: /sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168/bin/clang
         cxx: /sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168/bin/clang++
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: clang@10.0.1-0
+      operating_system: rhel8
+      modules: [llvm/10.0.1]
+      paths:
+        cc: /sw/peak/llvm/10.0.1/10.0.1-0/bin/clang
+        cxx: /sw/peak/llvm/10.0.1/10.0.1-0/bin/clang++
         f77: /usr/bin/gfortran
         fc: /usr/bin/gfortran
       extra_rpaths: []
