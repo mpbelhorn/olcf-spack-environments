@@ -11,13 +11,15 @@ spack:
   - xl_compilers:
     - '%xl@16.1.1-8'
   - llvm_compilers:
+    
     # - '%clang@9.0.0-2'
     - '%clang@10.0.1-0'
   - pgi_compilers:
+    
     # - '%pgi@18.10' 
     # - '%pgi@19.9'
     # - '%pgi@19.10'
-    - '%pgi@20.1'
+    # - '%pgi@20.1'
     - '%pgi@20.4'
   - all_compilers:
     - $gcc_compilers
@@ -81,6 +83,7 @@ spack:
     - mpip
     - adios2 ~python~zfp
   - e4s_packages:
+    
     ## Already in general compute packages list
     # - openmpi
     # - hypre
@@ -96,6 +99,8 @@ spack:
     - ninja
     - qthreads
     - openpmd-api
+
+    
     # - mfem ## Fails to build
     - sundials
     - strumpack
@@ -105,6 +110,8 @@ spack:
     - tasmanian
     - mercury
     - veloc
+
+    
     # - scr ## No slurm on Peak
     - bolt
     - upcxx
@@ -114,6 +121,8 @@ spack:
     - pdt
     - tau
     - dyninst
+
+    
     # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
     - gotcha
     - caliper
