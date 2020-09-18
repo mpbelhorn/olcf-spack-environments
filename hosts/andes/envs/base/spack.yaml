@@ -239,7 +239,7 @@ spack:
   #############################################################################
   packages:
     openmpi:
-      variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx schedulers=slurm
+      variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx,mxm schedulers=slurm
       buildable: true
       version: [4.0.4]
       target: []
