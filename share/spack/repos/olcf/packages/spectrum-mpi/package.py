@@ -11,7 +11,7 @@ class SpectrumMpi(Package):
     homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
-    version('10.4.0.0-20200604', 'd8e61f797f7fad885851d8f0b2662e84',
+    version('10.4.0.0-20200604', '420685675b8579d1611614d540e8d3cf',
         url='file:///ccs/packages/IBM/08-2020/SMPI/ibm_smpi-10.4.0.0-20200604-rh8.ppc64le.tar.gz')
     version('10.3.1.2-20200121', '94c6c95693f736373590ec3d3a2398f7',
         url='file:///ccs/packages/IBM/02-2020/SMPI/ibm_smpi-10.3.1.2-20200121-rh7.ppc64le.tar.gz')
@@ -113,8 +113,11 @@ class SpectrumMpi(Package):
             module_build(env=mod_env)
             cp = which('cp')
             cp('-u', 'mpi.mod', '../.')
-            if self.spec.satisfies('%pgi') and os.path.isdir('../PGI'):
-                cp('-u', 'mpi.mod', '../PGI/.')
+            if self.spec.satisfies('%pgi'):
+                if os.path.isdir('../PGI'):
+                    cp('-u', 'mpi.mod', '../PGI/.')
+                if os.path.exists('./include/mpif-sizeof.h'):
+                    cp('-u', './include/mpif-sizeof.h', '../../include/.')
 
     @run_after('install')
     def fix_syntax_error(self):
