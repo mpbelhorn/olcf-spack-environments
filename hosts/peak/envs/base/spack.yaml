@@ -11,15 +11,9 @@ spack:
   - xl_compilers:
     - '%xl@16.1.1-8'
   - llvm_compilers:
-    
-    # - '%clang@9.0.0-2'
     - '%clang@10.0.1-0'
   - pgi_compilers:
-    
-    # - '%pgi@18.10' 
-    # - '%pgi@19.9'
-    # - '%pgi@19.10'
-    # - '%pgi@20.1'
+    - '%pgi@20.1'
     - '%pgi@20.4'
   - all_compilers:
     - $gcc_compilers
@@ -83,8 +77,38 @@ spack:
     - mpip
     - adios2 ~python~zfp
   - e4s_packages:
-    
-    ## Already in general compute packages list
+    - zfp
+    - sz
+    - ninja
+    - qthreads
+    - openpmd-api
+    - sundials
+    - strumpack
+    - superlu-dist
+    - superlu
+    - trilinos@12.14.1+dtk+intrepid2+shards
+    - tasmanian
+    - mercury
+    - veloc
+    - bolt
+    - upcxx
+    - umpire
+    - libquo
+    - globalarrays
+    - pdt
+    - tau
+    - dyninst
+    - gotcha
+    - caliper
+    - papi
+    - rempi
+    - kokkos+openmp
+    - kokkos-kernels
+    ## Excluded E4S packages ------
+    ### Build Failures
+    # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
+    # - mfem ## Fails to build
+    ### Already in general compute packages list
     # - openmpi
     # - hypre
     # - hdf5
@@ -94,50 +118,13 @@ spack:
     # - darshan-runtime
     # - darshan-util
     # - raja
-    - zfp
-    - sz
-    - ninja
-    - qthreads
-    - openpmd-api
-
-    
-    # - mfem ## Fails to build
-    - sundials
-    - strumpack
-    - superlu-dist
-    - superlu
-    - trilinos@12.14.1+dtk+intrepid2+shards
-    - tasmanian
-    - mercury
-    - veloc
-
-    
+    ### Incompatible packages
     # - scr ## No slurm on Peak
-    - bolt
-    - upcxx
-    - umpire
-    - libquo
-    - globalarrays
-    - pdt
-    - tau
-    - dyninst
-
-    
-    # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
-    - gotcha
-    - caliper
-    - papi
-    - rempi
-    - kokkos+openmp
-    - kokkos-kernels
-    ## Excluded E4S packages ------
-    ### Explictly depends on mpich
-    # - libnrm
-    ### No packages should be pinned @develop
-    # - papyrus@develop
-    ### Python extensions.
-    # - py-jupyterhub
-    # - 'py-libensemble^python@3.7.3:'
+    # - libnrm ## Explictly depends on mpich
+    ### Against policies
+    # - papyrus@develop ## No packages should be pinned @develop
+    # - py-jupyterhub ## Python extensions.
+    # - 'py-libensemble^python@3.7.3:' ## Python extensions.
   - core_specs:
     - matrix:
       - - $core_packages
@@ -231,7 +218,7 @@ spack:
   - $pgi_specs
   #############################################################################
   mirrors:
-    facility_builds: /sw/peak/spack-env/mirrors/builds
+    facility_builds: /sw/peak/spack-envs/mirrors/builds
   repos:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
