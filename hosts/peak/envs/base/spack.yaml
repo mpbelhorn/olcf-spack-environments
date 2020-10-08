@@ -58,7 +58,6 @@ spack:
     - raja
     - magma ^cuda@10.1.243
     - nco
-    - openmpi@4.0.3 ^hwloc+cuda
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
@@ -206,6 +205,10 @@ spack:
       - amgx%pgi
       - boost%pgi
       - netlib-scalapack%pgi@20.1
+  - special_builds:
+    ## Cannot build do to error in ompi configure finding liblsf/ls_info.
+    - openmpi@4.0.3%gcc@8.3.1+cuda+legacylaunchers+pmi+thread_multiple fabrics=ucx,hcoll,knem
+      schedulers=lsf ^ucx+cuda+gdrcopy cuda_arch=70
   specs:
   - pgi@20.1%gcc@8-os +mpi+mpigpu+managed+nvidia+single~network
   - pgi@20.4%gcc@8-os +mpi+mpigpu+managed+nvidia+single~network
@@ -216,6 +219,7 @@ spack:
   - $llvm_specs
   - $xl_specs
   - $pgi_specs
+  ## - $special_builds ## See note in definition section.
   #############################################################################
   mirrors:
     facility_builds: /sw/peak/spack-envs/mirrors/builds
@@ -246,6 +250,33 @@ spack:
       providers: {}
       paths: {}
       compiler: []
+    lsf:
+      version: [10.1.0.10]
+      buildable: false
+      paths:
+        lsf@10.1.0.10: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+    hcoll:
+      buildable: false
+      version: [4.4]
+      paths:
+        hcoll@4.4: /opt/mellanox/hcoll
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
+    knem:
+      buildable: false
+      version: [1.1.3]
+      paths:
+        knem@1.1.3: /opt/knem-1.1.3.90mlnx1
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
     go-bootstrap:
       buildable: false
       version: [1.7.1-bootstrap]
