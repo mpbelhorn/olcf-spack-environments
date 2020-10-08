@@ -239,7 +239,7 @@ spack:
   #############################################################################
   packages:
     openmpi:
-      variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx,mxm schedulers=slurm
+      variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx,hcoll,ofi schedulers=slurm
       buildable: true
       version: [4.0.4]
       target: []
@@ -292,19 +292,31 @@ spack:
       modules: {}
       compiler: []
     ucx:
-      buildable: true
+      buildable: false
       version: [1.8.0]
       target: []
       providers: {}
-      paths: {}
+      paths:
+        ucx@1.8.0+thread_multiple: /usr
       modules: {}
       compiler: []
+      variants: +thread_multiple
+    hcoll:
+      buildable: false
+      version: [4.5]
+      paths:
+        hcoll@4.4: /opt/mellanox/hcoll
+      target: []
+      compiler: []
+      modules: {}
+      providers: {}
     rdma-core:
-      buildable: true
+      buildable: false
       version: [28.0]
       target: []
       providers: {}
-      paths: {}
+      paths:
+        rdma-core@28.0: /usr
       modules: {}
       compiler: []
     libfabric:
@@ -315,6 +327,15 @@ spack:
       paths: {}
       modules: {}
       compiler: []
+    binutils:
+      buildable: true
+      target: []
+      providers: {}
+      paths: {}
+      modules: {}
+      compiler: []
+      variants: +libiberty
+      version: []
     openssl:
       buildable: false
       version: [1.1.1]
@@ -426,7 +447,7 @@ spack:
       version: []
       target: [x86_64]
       providers:
-        mpi: [olcf.openmpi]
+        mpi: [builtin.openmpi]
         lapack: [openblas, mkl]
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
@@ -571,10 +592,9 @@ spack:
         load: []
         environment:
           unset: []
-      blacklist_implicits: false
+      blacklist_implicits: true
       verbose: true
-      whitelist:
-      - gobject-introspection%gcc@8.3.1 ^cairo~X~pdf
+      whitelist: []
       blacklist:
       - python
       - py-
