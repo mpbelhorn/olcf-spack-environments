@@ -66,7 +66,7 @@ _THIS_HOST="$(hostname --long \
 [[ "${_THIS_HOST:-XX}" == "XX" ]] \
   && echo "ERROR: Current host '${_THIS_HOST}' could not be identified!" \
   && return 1
-export FACSPACK_HOST="${_THIS_HOST}"
+export FACSPACK_HOST="${FACSPACK_HOST:-${_THIS_HOST}}"
 
 # Define the location of the official facility-managed spack environments for
 # this system. This env prefix is used by default unless overridden by the user.
@@ -124,7 +124,8 @@ cp -dRu --preserve=mode,timestamps \
 
 function setup_alternate_module_environment {
   # Setup alternate module environment
-  if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" ]]; then
+  if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+        && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
     module reset
     module purge
     echo "Using facility module root"
