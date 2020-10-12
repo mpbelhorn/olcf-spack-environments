@@ -139,6 +139,13 @@ function setup_alternate_module_environment {
 
 # Host-specific environment modifications
 case "${FACSPACK_HOST}" in
+  summit)
+    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core"
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    setup_alternate_module_environment "${_FS_MP}"
+    export MODULEPATH="${_FS_MP}"
+    ;;
   peak)
     _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core"
     _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
