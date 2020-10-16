@@ -181,6 +181,42 @@
    "spec": "netlib-lapack%gcc@10.1.0"
   },
   {
+   "hash": "5apeyjzlffcfwegsugnpdpgwu5h6vwmh",
+   "spec": "fftw%gcc@8.3.1~mpi~openmp"
+  },
+  {
+   "hash": "6z47vlolpx42griiagx27vzo35gcjeem",
+   "spec": "fftw%gcc@9.3.0~mpi~openmp"
+  },
+  {
+   "hash": "ejnihxxnz5cnz24l3ace5iznooriqbrj",
+   "spec": "fftw%gcc@10.1.0~mpi~openmp"
+  },
+  {
+   "hash": "fjxeti5btax23o3eqbsfptzuzhbvktrn",
+   "spec": "fftw%gcc@8.3.1~mpi+openmp"
+  },
+  {
+   "hash": "mvwhsnkjf5xbyhlibm3kk4huhnptgmfu",
+   "spec": "fftw%gcc@9.3.0~mpi+openmp"
+  },
+  {
+   "hash": "qqwljhbflu33bn6pv3iqtp7szncs6bsk",
+   "spec": "fftw%gcc@10.1.0~mpi+openmp"
+  },
+  {
+   "hash": "zxdw3gmw5y7zapxsd6ymji3eompxptty",
+   "spec": "fftw%gcc@8.3.1+mpi~openmp"
+  },
+  {
+   "hash": "i6ilev5jcsxgkf6a2ygqpixoditq6hc7",
+   "spec": "fftw%gcc@9.3.0+mpi~openmp"
+  },
+  {
+   "hash": "auqpq4lk3rqmqfhe3t2epsbt2x4lsbij",
+   "spec": "fftw%gcc@10.1.0+mpi~openmp"
+  },
+  {
    "hash": "ungakcwjbfskhoeg2c5hgm3kydlh2cho",
    "spec": "fftw%gcc@8.3.1+mpi+openmp"
   },
@@ -645,6 +681,18 @@
    "spec": "netlib-scalapack%clang@9.0.1 ^netlib-lapack"
   },
   {
+   "hash": "oaiifqmgm2gdy3r22x4tu2r32ztys5xp",
+   "spec": "fftw%clang@9.0.1~mpi~openmp"
+  },
+  {
+   "hash": "3uhlogpourcfbsdii6wecuc2s3wgtxjq",
+   "spec": "fftw%clang@9.0.1~mpi+openmp"
+  },
+  {
+   "hash": "vwqqnu47zwwgwy6mu3rpjyhfdsrkljvk",
+   "spec": "fftw%clang@9.0.1+mpi~openmp"
+  },
+  {
    "hash": "fg62emqpus6mhx55zuyxei3auprl4d6f",
    "spec": "fftw%clang@9.0.1+mpi+openmp"
   },
@@ -815,6 +863,14 @@
   {
    "hash": "otwx4kgz2g5qeliggdpqihlwlu5m2xqn",
    "spec": "netlib-scalapack%clang@10.0.0-aocc2.2.0 ^netlib-lapack"
+  },
+  {
+   "hash": "vpvyxfipmjf3dsyfpreyrtk3em7v74va",
+   "spec": "fftw%clang@10.0.0-aocc2.2.0~mpi~openmp"
+  },
+  {
+   "hash": "ueh7dfizx6a6vl2ogg45snxdjyoh5ipd",
+   "spec": "fftw%clang@10.0.0-aocc2.2.0+mpi~openmp"
   },
   {
    "hash": "gow4haisvfkwo4i5xbizbyxm77ydnlck",
@@ -1017,48 +1073,60 @@
    "spec": "kokkos-kernels%intel@19.0.3 ^cmake@3.16.2"
   },
   {
-   "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
-   "spec": "openmpi%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
+   "spec": "openmpi%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
    "hash": "5g3u473q7nxcuyzpip3subtcy4i3wzoi",
-   "spec": "netlib-lapack%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "spec": "netlib-lapack%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "abijofvgitk5zqdrbkjjavbuzgdoge2m",
-   "spec": "netlib-scalapack%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^netlib-lapack ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "5jpokzv6medfidmsgilthdvsvpwrndht",
+   "spec": "netlib-scalapack%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^netlib-lapack ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "f5qggobeyxak4abdkvrpfbkcw32vu3nu",
-   "spec": "fftw%pgi@19.10+mpi+openmp ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "mcx3y75weao3yahulyvjt3xwaqdaycld",
+   "spec": "fftw%pgi@19.10~mpi~openmp ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "m65sujte5vtmp3cvgnbdq5re2kbmprf3",
+   "spec": "fftw%pgi@19.10~mpi+openmp ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "e7lfy7bg4mhzcnadfean4vx5i3s3lb5h",
+   "spec": "fftw%pgi@19.10+mpi~openmp ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "bbjgj6mpnnne6d6z363cqocyenm2tzvb",
+   "spec": "fftw%pgi@19.10+mpi+openmp ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
    "hash": "e7quinyds2buqrzaqom5gpg2yg47pyj2",
-   "spec": "hdf5%pgi@19.10~mpi ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "spec": "hdf5%pgi@19.10~mpi ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "ndowpy5x55ctm2ioegysdxretqjbopp4",
-   "spec": "hdf5%pgi@19.10+mpi ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "r3fwkdgppifrsbxx5y35aw4mze72dl5j",
+   "spec": "hdf5%pgi@19.10+mpi ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "hhu4nmvihlctnjljlnphl3sxhcnltkke",
-   "spec": "netcdf-c%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "cz2a5qpuhv267fpv47ddpe2mte73gfcm",
+   "spec": "netcdf-c%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "v3oqhe3o2gjk5n6zcz4bmqykb36wpg67",
-   "spec": "netcdf-fortran%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "4xnpc4q26ma2hxfdtjz6if5vqmxyrlpa",
+   "spec": "netcdf-fortran%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "a7iq3wxf5ufmxyyltabxwouc3frasbcz",
-   "spec": "netcdf-cxx%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "q3c6sdiji2eney64dx4uohooooe5wjtk",
+   "spec": "netcdf-cxx%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "jj7xwxdk6csyx477sdzpoc3fh25fpvhm",
-   "spec": "parallel-netcdf%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "rdkuxd7fugzdffzd4gp4an6oh35p2hdp",
+   "spec": "parallel-netcdf%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   },
   {
-   "hash": "ladprbhab6g66lisw4fky7wnxd54p3qz",
-   "spec": "parallel-io%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+   "hash": "3ukds4ham7i6lcb45igvb5s3pj7bo3lq",
+   "spec": "parallel-io%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
   }
  ],
  "concrete_specs": {
@@ -14645,6 +14713,289 @@
     "hash": "nl5vrr4wmgerncbp3opbmokww2z2mkmi"
    }
   },
+  "5apeyjzlffcfwegsugnpdpgwu5h6vwmh": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "5apeyjzlffcfwegsugnpdpgwu5h6vwmh"
+   }
+  },
+  "6z47vlolpx42griiagx27vzo35gcjeem": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "6z47vlolpx42griiagx27vzo35gcjeem"
+   }
+  },
+  "ejnihxxnz5cnz24l3ace5iznooriqbrj": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "10.1.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "ejnihxxnz5cnz24l3ace5iznooriqbrj"
+   }
+  },
+  "mvwhsnkjf5xbyhlibm3kk4huhnptgmfu": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": true,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "mvwhsnkjf5xbyhlibm3kk4huhnptgmfu"
+   }
+  },
+  "qqwljhbflu33bn6pv3iqtp7szncs6bsk": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "10.1.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": true,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "qqwljhbflu33bn6pv3iqtp7szncs6bsk"
+   }
+  },
+  "zxdw3gmw5y7zapxsd6ymji3eompxptty": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "hkc7rswngnz7nuvyeksjzy3ax6hfjjug",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "j7smhjcqkfkndqct2itu2xl22jutixpe"
+   }
+  },
+  "i6ilev5jcsxgkf6a2ygqpixoditq6hc7": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "gurtithpx3yfngzpelnaiyeekugr2ysu",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "23ckn25fbr2cqbxm4nan6ujrprfaqsuo"
+   }
+  },
+  "auqpq4lk3rqmqfhe3t2epsbt2x4lsbij": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "10.1.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "ciwwkcngbepkyhdzjaminvujhqqkn3wr",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "g4gqmcedc2slpybudx4o5b7hwhixpimg"
+   }
+  },
   "ungakcwjbfskhoeg2c5hgm3kydlh2cho": {
    "fftw": {
     "version": "3.3.8",
@@ -28050,38 +28401,6 @@
     "hash": "qe5eoi44s3oqzcrajokddf3kjdchcqtl"
    }
   },
-  "5apeyjzlffcfwegsugnpdpgwu5h6vwmh": {
-   "fftw": {
-    "version": "3.3.8",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "8.3.1"
-    },
-    "namespace": "builtin",
-    "parameters": {
-     "mpi": false,
-     "openmp": false,
-     "pfft_patches": false,
-     "precision": [
-      "double",
-      "float",
-      "long_double"
-     ],
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "hash": "5apeyjzlffcfwegsugnpdpgwu5h6vwmh"
-   }
-  },
   "4oejevuaz262hnaty3j2cf53ypgku6xb": {
    "glpk": {
     "version": "4.65",
@@ -29137,47 +29456,6 @@
      }
     },
     "hash": "qsbsglg4pfckxwxb5kadabavftkeh7nt"
-   }
-  },
-  "zxdw3gmw5y7zapxsd6ymji3eompxptty": {
-   "fftw": {
-    "version": "3.3.8",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "8.3.1"
-    },
-    "namespace": "builtin",
-    "parameters": {
-     "mpi": true,
-     "openmp": false,
-     "pfft_patches": false,
-     "precision": [
-      "double",
-      "float",
-      "long_double"
-     ],
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "dependencies": {
-     "openmpi": {
-      "hash": "hkc7rswngnz7nuvyeksjzy3ax6hfjjug",
-      "type": [
-       "build",
-       "link"
-      ]
-     }
-    },
-    "hash": "j7smhjcqkfkndqct2itu2xl22jutixpe"
    }
   },
   "ioeq5esf7s34mpdp572kqxejmrqluqzu": {
@@ -30335,6 +30613,111 @@
      }
     },
     "hash": "hyxsphs46dnrfeci3ezarv7y6k5bsjdg"
+   }
+  },
+  "oaiifqmgm2gdy3r22x4tu2r32ztys5xp": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "9.0.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "oaiifqmgm2gdy3r22x4tu2r32ztys5xp"
+   }
+  },
+  "3uhlogpourcfbsdii6wecuc2s3wgtxjq": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "9.0.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": true,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "3uhlogpourcfbsdii6wecuc2s3wgtxjq"
+   }
+  },
+  "vwqqnu47zwwgwy6mu3rpjyhfdsrkljvk": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "9.0.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "7qidbpkmju2wfe53eviaf47bczeycgap",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "v2qnhr5k5wbx2fs22asqa3wepffd42uq"
    }
   },
   "fg62emqpus6mhx55zuyxei3auprl4d6f": {
@@ -36030,6 +36413,79 @@
     "hash": "3ksj5d5pypqsion7a4ecx576mwkjjp55"
    }
   },
+  "vpvyxfipmjf3dsyfpreyrtk3em7v74va": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "10.0.0-aocc2.2.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "vpvyxfipmjf3dsyfpreyrtk3em7v74va"
+   }
+  },
+  "ueh7dfizx6a6vl2ogg45snxdjyoh5ipd": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "clang",
+     "version": "10.0.0-aocc2.2.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "khmzbmwrauv53htyfib6tf6f64muanno",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "mroezqn3buxl2qominvju7ru2rvphrv4"
+   }
+  },
   "gow4haisvfkwo4i5xbizbyxm77ydnlck": {
    "hdf5": {
     "version": "1.10.6",
@@ -36690,47 +37146,6 @@
      }
     },
     "hash": "ty3kh2vgxgwx5su5j427c7eslobpkdpz"
-   }
-  },
-  "ueh7dfizx6a6vl2ogg45snxdjyoh5ipd": {
-   "fftw": {
-    "version": "3.3.8",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "clang",
-     "version": "10.0.0-aocc2.2.0"
-    },
-    "namespace": "builtin",
-    "parameters": {
-     "mpi": true,
-     "openmp": false,
-     "pfft_patches": false,
-     "precision": [
-      "double",
-      "float",
-      "long_double"
-     ],
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "dependencies": {
-     "openmpi": {
-      "hash": "khmzbmwrauv53htyfib6tf6f64muanno",
-      "type": [
-       "build",
-       "link"
-      ]
-     }
-    },
-    "hash": "mroezqn3buxl2qominvju7ru2rvphrv4"
    }
   },
   "5rrallkvveawosl4vcbmsz6q7tuj3bug": {
@@ -42135,7 +42550,7 @@
     "hash": "nmfwa5wbe3mft5mlzw4vww2sb3v3nosy"
    }
   },
-  "fkci5kn45f6ihioqgs46kra4zdrpbchy": {
+  "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3": {
    "openmpi": {
     "version": "4.0.4",
     "arch": {
@@ -42194,7 +42609,7 @@
       ]
      },
      "libfabric": {
-      "hash": "2bgojjl2q7rbhhh464tbqw7bfvvxkeok",
+      "hash": "htqywhi6ahulpuojvet7khexdtkxadnn",
       "type": [
        "build",
        "link"
@@ -42235,7 +42650,7 @@
       ]
      }
     },
-    "hash": "hzw4gaupkgy2mk7htzqnzyzyrciqpr5k"
+    "hash": "jf7sobzuvxami5kktjojzclw3fav5sgw"
    }
   },
   "qy6unat47t32lkxdzkgrdszfld6brrj3": {
@@ -42912,7 +43327,7 @@
     "hash": "4jwb5o2ednec5ktkv5ho5rdclumfxogl"
    }
   },
-  "2bgojjl2q7rbhhh464tbqw7bfvvxkeok": {
+  "htqywhi6ahulpuojvet7khexdtkxadnn": {
    "libfabric": {
     "version": "1.8.0",
     "arch": {
@@ -42921,8 +43336,8 @@
      "target": "x86_64"
     },
     "compiler": {
-     "name": "pgi",
-     "version": "19.10"
+     "name": "gcc",
+     "version": "8-pgi"
     },
     "namespace": "builtin",
     "parameters": {
@@ -42939,7 +43354,7 @@
      "ldflags": [],
      "ldlibs": []
     },
-    "hash": "2bgojjl2q7rbhhh464tbqw7bfvvxkeok"
+    "hash": "htqywhi6ahulpuojvet7khexdtkxadnn"
    }
   },
   "k7wwr6r3bxj2vrkzz5luhcddylu3nlyo": {
@@ -43137,7 +43552,7 @@
     "hash": "xr5hmptiiexmfnzhblirs2oslkyskgnz"
    }
   },
-  "abijofvgitk5zqdrbkjjavbuzgdoge2m": {
+  "5jpokzv6medfidmsgilthdvsvpwrndht": {
    "netlib-scalapack": {
     "version": "2.1.0",
     "arch": {
@@ -43184,17 +43599,122 @@
       ]
      },
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "5gru5hpq6qezxazou7qcispbynzyjf5m"
+    "hash": "4efesllobav23n6q6tisc5wicwsabz3f"
    }
   },
-  "f5qggobeyxak4abdkvrpfbkcw32vu3nu": {
+  "mcx3y75weao3yahulyvjt3xwaqdaycld": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "pgi",
+     "version": "19.10"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "mcx3y75weao3yahulyvjt3xwaqdaycld"
+   }
+  },
+  "m65sujte5vtmp3cvgnbdq5re2kbmprf3": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "pgi",
+     "version": "19.10"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": false,
+     "openmp": true,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "m65sujte5vtmp3cvgnbdq5re2kbmprf3"
+   }
+  },
+  "e7lfy7bg4mhzcnadfean4vx5i3s3lb5h": {
+   "fftw": {
+    "version": "3.3.8",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "pgi",
+     "version": "19.10"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "mpi": true,
+     "openmp": false,
+     "pfft_patches": false,
+     "precision": [
+      "double",
+      "float",
+      "long_double"
+     ],
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openmpi": {
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "ae5w55jq6nsdgja3xowsiizgmvsqkfwe"
+   }
+  },
+  "bbjgj6mpnnne6d6z363cqocyenm2tzvb": {
    "fftw": {
     "version": "3.3.8",
     "arch": {
@@ -43225,14 +43745,14 @@
     },
     "dependencies": {
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "ktakqmwhoyb5kg5btfxasyipvwincq7i"
+    "hash": "6uf6tcwfg54blcrq72b7r3ytndxu74je"
    }
   },
   "e7quinyds2buqrzaqom5gpg2yg47pyj2": {
@@ -43278,7 +43798,7 @@
     "hash": "e7quinyds2buqrzaqom5gpg2yg47pyj2"
    }
   },
-  "ndowpy5x55ctm2ioegysdxretqjbopp4": {
+  "r3fwkdgppifrsbxx5y35aw4mze72dl5j": {
    "hdf5": {
     "version": "1.10.6",
     "arch": {
@@ -43318,7 +43838,7 @@
       ]
      },
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
@@ -43332,10 +43852,10 @@
       ]
      }
     },
-    "hash": "wigjvzbyp26icp6mndbtbk2rab7hy2xm"
+    "hash": "yxwa6w7zzdazcldyji3leq3y6gqigwfi"
    }
   },
-  "hhu4nmvihlctnjljlnphl3sxhcnltkke": {
+  "cz2a5qpuhv267fpv47ddpe2mte73gfcm": {
    "netcdf-c": {
     "version": "4.7.4",
     "arch": {
@@ -43365,7 +43885,7 @@
     },
     "dependencies": {
      "hdf5": {
-      "hash": "ndowpy5x55ctm2ioegysdxretqjbopp4",
+      "hash": "r3fwkdgppifrsbxx5y35aw4mze72dl5j",
       "type": [
        "build",
        "link"
@@ -43378,14 +43898,14 @@
       ]
      },
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
       ]
      },
      "parallel-netcdf": {
-      "hash": "jj7xwxdk6csyx477sdzpoc3fh25fpvhm",
+      "hash": "rdkuxd7fugzdffzd4gp4an6oh35p2hdp",
       "type": [
        "build",
        "link"
@@ -43399,10 +43919,10 @@
       ]
      }
     },
-    "hash": "xni5ygav2rhxm5xypd7e6cyi4rzu2jki"
+    "hash": "jwqu23tgn7gmjllee7fwckc4lovmacmq"
    }
   },
-  "jj7xwxdk6csyx477sdzpoc3fh25fpvhm": {
+  "rdkuxd7fugzdffzd4gp4an6oh35p2hdp": {
    "parallel-netcdf": {
     "version": "1.12.1",
     "arch": {
@@ -43435,7 +43955,7 @@
       ]
      },
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
@@ -43448,10 +43968,10 @@
       ]
      }
     },
-    "hash": "nph7gwjpjgorbmg74zrbg7d7suqomhw5"
+    "hash": "ialbpfxjqon66w4mqevccq467ezxb7xk"
    }
   },
-  "v3oqhe3o2gjk5n6zcz4bmqykb36wpg67": {
+  "4xnpc4q26ma2hxfdtjz6if5vqmxyrlpa": {
    "netcdf-fortran": {
     "version": "4.5.3",
     "arch": {
@@ -43478,24 +43998,24 @@
     },
     "dependencies": {
      "netcdf-c": {
-      "hash": "hhu4nmvihlctnjljlnphl3sxhcnltkke",
+      "hash": "cz2a5qpuhv267fpv47ddpe2mte73gfcm",
       "type": [
        "build",
        "link"
       ]
      },
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "iqqmgqjeo7u5odeurkllllpko2leenhn"
+    "hash": "sj2wayfv2rc5cxicwpafhyiovljds7ci"
    }
   },
-  "a7iq3wxf5ufmxyyltabxwouc3frasbcz": {
+  "q3c6sdiji2eney64dx4uohooooe5wjtk": {
    "netcdf-cxx": {
     "version": "4.2",
     "arch": {
@@ -43519,17 +44039,17 @@
     },
     "dependencies": {
      "netcdf-c": {
-      "hash": "hhu4nmvihlctnjljlnphl3sxhcnltkke",
+      "hash": "cz2a5qpuhv267fpv47ddpe2mte73gfcm",
       "type": [
        "build",
        "link"
       ]
      }
     },
-    "hash": "3acxs6w7dg7d6ofhw2uxiuikys4gzraf"
+    "hash": "azjo3bu2ay42f2hxhyfaw5wupq4ivewi"
    }
   },
-  "ladprbhab6g66lisw4fky7wnxd54p3qz": {
+  "3ukds4ham7i6lcb45igvb5s3pj7bo3lq": {
    "parallel-io": {
     "version": "2.4.4",
     "arch": {
@@ -43560,35 +44080,35 @@
       ]
      },
      "hdf5": {
-      "hash": "ndowpy5x55ctm2ioegysdxretqjbopp4",
+      "hash": "r3fwkdgppifrsbxx5y35aw4mze72dl5j",
       "type": [
        "build",
        "link"
       ]
      },
      "netcdf-c": {
-      "hash": "hhu4nmvihlctnjljlnphl3sxhcnltkke",
+      "hash": "cz2a5qpuhv267fpv47ddpe2mte73gfcm",
       "type": [
        "build",
        "link"
       ]
      },
      "netcdf-fortran": {
-      "hash": "v3oqhe3o2gjk5n6zcz4bmqykb36wpg67",
+      "hash": "4xnpc4q26ma2hxfdtjz6if5vqmxyrlpa",
       "type": [
        "build",
        "link"
       ]
      },
      "openmpi": {
-      "hash": "fkci5kn45f6ihioqgs46kra4zdrpbchy",
+      "hash": "dy5yntt2xq4h4tdwhr5yhyxgq3fhbwd3",
       "type": [
        "build",
        "link"
       ]
      },
      "parallel-netcdf": {
-      "hash": "jj7xwxdk6csyx477sdzpoc3fh25fpvhm",
+      "hash": "rdkuxd7fugzdffzd4gp4an6oh35p2hdp",
       "type": [
        "build",
        "link"
@@ -43602,7 +44122,7 @@
       ]
      }
     },
-    "hash": "fhxen4x4rpyk4bdulgxbj2icqjcaml5z"
+    "hash": "tp23czimnglc52dct22tk6x7nehxuzkx"
    }
   }
  }
