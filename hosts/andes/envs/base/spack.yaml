@@ -206,6 +206,7 @@ spack:
       - - $pgi_compilers
       - - ^libpciaccess%gcc@8-pgi
       - - ^m4%gcc@8-pgi
+      - - ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64
