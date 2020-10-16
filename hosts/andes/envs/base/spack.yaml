@@ -68,6 +68,9 @@ spack:
     - openblas threads=none
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
+    - fftw ~mpi~openmp
+    - fftw ~mpi+openmp
+    - fftw +mpi~openmp
     - fftw +mpi+openmp
     - hdf5 ~mpi
     - hdf5 +mpi
