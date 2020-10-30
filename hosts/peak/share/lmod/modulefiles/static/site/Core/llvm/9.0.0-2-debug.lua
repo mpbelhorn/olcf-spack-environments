@@ -9,7 +9,8 @@ local prefix = "/sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168"
 local debug_prefix = "/sw/peak/llvm/9.0.0/9.0.0.patch001.cuda-10.1.168-debug"
 
 local platform = 'linux-rhel7-ppc64le'
-local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
+-- local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
+local spack_module_root = (myFileName():sub(1, myFileName():find(myModuleFullName(),1,true)-2)):gsub("/site/Core.*",'/spack')
 local spack_modules = pathJoin(spack_module_root, platform, package_spack, version_spack)
 
 -- Setup Modulepath for packages built by this compiler

@@ -9,7 +9,8 @@ local xlmassbase = pathJoin(swroot, "xlmass", "9.1.1")
 local xlsmpbase  = pathJoin(swroot, "xlsmp", "5.1.1")
 
 local platform = 'linux-rhel8-ppc64le'
-local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
+-- local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
+local spack_module_root = (myFileName():sub(1, myFileName():find(myModuleFullName(),1,true)-2)):gsub("/site/Core.*",'/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 
 -- Setup Modulepath for packages built by this compiler
