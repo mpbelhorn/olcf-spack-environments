@@ -54,14 +54,11 @@ spack:
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
   - gcc_only_compute_packages:
-    - amgx +mpi+openmp gpus=70
     - raja
-    - magma ^cuda@10.1.243
     - nco
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
-    - amgx +mpi~openmp gpus=70
     - fftw +mpi+openmp
     - hdf5 ~mpi
     - hdf5 +mpi
@@ -145,16 +142,13 @@ spack:
     - matrix:
       - - $gcc_only_compute_packages
       - - $gcc_compilers
-      exclude:
-      - 'amgx%gcc@9:'
-      - 'magma@2.5.1%gcc@9.0.0:'
     - matrix:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
         - $e4s_packages
       - - $gcc_compilers
-      exclude:
-      - 'amgx%gcc@9:'
+    - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
+    - amgx%gcc@8.3.1 ^cuda@10.1.243 
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0
   - llvm_specs:
@@ -164,7 +158,6 @@ spack:
         - $e4s_packages
       - - $llvm_compilers
       exclude:
-      - 'amgx%clang@10:' # FIXME missing math.h
       - mpip   # ^elfutils !conflicts clang
       - dyninst   # ^elfutils !conflicts clang
       - hpctoolkit   # ^elfutils !conflicts clang
@@ -202,7 +195,6 @@ spack:
       exclude:
       - adios2%pgi
       - mpip%pgi
-      - amgx%pgi
       - boost%pgi
       - netlib-scalapack%pgi@20.1
   - special_builds:
@@ -250,6 +242,15 @@ spack:
       providers: {}
       paths: {}
       compiler: []
+    amgx:
+      variants: +cuda cuda_arch=70
+      version: []
+      target: []
+      compiler: []
+      buildable: true
+      modules: {}
+      providers: {}
+      paths: {}
     lsf:
       version: [10.1.0.10]
       buildable: false
@@ -350,7 +351,7 @@ spack:
       modules: {}
       compiler: []
     magma:
-      variants: gpus=pascal,volta
+      variants: +cuda cuda_arch=70
       buildable: true
       version: []
       target: []
@@ -477,15 +478,6 @@ spack:
         environment:
           unset: []
         conflict: []
-      amgx:
-        suffixes:
-          amgx~openmp: unthreaded
-        filter:
-          environment_blacklist: []
-        load: []
-        environment:
-          unset: []
-        conflict: []
       hpx:
         suffixes:
           hpx cxxstd=14: cxx14
@@ -545,7 +537,9 @@ spack:
       hash_length: 0
       hierarchy: []
       projections: {}
-      core_specs: []
+      core_specs:
+        - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
+        - amgx%gcc@8.3.1 ^cuda@10.1.243 
   config:
     install_tree: ${FACSPACK_ENV}/opt
     module_roots:
