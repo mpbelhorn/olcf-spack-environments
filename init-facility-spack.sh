@@ -164,6 +164,23 @@ case "${FACSPACK_HOST}" in
     _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
     setup_alternate_module_environment "${_FS_MP}"
     ;;
+  lyra)
+    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    # Next line replaced by following non-standard path:
+    # _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles"
+    _FS_MP+=":/opt/cray/pe/craype/default/modulefiles"
+    _FS_MP+=":/opt/cray/pe/modulefiles"
+    _FS_MP+=":/opt/cray/modulefiles"
+    _FS_MP+=":/opt/modulefiles"
+    _FS_MP+=":/etc/modulefiles"
+    _FS_MP+=":/usr/share/modulefiles"
+    _FS_MP+=":/usr/share/modulefiles/Linux"
+    _FS_MP+=":/usr/share/modulefiles/Core"
+    _FS_MP+=":/usr/share/lmod/lmod/modulefiles/Core"
+    setup_alternate_module_environment "${_FS_MP}"
+    ;;
   *)
     ;;
 esac
