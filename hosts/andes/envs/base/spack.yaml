@@ -91,6 +91,7 @@ spack:
     - nco
     - magma ^cuda@:10.99
   - e4s_packages:
+    
     ## Already in general compute packages list
     # - openmpi
     # - hypre
@@ -106,6 +107,8 @@ spack:
     - ninja
     - qthreads
     - openpmd-api
+
+    
     # - mfem ## Fails to build
     - sundials
     - strumpack
@@ -485,6 +488,9 @@ spack:
         conflict: []
         load: []
         environment:
+          set:
+            OMPI_MCA_btl: ^vader,openib,tcp
+            OMPI_MCA_coll_hcoll_enable: '0'
           unset: []
       openblas:
         suffixes:
@@ -640,6 +646,15 @@ spack:
           unset: []
         filter:
           environment_blacklist: []
+        load: []
+      openmpi:
+        environment:
+          set:
+            OMPI_MCA_btl: ^vader,openib,tcp
+          unset: []
+        filter:
+          environment_blacklist: []
+        conflict: []
         load: []
       verbose: false
       whitelist: []
