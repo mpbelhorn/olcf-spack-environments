@@ -39,8 +39,13 @@ while [ -h "$_THIS" ]; do
   [[ $_THIS != /* ]] && _THIS="$_THIS_DIR/$_THIS" 
 done
 _THIS_DIR="$( cd -P "$( dirname "$_THIS" )" >/dev/null && pwd )"
-FACSPACK_SPACK_ROOT="${_THIS_DIR/#\/autofs\/nccs-svm[0-9]_sw//sw}"
-export FACSPACK_SPACK_ROOT="${FACSPACK_SPACK_ROOT/#\/autofs\/nccs-svm[0-9]_home[0-9]\///ccs/home/}"
+# Filter autofs-mangled /sw directories
+_SW="/sw"
+FACSPACK_SPACK_ROOT="${_THIS_DIR/#$(realpath $_SW)//sw}"
+unset _SW
+# Filter autofs-mangled $HOME directories
+export FACSPACK_SPACK_ROOT="${FACSPACK_SPACK_ROOT/#$(realpath $HOME)/$HOME}"
+
 #####################
 
 # This script must be sourced.
