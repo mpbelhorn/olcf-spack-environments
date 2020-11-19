@@ -47,6 +47,7 @@ spack:
     - gsl
     - nco~mpi-deps
     - libfabric fabrics=verbs
+    
     # - git-lfs
     - patchelf
     - libzmq
@@ -59,8 +60,8 @@ spack:
     - adios2 +python ^python@3.7.7
     - gdrcopy
     - gromacs +hwloc+cuda ^cuda@10.2.89
-    - gromacs +hwloc+cuda~rdtscp+mpi ^cuda@10.2.89
-    - gromacs +hwloc+cuda~rdtscp~mpi ^cuda@10.2.89
+    - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
+    - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
     - raja
     - nco
@@ -123,7 +124,7 @@ spack:
     # - darshan-util
     # - raja
     ### Incompatible packages
-    # - scr ## No slurm on Summit
+    # - scr ## Slurm not available Summit/Peak
     # - libnrm ## Explictly depends on mpich
     ### Against policies
     # - papyrus@develop ## No packages should be pinned @develop
@@ -169,6 +170,7 @@ spack:
       - mpip   # ^elfutils !conflicts clang
       - dyninst   # ^elfutils !conflicts clang
       - hpctoolkit   # ^elfutils !conflicts clang
+      - strumpack
   - xl_specs:
     - matrix:
       - - $general_compute_packages
@@ -243,18 +245,21 @@ spack:
       - 10.1.243
       - 10.1.168
       externals:
-        - spec: cuda@11.0.2
-          modules:
-            - cuda/11.0.2
-        - spec: cuda@10.2.89
-          modules:
-            - cuda/10.2.89
-        - spec: cuda@10.1.243
-          modules:
-            - cuda/10.1.243
-        - spec: cuda@10.1.105
-          modules:
-            - cuda/10.1.168
+      - spec: cuda@11.0.3
+        modules:
+        - cuda/11.0.3
+      - spec: cuda@11.0.2
+        modules:
+        - cuda/11.0.2
+      - spec: cuda@10.2.89
+        modules:
+        - cuda/10.2.89
+      - spec: cuda@10.1.243
+        modules:
+        - cuda/10.1.243
+      - spec: cuda@10.1.168
+        modules:
+        - cuda/10.1.168
       target: []
       providers: {}
       compiler: []
@@ -269,8 +274,8 @@ spack:
       version: [10.1.0.10]
       buildable: false
       externals:
-        - spec: lsf@10.1.0.10
-          prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
+      - spec: lsf@10.1.0.10
+        prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
       target: []
       compiler: []
       providers: {}
@@ -278,8 +283,8 @@ spack:
       buildable: false
       version: [4.4]
       externals:
-        - spec: hcoll@4.4
-          prefix: /opt/mellanox/hcoll
+      - spec: hcoll@4.4
+        prefix: /opt/mellanox/hcoll
       target: []
       compiler: []
       providers: {}
@@ -287,8 +292,8 @@ spack:
       buildable: false
       version: [1.1.3]
       externals:
-        - spec: knem@1.1.3
-          prefix: /opt/knem-1.1.3.90mlnx1
+      - spec: knem@1.1.3
+        prefix: /opt/knem-1.1.3.90mlnx1
       target: []
       compiler: []
       providers: {}
@@ -296,8 +301,8 @@ spack:
       buildable: false
       version: [1.7.1-bootstrap]
       externals:
-        - spec: go-bootstrap@1.7.1-bootstrap
-          prefix: /sw/summit/go/1.7.1-bootstrap
+      - spec: go-bootstrap@1.7.1-bootstrap
+        prefix: /sw/summit/go/1.7.1-bootstrap
       target: []
       providers: {}
       compiler: []
@@ -305,10 +310,10 @@ spack:
       version: [3.22.30, 2.24.32]
       buildable: false
       externals:
-        - spec: gtkplus@2.24.32
-          prefix: /usr
-        - spec: gtkplus@3.22.30
-          prefix: /usr
+      - spec: gtkplus@2.24.32
+        prefix: /usr
+      - spec: gtkplus@3.22.30
+        prefix: /usr
       target: []
       providers: {}
       compiler: []
@@ -316,16 +321,16 @@ spack:
       buildable: false
       version: [1.1.1]
       externals:
-        - spec: openssl@1.1.1
-          prefix: /usr
+      - spec: openssl@1.1.1
+        prefix: /usr
       target: []
       providers: {}
       compiler: []
     libtool:
       version: [2.4.6]
       externals:
-        - spec: libtool@2.4.6
-          prefix: /usr
+      - spec: libtool@2.4.6
+        prefix: /usr
       buildable: true
       target: []
       providers: {}

@@ -47,12 +47,21 @@ spack:
     - gsl
     - nco~mpi-deps
     - libfabric fabrics=verbs
+    
+    # - git-lfs
+    - patchelf
+    - libzmq
+    - makedepend
   - core_only_compute_packages:
     - darshan-runtime
     - darshan-runtime hdf5=pre1.10
     - darshan-runtime hdf5=post1.10
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
+    - gdrcopy
+    - gromacs +hwloc+cuda ^cuda@10.1.243
+    - gromacs +hwloc+cuda+mpi ^cuda@10.1.243
+    - gromacs +hwloc+cuda~mpi ^cuda@10.1.243
   - gcc_only_compute_packages:
     - raja
     - nco
@@ -115,7 +124,7 @@ spack:
     # - darshan-util
     # - raja
     ### Incompatible packages
-    # - scr ## No slurm on Peak
+    # - scr ## Slurm not available Summit/Peak
     # - libnrm ## Explictly depends on mpich
     ### Against policies
     # - papyrus@develop ## No packages should be pinned @develop
@@ -148,7 +157,7 @@ spack:
         - $e4s_packages
       - - $gcc_compilers
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
-    - amgx%gcc@8.3.1 ^cuda@10.1.243 
+    - amgx%gcc@8.3.1 ^cuda@10.1.243
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0
   - llvm_specs:
@@ -161,6 +170,7 @@ spack:
       - mpip   # ^elfutils !conflicts clang
       - dyninst   # ^elfutils !conflicts clang
       - hpctoolkit   # ^elfutils !conflicts clang
+      - strumpack
   - xl_specs:
     - matrix:
       - - $general_compute_packages
@@ -198,6 +208,7 @@ spack:
       - boost%pgi
       - netlib-scalapack%pgi@20.1
   - special_builds:
+    
     ## Cannot build do to error in ompi configure finding liblsf/ls_info.
     - openmpi@4.0.3%gcc@8.3.1+cuda+legacylaunchers+pmi+thread_multiple fabrics=ucx,hcoll,knem
       schedulers=lsf ^ucx+cuda+gdrcopy cuda_arch=70
@@ -224,9 +235,7 @@ spack:
       target: []
       compiler: []
       buildable: true
-      modules: {}
       providers: {}
-      paths: {}
     cuda:
       buildable: false
       version:
@@ -234,13 +243,21 @@ spack:
       - 11.0.2
       - 10.1.243
       - 10.1.168
-      modules:
-        cuda@11.0.2: cuda/11.0.2
-        cuda@10.1.243: cuda/10.1.243
-        cuda@10.1.105: cuda/10.1.168
+      externals:
+      - spec: cuda@11.0.3
+        modules:
+        - cuda/11.0.3
+      - spec: cuda@11.0.2
+        modules:
+        - cuda/11.0.2
+      - spec: cuda@10.1.243
+        modules:
+        - cuda/10.1.243
+      - spec: cuda@10.1.168
+        modules:
+        - cuda/10.1.168
       target: []
       providers: {}
-      paths: {}
       compiler: []
     amgx:
       variants: +cuda cuda_arch=70
@@ -248,89 +265,84 @@ spack:
       target: []
       compiler: []
       buildable: true
-      modules: {}
       providers: {}
-      paths: {}
     lsf:
       version: [10.1.0.10]
       buildable: false
-      paths:
-        lsf@10.1.0.10: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
+      externals:
+      - spec: lsf@10.1.0.10
+        prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
       target: []
       compiler: []
-      modules: {}
       providers: {}
     hcoll:
       buildable: false
       version: [4.4]
-      paths:
-        hcoll@4.4: /opt/mellanox/hcoll
+      externals:
+      - spec: hcoll@4.4
+        prefix: /opt/mellanox/hcoll
       target: []
       compiler: []
-      modules: {}
       providers: {}
     knem:
       buildable: false
       version: [1.1.3]
-      paths:
-        knem@1.1.3: /opt/knem-1.1.3.90mlnx1
+      externals:
+      - spec: knem@1.1.3
+        prefix: /opt/knem-1.1.3.90mlnx1
       target: []
       compiler: []
-      modules: {}
       providers: {}
     go-bootstrap:
       buildable: false
       version: [1.7.1-bootstrap]
-      paths:
-        go-bootstrap@1.7.1-bootstrap: /sw/peak/go/1.7.1-bootstrap
+      externals:
+      - spec: go-bootstrap@1.7.1-bootstrap
+        prefix: /sw/peak/go/1.7.1-bootstrap
       target: []
       providers: {}
-      modules: {}
       compiler: []
     gtkplus:
       version: [3.22.30, 2.24.32]
       buildable: false
-      paths:
-        gtkplus@2.24.32: /usr
-        gtkplus@3.22.30: /usr
+      externals:
+      - spec: gtkplus@2.24.32
+        prefix: /usr
+      - spec: gtkplus@3.22.30
+        prefix: /usr
       target: []
       providers: {}
-      modules: {}
       compiler: []
     openssl:
       buildable: false
       version: [1.1.1]
-      paths:
-        openssl@1.1.1: /usr
+      externals:
+      - spec: openssl@1.1.1
+        prefix: /usr
       target: []
       providers: {}
-      modules: {}
       compiler: []
     libtool:
       version: [2.4.6]
-      paths:
-        libtool@2.4.6: /usr
+      externals:
+      - spec: libtool@2.4.6
+        prefix: /usr
       buildable: true
       target: []
       providers: {}
-      modules: {}
       compiler: []
     perl:
       version: [5.30.1]
-      modules: {}
       buildable: true
       target: []
       providers: {}
       compiler: []
-      paths: {}
     fftw:
       variants: +openmp precision=float,double,long_double
       buildable: true
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     hdf5:
       variants: +hl+cxx+fortran
@@ -338,8 +350,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     papi:
       variants: cpu=POWER9
@@ -347,8 +357,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     magma:
       variants: +cuda cuda_arch=70
@@ -356,8 +364,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netlib-scalapack:
       variants: +fpic
@@ -365,8 +371,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netcdf-c:
       variants: ~hdf4+mpi+parallel-netcdf+shared
@@ -374,25 +378,19 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netcdf-fortran:
       buildable: true
       version: [4.4.5]
       target: []
       compiler: []
-      modules: {}
       providers: {}
-      paths: {}
     parallel-netcdf:
       variants: +cxx+fortran+fpic
       buildable: true
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     darshan-runtime:
       variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/peak
@@ -400,8 +398,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     all:
       compiler: [gcc@8.3.1, gcc, clang, xl, pgi]
@@ -413,8 +409,6 @@ spack:
       buildable: true
       version: []
       target: [ppc64le]
-      paths: {}
-      modules: {}
   view: false
   modules:
     enable:
@@ -538,8 +532,8 @@ spack:
       hierarchy: []
       projections: {}
       core_specs:
-        - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
-        - amgx%gcc@8.3.1 ^cuda@10.1.243 
+      - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
+      - amgx%gcc@8.3.1 ^cuda@10.1.243
   config:
     install_tree: ${FACSPACK_ENV}/opt
     module_roots:

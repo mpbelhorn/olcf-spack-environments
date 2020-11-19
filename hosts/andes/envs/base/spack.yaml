@@ -50,7 +50,7 @@ spack:
     - cuda@11.0.2
     - r
     - r@4.0.0
-    - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran~mpi
+    - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
     - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - vmd
     - sbt
@@ -91,7 +91,6 @@ spack:
     - nco
     - magma ^cuda@:10.99
   - e4s_packages:
-    
     ## Already in general compute packages list
     # - openmpi
     # - hypre
@@ -107,8 +106,6 @@ spack:
     - ninja
     - qthreads
     - openpmd-api
-
-    
     # - mfem ## Fails to build
     - sundials
     - strumpack
@@ -159,6 +156,8 @@ spack:
       - - $e4s_packages
       - - '%gcc@8.3.1'
         - '%gcc@9.3.0'
+      exclude:
+        - 'strumpack%gcc@9:'
     - matrix:
       - - $gcc_only_compute_packages
       - - $gcc_compilers
@@ -167,9 +166,9 @@ spack:
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
     - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi
     - octave%gcc@8.3.1 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
-    - gromacs@2020.2+hwloc~cuda~rdtscp~mpi %gcc@8.3.1
-    - gromacs@2020.2+hwloc~cuda+rdtscp+mpi %gcc@8.3.1
-    - gromacs@2020.2+hwloc+cuda+rdtscp+mpi %gcc@8.3.1 ^cuda@:10.99
+    - gromacs@2020.2+hwloc~cuda~mpi %gcc@8.3.1
+    - gromacs@2020.2+hwloc~cuda+mpi %gcc@8.3.1
+    - gromacs@2020.2+hwloc+cuda+mpi %gcc@8.3.1 ^cuda@:10.99
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
@@ -179,6 +178,7 @@ spack:
       - mpip
       - dyninst
       - hpctoolkit
+      - strumpack
   - aocc_specs:
     - matrix:
       - - $general_compute_packages
@@ -251,16 +251,12 @@ spack:
       version: [4.0.4]
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     cuda:
       buildable: true
       version: [10.2.89]
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     qt:
       variants: ~ssl
@@ -268,8 +264,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     ncurses:
       variants: +termlib
@@ -277,69 +271,63 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     slurm:
       buildable: false
       version: [20-02-0-0]
       target: []
       providers: {}
-      paths:
-        slurm@20-02-0-0: /usr
-      modules: {}
+      externals:
+        - spec: slurm@20-02-0-0
+          prefix: /usr
       compiler: []
     m4:
       buildable: true
       version: [1.4.18]
       target: []
       providers: {}
-      paths:
-        m4%intel: /usr
-      modules: {}
+      externals:
+        - spec: m4%intel
+          prefix: /usr
       compiler: []
     ucx:
       buildable: false
       version: [1.8.0]
       target: []
       providers: {}
-      paths:
-        ucx@1.8.0+thread_multiple: /usr
-      modules: {}
+      externals:
+        - spec: ucx@1.8.0+thread_multiple
+          prefix: /usr
       compiler: []
       variants: +thread_multiple
     hcoll:
       buildable: false
       version: [4.5]
-      paths:
-        hcoll@4.4: /opt/mellanox/hcoll
+      externals:
+        - spec: hcoll@4.4
+          prefix: /opt/mellanox/hcoll
       target: []
       compiler: []
-      modules: {}
       providers: {}
     rdma-core:
       buildable: false
       version: [28.0]
       target: []
       providers: {}
-      paths:
-        rdma-core@28.0: /usr
-      modules: {}
+      externals:
+        - spec: rdma-core@28.0
+          prefix: /usr
       compiler: []
     libfabric:
       buildable: true
       version: [1.8.0]
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     binutils:
       buildable: true
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
       variants: +libiberty
       version: []
@@ -348,9 +336,9 @@ spack:
       version: [1.1.1]
       target: []
       providers: {}
-      paths:
-        openssl@1.1.1: /usr
-      modules: {}
+      externals:
+        - spec: openssl@1.1.1
+          prefix: /usr
       compiler: []
     octave:
       variants: +magick+arpack+curl+fftw+fontconfig+freetype+glpk+gnuplot+hdf5+opengl+qhull+qrupdate+qt+readline+suitesparse+zlib
@@ -358,16 +346,12 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     libtool:
       buildable: true
       version: [2.4.6]
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     r:
       variants: ~X
@@ -375,8 +359,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     fftw:
       variants: precision=float,double,long_double
@@ -384,8 +366,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     hdf5:
       variants: +hl+cxx+fortran
@@ -393,16 +373,12 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     papi:
       buildable: true
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     magma:
       variants: gpus=kepler
@@ -410,8 +386,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netlib-scalapack:
       variants: +fpic
@@ -419,8 +393,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netcdf-c:
       variants: ~hdf4+mpi+parallel-netcdf+shared
@@ -428,8 +400,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     parallel-netcdf:
       variants: +cxx+fortran+fpic
@@ -437,8 +407,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     darshan-runtime:
       variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/andes
@@ -446,8 +414,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     all:
       buildable: true
@@ -458,8 +424,6 @@ spack:
         lapack: [openblas, mkl]
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
-      paths: {}
-      modules: {}
       compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
   view: false
   modules:
@@ -576,7 +540,7 @@ spack:
           unset: []
       ferret:
         suffixes:
-          ferret^hdf5+mpi^netcdf+mpi: parallel
+          ferret^hdf5+mpi^netcdf-c+mpi: parallel
         filter:
           environment_blacklist: []
         conflict: []
@@ -585,7 +549,7 @@ spack:
           unset: []
       ncl:
         suffixes:
-          builtin.ncl ^hdf5+mpi^netcdf+mpi: parallel
+          builtin.ncl ^hdf5+mpi^netcdf-c+mpi: parallel
           olcf.ncl: serial
         filter:
           environment_blacklist: []
