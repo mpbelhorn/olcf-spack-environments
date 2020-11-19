@@ -1,4 +1,4 @@
-# Copyright 2013-2019 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2020 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -19,9 +19,6 @@ class HoomdBlue(CMakePackage):
 
     homepage = "http://glotzerlab.engin.umich.edu/hoomd-blue/"
     git      = "https://bitbucket.org/glotzer/hoomd-blue.git"
-    # TODO: There is a bug in Spack that requires a url to be defined
-    # even if it isn't used. This URL can hopefully be removed someday.
-    # url      = "https://bitbucket.org/glotzer/hoomd-blue/get/v2.1.6.tar.bz2"
 
     version('develop', submodules=True)
 
@@ -98,7 +95,7 @@ class HoomdBlue(CMakePackage):
         if '+fpic' in spec:
             cmake_args.append('-DCMAKE_POSITION_INDEPENDENT_CODE=ON')
             if "+cuda" in spec:
-                CUDA_NVCC_FLAGS.extend(['-Xcompiler', self.compiler.pic_flag])
+                CUDA_NVCC_FLAGS.extend(['-Xcompiler', self.compiler.cc_pic_flag])
 
         # Documentation
         if '+doc' in spec:
@@ -107,7 +104,7 @@ class HoomdBlue(CMakePackage):
             cmake_args.append('-DENABLE_DOXYGEN=OFF')
 
         if CUDA_NVCC_FLAGS:
-            cmake_args.append('-DCUDA_NVCC_FLAGS=%s' %
-                              ';'.join(CUDA_NVCC_FLAGS))
+            cmake_args.append(
+                    '-DCUDA_NVCC_FLAGS=%s' % ';'.join(CUDA_NVCC_FLAGS))
 
         return cmake_args

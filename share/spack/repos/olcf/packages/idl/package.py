@@ -1,45 +1,44 @@
-##############################################################################
-# Copyright (c) 2013-2016, Lawrence Livermore National Security, LLC.
-# Produced at the Lawrence Livermore National Laboratory.
+# Copyright 2013-2020 Lawrence Livermore National Security, LLC and other
+# Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
-# This file is part of Spack.
-# Created by Todd Gamblin, tgamblin@llnl.gov, All rights reserved.
-# LLNL-CODE-647188
-#
-# For details, see https://github.com/llnl/spack
-# Please also see the LICENSE file for our notice and the LGPL.
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU Lesser General Public License (as
-# published by the Free Software Foundation) version 2.1, February 1999.
-#
-# This program is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the IMPLIED WARRANTY OF
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the terms and
-# conditions of the GNU Lesser General Public License for more details.
-#
-# You should have received a copy of the GNU Lesser General Public
-# License along with this program; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-##############################################################################
-import sys
+# SPDX-License-Identifier: (Apache-2.0 OR MIT)
+
 from spack import *
+import os
 
 
 class Idl(Package):
-    homepage = "http://www.harrisgeospatial.com/ProductsandTechnology/Software/IDL.aspx"
-    url      = "file:///sw/sources/idl/idl-8.2.3.tar.gz"
+    """IDL Software: Interactive Data Visulation.
 
-    version('8.2.3', '84d77e9fe6d370d68616a6ea9ebddf00', expand=False)
+    Note: IDL is a licensed software. You will also need an existing
+    downloaded tarball of IDL in your current directory or in a
+    spack mirror in order to install."""
 
-    def setup_environment(self,spack_env,run_env):
-      run_env.set('EXELIS_DIR','%s/%s/binary' % (self.prefix,str(self.version)))
-      run_env.set('IDL_DIR', '%s/%s/binary/idl82' % (self.prefix, str(self.version)))
-      run_env.prepend_path('PATH', '%s/%s/binary/idl82/bin' % (self.prefix, str(self.version)))
-      run_env.prepend_path('LD_LIBRARY_PATH', '%s/%s/binary/idl82/lib' % (self.prefix, str(self.version)))
+    homepage = "https://www.harrisgeospatial.com/Software-Technology/IDL"
+    manual_download = True
+    url = "file://{0}/idl8.7-linux.tar.gz".format(os.getcwd())
 
+    maintainers = ['francinelapid']
+
+    license_required = True
 
     def install(self, spec, prefix):
-      tar = which('tar')
-      tar('xvf', self.stage.archive_file, '-C', prefix)
-      return 0
+
+        # replace default install dir to self.prefix by editing answer file
+        filter_file('/usr/local/harris', prefix, 'silent/idl_answer_file')
+
+        # execute install script
+        install_script = Executable('./install.sh')
+        install_script('-s', input='silent/idl_answer_file')
+
+    def setup_run_environment(self, env):
+
+        # set necessary environment variables
+        env.set('EXELIS_DIR', self.prefix)
+        env.set('IDL_DIR', self.prefix.idl)
+
+        # add bin to path
+        env.prepend_path('PATH', self.prefix.idl.bin)
+
+        # FIXME, add LD_LIBRARY_PATH to env module.
+        # env.prepend_path('LD_LIBRARY_PATH', '%s/%s/binary/idl82/lib' % (self.prefix, str(self.version)))
