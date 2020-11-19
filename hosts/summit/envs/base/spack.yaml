@@ -47,12 +47,20 @@ spack:
     - gsl
     - nco~mpi-deps
     - libfabric fabrics=verbs
+    # - git-lfs
+    - patchelf
+    - libzmq
+    - makedepend
   - core_only_compute_packages:
     - darshan-runtime
     - darshan-runtime hdf5=pre1.10
     - darshan-runtime hdf5=post1.10
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
+    - gdrcopy
+    - gromacs +hwloc+cuda ^cuda@10.2.89
+    - gromacs +hwloc+cuda~rdtscp+mpi ^cuda@10.2.89
+    - gromacs +hwloc+cuda~rdtscp~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
     - raja
     - nco
