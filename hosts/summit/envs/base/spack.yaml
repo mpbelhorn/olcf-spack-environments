@@ -233,9 +233,7 @@ spack:
       target: []
       compiler: []
       buildable: true
-      modules: {}
       providers: {}
-      paths: {}
     cuda:
       buildable: false
       version:
@@ -244,14 +242,21 @@ spack:
       - 10.2.89
       - 10.1.243
       - 10.1.168
-      modules:
-        cuda@11.0.2: cuda/11.0.2
-        cuda@10.2.89: cuda/10.2.89
-        cuda@10.1.243: cuda/10.1.243
-        cuda@10.1.105: cuda/10.1.168
+      externals:
+        - spec: cuda@11.0.2
+          modules:
+            - cuda/11.0.2
+        - spec: cuda@10.2.89
+          modules:
+            - cuda/10.2.89
+        - spec: cuda@10.1.243
+          modules:
+            - cuda/10.1.243
+        - spec: cuda@10.1.105
+          modules:
+            - cuda/10.1.168
       target: []
       providers: {}
-      paths: {}
       compiler: []
     amgx:
       variants: +cuda cuda_arch=70
@@ -259,89 +264,84 @@ spack:
       target: []
       compiler: []
       buildable: true
-      modules: {}
       providers: {}
-      paths: {}
     lsf:
       version: [10.1.0.10]
       buildable: false
-      paths:
-        lsf@10.1.0.10: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
+      externals:
+        - spec: lsf@10.1.0.10
+          prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
       target: []
       compiler: []
-      modules: {}
       providers: {}
     hcoll:
       buildable: false
       version: [4.4]
-      paths:
-        hcoll@4.4: /opt/mellanox/hcoll
+      externals:
+        - spec: hcoll@4.4
+          prefix: /opt/mellanox/hcoll
       target: []
       compiler: []
-      modules: {}
       providers: {}
     knem:
       buildable: false
       version: [1.1.3]
-      paths:
-        knem@1.1.3: /opt/knem-1.1.3.90mlnx1
+      externals:
+        - spec: knem@1.1.3
+          prefix: /opt/knem-1.1.3.90mlnx1
       target: []
       compiler: []
-      modules: {}
       providers: {}
     go-bootstrap:
       buildable: false
       version: [1.7.1-bootstrap]
-      paths:
-        go-bootstrap@1.7.1-bootstrap: /sw/summit/go/1.7.1-bootstrap
+      externals:
+        - spec: go-bootstrap@1.7.1-bootstrap
+          prefix: /sw/summit/go/1.7.1-bootstrap
       target: []
       providers: {}
-      modules: {}
       compiler: []
     gtkplus:
       version: [3.22.30, 2.24.32]
       buildable: false
-      paths:
-        gtkplus@2.24.32: /usr
-        gtkplus@3.22.30: /usr
+      externals:
+        - spec: gtkplus@2.24.32
+          prefix: /usr
+        - spec: gtkplus@3.22.30
+          prefix: /usr
       target: []
       providers: {}
-      modules: {}
       compiler: []
     openssl:
       buildable: false
       version: [1.1.1]
-      paths:
-        openssl@1.1.1: /usr
+      externals:
+        - spec: openssl@1.1.1
+          prefix: /usr
       target: []
       providers: {}
-      modules: {}
       compiler: []
     libtool:
       version: [2.4.6]
-      paths:
-        libtool@2.4.6: /usr
+      externals:
+        - spec: libtool@2.4.6
+          prefix: /usr
       buildable: true
       target: []
       providers: {}
-      modules: {}
       compiler: []
     perl:
       version: [5.30.1]
-      modules: {}
       buildable: true
       target: []
       providers: {}
       compiler: []
-      paths: {}
     fftw:
       variants: +openmp precision=float,double,long_double
       buildable: true
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     hdf5:
       variants: +hl+cxx+fortran
@@ -349,8 +349,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     papi:
       variants: cpu=POWER9
@@ -358,8 +356,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     magma:
       variants: +cuda cuda_arch=70
@@ -367,8 +363,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netlib-scalapack:
       variants: +fpic
@@ -376,8 +370,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netcdf-c:
       variants: ~hdf4+mpi+parallel-netcdf+shared
@@ -385,25 +377,19 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     netcdf-fortran:
       buildable: true
       version: [4.4.5]
       target: []
       compiler: []
-      modules: {}
       providers: {}
-      paths: {}
     parallel-netcdf:
       variants: +cxx+fortran+fpic
       buildable: true
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     darshan-runtime:
       variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/summit
@@ -411,8 +397,6 @@ spack:
       version: []
       target: []
       providers: {}
-      paths: {}
-      modules: {}
       compiler: []
     all:
       compiler: [gcc@8.3.1, gcc, clang, xl, pgi]
@@ -424,8 +408,6 @@ spack:
       buildable: true
       version: []
       target: [ppc64le]
-      paths: {}
-      modules: {}
   view: false
   modules:
     enable:
