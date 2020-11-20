@@ -358,11 +358,13 @@ spack:
       blacklist_implicits: false
       projections: {}
   config:
-    install_tree: ${FACSPACK_ENV}/opt
+    install_tree:
+      root: ${FACSPACK_ENV}/opt
+      projections:
+        all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     module_roots:
       tcl: ${FACSPACK_ENV_MODULEROOT}/flat
       lmod: ${FACSPACK_ENV_MODULEROOT}/spack
-    install_path_scheme: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     template_dirs:
     - ${FACSPACK_CONF_HOST}/templates
     - ${FACSPACK_CONF_COMMON}/spack/templates
@@ -383,6 +385,13 @@ spack:
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout:
+    shared_linking: rpath
+    allow_sgid: true
+    concretizer: original
+    locks: true
+    suppress_gpg_warnings: false
+    connect_timeout: 10
+    test_stage: ~/.spack/test
   concretization: separately
   compilers:
   - compiler:
