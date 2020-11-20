@@ -240,7 +240,7 @@ spack:
   - $pgi_specs
   #############################################################################
   mirrors:
-    facility_builds: /sw/andes/spack-env/mirrors/builds
+    facility_builds: /sw/andes/spack-envs/mirrors/builds
   repos:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
