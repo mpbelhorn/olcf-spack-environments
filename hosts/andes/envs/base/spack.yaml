@@ -759,8 +759,8 @@ spack:
       paths:
         cc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang
         cxx: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang++
-        f77: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
-        fc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
       extra_rpaths:
       - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib32
       - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib
@@ -771,8 +771,8 @@ spack:
       paths:
         cc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang
         cxx: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang++
-        f77: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
-        fc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
+        f77: /usr/bin/gfortran
+        fc: /usr/bin/gfortran
       flags: {}
       operating_system: rhel8
       target: x86_64
