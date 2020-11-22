@@ -157,7 +157,7 @@ spack:
         - $e4s_packages
       - - $gcc_compilers
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
-    - amgx%gcc@8.3.1 ^cuda@10.2.89
+    - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0
   - llvm_specs:
