@@ -50,7 +50,7 @@ spack:
     - cuda@11.0.2
     - r
     - r@4.0.0
-    - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
+    # - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
     - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - vmd
     - sbt
@@ -58,7 +58,6 @@ spack:
     - python@2.7.15
     - python
     - darshan-util
-    # - matlab
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -91,22 +90,11 @@ spack:
     - nco
     - magma ^cuda@:10.99
   - e4s_packages:
-    ## Already in general compute packages list
-    # - openmpi
-    # - hypre
-    # - hdf5
-    # - parallel-netcdf
-    # - adios2
-    # - adios
-    # - darshan-runtime
-    # - darshan-util
-    # - raja
     - zfp
     - sz
     - ninja
     - qthreads
     - openpmd-api
-    # - mfem ## Fails to build
     - sundials
     - strumpack
     - superlu-dist
@@ -132,13 +120,24 @@ spack:
     - kokkos+openmp
     - kokkos-kernels
     ## Excluded E4S packages ------
-    ### Explictly depends on mpich
-    # - libnrm
-    ### No packages should be pinned @develop
-    # - papyrus@develop
-    ### Python extensions.
-    # - py-jupyterhub
-    # - 'py-libensemble^python@3.7.3:'
+    ### Build Failures
+    # - mfem
+    ### Already in general compute packages list
+    # - openmpi
+    # - hypre
+    # - hdf5
+    # - parallel-netcdf
+    # - adios2
+    # - adios
+    # - darshan-runtime
+    # - darshan-util
+    # - raja
+    ### Incompatible packages
+    # - libnrm # Explictly depends on mpich
+    ### Against policies
+    # - papyrus@develop # No packages should be pinned @develop
+    # - py-jupyterhub # Python extensions.
+    # - 'py-libensemble^python@3.7.3:' # Python extensions.
   - core_specs:
     - matrix:
       - - $core_packages
@@ -206,6 +205,7 @@ spack:
       - tau
       - dyninst
       - hpctoolkit
+      - veloc
   - pgi_specs:
     - matrix:
       - - $general_compute_packages
@@ -235,7 +235,7 @@ spack:
   - $core_specs
   - $gcc_specs
   - $llvm_specs
-  - $aocc_specs
+  # - $aocc_specs
   - $intel_specs
   - $pgi_specs
   #############################################################################
