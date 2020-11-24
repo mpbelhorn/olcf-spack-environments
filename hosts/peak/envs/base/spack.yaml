@@ -58,11 +58,11 @@ spack:
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
     - gdrcopy
-    - gromacs +hwloc+cuda ^cuda@10.1.243
-    - gromacs +hwloc+cuda+mpi ^cuda@10.1.243
-    - gromacs +hwloc+cuda~mpi ^cuda@10.1.243
+    - gromacs +hwloc+cuda ^cuda@10.2.89
+    - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
+    - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
-    - raja
+    - raja +cuda cuda_arch=70
     - nco
   - general_compute_packages:
     - netlib-lapack
@@ -87,7 +87,7 @@ spack:
     - qthreads
     - openpmd-api
     - sundials
-    - strumpack
+    - strumpack # +cuda cuda_arch=70
     - superlu-dist
     - superlu
     - trilinos@12.14.1+dtk+intrepid2+shards
@@ -96,7 +96,7 @@ spack:
     - veloc
     - bolt
     - upcxx
-    - umpire
+    - umpire # +cuda cuda_arch=70
     - libquo
     - globalarrays
     - pdt
@@ -106,8 +106,8 @@ spack:
     - caliper
     - papi
     - rempi
-    - kokkos+openmp
-    - kokkos-kernels
+    - kokkos+openmp # +cuda cuda_arch=70
+    - kokkos-kernels # +cuda cuda_arch=70
     ## Excluded E4S packages ------
     ### Build Failures
     # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
@@ -155,8 +155,8 @@ spack:
         - petsc +mpi+mumps~int64~superlu-dist
         - $e4s_packages
       - - $gcc_compilers
-    - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
-    - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.1.243
+    - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
+    - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0
   - llvm_specs:
@@ -238,16 +238,24 @@ spack:
       buildable: false
       version:
       - 11.0.3
+      - 11.1.1
       - 11.0.2
+      - 10.2.89
       - 10.1.243
       - 10.1.168
       externals:
+      - spec: cuda@11.1.1
+        modules:
+        - cuda/11.1.1
       - spec: cuda@11.0.3
         modules:
         - cuda/11.0.3
       - spec: cuda@11.0.2
         modules:
         - cuda/11.0.2
+      - spec: cuda@10.2.89
+        modules:
+        - cuda/10.2.89
       - spec: cuda@10.1.243
         modules:
         - cuda/10.1.243
@@ -530,8 +538,8 @@ spack:
       hierarchy: []
       projections: {}
       core_specs:
-      - magma@2.5.3%gcc@8.3.1 ^cuda@10.1.243
-      - amgx%gcc@8.3.1 ^cuda@10.1.243
+      - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
+      - amgx%gcc@8.3.1 ^cuda@10.2.89
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt

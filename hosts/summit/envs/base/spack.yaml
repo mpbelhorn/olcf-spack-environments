@@ -63,7 +63,7 @@ spack:
     - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
     - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
-    - raja
+    - raja +cuda cuda_arch=70
     - nco
   - general_compute_packages:
     - netlib-lapack
@@ -88,7 +88,7 @@ spack:
     - qthreads
     - openpmd-api
     - sundials
-    - strumpack
+    - strumpack # +cuda cuda_arch=70
     - superlu-dist
     - superlu
     - trilinos@12.14.1+dtk+intrepid2+shards
@@ -97,7 +97,7 @@ spack:
     - veloc
     - bolt
     - upcxx
-    - umpire
+    - umpire # +cuda cuda_arch=70
     - libquo
     - globalarrays
     - pdt
@@ -107,8 +107,8 @@ spack:
     - caliper
     - papi
     - rempi
-    - kokkos+openmp
-    - kokkos-kernels
+    - kokkos+openmp # +cuda cuda_arch=70
+    - kokkos-kernels # +cuda cuda_arch=70
     ## Excluded E4S packages ------
     ### Build Failures
     # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
@@ -239,11 +239,15 @@ spack:
       buildable: false
       version:
       - 11.0.3
+      - 11.1.1
       - 11.0.2
       - 10.2.89
       - 10.1.243
       - 10.1.168
       externals:
+      - spec: cuda@11.1.1
+        modules:
+        - cuda/11.1.1
       - spec: cuda@11.0.3
         modules:
         - cuda/11.0.3
