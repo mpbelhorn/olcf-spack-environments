@@ -231,6 +231,7 @@ spack:
       - hypre
       - mpip
       - openblas
+      - fftw # bad simd options
   specs:
   - $core_specs
   - $gcc_specs

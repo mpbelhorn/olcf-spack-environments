@@ -50,6 +50,7 @@ spack:
     - gsl
     - nco~mpi-deps
     - libfabric fabrics=verbs
+    # - git-lfs
     - patchelf
     - libzmq
     - makedepend
@@ -81,7 +82,7 @@ spack:
     - parallel-io
     - hypre
     - mpip
-    - adios2 ~python~zfp
+    - adios2 ~python
   - e4s_packages:
     - zfp
     - sz
@@ -157,6 +158,14 @@ spack:
         - petsc +mpi+mumps~int64~superlu-dist
         - $e4s_packages
       - - $gcc_compilers
+      exclude:
+      - globalarrays%gcc@10.2.0
+      - petsc%gcc@10.2.0+mumps # ^mumps, same error as globalarrays
+      - trilinos%gcc@10.2.0 # ^mumps
+      - adios2%gcc@10.2.0
+      - openpmd-api@0.12.0%gcc@10.2.0 # ^adios2
+      - rempi%gcc@10.2.0 # code error
+      - veloc%gcc@10.2.0 # ^kvtree tests
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
@@ -166,18 +175,21 @@ spack:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
         - $e4s_packages
+        - trilinos@12.14.1+dtk+intrepid2+shards~muelu
       - - $llvm_compilers
       exclude:
       - mpip   # ^elfutils !conflicts clang
       - dyninst   # ^elfutils !conflicts clang
       - hpctoolkit   # ^elfutils !conflicts clang
       - strumpack
+      - trilinos@12.14.1+dtk+intrepid2+shards+muelu
   - xl_specs:
     - matrix:
       - - $general_compute_packages
         - parallel-io@2.3.0
         - boost@1.62.0 ~mpi
         - boost@1.62.0 +mpi
+        - adios2~python+zpf
       - - $xl_compilers
       - - ^numactl%gcc@8-os
       - - ^libfabric%gcc@8-os
@@ -192,6 +204,7 @@ spack:
       - boost@1.63.0:%xl
       - 'parallel-io@2.4.4:'
       - mpip
+      - adios2+zpf
   - nv_specs:
     - matrix:
       - - $general_compute_packages
@@ -456,6 +469,33 @@ spack:
           environment_blacklist: []
         load: []
         conflict: []
+      gromacs:
+        suffixes:
+          gromacs ~mpi: serial
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      kokkos:
+        suffixes:
+          kokkos +openmp: omp
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      libfabric:
+        suffixes:
+          libfabric fabrics=verbs: verbs
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       boost:
         suffixes:
           boost cxxstd=14: cxx14
@@ -540,6 +580,8 @@ spack:
       - openssl
       - libtool@2.4.2
       - '%gcc@8-os'
+      - adios2@2.6.0%gcc~zfp
+      - adios2@2.6.0%clang@10.0.1-0~zfp
       hash_length: 0
       hierarchy: []
       projections: {}
