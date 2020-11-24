@@ -164,7 +164,7 @@ spack:
       exclude:
       - 'magma@2.5.1%gcc@9.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
-    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi
+    - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi ^libpng@:1.6.0
     - octave%gcc@8.3.1 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
     - gromacs@2020.2+hwloc~cuda~mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc~cuda+mpi %gcc@8.3.1
@@ -589,7 +589,8 @@ spack:
       hash_length: 0
       hierarchy: []
       projections: {}
-      core_specs: []
+      core_specs:
+      - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi ^libpng@:1.6.0
     tcl:
       hash_length: 3
       naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
@@ -664,7 +665,7 @@ spack:
   - compiler:
       spec: gcc@8.3.1
       operating_system: rhel8
-      modules: [gcc/8.3.1]
+      modules: []
       paths:
         cc: /usr/bin/gcc
         cxx: /usr/bin/g++
@@ -677,7 +678,7 @@ spack:
   - compiler:
       spec: gcc@8-os
       operating_system: rhel8
-      modules: [gcc/8.3.1]
+      modules: []
       paths:
         cc: /usr/bin/gcc
         cxx: /usr/bin/g++
@@ -692,7 +693,7 @@ spack:
   - compiler:
       spec: gcc@8-pgi
       operating_system: rhel8
-      modules: [gcc/8.3.1]
+      modules: []
       paths:
         cc: /usr/bin/gcc
         cxx: /usr/bin/g++
