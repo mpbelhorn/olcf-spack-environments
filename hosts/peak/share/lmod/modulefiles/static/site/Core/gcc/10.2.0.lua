@@ -6,9 +6,9 @@ GCC Compiler
 
 
 local package = "gcc"
-local version = "9.3.0"
-local host = "summit"
-local gccdir = pathJoin("/sw", host, "gcc/9.3.0-2")
+local version = "10.2.0"
+local host = "peak"
+local gccdir = pathJoin("/sw", host, "gcc/10.2.0-2")
 local platform = 'linux-rhel8-ppc64le'
 local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())

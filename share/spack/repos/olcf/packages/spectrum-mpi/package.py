@@ -107,8 +107,9 @@ class SpectrumMpi(Package):
 
         # Rebuild fortran module with lib/module/build.sh
         mod_src_dir = join_path(self.prefix, 'lib', 'module')
-        if self.spec.satisfies('@10.4.0.0-20200604 %pgi'):
-            mod_src_dir = join_path(self.prefix, 'lib', 'pgi')
+        if self.spec.satisfies('%pgi') or self.spec.satisfies('%nvhpc'):
+            if self.spec.satisfies('@10.4.0.0-20200604'):
+                mod_src_dir = join_path(self.prefix, 'lib', 'pgi')
         with working_dir(mod_src_dir):
             module_build = Executable('./build.sh')
             mod_env = os.environ
@@ -117,7 +118,7 @@ class SpectrumMpi(Package):
             module_build(env=mod_env)
             cp = which('cp')
             cp('-u', 'mpi.mod', '../.')
-            if self.spec.satisfies('%pgi'):
+            if self.spec.satisfies('%pgi') or self.spec.satisfies('%nvhpc'):
                 if os.path.isdir('../PGI'):
                     cp('-u', 'mpi.mod', '../PGI/.')
                 if os.path.exists('./include/mpif-sizeof.h'):

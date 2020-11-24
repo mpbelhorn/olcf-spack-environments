@@ -14,14 +14,15 @@ spack:
     - '%xl@16.1.1-8'
   - llvm_compilers:
     - '%clang@10.0.1-0'
-  - pgi_compilers:
+  - nv_compilers:
+    - '%nvhpc@20.9'
     - '%pgi@20.1'
     - '%pgi@20.4'
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
     - $llvm_compilers
-    - $pgi_compilers
+    - $nv_compilers
   - core_packages:
     - git
     - htop
@@ -191,10 +192,10 @@ spack:
       - boost@1.63.0:%xl
       - 'parallel-io@2.4.4:'
       - mpip
-  - pgi_specs:
+  - nv_specs:
     - matrix:
       - - $general_compute_packages
-      - - $pgi_compilers
+      - - $nv_compilers
       - - ^cmake%gcc@8-os
       - - ^python%gcc@8-os
       - - ^numactl%gcc@8-os
@@ -203,6 +204,10 @@ spack:
       - - ^autoconf%gcc@8-os
       - - ^m4%gcc@8-os
       exclude:
+      - adios2%nvhpc
+      - mpip%nvhpc
+      - boost%nvhpc
+      - netlib-scalapack%nvhpc@20.9
       - adios2%pgi
       - mpip%pgi
       - boost%pgi
@@ -220,7 +225,7 @@ spack:
   - $gcc_specs
   - $llvm_specs
   - $xl_specs
-  - $pgi_specs
+  - $nv_specs
   ## - $special_builds ## See note in definition section.
   #############################################################################
   mirrors:
@@ -407,7 +412,7 @@ spack:
       providers: {}
       compiler: []
     all:
-      compiler: [gcc@8.3.1, gcc, clang, xl, pgi]
+      compiler: [gcc@8.3.1, gcc, clang, xl, nvhpc, pgi]
       providers:
         mpi: [olcf.spectrum-mpi]
         lapack: [netlib-lapack]
@@ -683,6 +688,18 @@ spack:
         cxx: pgc++
         f77: pgfortran
         fc: pgfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@20.9
+      operating_system: rhel8
+      modules: [nvhpc/20.9]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
       extra_rpaths: []
       environment: {}
       flags: {}
