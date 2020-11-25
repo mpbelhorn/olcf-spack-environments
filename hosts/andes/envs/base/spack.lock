@@ -141,10 +141,6 @@
    "spec": "darshan-util%gcc@8.3.1"
   },
   {
-   "hash": "2b4cf6vywizyyocn25t7uvh5uyhghya3",
-   "spec": "arm-forge@20.1-Redhat-8.0-x86_64%gcc@8.3.1"
-  },
-  {
    "hash": "24y5q2u56ebmro5mpuz2vnjyvobrstn6",
    "spec": "openmpi%gcc@8.3.1"
   },
@@ -12317,30 +12313,6 @@
      }
     },
     "hash": "pt63plok5q5htiwmkahne5klygsrw7dg"
-   }
-  },
-  "2b4cf6vywizyyocn25t7uvh5uyhghya3": {
-   "arm-forge": {
-    "version": "20.1-Redhat-8.0-x86_64",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "rhel8",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "8.3.1"
-    },
-    "namespace": "olcf",
-    "parameters": {
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "hash": "2b4cf6vywizyyocn25t7uvh5uyhghya3"
    }
   },
   "24y5q2u56ebmro5mpuz2vnjyvobrstn6": {

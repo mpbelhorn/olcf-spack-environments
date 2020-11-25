@@ -58,7 +58,6 @@ spack:
     - python@2.7.15
     - python
     - darshan-util
-    - arm-forge@20.1-Redhat-8.0-x86_64
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -564,16 +563,6 @@ spack:
           pango+X: X
         filter:
           environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      arm-forge:
-        filter:
-          environment_blacklist: 
-            - 'LD_LIBRARY_PATH'
-            - 'LIBRARY_PATH'
-            - 'CMAKE_PREFIX_PATH'
         conflict: []
         load: []
         environment:
