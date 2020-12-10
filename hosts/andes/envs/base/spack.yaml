@@ -168,6 +168,8 @@ spack:
     - gromacs@2020.2+hwloc~cuda~mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc~cuda+mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc+cuda+mpi %gcc@8.3.1 ^cuda@:10.99
+    - openmpi@3.1.4%gcc@8.3.1+cuda
+    - openmpi@3.1.4%gcc@8.3.1
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
