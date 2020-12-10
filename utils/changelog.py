@@ -9,7 +9,8 @@ def parse_file(path):
         specs = f.readlines()
     return specs
 
-NEW_SPECS = '/sw/sources/facspack/sw-manifest.summit.20201116.no-comp.log'
+NEW_SPECS = '/sw/sources/facspack/sw-manifest.summit.20201202.no-comp.log'
+#NEW_SPECS = '/sw/sources/facspack/sw-manifest.summit.20201116.no-comp.log'
 OLD_SPECS = '/sw/sources/facspack/sw-manifest.summit-rhel7.20201116.no-comp.log'
 
 def main():
@@ -56,11 +57,11 @@ def main():
         if not installed:
             print("- {0}".format(name))
             if installed:
-                print("    installed: {0}".format(', '.join(installed)))
+                print("    installed: {0}".format(', '.join(sorted(installed))))
             if added:
-                print("    added:     {0}".format(', '.join(added)))
+                print("    added:     {0}".format(', '.join(sorted(added))))
             if removed:
-                print("    removed:   {0}".format(', '.join(removed)))
+                print("    removed:   {0}".format(', '.join(sorted(removed))))
     # pp = pprint.PrettyPrinter(indent=4).pprint
     # pp(changelog)
 
