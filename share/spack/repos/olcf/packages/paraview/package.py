@@ -16,24 +16,24 @@ class Paraview(ParaviewBase):
 
     version('5.6.1', sha256='50ef01f54db6358b402e50d1460ef47c04d675bf26f250c6937737169f1e6612')
 
-    variant('visitbridge', default=True,
+    variant('visit', default=True,
             description="Enable the ViSiT DB bridge")
     variant('silo', default=True, description="Enable SILO support.")
 
-    depends_on('boost', when='+visitbridge')
+    depends_on('boost', when='+visit')
     depends_on('silo+mpi', when='+silo+mpi')
     depends_on('silo~mpi', when='+silo~mpi')
 
-    conflicts('+silo', when='~visitbridge')
+    conflicts('+silo', when='~visit')
 
 
     def cmake_args(self):
         spec = self.spec
         cmake_args = super().cmake_args()
 
-        if '+visitbridge' in spec:
+        if '+visit' in spec:
             cmake_args.extend([
-                '-DPARAVIEW_USE_VISITBRIDGE:BOOL=ON',
+                '-DPARAVIEW_ENABLE_VISITBRIDGE:BOOL:BOOL=ON',
                 '-DBoost_INCLUDE_DIR:PATH=%s' % spec['boost'].prefix.include,
                 ])
             if '+silo' in spec:
