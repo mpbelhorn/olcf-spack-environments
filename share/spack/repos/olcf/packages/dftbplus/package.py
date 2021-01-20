@@ -59,7 +59,7 @@ class Dftbplus(CMakePackage):
 
     def cmake_args(self):
         spec = self.spec
-        args = []
+        args = ['-DWITH_MBD=1']
 
         if '+gpu' in spec:
             args.extend([
@@ -69,8 +69,8 @@ class Dftbplus(CMakePackage):
 
         if '+mpi' in spec:
             args.extend([
-                '-DSCALAPACKDIR={0}'.format(spec['scalapack'].prefix),
-                '-DLIB_LAPACK={0}'.format(spec['blas'].libs.ld_flags),
+                '-DSCALAPACK_LIBRARY=scalapack',
+                # '-DLIB_LAPACK={0}'.format(spec['blas'].libs.ld_flags),
                 '-DWITH_MPI=1',
                 ])
 
@@ -91,6 +91,8 @@ class Dftbplus(CMakePackage):
 
         if '+transport' in self.spec:
             args.append('-DWITH_TRANSPORT=1')
+        else:
+            args.append('-DBUILD_SHARED_LIBS=1')
 
         if '+arpack' in self.spec:
             args.extend([
