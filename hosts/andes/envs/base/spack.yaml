@@ -173,6 +173,7 @@ spack:
     - ncl%gcc@8.3.1~mpi
     - ncl%gcc@8.3.1+mpi
     - ncview%gcc@8.3.1
+    - dftbplus%gcc@8.3.1+dftd3+elsi+mpi+sockets+transport ^elsi+enable_pexsi
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
