@@ -534,7 +534,6 @@ spack:
           unset: []
       gromacs:
         suffixes:
-          gromacs+cuda: cuda
           gromacs~rdtscp: rdtscp_off
           gromacs~mpi: analysis
         filter:
@@ -574,7 +573,8 @@ spack:
           unset: []
       blacklist_implicits: true
       verbose: true
-      whitelist: []
+      whitelist:
+      - parallel-netcdf
       blacklist:
       - python
       - py-
