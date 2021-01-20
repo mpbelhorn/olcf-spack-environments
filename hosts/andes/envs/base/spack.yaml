@@ -170,6 +170,9 @@ spack:
     - gromacs@2020.2+hwloc+cuda+mpi %gcc@8.3.1 ^cuda@:10.99
     - openmpi@3.1.4%gcc@8.3.1+cuda
     - openmpi@3.1.4%gcc@8.3.1
+    - ncl%gcc@8.3.1~mpi
+    - ncl%gcc@8.3.1+mpi
+    - ncview%gcc@8.3.1
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
@@ -500,6 +503,16 @@ spack:
           set:
             SRUN_EXPORT_ENV: ALL,LD_PRELOAD=${PREFIX}/lib/libdarshan.so
         conflict: []
+      ncl:
+        suffixes:
+          ncl+mpi: parallel
+          ncl~mpi: serial
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       cdo:
         suffixes:
           cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
@@ -550,16 +563,6 @@ spack:
         load: []
         environment:
           unset: []
-      ncl:
-        suffixes:
-          builtin.ncl ^hdf5+mpi^netcdf-c+mpi: parallel
-          olcf.ncl: serial
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
       pango:
         suffixes:
           pango+X: X
@@ -594,6 +597,9 @@ spack:
       projections: {}
       core_specs:
       - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visitbridge ^hdf5+mpi ^libpng@:1.6.0
+      - ncview%gcc@8.3.1
+      - ncl%gcc@8.3.1+mpi
+      - ncl%gcc@8.3.1~mpi
     tcl:
       hash_length: 3
       naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
