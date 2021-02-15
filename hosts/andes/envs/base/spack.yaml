@@ -175,6 +175,7 @@ spack:
     - ncl%gcc@8.3.1+mpi
     - ncview%gcc@8.3.1
     - dftbplus%gcc@8.3.1+elsi+mpi+sockets+transport ^elsi+enable_pexsi
+    - r%gcc@8.3.1+X
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
@@ -576,6 +577,15 @@ spack:
       pango:
         suffixes:
           pango+X: X
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      r:
+        suffixes:
+          r+X: X
         filter:
           environment_blacklist: []
         conflict: []
