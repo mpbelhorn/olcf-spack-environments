@@ -12,6 +12,7 @@ spack:
     - '%gcc@10.2.0'
   - xl_compilers:
     - '%xl@16.1.1-8'
+    - '%xl@16.1.1-9'
     - '%xl@16.1.0-101'
   - llvm_compilers:
     - '%clang@10.0.1-0'
@@ -811,5 +812,20 @@ spack:
       - /sw/peak/xl/16.1.1-8/lib
       - /sw/peak/xl/16.1.1-8/xlf/16.1.1/lib
       - /sw/peak/xl/16.1.1-8/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-9
+      operating_system: rhel8
+      modules: [xl/16.1.1-9]
+      paths:
+        cc: /sw/peak/xl/16.1.1-9/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-9/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-9/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-9/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-9/lib
+      - /sw/peak/xl/16.1.1-9/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-9/xlC/16.1.1/lib
       environment: {}
       flags: {}
