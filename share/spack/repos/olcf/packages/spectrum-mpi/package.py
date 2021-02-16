@@ -15,6 +15,8 @@ class SpectrumMpi(Package):
     homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
+    version('10.4.0.3-20210112', 'b2089eaf96318f7ced1df47aad50e2dd',
+        url='file:///ccs/packages/IBM/02-2021/SMPI/ibm_smpi-10.4.0.03-20210112-rh8.ppc64le.tar.gz')
     version('10.4.0.0-20200604', '420685675b8579d1611614d540e8d3cf',
         url='file:///ccs/packages/IBM/08-2020/SMPI/ibm_smpi-10.4.0.0-20200604-rh8.ppc64le.tar.gz')
     version('10.3.1.2-20200121', '94c6c95693f736373590ec3d3a2398f7',
@@ -97,41 +99,122 @@ class SpectrumMpi(Package):
             #         '--replacepkgs',
             #         '*.ppc64le.rpm')
 
-    @run_after('install')
-    def rebuild_mpi_mod(self):
+    def accept_license(self):
         # Post install
         # Accept license
         accept_license = Executable(join_path(self.prefix, 'lap_se/lapc'))
         lap_se = '%s/lap_se/' % self.prefix
         accept_license('-l', lap_se, '-s', lap_se, '-t', '5', ignore_errors=(9,))
 
-        # Rebuild fortran module with lib/module/build.sh
-        mod_src_dir = join_path(self.prefix, 'lib', 'module')
-        if self.spec.satisfies('%pgi') or self.spec.satisfies('%nvhpc'):
-            if self.spec.satisfies('@10.4.0.0-20200604'):
-                mod_src_dir = join_path(self.prefix, 'lib', 'pgi')
-        with working_dir(mod_src_dir):
-            module_build = Executable('./build.sh')
-            mod_env = os.environ
-            mod_env.update({'MPI_ROOT': self.prefix.replace('/autofs/nccs-svm1_', '/'),
-                            'OMPI_FC': self.compiler.fc})
-            module_build(env=mod_env)
-            cp = which('cp')
-            cp('-u', 'mpi.mod', '../.')
-            if self.spec.satisfies('%pgi') or self.spec.satisfies('%nvhpc'):
-                if os.path.isdir('../PGI'):
-                    cp('-u', 'mpi.mod', '../PGI/.')
-                if os.path.exists('./include/mpif-sizeof.h'):
-                    cp('-u', './include/mpif-sizeof.h', '../../include/.')
-
-    @run_after('install')
-    def fix_syntax_error(self):
+    def _fix_syntax_error(self):
+        '''Patch mpi.h post-install to correct issues where the compiler cannot
+        be identified by build systems because of a syntax error in a macro that
+        injects SMPI_BUILT_AGAINST_VERSION string into user's code if
+        SMPI_HAVE_PRAGMA_WEAK=1. The bad code is nominally around line 278 in
+        mpi.h for versions of SMPI since 10.4.
+        '''
+        # TODO: Check that this patch is still relevent for each future release
+        # of SMPI and limit the versions when it has been fixed.
         if self.spec.satisfies('@10.4:'):
             filter_file(r'(#if\s*\(\s*)1(\s*==\s*SMPI_HAVE_PRAGMA_WEAK.*)',
                         r'\12\2',
                         '%s/mpi.h' % self.prefix.include)
 
+    def _rebuild_fortran_mod_script(self):
+        '''Run ./build.sh fortran module rebuild script in an appropriate
+        environment.
+        '''
+        module_build = Executable('./build.sh')
+        mod_env = os.environ
+        compiler_env_options = {
+                'MPI_ROOT': self.prefix.replace('/autofs/nccs-svm1_', '/'),
+                'OMPI_FC': self.compiler.fc,
+                'OMPI_CC': self.compiler.cc,
+                }
+        if '%xl' in self.spec:
+            compiler_env_options.update({
+                'FORTSUPPORT_PIC_FFLAGS': '-qPIC',
+                'FORTSUPPORT_PIC_CFLAGS': '-qPIC',
+                'FORTSUPPORT_PIC_LDFLAGS': '-qPIC -qmkshrobj',
+                })
+        mod_env.update(compiler_env_options)
+        module_build(env=mod_env)
 
+    def _rebuild_fortran_mod_20200604(self):
+        '''Rebuild fortran modules for the specific compiler in use for versions
+        up to and including 10.4.0.0-20200604.
+        '''
+        # Rebuild fortran modules for the specific compiler in use.
+        spec = self.spec
+        mod_src_dir = join_path(self.prefix, 'lib', 'module')
+        _compiler_is_pgi = spec.satisfies('%pgi') or spec.satisfies('%nvhpc')
+        if spec.satisfies('@10.4.0.0-20200604') and _compiler_is_pgi:
+            mod_src_dir = join_path(self.prefix, 'lib', 'pgi')
+        with working_dir(mod_src_dir):
+            self._rebuild_fortran_mod_script()
+            cp = which('cp')
+            cp('-u', 'mpi.mod', '../.')
+            if _compiler_is_pgi and os.path.exists('./include/mpif-sizeof.h'):
+                cp('-u', './include/mpif-sizeof.h', '../../include/.')
+
+    def _rebuild_fortran_mod_20210112(self):
+        '''Rebuild fortran modules for the specific compiler in use for versions
+        10.4.0.3-20210112 and potentially forward.
+        '''
+        return
+        # FIXME: 10.4.0.3-20210112 is missing headers needed to rebuild the
+        # fortran modules for the current (any) compiler. Otherwise, we would do
+        # the following:
+        mod_src_dir = join_path(self.prefix, 'lib', 'fortsupport_rebuild')
+        with working_dir(mod_src_dir):
+            self._rebuild_fortran_mod_script()
+            # FIXME: copy out modules and headers to appropriate locations.
+            cp = which('cp')
+            cp('-u', '*.mod', '../.')
+            cp('-u', '*.h', '../../include/.')
+
+    def _smpi_conf_20200121(self):
+        '''Correct the symlink to smpi.conf for current MOFED version.
+        
+        This function always updates the conf to v4.7.3 but should probably
+        parse `ofed_info` and adjust it as necessary.
+        '''
+        etc_dir = self.spec.prefix.etc
+        (link_name, tmp_link_name, link_target) = [
+            join_path(etc_dir, name) for name in ('smpi.conf',
+                                                  'tmp_smpi.conf',
+                                                  'smpi-MOFED-4_7_3.conf')
+            ]
+        if not os.path.exists(link_target):
+            return
+
+        # Create symlink to target and then move it over existing symlink to
+        # update link atomically.
+        os.symlink(link_target, tmp_link_name)
+        os.rename(tmp_link_name, link_name)
+
+    @run_after('install')
+    def post_install(self):
+        '''Run post-install corrections to SMPI.
+        
+        IBM changes paths and procedures virtually every release so we have
+        split the post-install tasks into private methods and apply them to the
+        appropriate versions in sequence here.
+        '''
+        spec = self.spec
+        self.accept_license()
+        self._fix_syntax_error()
+
+        if spec.satisfies('@10.3.1.2-20200121'):
+            # Only v10.3.1.2
+            self._smpi_conf_20200121()
+            self._rebuild_fortran_mod_20200604()
+        if spec.satisfies('@:10.4.0.0-20200604'):
+            # all versions up to 10.4.0.0
+            self._rebuild_fortran_mod_20200604()
+        elif spec.satisfies('@10.4.0.3-20210112'):
+            # Version 10.4.0.3 and possible future.
+            self._rebuild_fortran_mod_20210112
 
     def setup_dependent_package(self, module, dspec):
         # get library name and directory
@@ -187,25 +270,3 @@ class SpectrumMpi(Package):
         run_env.set('OMPI_CXX', self.compiler.cxx)
         run_env.set('OMPI_FC', self.compiler.fc)
 
-    @when('@10.3.1.2-20200121')
-    @run_after('install')
-    def smpi_conf(self):
-        '''Correct the symlink to smpi.conf for current MOFED version.
-        
-        This function always updates the conf to v4.7.3 but should probably
-        parse `ofed_info` and adjust it as necessary.
-        '''
-        etc_dir = self.spec.prefix.etc
-        (link_name, tmp_link_name, link_target) = [
-            join_path(etc_dir, name) for name in ('smpi.conf',
-                                                  'tmp_smpi.conf',
-                                                  'smpi-MOFED-4_7_3.conf')
-            ]
-
-        if not os.path.exists(link_target):
-            return
-
-        # Create symlink to target and then move it over existing symlink to
-        # update link atomically.
-        os.symlink(link_target, tmp_link_name)
-        os.rename(tmp_link_name, link_name)
