@@ -208,6 +208,10 @@ spack:
       - 'parallel-io@2.4.4:'
       - mpip
       - adios2+zpf
+      # - netcdf-c%xl # FIXME: rh8.2 __builtin_isinf_sign failure
+      # - netcdf-cxx%xl # FIXME: rh8.2 __builtin_isnif_sign failure
+      # - netcdf-fortran%xl # FIXME: rh8.2 __builtin_isnif_sign failure
+      # - parallel-io%xl # FIXME - 2021.02.16 unknown error
   - nv_specs:
     - matrix:
       - - $general_compute_packages
@@ -220,6 +224,13 @@ spack:
       - - ^autoconf%gcc@8-os
       - - ^m4%gcc@8-os
       exclude:
+      # - fftw%pgi # FIXME: smpi 10.4.0.3 failures
+      # - hdf5%nvhpc # FIXME: smpi 10.4.0.3 failures
+      # - netcdf-c%nvhpc # FIXME: smpi 10.4.0.3 failures
+      # - netcdf-cxx%nvhpc # FIXME: smpi 10.4.0.3 failures
+      # - netcdf-fortran%nvhpc # FIXME: smpi 10.4.0.3 failures
+      # - parallel-netcdf%nvhpc # FIXME: smpi 10.4.0.3 failures
+      # - parallel-io%nvhpc # FIXME: smpi 10.4.0.3 failures
       - adios2%nvhpc
       - mpip%nvhpc
       - boost%nvhpc
