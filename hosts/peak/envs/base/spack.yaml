@@ -68,6 +68,7 @@ spack:
     - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
     - raja +cuda cuda_arch=70
+    - papi +cuda
     - nco
   - general_compute_packages:
     - netlib-lapack

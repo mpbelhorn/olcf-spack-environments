@@ -237,6 +237,22 @@
    "spec": "raja%gcc@10.2.0+cuda cuda_arch=70"
   },
   {
+   "hash": "bq6u36iz34pfgy4euwbscqxosw4bao3a",
+   "spec": "papi%gcc@8.3.1+cuda"
+  },
+  {
+   "hash": "t24h64ugjilk37elncylgsysbcquqcqz",
+   "spec": "papi%gcc@9.1.0+cuda"
+  },
+  {
+   "hash": "43nwt5zxaid7aqpmvs47jp56e2ksmi2p",
+   "spec": "papi%gcc@9.3.0+cuda"
+  },
+  {
+   "hash": "njawd2zr5t62cys66kg6v62eckqum3cb",
+   "spec": "papi%gcc@10.2.0+cuda"
+  },
+  {
    "hash": "k4bhr7jllkmbeq47n46c5skrwo2xbbyb",
    "spec": "nco%gcc@8.3.1"
   },
@@ -10184,6 +10200,178 @@
      "extra_attributes": {}
     },
     "hash": "k6bxsg73byz6xnqznarr4zje3667bzk7"
+   }
+  },
+  "bq6u36iz34pfgy4euwbscqxosw4bao3a": {
+   "papi": {
+    "version": "6.0.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "ppc64le"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cuda": true,
+     "example": true,
+     "infiniband": false,
+     "lmsensors": false,
+     "nvml": false,
+     "powercap": false,
+     "rapl": false,
+     "sde": false,
+     "shared": true,
+     "static_tools": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cuda": {
+      "hash": "qua2gusgfmjgilhv6ccc3tschxgxvyjy",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "bq6u36iz34pfgy4euwbscqxosw4bao3a"
+   }
+  },
+  "t24h64ugjilk37elncylgsysbcquqcqz": {
+   "papi": {
+    "version": "6.0.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "ppc64le"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.1.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cuda": true,
+     "example": true,
+     "infiniband": false,
+     "lmsensors": false,
+     "nvml": false,
+     "powercap": false,
+     "rapl": false,
+     "sde": false,
+     "shared": true,
+     "static_tools": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cuda": {
+      "hash": "7zp22orqidegep74nybzbd2b6zgexl62",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "t24h64ugjilk37elncylgsysbcquqcqz"
+   }
+  },
+  "43nwt5zxaid7aqpmvs47jp56e2ksmi2p": {
+   "papi": {
+    "version": "6.0.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "ppc64le"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "9.3.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cuda": true,
+     "example": true,
+     "infiniband": false,
+     "lmsensors": false,
+     "nvml": false,
+     "powercap": false,
+     "rapl": false,
+     "sde": false,
+     "shared": true,
+     "static_tools": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cuda": {
+      "hash": "gizukcgxeedr2ekfp6mna5youyguxoa5",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "43nwt5zxaid7aqpmvs47jp56e2ksmi2p"
+   }
+  },
+  "njawd2zr5t62cys66kg6v62eckqum3cb": {
+   "papi": {
+    "version": "6.0.0.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "ppc64le"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "10.2.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cuda": true,
+     "example": true,
+     "infiniband": false,
+     "lmsensors": false,
+     "nvml": false,
+     "powercap": false,
+     "rapl": false,
+     "sde": false,
+     "shared": true,
+     "static_tools": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cuda": {
+      "hash": "k6bxsg73byz6xnqznarr4zje3667bzk7",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "njawd2zr5t62cys66kg6v62eckqum3cb"
    }
   },
   "k4bhr7jllkmbeq47n46c5skrwo2xbbyb": {
