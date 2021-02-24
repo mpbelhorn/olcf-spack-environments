@@ -15,8 +15,9 @@ class SpectrumMpi(Package):
     homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
-    version('10.4.0.3-20210112', 'b2089eaf96318f7ced1df47aad50e2dd',
+    version('10.4.0.3-20210112', '5f4b67c3d59aa3369f373e13f61c8682',
         url='file:///ccs/packages/IBM/02-2021/SMPI/ibm_smpi-10.4.0.03-20210112-rh8.ppc64le.tar.gz')
+        # 'b2089eaf96318f7ced1df47aad50e2dd',
     version('10.4.0.0-20200604', '420685675b8579d1611614d540e8d3cf',
         url='file:///ccs/packages/IBM/08-2020/SMPI/ibm_smpi-10.4.0.0-20200604-rh8.ppc64le.tar.gz')
     version('10.3.1.2-20200121', '94c6c95693f736373590ec3d3a2398f7',
@@ -214,7 +215,7 @@ class SpectrumMpi(Package):
             self._rebuild_fortran_mod_20200604()
         elif spec.satisfies('@10.4.0.3-20210112'):
             # Version 10.4.0.3 and possible future.
-            self._rebuild_fortran_mod_20210112
+            self._rebuild_fortran_mod_20210112()
 
     def setup_dependent_package(self, module, dspec):
         # get library name and directory
