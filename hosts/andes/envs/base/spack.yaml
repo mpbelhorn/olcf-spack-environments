@@ -244,7 +244,7 @@ spack:
   - $core_specs
   - $gcc_specs
   - $llvm_specs
-  # - $aocc_specs
+  - $aocc_specs
   - $intel_specs
   - $pgi_specs
   #############################################################################
@@ -791,11 +791,11 @@ spack:
       paths:
         cc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang
         cxx: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/clang++
-        f77: /usr/bin/gfortran
-        fc: /usr/bin/gfortran
+        f77: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
+        fc: /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/bin/flang
       extra_rpaths:
-      - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib32
       - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib
+      - /sw/andes/aocc/2.1.0/aocc-compiler-2.1.0/lib32
       environment: {}
       flags: {}
   - compiler:
@@ -803,16 +803,16 @@ spack:
       paths:
         cc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang
         cxx: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/clang++
-        f77: /usr/bin/gfortran
-        fc: /usr/bin/gfortran
+        f77: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
+        fc: /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/bin/flang
       flags: {}
       operating_system: rhel8
       target: x86_64
       modules: [aocc/2.2.0]
       environment: {}
       extra_rpaths:
-      - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib32
       - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib
+      - /sw/andes/aocc/2.2.0/aocc-compiler-2.2.0/lib32
   - compiler:
       spec: clang@9.0.1
       operating_system: rhel8
