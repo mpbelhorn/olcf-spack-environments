@@ -66,7 +66,7 @@ export FACSPACK_SPACK_ROOT="${FACSPACK_SPACK_ROOT/#$(realpath $HOME)/$HOME}"
 # initialized or fail.
 _THIS_HOST="$(hostname --long \
              | sed -e 's/\.\(olcf\|ccs\)\..*//' \
-                   -e 's/[-]\?\(login\|ext\|batch\)[^\.]*[\.]\?//' \
+                   -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
                    -e 's/[-0-9]*$//')"
 [[ "${_THIS_HOST:-XX}" == "XX" ]] \
   && echo "ERROR: Current host '${_THIS_HOST}' could not be identified!" \
