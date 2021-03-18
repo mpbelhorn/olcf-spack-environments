@@ -11,9 +11,7 @@ spack:
     - '%gcc@9.3.0'
     - '%gcc@10.2.0'
   - xl_compilers:
-    - '%xl@16.1.1-8'
-    - '%xl@16.1.1-9'
-    - '%xl@16.1.0-101'
+    - '%xl@16.1.1-10'
   - llvm_compilers:
     - '%clang@10.0.1-0'
   - nv_compilers:
@@ -209,10 +207,6 @@ spack:
       - 'parallel-io@2.4.4:'
       - mpip
       - adios2+zpf
-      # - netcdf-c%xl # FIXME: rh8.2 __builtin_isinf_sign failure
-      # - netcdf-cxx%xl # FIXME: rh8.2 __builtin_isnif_sign failure
-      # - netcdf-fortran%xl # FIXME: rh8.2 __builtin_isnif_sign failure
-      # - parallel-io%xl # FIXME - 2021.02.16 unknown error
   - nv_specs:
     - matrix:
       - - $general_compute_packages
@@ -225,13 +219,6 @@ spack:
       - - ^autoconf%gcc@8-os
       - - ^m4%gcc@8-os
       exclude:
-      # - fftw%pgi # FIXME: smpi 10.4.0.3 failures
-      # - hdf5%nvhpc # FIXME: smpi 10.4.0.3 failures
-      # - netcdf-c%nvhpc # FIXME: smpi 10.4.0.3 failures
-      # - netcdf-cxx%nvhpc # FIXME: smpi 10.4.0.3 failures
-      # - netcdf-fortran%nvhpc # FIXME: smpi 10.4.0.3 failures
-      # - parallel-netcdf%nvhpc # FIXME: smpi 10.4.0.3 failures
-      # - parallel-io%nvhpc # FIXME: smpi 10.4.0.3 failures
       - adios2%nvhpc
       - mpip%nvhpc
       - boost%nvhpc
@@ -266,7 +253,7 @@ spack:
       version:
       - 10.4.0.3-20210112
       - 10.4.0.0-20200604
-      - 10.3.1.2-20200121]
+      - 10.3.1.2-20200121
       target: []
       compiler: []
       buildable: true
@@ -800,21 +787,6 @@ spack:
       environment: {}
       flags: {}
   - compiler:
-      spec: xl@16.1.0-101
-      operating_system: rhel8
-      modules: [xl/16.1.0-101]
-      paths:
-        cc: /sw/peak/xl/16.1.0-101/xlC/16.1.0/bin/xlc_r
-        cxx: /sw/peak/xl/16.1.0-101/xlC/16.1.0/bin/xlc++_r
-        f77: /sw/peak/xl/16.1.0-101/xlf/16.1.0/bin/xlf_r
-        fc: /sw/peak/xl/16.1.0-101/xlf/16.1.0/bin/xlf2008_r
-      extra_rpaths:
-      - /sw/peak/xl/16.1.0-101/lib
-      - /sw/peak/xl/16.1.0-101/xlf/16.1.0/lib
-      - /sw/peak/xl/16.1.0-101/xlC/16.1.0/lib
-      environment: {}
-      flags: {}
-  - compiler:
       spec: xl@16.1.1-8
       operating_system: rhel8
       modules: [xl/16.1.1-8]
@@ -830,17 +802,17 @@ spack:
       environment: {}
       flags: {}
   - compiler:
-      spec: xl@16.1.1-9
+      spec: xl@16.1.1-10
       operating_system: rhel8
-      modules: [xl/16.1.1-9]
+      modules: [xl/16.1.1-10]
       paths:
-        cc: /sw/peak/xl/16.1.1-9/xlC/16.1.1/bin/xlc_r
-        cxx: /sw/peak/xl/16.1.1-9/xlC/16.1.1/bin/xlc++_r
-        f77: /sw/peak/xl/16.1.1-9/xlf/16.1.1/bin/xlf_r
-        fc: /sw/peak/xl/16.1.1-9/xlf/16.1.1/bin/xlf2008_r
+        cc: /sw/peak/xl/16.1.1-10/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-10/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-10/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-10/xlf/16.1.1/bin/xlf2008_r
       extra_rpaths:
-      - /sw/peak/xl/16.1.1-9/lib
-      - /sw/peak/xl/16.1.1-9/xlf/16.1.1/lib
-      - /sw/peak/xl/16.1.1-9/xlC/16.1.1/lib
+      - /sw/peak/xl/16.1.1-10/lib
+      - /sw/peak/xl/16.1.1-10/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-10/xlC/16.1.1/lib
       environment: {}
       flags: {}

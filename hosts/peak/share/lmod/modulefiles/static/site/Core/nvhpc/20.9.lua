@@ -43,6 +43,7 @@ prepend_path("CPATH", pathJoin(nvcommdir, "nvshmem/include"))
 
 prepend_path("MANPATH", pathJoin(nvcompdir, "man"))
 
+setenv("OMPI_FORTMOD", "PGI")
 setenv("OLCF_NVHPC_ROOT", prefix)
 
 -- nvhpc provides it's own cuda toolkit. This should be implicitly used by default.
