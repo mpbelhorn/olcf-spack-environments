@@ -101,6 +101,18 @@ elif [[ "$(stat -c '%U' ${FACSPACK_MY_ENVS})" != ${USER} ]]; then
 fi
 unset _FS_ERR_MSG
 
+# Special case for OS upgrades
+# FIXME: This should be restructured to reduce complexity and code duplication.
+# Supporting two OSes simultaneously will require static core modulefiles tha
+# alter the MODULEPATH to flexibly be aware of what spack platfrom to use, eg:
+# 'linux-rhel7-ppc64le' vs 'linux-rhel8-ppc64le'
+if [[ "${_THIS_HOST:-XX}" == "summit" ]]; then
+   if [[ "$(grep VERSION_ID /etc/os-release)" =~ ^VERSION_ID=\"7 ]]; then
+    _FS_DEFAULT_ENV_NAME="base-rh7"
+    _FS_COPY_STATIC_MODULES="false"
+   fi
+fi
+
 # Select the name of the spack environment tracked in this repo for which the
 # user will be modifying. All compute resources have a 'base' environment which
 # is the default. This repo must contain a directory of this name among the envs
@@ -123,9 +135,17 @@ export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/modules"
 # Copy git-tracked modules to module root.
 mkdir -p "${FACSPACK_ENV}/.mcache"
 mkdir -p "${FACSPACK_ENV_MODULEROOT}"
-cp -dRu --preserve=mode,timestamps \
-   "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
-   "${FACSPACK_ENV_MODULEROOT}/."
+if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
+  cp -dRu --preserve=mode,timestamps \
+     "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
+     "${FACSPACK_ENV_MODULEROOT}/."
+else
+  _FS_WARN_MSG="WARNING: Not updating static modulefiles.\n    "
+  _FS_WARN_MSG+="Check that '${FACSPACK_ENV_MODULEROOT}/site/Core' "
+  _FS_WARN_MSG+="contains appropriate core modules.\n"
+  printf "${_FS_WARN_MSG}"
+  unset _FS_WARN_MSG
+fi
 
 function setup_alternate_module_environment {
   # Setup alternate module environment
@@ -145,7 +165,11 @@ function setup_alternate_module_environment {
 # Host-specific environment modifications
 case "${FACSPACK_HOST}" in
   summit)
-    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core"
+    if [[ "${FACSPACK_ENV_NAME}" == "base-rh7" ]]; then
+      _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
+    else
+      _FS_MP="${_FS_MP:-${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core}"
+    fi
     _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
     _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
     setup_alternate_module_environment "${_FS_MP}"
