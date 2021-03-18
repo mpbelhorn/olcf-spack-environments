@@ -11,7 +11,7 @@ spack:
     - '%gcc@9.3.0'
     - '%gcc@10.2.0'
   - xl_compilers:
-    - '%xl@16.1.1-8'
+    - '%xl@16.1.1-10'
   - llvm_compilers:
     - '%clang@10.0.1-0'
   - nv_compilers:
@@ -66,6 +66,7 @@ spack:
     - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
     - raja +cuda cuda_arch=70
+    - papi +cuda
     - nco
   - general_compute_packages:
     - netlib-lapack
@@ -166,6 +167,7 @@ spack:
       - openpmd-api@0.12.0%gcc@10.2.0 # ^adios2
       - rempi%gcc@10.2.0 # code error
       - veloc%gcc@10.2.0 # ^kvtree tests
+    - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@10.2.89
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
@@ -248,7 +250,10 @@ spack:
   #############################################################################
   packages:
     spectrum-mpi:
-      version: [10.4.0.0-20200604, 10.3.1.2-20200121]
+      version:
+      - 10.4.0.3-20210112
+      - 10.4.0.0-20200604
+      - 10.3.1.2-20200121
       target: []
       compiler: []
       buildable: true
@@ -794,5 +799,20 @@ spack:
       - /sw/summit/xl/16.1.1-8-1/lib
       - /sw/summit/xl/16.1.1-8-1/xlf/16.1.1/lib
       - /sw/summit/xl/16.1.1-8-1/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-10
+      operating_system: rhel8
+      modules: [xl/16.1.1-10]
+      paths:
+        cc: /sw/summit/xl/16.1.1-10/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/summit/xl/16.1.1-10/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/summit/xl/16.1.1-10/xlf/16.1.1/bin/xlf_r
+        fc: /sw/summit/xl/16.1.1-10/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/summit/xl/16.1.1-10/lib
+      - /sw/summit/xl/16.1.1-10/xlf/16.1.1/lib
+      - /sw/summit/xl/16.1.1-10/xlC/16.1.1/lib
       environment: {}
       flags: {}

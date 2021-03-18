@@ -1,6 +1,6 @@
 family("compiler")
 
-local host = "peak"
+local host = "summit"
 local package = "nvhpc_sdk"
 local version = "20.9"
 local target = "Linux_ppc64le"
@@ -43,10 +43,11 @@ prepend_path("CPATH", pathJoin(nvcommdir, "nvshmem/include"))
 
 prepend_path("MANPATH", pathJoin(nvcompdir, "man"))
 
+setenv("OMPI_FORTMOD", "PGI")
 setenv("OLCF_NVHPC_ROOT", prefix)
 
 -- nvhpc provides it's own cuda toolkit. This should be implicitly used by default.
 -- To do this, we replace the default cuda toolkit module with a blank
 -- placeholder. Users can then reload an alternate cuda toolkit as desired.
 prepend_path("MODULEPATH", pathJoin(nvhome, 'site-modulefiles'))
-load("cuda/nvhpc")
+always_load("cuda")
