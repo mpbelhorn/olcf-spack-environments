@@ -58,6 +58,7 @@ spack:
     - python@2.7.15
     - python
     - darshan-util
+    - grads+netcdf+hdf5
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -193,6 +194,11 @@ spack:
         - adios2~zfp
       - - $aocc_compilers
       exclude:
+      - parallel-io
+      - netcdf-c
+      - netcdf-cxx
+      - netcdf-fortran
+      - hdf5
       - adios2+zfp
       - openpmd-api
       - fftw+openmp
