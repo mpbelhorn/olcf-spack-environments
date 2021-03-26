@@ -5,6 +5,8 @@
 /share/spack/repos/production-builtin
 /share/spack/repos/production-olcf
 /var/
+/utils/private
+/logs
 /*.log
 *.pyc
 share/mirrors
