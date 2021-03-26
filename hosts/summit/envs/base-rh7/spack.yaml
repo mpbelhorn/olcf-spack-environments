@@ -43,7 +43,6 @@ spack:
     - libevent@2.1.8 +openssl
     - valgrind ~ubsan~mpi~boost
     - ccache
-    - papi
     - gdb
     - libzmq
     - gnupg
@@ -61,9 +60,6 @@ spack:
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
     - gdrcopy
-    - gromacs +hwloc+cuda ^cuda@10.2.89
-    - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
-    - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
   - gcc_only_compute_packages:
     - raja +cuda cuda_arch=70 ^cuda@:10.2.89
     - papi
@@ -156,22 +152,20 @@ spack:
       - - $gcc_compilers
       exclude:
       - raja%gcc@10.2.0
+      - 'papi%gcc@8:'
     - matrix:
       - - $general_compute_packages
         - petsc +mpi+mumps~int64~superlu-dist
         - $e4s_packages
       - - $gcc_compilers
       exclude:
-      - globalarrays%gcc@10.2.0
-      - petsc%gcc@10.2.0+mumps # ^mumps, same error as globalarrays
-      - trilinos%gcc@10.2.0 # ^mumps
-      - adios2%gcc@10.2.0
-      - openpmd-api@0.12.0%gcc@10.2.0 # ^adios2
-      - rempi%gcc@10.2.0 # code error
-      - veloc%gcc@10.2.0 # ^kvtree tests
-    - kokkos%gcc@4.8.5+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@10.2.89
+      - '%gcc@8:'
     - magma@2.5.3%gcc@6.4.0 ^cuda@10.2.89
     - amgx%gcc@6.4.0 +cuda cuda_arch=70 ^cuda@10.2.89
+    - gromacs%gcc@6.4.0 +hwloc+cuda ^cuda@10.2.89
+    - gromacs%gcc@6.4.0 +hwloc+cuda+mpi ^cuda@10.2.89
+    - gromacs%gcc@6.4.0 +hwloc+cuda~mpi ^cuda@10.2.89
+    - kokkos%gcc@8.1.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.1.1 cxxstd=14 +cuda cuda_arch=70 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.1.1 cxxstd=17 +cuda cuda_arch=70 ^boost@1.70.0:1.72.0
   - llvm_specs:
@@ -419,7 +413,7 @@ spack:
       providers: {}
       compiler: []
     kokkos:
-      variants: +cuda cuda_arch=70
+      variants: +wrapper+cuda cuda_arch=70
       buildable: true
       version: []
       target: []
