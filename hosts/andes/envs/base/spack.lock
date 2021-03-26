@@ -1107,6 +1107,10 @@
   {
    "hash": "ijzlre56muk6he2dsbrdrcunnekt52x7",
    "spec": "parallel-io%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "twqvvydjjnaup7ux7ld5teeslonfhdpy",
+   "spec": "hpcviewer%gcc@8.3.1"
   }
  ],
  "concrete_specs": {
@@ -47623,6 +47627,63 @@
      }
     },
     "hash": "bcyr7unf4mzzwbf53vqcs7qwfmmzrgzn"
+   }
+  },
+  "twqvvydjjnaup7ux7ld5teeslonfhdpy": {
+   "hpcviewer": {
+    "version": "2020.07",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "openjdk": {
+      "hash": "pil26ubyucyvewwb6kkfj7twe63ydnk6",
+      "type": [
+       "build",
+       "run"
+      ]
+     }
+    },
+    "hash": "twqvvydjjnaup7ux7ld5teeslonfhdpy"
+   }
+  },
+  "pil26ubyucyvewwb6kkfj7twe63ydnk6": {
+   "openjdk": {
+    "version": "1.8.0_222-b10",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "pil26ubyucyvewwb6kkfj7twe63ydnk6"
    }
   }
  }
