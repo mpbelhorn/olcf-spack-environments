@@ -1,8 +1,8 @@
 family("compiler")
 
-local host = "summit"
+local host = "peak"
 local package = "nvhpc_sdk"
-local version = "20.9"
+local version = "21.2"
 local target = "Linux_ppc64le"
 local platform = 'linux-rhel8-ppc64le'
 local nvhome = pathJoin("/sw", host, package, "rhel8")

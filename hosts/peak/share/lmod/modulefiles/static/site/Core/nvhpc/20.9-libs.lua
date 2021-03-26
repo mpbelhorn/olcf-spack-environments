@@ -5,7 +5,7 @@ local package = "nvhpc_sdk"
 local version = "20.9"
 local target = "Linux_ppc64le"
 local platform = 'linux-rhel8-ppc64le'
-local nvhome = pathJoin("/sw", host, package)
+local nvhome = pathJoin("/sw", host, package, "rhel8")
 
 -- local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
 -- local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
@@ -46,4 +46,4 @@ setenv("OLCF_NVHPC_ROOT", prefix)
 -- To do this, we replace the default cuda toolkit module with a blank
 -- placeholder. Users can then reload an alternate cuda toolkit as desired.
 prepend_path("MODULEPATH", pathJoin(nvhome, 'site-modulefiles'))
-always_load("cuda")
+always_load("cuda/nvhpc")

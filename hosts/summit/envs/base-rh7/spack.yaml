@@ -18,6 +18,7 @@ spack:
   - nv_compilers:
     - '%pgi@20.4'
     - '%nvhpc@20.9'
+    - '%nvhpc@21.2'
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
@@ -218,7 +219,7 @@ spack:
       - adios2%nvhpc
       - mpip%nvhpc
       - boost%nvhpc
-      - netlib-scalapack%nvhpc@20.9
+      - netlib-scalapack%nvhpc
       - adios2%pgi
       - mpip%pgi
       - boost%pgi
@@ -770,6 +771,18 @@ spack:
       spec: nvhpc@20.9
       operating_system: rhel7
       modules: [nvhpc/20.9]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@21.2
+      operating_system: rhel7
+      modules: [nvhpc/21.2]
       paths:
         cc: nvc
         cxx: nvc++

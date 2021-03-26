@@ -1,8 +1,8 @@
 -- family("compiler")
 
-local host = "summit"
+local host = "peak"
 local package = "nvhpc_sdk"
-local version = "20.9"
+local version = "21.2"
 local target = "Linux_ppc64le"
 local platform = 'linux-rhel8-ppc64le'
 local nvhome = pathJoin("/sw", host, package, "rhel8")
@@ -24,26 +24,26 @@ setenv("NVHPC", nvhome)
 --setenv("F77", pathJoin(nvcompdir, "bin", "nvfortran")
 --setenv("CPP", "cpp")
 
-prepend_path("PATH", pathJoin(nvcudadir, "bin")
+prepend_path("PATH", pathJoin(nvcudadir, "bin"))
 -- prepend_path("PATH", pathJoin(nvcompdir, "bin")
 
-prepend_path("LD_LIBRARY_PATH", pathJoin(nvcudadir, "lib64")
--- prepend_path("LD_LIBRARY_PATH", pathJoin(nvcompdir, "lib")
-prepend_path("LD_LIBRARY_PATH", pathJoin(nvmathdir, "lib64")
-prepend_path("LD_LIBRARY_PATH", pathJoin(nvcommdir, "nccl/lib")
-prepend_path("LD_LIBRARY_PATH", pathJoin(nvcommdir, "nvshmem/lib")
+prepend_path("LD_LIBRARY_PATH", pathJoin(nvcudadir, "lib64"))
+-- prepend_path("LD_LIBRARY_PATH", pathJoin(nvcompdir, "lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(nvmathdir, "lib64"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(nvcommdir, "nccl/lib"))
+prepend_path("LD_LIBRARY_PATH", pathJoin(nvcommdir, "nvshmem/lib"))
 
-prepend_path("CPATH", pathJoin(nvcudadir, "include")
-prepend_path("CPATH", pathJoin(nvmathdir, "include")
-prepend_path("CPATH", pathJoin(nvcommdir, "nccl/include")
-prepend_path("CPATH", pathJoin(nvcommdir, "nvshmem/include")
+prepend_path("CPATH", pathJoin(nvcudadir, "include"))
+prepend_path("CPATH", pathJoin(nvmathdir, "include"))
+prepend_path("CPATH", pathJoin(nvcommdir, "nccl/include"))
+prepend_path("CPATH", pathJoin(nvcommdir, "nvshmem/include"))
 
-prepend_path("MANPATH", pathJoin(nvcompdir, "man")
+prepend_path("MANPATH", pathJoin(nvcompdir, "man"))
 
 setenv("OLCF_NVHPC_ROOT", prefix)
 
 -- nvhpc provides it's own cuda toolkit. This should be implicitly used by default.
 -- To do this, we replace the default cuda toolkit module with a blank
 -- placeholder. Users can then reload an alternate cuda toolkit as desired.
-prepend_path("MODULEPATH", pathJoin(nvhome, 'site-modulefiles')
+prepend_path("MODULEPATH", pathJoin(nvhome, 'site-modulefiles'))
 always_load("cuda/nvhpc")
