@@ -59,6 +59,7 @@ spack:
     - python
     - darshan-util
     - grads+netcdf+hdf5
+    - hpcviewer
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
