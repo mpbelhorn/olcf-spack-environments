@@ -19,7 +19,7 @@ class Amgx(AmgxBase):
     variant('openmp', default=True, description='Build with OpenMP support')
 
     def cmake_args(self):
-        args = super().cmake_args()
+        args = super(Amgx, self).cmake_args()
         spec = self.spec
 
         if self.spec.satisfies('%gcc@8: +cuda target=ppc64le'):
