@@ -46,6 +46,45 @@ spack:
     # - vmd
     # - sbt
     # - spark+hadoop
+  - rocm_packages:
+    ## Base packages
+    - hip
+    - hip-rocclr
+    - comgr
+    - rocm-cmake
+    - llvm-amdgpu
+    - rocm-device-libs
+    - hsa-rocr-dev
+    - hsakmt-roct
+    - rocminfo
+    - rccl
+    - hipify-clang
+    ## hip libraries
+    - hipblas
+    - hipcub
+    - hipsparse
+    - hipfort
+    # - hipfft ## missing spackage?
+    # - hiprand ## missing spackage?
+    ## rocm libraries
+    - rocm-opencl
+    - rocm-clang-ocl
+    - rocm-opencl-runtime
+    - rocblas
+    - rocfft
+    - rocrand
+    - rocthrust
+    - rocsolver
+    - rocsparse
+    # - roctracer-dev ## python2 dependency error
+    - rocprofiler-dev
+    - rocprim
+    - rocm-smi
+    - rocm-smi-lib
+    - miopen-hip
+    ## Utils
+    - rocalution
+    - rocm-gdb
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
@@ -57,8 +96,16 @@ spack:
       - - $core_packages
       - - $core_compiler
       - - arch=linux-sles15-x86_64
+  - rocm_specs:
+    - matrix:
+      - - $rocm_packages
+      - - '@4.1.0'
+        - '@4.0.0'
+      - - $core_compiler
+      - - arch=linux-sles15-x86_64
   specs:
   - $core_specs
+  - $rocm_specs
   # - $cray_specs
   #############################################################################
   mirrors:
@@ -195,7 +242,7 @@ spack:
         lapack: [openblas, mkl]
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
-      compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
+      compiler: [gcc@7.5.0, gcc]
   view: false
   modules:
     enable:
