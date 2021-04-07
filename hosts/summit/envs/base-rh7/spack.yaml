@@ -166,7 +166,7 @@ spack:
     - gromacs%gcc@6.4.0 +hwloc+cuda ^cuda@10.2.89
     - gromacs%gcc@6.4.0 +hwloc+cuda+mpi ^cuda@10.2.89
     - gromacs%gcc@6.4.0 +hwloc+cuda~mpi ^cuda@10.2.89
-    - kokkos%gcc@8.1.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@10.2.89
+    # - kokkos%gcc@8.1.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.1.1 cxxstd=14 +cuda cuda_arch=70 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.1.1 cxxstd=17 +cuda cuda_arch=70 ^boost@1.70.0:1.72.0
   - llvm_specs:
@@ -182,6 +182,7 @@ spack:
       - hpctoolkit   # ^elfutils !conflicts clang
       - strumpack
       - trilinos@12.14.1+dtk+intrepid2+shards+muelu
+      - ^cuda@:11.1
   - xl_specs:
     - matrix:
       - - $general_compute_packages
@@ -216,10 +217,10 @@ spack:
       - - ^autoconf%gcc@4-os
       - - ^m4%gcc@4-os
       exclude:
-      - adios2%nvhpc
-      - mpip%nvhpc
-      - boost%nvhpc
-      - netlib-scalapack%nvhpc
+      # - adios2%nvhpc
+      # - mpip%nvhpc
+      # - boost%nvhpc
+      # - netlib-scalapack%nvhpc
       - adios2%pgi
       - mpip%pgi
       - boost%pgi
@@ -234,9 +235,9 @@ spack:
   - $smpi_specs
   - $core_compute_specs
   - $gcc_specs
-  # - $llvm_specs
+  - $llvm_specs
   - $xl_specs
-  # - $nv_specs
+  - $nv_specs
   ## - $special_builds ## See note in definition section.
   #############################################################################
   mirrors:
@@ -372,7 +373,8 @@ spack:
       providers: {}
       compiler: []
     strumpack:
-      variants: +cuda cuda_arch=70
+      # issues with OMP either at ^butterflypack or +openmp
+      variants: +cuda cuda_arch=70 ~butterflypack
       buildable: true
       version: []
       target: []
@@ -407,7 +409,7 @@ spack:
       providers: {}
       compiler: []
     umpire:
-      variants: +cuda cuda_arch=70
+      variants: +cuda cuda_arch=70 ~examples
       buildable: true
       version: []
       target: []
