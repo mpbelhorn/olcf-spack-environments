@@ -68,6 +68,12 @@ _THIS_HOST="$(hostname --long \
              | sed -e 's/\.\(olcf\|ccs\)\..*//' \
                    -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
                    -e 's/[-0-9]*$//')"
+if [[ "${_THIS_HOST:-XX}" == "XX" ]]; then
+  _THIS_HOST="$(sed -e 's/\.\(olcf\|ccs\)\..*//' \
+                    -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
+                    -e  's/[-0-9]*$//' \
+                    -e 's/cm\.//' /etc/hostname)"
+fi
 [[ "${_THIS_HOST:-XX}" == "XX" ]] \
   && echo "ERROR: Current host '${_THIS_HOST}' could not be identified!" \
   && return 1
@@ -136,9 +142,11 @@ export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/modules"
 mkdir -p "${FACSPACK_ENV}/.mcache"
 mkdir -p "${FACSPACK_ENV_MODULEROOT}"
 if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
-  cp -dRu --preserve=mode,timestamps \
-     "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
-     "${FACSPACK_ENV_MODULEROOT}/."
+  if [ -d "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" ]; then
+    cp -dRu --preserve=mode,timestamps \
+       "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
+       "${FACSPACK_ENV_MODULEROOT}/."
+  fi
 else
   _FS_WARN_MSG="WARNING: Not updating static modulefiles.\n    "
   _FS_WARN_MSG+="Check that '${FACSPACK_ENV_MODULEROOT}/site/Core' "
@@ -203,6 +211,18 @@ case "${FACSPACK_HOST}" in
     _FS_MP+=":/usr/share/modulefiles/Linux"
     _FS_MP+=":/usr/share/modulefiles/Core"
     _FS_MP+=":/usr/share/lmod/lmod/modulefiles/Core"
+    setup_alternate_module_environment "${_FS_MP}"
+    ;;
+  spock)
+    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    # Next line replaced by following non-standard path:
+    # _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles"
+    _FS_MP+=":/opt/cray/pe/lmod/modulefiles/core"
+    _FS_MP+=":/opt/cray/pe/lmod/modulefiles/craype-targets/default"
+    _FS_MP+=":/opt/cray/modulefiles"
+    #_FS_MP+=":/opt/modulefiles" ## tcl modulefiles
     setup_alternate_module_environment "${_FS_MP}"
     ;;
   *)
