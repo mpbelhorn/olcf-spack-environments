@@ -60,6 +60,7 @@ spack:
     - darshan-util
     - grads+netcdf+hdf5
     - hpcviewer
+    - ghostscript
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt

@@ -1111,6 +1111,10 @@
   {
    "hash": "ijzlre56muk6he2dsbrdrcunnekt52x7",
    "spec": "parallel-io%pgi@19.10 ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64 ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64 ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64 ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64 ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64 ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64 ^libpciaccess%gcc@8-pgi ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64 ^m4%gcc@8-pgi ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64 ^perl%gcc@8-pgi arch=linux-rhel8-x86_64 ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64 ^python%gcc@8-pgi arch=linux-rhel8-x86_64 ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64 ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64"
+  },
+  {
+   "hash": "vyikj2bdc3rsfmdhnataiiyu6gyee3jw",
+   "spec": "ghostscript%gcc@8.3.1"
   }
  ],
  "concrete_specs": {
