@@ -64,12 +64,13 @@ spack:
     - hipcub
     - hipsparse
     - hipfort
-    # - hipfft ## missing spackage?
+    - hipfft ## missing spackage?
     # - hiprand ## missing spackage?
     ## rocm libraries
     - rocm-opencl
     - rocm-clang-ocl
     - rocm-opencl-runtime
+    - rocm-openmp-extras
     - rocblas
     - rocfft
     - rocrand
@@ -103,6 +104,25 @@ spack:
         - '@4.0.0'
       - - $core_compiler
       - - arch=linux-sles15-x86_64
+      exclude:
+      ## 2021-04-07 Not yet in spack vvvvvv
+      # - rccl@4.1.0 
+      # - hipblas@4.1.0
+      # - hipcub@4.1.0
+      # - hipsparse@4.1.0
+      # - rocrand@4.1.0
+      # - rocthrust@4.1.0
+      # - rocsolver@4.1.0
+      # - rocsparse@4.1.0
+      - rocprofiler-dev@4.1.0
+      # - rocprim@4.1.0
+      # - rocalution@4.1.0
+      ## ^^^^^^^^^^^^
+      # - rocblas@4.1.0    ## 2021-04-07 build errors
+      # - rocfft@4.1.0     ## 2021-04-07 build errors
+      - rocm-smi@4.1.0   ## Replaced with rocm-smi-lib
+      # - miopen-hip@4.1.0 ## 2021-04-07 build errors
+      - hipfft@4.0.0
   specs:
   - $core_specs
   - $rocm_specs
@@ -158,9 +178,7 @@ spack:
       version: [1.4.18]
       target: []
       providers: {}
-      externals:
-      - spec: m4%intel
-        prefix: /usr
+      externals: []
       compiler: []
     binutils:
       buildable: true
@@ -233,6 +251,8 @@ spack:
       target: []
       providers: {}
       compiler: []
+    rocfft:
+      variants: amdgpu_target=gfx908 amdgpu_target_sram_ecc=gfx908
     all:
       buildable: true
       version: []
@@ -243,6 +263,11 @@ spack:
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
       compiler: [gcc@7.5.0, gcc]
+  # Views are managed externally; placing them here triggers a regneration each
+  # time the env is re-concretized which both destroys non-spack files (eg
+  # symlinks) in "hybrid views" and removes previous builds slated to be
+  # re-built from the production view when we want to minimize disruption to
+  # users. See $FACSPACK_CONF_ENV/view-generate-*.sh scripts for managing views.
   view: false
   modules:
     enable:
@@ -372,6 +397,9 @@ spack:
       blacklist:
       - python
       - go-bootstrap
+      - meson
+      - py-setuptools
+      - glib
       - openssl
       - harfbuzz ^cairo~X
       - pango ^cairo~pdf
