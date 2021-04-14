@@ -276,9 +276,6 @@ spack:
     lmod:
       core_compilers: [gcc@7.5.0]
       all:
-        suffixes:
-          ^python@2.0:2.99: py2
-          ^python@3.0:3.99: py3
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
@@ -418,9 +415,6 @@ spack:
       all:
         conflict:
         - '{name}'
-        suffixes:
-          ^python@2.0:2.99: py2
-          ^python@3.0:3.99: py3
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
