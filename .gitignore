@@ -11,3 +11,4 @@
 *.pyc
 share/mirrors
 /**/.spack-env/
+/init-spock.sh

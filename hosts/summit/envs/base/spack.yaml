@@ -609,7 +609,7 @@ spack:
     build_stage:
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
-    source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
+    source_cache: ${FACSPACK_SOURCE_CACHE}
     extensions:
     - /sw/sources/facspack/share/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache

@@ -86,6 +86,13 @@ _FS_DEFAULT_ENV_NAME="base"
 export FACSPACK_CONF_HOST="${FACSPACK_SPACK_ROOT}/hosts/${FACSPACK_HOST}"
 export FACSPACK_CONF_COMMON="${FACSPACK_SPACK_ROOT}/share"
 
+_FS_SITE_SOURCE_CACHE="/sw/sources/facility-spack/source_cache"
+if [ -e "${_FS_SITE_SOURCE_CACHE}" -a -w "${_FS_SITE_SOURCE_CACHE}" ]; then
+  export FACSPACK_SOURCE_CACHE="${_FS_SITE_SOURCE_CACHE}"
+else
+  export FACSPACK_SOURCE_CACHE="${FACSPACK_CONF_COMMON}/mirrors/sources"
+fi
+
 # Setup the path to the spack environments prefix. All the spack envs for this
 # system will be installed under this path. The path must be non-blank, exist,
 # and be owned by the current user. The default value points to the production
@@ -214,14 +221,14 @@ case "${FACSPACK_HOST}" in
     setup_alternate_module_environment "${_FS_MP}"
     ;;
   spock)
-    _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
-    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
-    # Next line replaced by following non-standard path:
-    # _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
-    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles"
-    _FS_MP+=":/opt/cray/pe/lmod/modulefiles/core"
-    _FS_MP+=":/opt/cray/pe/lmod/modulefiles/craype-targets/default"
-    _FS_MP+=":/opt/cray/modulefiles"
+    #_FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
+    #_FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    ## Next line replaced by following non-standard path:
+    ## _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    #_FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles"
+    #_FS_MP+=":/opt/cray/pe/lmod/modulefiles/core"
+    #_FS_MP+=":/opt/cray/pe/lmod/modulefiles/craype-targets/default"
+    #_FS_MP+=":/opt/cray/modulefiles"
     #_FS_MP+=":/opt/modulefiles" ## tcl modulefiles
     setup_alternate_module_environment "${_FS_MP}"
     ;;

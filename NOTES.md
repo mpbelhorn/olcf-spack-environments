@@ -1,3 +1,41 @@
+## Spock Score-P builds
+
+otf2, cubelib, cubew (and formly opari2) need patching to build on spock/Cray
+Shasta.
+
+Add `platform-{backend,frontend,mpi,shmem}-user-provided` config files to build
+dir, edit to set compilers to cray wrapper and patch `configure` (maybe at the
+pre-autoreconf level via `build-config/common/m4/ac_scorep_sys_detection.m4`
+lines 118-122) from
+
+```
+                      [test -L /opt/cray/pe/pmi/default],
+                           [AS_IF([test -d /opt/cray/ari/modulefiles],
+                               [ac_scorep_platform="crayxc"])],
+                           [AS_IF([test "x${ac_scorep_platform}" = "x"],
+                               [ac_scorep_platform="linux"])])
+```
+
+```
+elif test -L /opt/cray/pe/pmi/default; then :
+  if test -d /opt/cray/ari/modulefiles; then :
+  ac_scorep_platform="crayxc"
+fi
+```
+
+to
+
+```
+elif test -L /opt/cray/pe/pmi/default; then :
+  if test -d /opt/cray/ari/modulefiles; then :
+  ac_scorep_platform="crayxc"
+else
+  ac_scorep_platform="linux"
+fi
+```
+
+and let the script think it's on a vanilla linux cluster.
+
 # Lessons Learned and Best Practices
 
 - Specs for large `defnitions:` sets of target applications that should be built with each

@@ -9,11 +9,11 @@ spack:
     - '%gcc@10.2.0'
     - '%gcc@9.3.0'
     - '%gcc@8.1.0'
-  # - cray_compilers:
-  #   - '%cce@11.0.0.7519'
+  - cray_compilers:
+    - '%cce@11.0.4'
   - all_compilers:
     - $gcc_compilers
-    # - $cray_compilers
+    - $cray_compilers
   - core_packages:
     - git
     - htop
@@ -26,7 +26,7 @@ spack:
     - emacs ~X
     - nano
     - gnuplot +X
-    - subversion
+    # - subversion ## build failure v0.16.0-->HEAD
     - mercurial
     - ccache
     - papi
@@ -59,14 +59,11 @@ spack:
     - rocminfo
     - rccl
     - hipify-clang
-    ## hip libraries
     - hipblas
     - hipcub
     - hipsparse
     - hipfort
-    - hipfft ## missing spackage?
-    # - hiprand ## missing spackage?
-    ## rocm libraries
+    - hipfft ## v4.1.0+
     - rocm-opencl
     - rocm-clang-ocl
     - rocm-opencl-runtime
@@ -83,15 +80,84 @@ spack:
     - rocm-smi
     - rocm-smi-lib
     - miopen-hip
-    ## Utils
     - rocalution
     - rocm-gdb
+  - e4s_packages:
+    - adios
+    - adios2
+    - aml
+    - amrex
+    - arborx
+    - argobots
+    - bolt
+    - caliper
+    # - darshan-runtime
+    # - darshan-util
+    - dyninst
+    - faodel
+    - flecsi+cinch
+    - flit
+    - gasnet
+    - ginkgo
+    - globalarrays
+    - gotcha
+    - hdf5 ## FIXME - use cray-hdf5/ cray-hdf5-parallel
+    - hpctoolkit
+    - hypre
+    - kokkos-kernels # +rocm amdgpu_target=gfx908
+    - kokkos # +rocm amdgpu_target=gfx908 , +/- omp variants
+    - legion
+    - libquo
+    - mercury
+    - mfem
+    - ninja
+    - openpmd-api
+    - papi
+    - papyrus@1.0.1
+    # - parallel-netcdf ## FIXME - use cray-parallel-netcdf/1.12.1.3
+    - pdt
+    - petsc
+    - phist
+    - plasma
+    - precice
+    - pumi
+    - qthreads
+    - raja
+    # - raja+rocm~openmp amdgpu_target=gfx908
+    - slate~cuda
+    - slepc
+    - strumpack~slate ^openblas threads=openmp
+    # - strumpack~slate +rocm amdgpu_target=gfx908 ^openblas threads=openmp
+    - sundials
+    - superlu
+    - superlu-dist
+    - swig
+    - swig@4.0.2-fortran
+    - sz
+    - tasmanian
+    - umap
+    - umpire # +rocm amdgpu_target=gfx908
+    - veloc
+    - zfp
+    # - ascent ^cmake@3.18.2 ## build failure with latest cmake
+    # - axom                                       ## build failure
+    # - hpx                                        ## build failure; otf2 fails with unknown cray platform.
+    # - libnrm                                     ## build failure
+    # - omega-h                                    ## build failure
+    # - rempi                                      ## build failure
+    # - scr                                        ## build failure
+    # - stc                                        ## build failure
+    # - tau                                        ## build failure; otf2 dependency
+    # - trilinos # @12.14.1+dtk+intrepid2+shards   ## build failure
+    # - turbine                                    ## build failure
+    # - upcxx
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
     - fftw +mpi+openmp
     - hdf5 ~mpi
     - hdf5 +mpi
+    - scorep
   - core_specs:
     - matrix:
       - - $core_packages
@@ -105,28 +171,26 @@ spack:
       - - $core_compiler
       - - arch=linux-sles15-x86_64
       exclude:
-      ## 2021-04-07 Not yet in spack vvvvvv
-      # - rccl@4.1.0 
-      # - hipblas@4.1.0
-      # - hipcub@4.1.0
-      # - hipsparse@4.1.0
-      # - rocrand@4.1.0
-      # - rocthrust@4.1.0
-      # - rocsolver@4.1.0
-      # - rocsparse@4.1.0
-      - rocprofiler-dev@4.1.0
-      # - rocprim@4.1.0
-      # - rocalution@4.1.0
-      ## ^^^^^^^^^^^^
-      # - rocblas@4.1.0    ## 2021-04-07 build errors
-      # - rocfft@4.1.0     ## 2021-04-07 build errors
+      - rocprofiler-dev@4.1.0 ## not yet available 2021-04-14
       - rocm-smi@4.1.0   ## Replaced with rocm-smi-lib
-      # - miopen-hip@4.1.0 ## 2021-04-07 build errors
-      - hipfft@4.0.0
+      - hipfft@4.0.0     ## Not available in spack
+  - e4s_specs:
+    - matrix:
+      - - $e4s_packages
+      - - '%gcc@10.2.0'
+        - '%gcc@9.3.0'
+        - '%cce@11.0.4'
+      - - ^cray-mpich
+      - - arch=cray-sles15-zen2
+      exclude: 
+      - dyninst%cce
+      - hpctoolkit%cce
+      - plasma%cce
   specs:
   - $core_specs
   - $rocm_specs
-  # - $cray_specs
+  - $e4s_specs
+  - scorep%gcc@9.3.0 arch=cray-sles15-zen2
   #############################################################################
   mirrors:
     facility_builds: /sw/spock/spack-env/mirrors/builds
@@ -140,15 +204,22 @@ spack:
       target: []
       compiler: []
       providers: {}
-    mvapich2:
-      version: [2.3.4]
-      externals:
-      - spec: mvapich2@2.3.4
-        modules:
-        - cray-mvapich2_nogpu/2.3.4
+    mpich:
+      version: [3.4.1]
       target: []
       compiler: []
       buildable: true
+      providers: {}
+      variants: +verbs+slurm device=ch4 netmod=ofi pmi=pmi
+    cray-mpich:
+      version: [8.1.4]
+      externals:
+      - spec: cray-mpich@8.1.4
+        modules:
+        - cray-mpich/8.1.4
+      target: []
+      compiler: []
+      buildable: false
       providers: {}
     qt:
       variants: ~ssl
@@ -180,6 +251,13 @@ spack:
       providers: {}
       externals: []
       compiler: []
+    darshan-runtime:
+      variants: +slurm+grouplogs logpath=/gpfs/alpine/darshan/spock
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
     binutils:
       buildable: true
       target: []
@@ -209,6 +287,12 @@ spack:
       target: []
       providers: {}
       compiler: []
+    libfabric:
+      version: [1.11.0.3.71]
+      buildable: true
+      externals:
+      - spec: libfabric@1.11.0.3.71
+        prefix: /opt/cray/libfabric/1.11.0.3.71
     r:
       variants: ~X
       buildable: true
@@ -258,7 +342,7 @@ spack:
       version: []
       target: [x86_64]
       providers:
-        mpi: [mvapich2]
+        mpi: [mpich]
         lapack: [openblas, mkl]
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
@@ -441,7 +525,7 @@ spack:
     build_stage:
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
-    source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
+    source_cache: ${FACSPACK_SOURCE_CACHE}
     extensions:
     - /sw/sources/facspack/share/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache
@@ -450,7 +534,7 @@ spack:
     checksum: true
     dirty: false
     build_language: C
-    build_jobs: 8
+    build_jobs: 16
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout:
@@ -493,59 +577,93 @@ spack:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
       extra_rpaths: []
-  - compiler:
-      spec: gcc@10.2.0
-      paths:
-        cc: /opt/gcc/10.2.0/snos/bin/gcc
-        cxx: /opt/gcc/10.2.0/snos/bin/g++
-        f77: /opt/gcc/10.2.0/snos/bin/gfortran
-        fc: /opt/gcc/10.2.0/snos/bin/gfortran
-      flags: {}
-      operating_system: sles15
-      target: any
-      modules: []
-      environment: {}
-      extra_rpaths:
-      - /opt/gcc/10.2.0/snos/lib64
+  # - compiler:
+  #     spec: gcc@10.2.0-bare
+  #     paths:
+  #       cc: /opt/gcc/10.2.0/snos/bin/gcc
+  #       cxx: /opt/gcc/10.2.0/snos/bin/g++
+  #       f77: /opt/gcc/10.2.0/snos/bin/gfortran
+  #       fc: /opt/gcc/10.2.0/snos/bin/gfortran
+  #     flags: {}
+  #     operating_system: sles15
+  #     target: x86_64
+  #     modules: []
+  #     environment: {}
+  #     extra_rpaths:
+  #     - /opt/gcc/10.2.0/snos/lib64
+  # - compiler:
+  #     spec: gcc@9.3.0-bare
+  #     paths:
+  #       cc: /opt/gcc/9.3.0/snos/bin/gcc
+  #       cxx: /opt/gcc/9.3.0/snos/bin/g++
+  #       f77: /opt/gcc/9.3.0/snos/bin/gfortran
+  #       fc: /opt/gcc/9.3.0/snos/bin/gfortran
+  #     flags: {}
+  #     operating_system: sles15
+  #     target: x86_64
+  #     modules: []
+  #     environment: {}
+  #     extra_rpaths:
+  #     - /opt/gcc/9.3.0/snos/lib64
+  # - compiler:
+  #     spec: gcc@8.1.0-bare
+  #     paths:
+  #       cc: /opt/gcc/8.1.0/snos/bin/gcc
+  #       cxx: /opt/gcc/8.1.0/snos/bin/g++
+  #       f77: /opt/gcc/8.1.0/snos/bin/gfortran
+  #       fc: /opt/gcc/8.1.0/snos/bin/gfortran
+  #     flags: {}
+  #     operating_system: sles15
+  #     target: x86_64
+  #     modules: []
+  #     environment: {}
+  #     extra_rpaths:
+  #     - /opt/gcc/8.1.0/snos/lib64
   - compiler:
       spec: gcc@9.3.0
       paths:
-        cc: /opt/gcc/9.3.0/snos/bin/gcc
-        cxx: /opt/gcc/9.3.0/snos/bin/g++
-        f77: /opt/gcc/9.3.0/snos/bin/gfortran
-        fc: /opt/gcc/9.3.0/snos/bin/gfortran
-      flags: {}
-      operating_system: sles15
-      target: any
-      modules: []
-      environment: {}
-      extra_rpaths:
-      - /opt/gcc/9.3.0/snos/lib64
-  - compiler:
-      spec: gcc@8.1.0
-      paths:
-        cc: /opt/gcc/8.1.0/snos/bin/gcc
-        cxx: /opt/gcc/8.1.0/snos/bin/g++
-        f77: /opt/gcc/8.1.0/snos/bin/gfortran
-        fc: /opt/gcc/8.1.0/snos/bin/gfortran
-      flags: {}
-      operating_system: sles15
-      target: any
-      modules: []
-      environment: {}
-      extra_rpaths:
-      - /opt/gcc/8.1.0/snos/lib64
-  - compiler:
-      spec: cce@11.0.4
-      paths:
-        cc: cc
-        cxx: CC
-        f77: ftn
-        fc: ftn
+        cc: /opt/cray/pe/craype/2.7.6/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.6/bin/CC
+        f77: /opt/cray/pe/craype/2.7.6/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.6/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
       modules:
+      - PrgEnv-gnu
+      - gcc/9.3.0
+      - craype-accel-amd-gfx908
+      environment: {}
+      extra_rpaths: []
+  - compiler:
+      spec: gcc@10.2.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.6/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.6/bin/CC
+        f77: /opt/cray/pe/craype/2.7.6/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.6/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-gnu
+      - gcc/10.2.0
+      - craype-accel-amd-gfx908
+      environment: {}
+      extra_rpaths: []
+  - compiler:
+      spec: cce@11.0.4
+      paths:
+        cc: /opt/cray/pe/craype/2.7.6/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.6/bin/CC
+        f77: /opt/cray/pe/craype/2.7.6/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.6/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray ## /8.0.0 ?
+      - cce/11.0.4                             ## Override PrgEnv default
       - craype-accel-amd-gfx908                ## Base performance option
       # - cce/11.0.4                           ## Default auto-loaded by PrgEnv-Cray
       ## - rocm/3.7.0                          ## Not on Spock yet (2021-04-06)
@@ -560,7 +678,5 @@ spack:
       # - cray-libsci/21.04.1.1                ## handled by PrgEnv-Cray
       # - cray-pmi/6.0.10                      ## handled by PrgEnv-Cray
       # - cray-pmi-lib/6.0.10                  ## handled by PrgEnv-Cray
-      - PrgEnv-cray ## /8.0.0 ?
-      - cce/11.0.4                             ## Override PrgEnv default
       environment: {}
       extra_rpaths: []
