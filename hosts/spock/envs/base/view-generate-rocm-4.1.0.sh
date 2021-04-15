@@ -36,12 +36,14 @@ elif [[ "${FACSPACK_HOST}" != "spock" ]]; then
   return 1
 fi
 
-VIEW_SPECS="\
+# View conflicts are resolved in first-come:first-used manner. Conflicting specs
+# must be added to the view in multiple rounds
+VIEW_SPECS_ROUND_ONE="\
   'hip@${ROCM_VERSION}' \
   'hip-rocclr@${ROCM_VERSION}' \
   'comgr@${ROCM_VERSION}' \
   'rocm-cmake@${ROCM_VERSION}' \
-  'llvm-amdgpu@${ROCM_VERSION}' \
+  'rocm-openmp-extras@${ROCM_VERSION}' \
   'rocm-device-libs@${ROCM_VERSION}' \
   'hsa-rocr-dev@${ROCM_VERSION}' \
   'hsakmt-roct@${ROCM_VERSION}' \
@@ -54,7 +56,6 @@ VIEW_SPECS="\
   'hipfort@${ROCM_VERSION}' \
   'rocm-clang-ocl@${ROCM_VERSION}' \
   'rocm-opencl-runtime@${ROCM_VERSION}' \
-  'rocm-openmp-extras@${ROCM_VERSION}' \
   'rocblas@${ROCM_VERSION}' \
   'rocfft@${ROCM_VERSION}' \
   'rocrand@${ROCM_VERSION}' \
@@ -66,11 +67,17 @@ VIEW_SPECS="\
   'miopen-hip@${ROCM_VERSION}' \
   'rocalution@${ROCM_VERSION}' \
   'rocm-gdb@${ROCM_VERSION}'"
+
+VIEW_SPECS_ROUND_TWO="\
+  'llvm-amdgpu@${ROCM_VERSION}'"
+
+## Excluded or missing specs
   # 'hipify-clang@${ROCM_VERSION}' \
   # 'rocm-opencl@${ROCM_VERSION}' \
   # 'rocm-smi@${ROCM_VERSION}' \
   # 'rocprofiler-dev@${ROCM_VERSION}' \
 
+[ ! -d "${VIEW_PREFIX}" ] && mkdir -p "${VIEW_PREFIX}"
 TMP_VIEW_ROOT=$(mktemp -d -p ${VIEW_PREFIX} XXXXXX)
 [ -d "${TMP_VIEW_ROOT}" ] && chmod go=rx "${TMP_VIEW_ROOT}"
 spack view \
@@ -79,7 +86,15 @@ spack view \
     symlink --ignore-conflicts \
             --projection-file "hosts/spock/envs/base/view-rocm-${ROCM_VERSION}.yaml" \
             "${TMP_VIEW_ROOT}" \
-            ${VIEW_SPECS}
+            ${VIEW_SPECS_ROUND_ONE}
+
+spack view \
+    --dependencies 'false' \
+    --verbose \
+    symlink --ignore-conflicts \
+            --projection-file "hosts/spock/envs/base/view-rocm-${ROCM_VERSION}.yaml" \
+            "${TMP_VIEW_ROOT}" \
+            ${VIEW_SPECS_ROUND_TWO}
 
 # FIXME - replace with a tarball or script.
 cp -vRP ${PATCH_LINKS}/bin \
