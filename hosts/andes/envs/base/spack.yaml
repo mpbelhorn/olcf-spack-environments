@@ -15,6 +15,8 @@ spack:
     - '%clang@9.0.1'
   - aocc_compilers:
     - '%aocc@2.2.0'
+    # - '%aocc@2.3.0'
+    - '%aocc@3.0.0'
   - pgi_compilers:
     - '%pgi@19.10'
   - all_compilers:
@@ -195,17 +197,17 @@ spack:
         - adios2~zfp
       - - $aocc_compilers
       exclude:
-      - parallel-io
-      - netcdf-c
-      - netcdf-cxx
-      - netcdf-fortran
-      - hdf5
-      - adios2+zfp
-      - openpmd-api
-      - fftw+openmp
-      - mpip
-      - dyninst
-      - hpctoolkit
+      - parallel-io%aocc@:2.2.0
+      - netcdf-c%aocc@:2.2.0
+      - netcdf-cxx%aocc@:2.2.0
+      - netcdf-fortran%aocc@:2.2.0
+      - hdf5%aocc@:2.2.0
+      - adios2+zfp%aocc@:2.2.0
+      - openpmd-api%aocc@:2.2.0
+      - fftw+openmp%aocc@:2.2.0
+      - mpip%aocc@:2.2.0
+      - dyninst%aocc@:2.2.0
+      - hpctoolkit%aocc@:2.2.0
   - intel_specs:
     - matrix:
       - - $general_compute_packages
