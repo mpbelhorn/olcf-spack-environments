@@ -26,6 +26,7 @@ spack:
     - $aocc_compilers
   - core_packages:
     - git
+    - git-lfs
     - htop
     - tmux
     - cmake
