@@ -9,6 +9,7 @@ spack:
     - '%gcc@8.3.1'
     - '%gcc@9.3.0'
     - '%gcc@10.1.0'
+    - '%gcc@10.3.0'
   - intel_compilers:
     - '%intel@19.0.3'
   - llvm_compilers:
@@ -768,6 +769,18 @@ spack:
         f77: /sw/andes/gcc/10.1.0/bin/gfortran
         fc: /sw/andes/gcc/10.1.0/bin/gfortran
       extra_rpaths: [/sw/andes/gcc/10.1.0/lib64]
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: gcc@10.3.0
+      operating_system: rhel8
+      modules: [gcc/10.3.0]
+      paths:
+        cc: /sw/andes/gcc/10.3.0/bin/gcc
+        cxx: /sw/andes/gcc/10.3.0/bin/g++
+        f77: /sw/andes/gcc/10.3.0/bin/gfortran
+        fc: /sw/andes/gcc/10.3.0/bin/gfortran
+      extra_rpaths: [/sw/andes/gcc/10.3.0/lib64]
       environment: {}
       flags: {}
   - compiler:
