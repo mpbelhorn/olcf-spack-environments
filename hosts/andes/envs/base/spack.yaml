@@ -616,8 +616,6 @@ spack:
           unset: []
       blacklist_implicits: true
       verbose: true
-      whitelist:
-      - parallel-netcdf
       blacklist:
       - python
       - py-
