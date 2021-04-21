@@ -197,7 +197,7 @@ spack:
       - - $general_compute_packages
         - fftw+mpi~openmp
         - adios2~zfp
-      - - $aocc_compilers
+      - - '%aocc@2.2.0'
       exclude:
       - parallel-io%aocc@:2.2.0
       - netcdf-c%aocc@:2.2.0
@@ -210,6 +210,17 @@ spack:
       - mpip%aocc@:2.2.0
       - dyninst%aocc@:2.2.0
       - hpctoolkit%aocc@:2.2.0
+    ###
+    - openmpi%aocc@3.0.0
+    - hdf5@1.12.0 %aocc@3.0.0
+    - matrix:
+      - - $general_compute_packages
+        - fftw+mpi~openmp
+        - adios2~zfp
+      - - '%aocc@3.0.0'
+      - - ^hdf5@1.12.0
+      exclude:
+        - hdf5
   - intel_specs:
     - matrix:
       - - $general_compute_packages
