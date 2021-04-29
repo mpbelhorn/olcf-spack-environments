@@ -80,6 +80,13 @@ _FS_DEFAULT_ENV_NAME="base"
 export FACSPACK_CONF_HOST="${FACSPACK_SPACK_ROOT}/hosts/${FACSPACK_HOST}"
 export FACSPACK_CONF_COMMON="${FACSPACK_SPACK_ROOT}/share"
 
+_FS_SITE_SOURCE_CACHE="/sw/sources/facility-spack/source_cache"
+if [ -e "${_FS_SITE_SOURCE_CACHE}" -a -w "${_FS_SITE_SOURCE_CACHE}" ]; then
+  export FACSPACK_SOURCE_CACHE="${_FS_SITE_SOURCE_CACHE}"
+else
+  export FACSPACK_SOURCE_CACHE="${FACSPACK_CONF_COMMON}/mirrors/sources"
+fi
+
 # Setup the path to the spack environments prefix. All the spack envs for this
 # system will be installed under this path. The path must be non-blank, exist,
 # and be owned by the current user. The default value points to the production
@@ -107,6 +114,11 @@ unset _FS_ERR_MSG
 # alter the MODULEPATH to flexibly be aware of what spack platfrom to use, eg:
 # 'linux-rhel7-ppc64le' vs 'linux-rhel8-ppc64le'
 if [[ "${_THIS_HOST:-XX}" == "summit" ]]; then
+   if [[ "$(grep VERSION_ID /etc/os-release)" =~ ^VERSION_ID=\"7 ]]; then
+    _FS_DEFAULT_ENV_NAME="base-rh7"
+    _FS_COPY_STATIC_MODULES="false"
+   fi
+elif [[ "${_THIS_HOST:-XX}" == "ascent" ]]; then
    if [[ "$(grep VERSION_ID /etc/os-release)" =~ ^VERSION_ID=\"7 ]]; then
     _FS_DEFAULT_ENV_NAME="base-rh7"
     _FS_COPY_STATIC_MODULES="false"
@@ -165,6 +177,17 @@ function setup_alternate_module_environment {
 # Host-specific environment modifications
 case "${FACSPACK_HOST}" in
   summit)
+    if [[ "${FACSPACK_ENV_NAME}" == "base-rh7" ]]; then
+      _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
+    else
+      _FS_MP="${_FS_MP:-${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core}"
+    fi
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    setup_alternate_module_environment "${_FS_MP}"
+    export MODULEPATH="${_FS_MP}"
+    ;;
+  ascent)
     if [[ "${FACSPACK_ENV_NAME}" == "base-rh7" ]]; then
       _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
     else
