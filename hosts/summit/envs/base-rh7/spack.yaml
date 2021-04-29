@@ -19,6 +19,7 @@ spack:
     - '%pgi@20.4'
     - '%nvhpc@20.9'
     - '%nvhpc@21.2'
+    - '%nvhpc@21.3'
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
@@ -62,7 +63,7 @@ spack:
     - adios2 +python ^python@3.7.7
     - gdrcopy
   - gcc_only_compute_packages:
-    - raja +cuda cuda_arch=70 ^cuda@:10.2.89
+    - raja
     - papi
     - nco
   - general_compute_packages:
@@ -82,6 +83,7 @@ spack:
     - mpip
     - adios2 ~python
   - e4s_packages:
+    - adios2 ~python
     - zfp
     - sz
     - ninja
@@ -94,6 +96,8 @@ spack:
     - trilinos@12.14.1+dtk+intrepid2+shards
     - tasmanian +cuda
     - mercury
+    - hypre
+    - hdf5 +mpi
     - veloc
     - bolt
     - upcxx
@@ -102,6 +106,7 @@ spack:
     - globalarrays
     - pdt
     - tau +cuda
+    - parallel-netcdf
     - dyninst
     - gotcha
     - caliper
@@ -109,21 +114,17 @@ spack:
     - rempi
     - kokkos+openmp
     - kokkos-kernels
+    - raja
     ## Excluded E4S packages ------
     ### Build Failures
     # - hpctoolkit ## FIXME Looking for /usr/bin/env python; missing on RHEL8.
     # - mfem ## Fails to build
-    ### Already in general compute packages list
-    # - openmpi
-    # - hypre
-    # - hdf5
-    # - parallel-netcdf
-    # - adios2
-    # - adios
+    ### Prefer singleton core package
     # - darshan-runtime
     # - darshan-util
-    # - raja
     ### Incompatible packages
+    # - adios ## prefer adios2
+    # - openmpi ## prefer smpi
     # - scr ## Slurm not available Summit/Peak
     # - libnrm ## Explictly depends on mpich
     ### Against policies
@@ -236,7 +237,7 @@ spack:
   - $gcc_specs
   # - $llvm_specs
   - $xl_specs
-  # - $nv_specs
+  - $nv_specs
   ## - $special_builds ## See note in definition section.
   #############################################################################
   mirrors:
@@ -372,6 +373,13 @@ spack:
       providers: {}
       compiler: []
     strumpack:
+      variants: ~butterflypack+cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    raja:
       variants: +cuda cuda_arch=70
       buildable: true
       version: []
@@ -407,7 +415,7 @@ spack:
       providers: {}
       compiler: []
     umpire:
-      variants: +cuda cuda_arch=70
+      variants: ~examples+cuda cuda_arch=70
       buildable: true
       version: []
       target: []
@@ -783,6 +791,18 @@ spack:
       spec: nvhpc@21.2
       operating_system: rhel7
       modules: [nvhpc/21.2]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@21.3
+      operating_system: rhel7
+      modules: [nvhpc/21.3]
       paths:
         cc: nvc
         cxx: nvc++
