@@ -479,15 +479,113 @@ spack:
       verbose: true
       whitelist: []
       blacklist:
-      - python
-      - go-bootstrap
-      - meson
-      - py-setuptools
+      - berkeley-db
+      - cray-mpich
       - glib
+      - glproto
+      - go-bootstrap
+      - help2man
+      - inputproto
+      - kbproto
+      - libassuan
+      - libfabric
+      - libfontenc
+      - libgcrypt
+      - libgd
+      - libgpg-error
+      - libiconv
+      - libidn2
+      - libksba
+      - libpciaccess
+      - libpthread-stubs
+      - libsigsegv
+      - libsodium
+      - libunistring
+      - libuuid
+      - libx11
+      - libxau
+      - libxcb
+      - libxdmcp
+      - libxext
+      - libxfont
+      - libxpm 
+      - libxslt
+      - lua
+      - m4
+      - meson
+      - mkfontdir
+      - mkfontscale
+      - mpfr
+      - mpich
+      - msgpack-c
+      - nasm
+      - ncurses
+      - npth
+      - numactl
+      - openssh
       - openssl
+      - pinentry
+      - pkgconf
+      - popt
+      - py-certifi
+      - py-docutils
+      - py-mako
+      - py-markupsafe
+      - py-msgpack
+      - py-pygments
+      - py-pyyaml
+      - py-setuptools
+      - py-virtualenv
+      - py-wheel
+      - python
+      - readline
+      - slurm
+      - tcl
+      - tcsh
+      - util-linux-uuid
+      - util-macros
+      - xcb-proto
+      - xextproto
+      - xtrans
       - harfbuzz ^cairo~X
       - pango ^cairo~pdf
       - '%gcc@7-os'
+      ## ROCm components; we provide a separate metamodule for these
+      - comgr
+      - hip
+      - hip-rocclr
+      - hipblas
+      - hipcub
+      - hipfft
+      - hipfort
+      - hipify-clang
+      - hipsparse
+      - hsa-rocr-dev
+      - hsakmt-roct
+      - llvm-amdgpu
+      - miopen-hip
+      - rccl
+      - rocalution
+      - rocblas
+      - rocfft
+      - rocm-clang-ocl
+      - rocm-cmake
+      - rocm-dbgapi
+      - rocm-device-libs
+      - rocm-gdb
+      - rocm-opencl
+      - rocm-opencl-runtime
+      - rocm-openmp-extras
+      - rocm-smi
+      - rocm-smi-lib
+      - rocminfo
+      - rocprim
+      - rocprofiler-dev
+      - rocrand
+      - rocsolver
+      - rocsparse
+      - rocthrust
+      - roctracer-dev
       hash_length: 0
       hierarchy: []
       projections: {}
