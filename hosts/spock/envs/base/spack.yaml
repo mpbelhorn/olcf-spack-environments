@@ -122,8 +122,8 @@ spack:
     - precice
     - pumi
     - qthreads
-    - raja
-    # - raja+rocm~openmp amdgpu_target=gfx908
+    # - raja
+    - raja+rocm~openmp amdgpu_target=gfx908
     - slate~cuda
     - slepc
     - strumpack~slate ^openblas threads=openmp
