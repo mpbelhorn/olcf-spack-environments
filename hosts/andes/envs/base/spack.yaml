@@ -225,7 +225,7 @@ spack:
       - - '%aocc@3.0.0'
       - - ^hdf5@1.12.0
       exclude:
-        - hdf5
+      - hdf5
   - intel_specs:
     - matrix:
       - - $general_compute_packages
