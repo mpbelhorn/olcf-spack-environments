@@ -63,6 +63,7 @@ spack:
     - spark+hadoop
     - python@2.7.15
     - python
+    - julia+cxx
     - darshan-util
     - grads+netcdf+hdf5
     - hpcviewer
