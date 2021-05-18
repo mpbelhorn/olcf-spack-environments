@@ -126,8 +126,8 @@ spack:
     - raja+rocm~openmp amdgpu_target=gfx908
     - slate~cuda
     - slepc
-    - strumpack~slate ^openblas threads=openmp
-    # - strumpack~slate +rocm amdgpu_target=gfx908 ^openblas threads=openmp
+    # - strumpack~slate ^openblas threads=openmp
+    - strumpack~slate +rocm amdgpu_target=gfx908 ^openblas threads=openmp
     - sundials
     - superlu
     - superlu-dist
