@@ -68,6 +68,7 @@ spack:
     - grads+netcdf+hdf5
     - hpcviewer
     - pandoc
+    - scorep+unwind
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -647,6 +648,8 @@ spack:
       - ncl%gcc@8.3.1+mpi
       - ncl%gcc@8.3.1~mpi
       - libiconv@1.16%gcc@8.3.1
+      - scorep%gcc@8.3.1+unwind
+      whitelist: []
     tcl:
       hash_length: 3
       naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
