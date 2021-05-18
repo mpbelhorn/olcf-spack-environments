@@ -104,8 +104,8 @@ spack:
     - hdf5 ## FIXME - use cray-hdf5/ cray-hdf5-parallel
     - hpctoolkit
     - hypre
-    - kokkos-kernels # +rocm amdgpu_target=gfx908
-    - kokkos # +rocm amdgpu_target=gfx908 , +/- omp variants
+    - kokkos-kernels
+    - kokkos +rocm amdgpu_target=gfx908 # +/- omp variants
     - legion
     - libquo
     - mercury
@@ -360,6 +360,9 @@ spack:
     lmod:
       core_compilers: [gcc@7.5.0]
       all:
+        # suffixes:
+        #   ^python@2.0:2.99: py2
+        #   ^python@3.0:3.99: py3
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
