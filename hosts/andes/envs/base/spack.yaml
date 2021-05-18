@@ -45,6 +45,7 @@ spack:
     - papi
     - gdb
     - libzmq
+    - libiconv
     - gnupg
     - gsl
     - nco~mpi-deps
@@ -52,6 +53,7 @@ spack:
     - imagemagick ^ncurses+termlib
     - cuda@10.2.89
     - cuda@11.0.2
+    - ninja
     - r
     - r@4.0.0
     # - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
@@ -64,6 +66,7 @@ spack:
     - darshan-util
     - grads+netcdf+hdf5
     - hpcviewer
+    - pandoc
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -642,6 +645,7 @@ spack:
       - ncview%gcc@8.3.1
       - ncl%gcc@8.3.1+mpi
       - ncl%gcc@8.3.1~mpi
+      - libiconv@1.16%gcc@8.3.1
     tcl:
       hash_length: 3
       naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
