@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+# sw-manifest* logs used for comparison by this script are generated with spack
+# v0.16+ using the command:
+# ```
+# spack find --no-groups --format "{name}@{version}" \
+#     | sort \
+#     | uniq > /sw/sources/facility-spack/summit/logs/sw-manifest.summit.20210517.no-comp.log
+
 import pprint
 
 
@@ -9,9 +16,10 @@ def parse_file(path):
         specs = f.readlines()
     return specs
 
-NEW_SPECS = '/sw/sources/facspack/sw-manifest.summit.20201202.no-comp.log'
-#NEW_SPECS = '/sw/sources/facspack/sw-manifest.summit.20201116.no-comp.log'
-OLD_SPECS = '/sw/sources/facspack/sw-manifest.summit-rhel7.20201116.no-comp.log'
+NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20210517.no-comp.log'
+# NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20201202.no-comp.log'
+# NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20201116.no-comp.log'
+OLD_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit-rhel7.20201116.no-comp.log'
 
 def main():
     new_specs = parse_file(NEW_SPECS)
@@ -54,14 +62,13 @@ def main():
         removed = pkg.get('removed')
         persisted = pkg.get('persisted', set())
         installed = added.union(persisted)
-        if not installed:
-            print("- {0}".format(name))
-            if installed:
-                print("    installed: {0}".format(', '.join(sorted(installed))))
-            if added:
-                print("    added:     {0}".format(', '.join(sorted(added))))
-            if removed:
-                print("    removed:   {0}".format(', '.join(sorted(removed))))
+        print("- {0}".format(name))
+        if installed:
+            print("    installed: {0}".format(', '.join(sorted(installed))))
+        if added:
+            print("    added:     {0}".format(', '.join(sorted(added))))
+        if removed:
+            print("    removed:   {0}".format(', '.join(sorted(removed))))
     # pp = pprint.PrettyPrinter(indent=4).pprint
     # pp(changelog)
 
