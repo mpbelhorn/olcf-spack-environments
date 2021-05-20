@@ -171,7 +171,6 @@ spack:
       - - $core_compiler
       - - arch=linux-sles15-x86_64
       exclude:
-      - rocprofiler-dev@4.1.0 ## not yet available 2021-04-14
       - rocm-smi@4.1.0   ## Replaced with rocm-smi-lib
       - hipfft@4.0.0     ## Not available in spack
   - e4s_specs:

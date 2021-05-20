@@ -16,6 +16,7 @@ projections:
   rocm-device-libs: ''
   miopen-hip: ''
   rocm-cmake: ''
+  rocprofiler-dev: ''
   hsakmt-roct: ''
   hsa-rocr-dev: ''
   rocm-clang-ocl: ''

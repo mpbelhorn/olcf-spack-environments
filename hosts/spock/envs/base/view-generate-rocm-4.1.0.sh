@@ -39,43 +39,43 @@ fi
 # View conflicts are resolved in first-come:first-used manner. Conflicting specs
 # must be added to the view in multiple rounds
 VIEW_SPECS_ROUND_ONE="\
-  'hip@${ROCM_VERSION}' \
-  'hip-rocclr@${ROCM_VERSION}' \
-  'comgr@${ROCM_VERSION}' \
-  'rocm-cmake@${ROCM_VERSION}' \
-  'rocm-openmp-extras@${ROCM_VERSION}' \
-  'rocm-device-libs@${ROCM_VERSION}' \
-  'hsa-rocr-dev@${ROCM_VERSION}' \
-  'hsakmt-roct@${ROCM_VERSION}' \
-  'rocminfo@${ROCM_VERSION}' \
-  'rccl@${ROCM_VERSION}' \
-  'hipblas@${ROCM_VERSION}' \
-  'hipfft@${ROCM_VERSION}' \
-  'hipcub@${ROCM_VERSION}' \
-  'hipsparse@${ROCM_VERSION}' \
-  'hipfort@${ROCM_VERSION}' \
-  'rocm-clang-ocl@${ROCM_VERSION}' \
-  'rocm-opencl-runtime@${ROCM_VERSION}' \
-  'rocblas@${ROCM_VERSION}' \
-  'rocfft@${ROCM_VERSION}' \
-  'rocrand@${ROCM_VERSION}' \
-  'rocthrust@${ROCM_VERSION}' \
-  'rocsolver@${ROCM_VERSION}' \
-  'rocsparse@${ROCM_VERSION}' \
-  'rocprim@${ROCM_VERSION}' \
-  'rocm-smi-lib@${ROCM_VERSION}' \
-  'miopen-hip@${ROCM_VERSION}' \
-  'rocalution@${ROCM_VERSION}' \
-  'rocm-gdb@${ROCM_VERSION}'"
+  'hip@${ROCM_VERSION}%gcc@7.5.0' \
+  'hip-rocclr@${ROCM_VERSION}%gcc@7.5.0' \
+  'comgr@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-cmake@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-openmp-extras@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-device-libs@${ROCM_VERSION}%gcc@7.5.0' \
+  'hsa-rocr-dev@${ROCM_VERSION}%gcc@7.5.0' \
+  'hsakmt-roct@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocminfo@${ROCM_VERSION}%gcc@7.5.0' \
+  'rccl@${ROCM_VERSION}%gcc@7.5.0' \
+  'hipblas@${ROCM_VERSION}%gcc@7.5.0' \
+  'hipfft@${ROCM_VERSION}%gcc@7.5.0' \
+  'hipcub@${ROCM_VERSION}%gcc@7.5.0' \
+  'hipsparse@${ROCM_VERSION}%gcc@7.5.0' \
+  'hipfort@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-clang-ocl@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-opencl-runtime@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocblas@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocfft@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocrand@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocthrust@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocsolver@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocsparse@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocprim@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocprofiler-dev@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-smi-lib@${ROCM_VERSION}%gcc@7.5.0' \
+  'miopen-hip@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocalution@${ROCM_VERSION}%gcc@7.5.0' \
+  'rocm-gdb@${ROCM_VERSION}%gcc@7.5.0'"
 
 VIEW_SPECS_ROUND_TWO="\
-  'llvm-amdgpu@${ROCM_VERSION}'"
+  'llvm-amdgpu@${ROCM_VERSION}%gcc@7.5.0'"
 
 ## Excluded or missing specs
-  # 'hipify-clang@${ROCM_VERSION}' \
-  # 'rocm-opencl@${ROCM_VERSION}' \
-  # 'rocm-smi@${ROCM_VERSION}' \
-  # 'rocprofiler-dev@${ROCM_VERSION}' \
+  # 'hipify-clang@${ROCM_VERSION}%gcc@7.5.0' \
+  # 'rocm-opencl@${ROCM_VERSION}%gcc@7.5.0' \
+  # 'rocm-smi@${ROCM_VERSION}%gcc@7.5.0' \
 
 [ ! -d "${VIEW_PREFIX}" ] && mkdir -p "${VIEW_PREFIX}"
 TMP_VIEW_ROOT=$(mktemp -d -p ${VIEW_PREFIX} XXXXXX)
