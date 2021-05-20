@@ -728,48 +728,6 @@ spack:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
       extra_rpaths: []
-  # - compiler:
-  #     spec: gcc@10.2.0-bare
-  #     paths:
-  #       cc: /opt/gcc/10.2.0/snos/bin/gcc
-  #       cxx: /opt/gcc/10.2.0/snos/bin/g++
-  #       f77: /opt/gcc/10.2.0/snos/bin/gfortran
-  #       fc: /opt/gcc/10.2.0/snos/bin/gfortran
-  #     flags: {}
-  #     operating_system: sles15
-  #     target: x86_64
-  #     modules: []
-  #     environment: {}
-  #     extra_rpaths:
-  #     - /opt/gcc/10.2.0/snos/lib64
-  # - compiler:
-  #     spec: gcc@9.3.0-bare
-  #     paths:
-  #       cc: /opt/gcc/9.3.0/snos/bin/gcc
-  #       cxx: /opt/gcc/9.3.0/snos/bin/g++
-  #       f77: /opt/gcc/9.3.0/snos/bin/gfortran
-  #       fc: /opt/gcc/9.3.0/snos/bin/gfortran
-  #     flags: {}
-  #     operating_system: sles15
-  #     target: x86_64
-  #     modules: []
-  #     environment: {}
-  #     extra_rpaths:
-  #     - /opt/gcc/9.3.0/snos/lib64
-  # - compiler:
-  #     spec: gcc@8.1.0-bare
-  #     paths:
-  #       cc: /opt/gcc/8.1.0/snos/bin/gcc
-  #       cxx: /opt/gcc/8.1.0/snos/bin/g++
-  #       f77: /opt/gcc/8.1.0/snos/bin/gfortran
-  #       fc: /opt/gcc/8.1.0/snos/bin/gfortran
-  #     flags: {}
-  #     operating_system: sles15
-  #     target: x86_64
-  #     modules: []
-  #     environment: {}
-  #     extra_rpaths:
-  #     - /opt/gcc/8.1.0/snos/lib64
   - compiler:
       spec: gcc@9.3.0
       paths:
@@ -813,21 +771,8 @@ spack:
       operating_system: sles15
       target: any
       modules:
-      - PrgEnv-cray ## /8.0.0 ?
+      - PrgEnv-cray
       - cce/11.0.4                             ## Override PrgEnv default
       - craype-accel-amd-gfx908                ## Base performance option
-      # - cce/11.0.4                           ## Default auto-loaded by PrgEnv-Cray
-      ## - rocm/3.7.0                          ## Not on Spock yet (2021-04-06)
-      # - craype/2.7.6                         ## handled by PrgEnv-Cray
-      # - craype-x86-rome                      ## handled by PrgEnv-Cray
-      # - libfabric/1.11.0.3.71                ## handled by PrgEnv-Cray
-      # - craype-network-ofi                   ## handled by PrgEnv-Cray
-      # - cray-dsmml/0.1.4                     ## handled by PrgEnv-Cray
-      # - perftools-base/21.02.0               ## handled by PrgEnv-Cray
-      # - xpmem/2.2.40-2.1_2.7_g3cf3325.shasta ## handled by PrgEnv-Cray
-      # - cray-mpich/8.1.4                     ## handled by PrgEnv-Cray
-      # - cray-libsci/21.04.1.1                ## handled by PrgEnv-Cray
-      # - cray-pmi/6.0.10                      ## handled by PrgEnv-Cray
-      # - cray-pmi-lib/6.0.10                  ## handled by PrgEnv-Cray
       environment: {}
       extra_rpaths: []
