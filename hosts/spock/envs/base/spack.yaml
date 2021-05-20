@@ -499,6 +499,20 @@ spack:
       verbose: true
       whitelist: []
       blacklist:
+      - binutils
+      - boost%gcc cxxstd=98
+      - camp~rocm #FIXME suffix
+      - dyninst%gcc ^elfutils+bzip2
+      - elfutils+bzip2
+      - gasnet~pshm
+      - gettext
+      - kokkos~rocm
+      - libunwind+xz
+      - libxml2 ^xz~pic
+      - xz~pic
+      - z3 ^libuuid
+      - gobject-introspection ^cairo+X # FIXME suffix
+      ###
       - berkeley-db
       - cray-mpich
       - glib
