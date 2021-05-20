@@ -23,7 +23,7 @@ spack:
     - go
     - screen
     - vim
-    - emacs ~X
+    - emacs +X
     - nano
     - gnuplot +X
     # - subversion ## build failure v0.16.0-->HEAD
@@ -718,7 +718,8 @@ spack:
       target: any
       modules: []
       environment:
-        unset: []
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
       extra_rpaths: []
   - compiler:
       spec: gcc@7-os
