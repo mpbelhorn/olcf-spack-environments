@@ -185,6 +185,30 @@ spack:
       - dyninst%cce
       - hpctoolkit%cce
       - plasma%cce
+      - caliper%cce
+      - flecsi%cce
+      - ginkgo%cce
+      - globalarrays%cce
+      - hdf5%cce
+      - hypre%cce
+      - kokkos%cce
+      - legion%cce
+      - mfem%cce
+      - openpmd-api%cce
+      - pdt%cce
+      - petsc%cce
+      - phist%gcc@10.2.0
+      - phist%cce
+      - precice%cce
+      - raja%cce
+      - slate%cce
+      - slepc%cce
+      - strumpack%gcc+rocm
+      - superlu%cce
+      - superlu-dist%cce
+      - tasmanian%cce
+      - veloc%gcc@10.2.0
+      - veloc%cce
   specs:
   - $core_specs
   - $rocm_specs
