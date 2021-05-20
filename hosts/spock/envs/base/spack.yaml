@@ -122,11 +122,9 @@ spack:
     - precice
     - pumi
     - qthreads
-    # - raja
     - raja+rocm~openmp amdgpu_target=gfx908
     - slate~cuda
     - slepc
-    # - strumpack~slate ^openblas threads=openmp
     - strumpack~slate +rocm amdgpu_target=gfx908 ^openblas threads=openmp
     - sundials
     - superlu
@@ -151,13 +149,6 @@ spack:
     # - trilinos # @12.14.1+dtk+intrepid2+shards   ## build failure
     # - turbine                                    ## build failure
     # - upcxx
-  - general_compute_packages:
-    - netlib-lapack
-    - netlib-scalapack ^netlib-lapack
-    - fftw +mpi+openmp
-    - hdf5 ~mpi
-    - hdf5 +mpi
-    - scorep
   - core_specs:
     - matrix:
       - - $core_packages
