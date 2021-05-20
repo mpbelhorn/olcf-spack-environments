@@ -34,6 +34,7 @@ spack:
     - libzmq
     - gnupg
     - python
+    - darshan-util
     # - valgrind ~mpi~boost~ubsan
     # - gsl
     # - nco~mpi-deps
@@ -92,7 +93,6 @@ spack:
     - bolt
     - caliper
     # - darshan-runtime
-    # - darshan-util
     - dyninst
     - faodel
     - flecsi+cinch
