@@ -26,7 +26,7 @@ spack:
     - emacs +X
     - nano
     - gnuplot +X
-    # - subversion ## build failure v0.16.0-->HEAD
+    - subversion
     - mercurial
     - ccache
     - papi
