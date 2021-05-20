@@ -38,7 +38,6 @@ spack:
     # - valgrind ~mpi~boost~ubsan
     # - gsl
     # - nco~mpi-deps
-    # - libfabric fabrics=verbs
     # - imagemagick ^ncurses+termlib
     # - r
     # - r@4.0.0
