@@ -204,7 +204,7 @@ spack:
   - $core_specs
   - $rocm_specs
   - $e4s_specs
-  - scorep%gcc@9.3.0 arch=cray-sles15-zen2
+  # - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
   #############################################################################
   mirrors:
     facility_builds: /sw/spock/spack-env/mirrors/builds
