@@ -74,7 +74,7 @@ spack:
     - rocthrust
     - rocsolver
     - rocsparse
-    # - roctracer-dev ## python2 dependency error
+    - roctracer-dev ## python2 dependency error
     - rocprofiler-dev
     - rocprim
     - rocm-smi
@@ -156,13 +156,15 @@ spack:
   - rocm_specs:
     - matrix:
       - - $rocm_packages
-      - - '@4.1.0'
-        - '@4.0.0'
+      - - '@4.2.0'
+        - '@4.1.0'
+        # - '@4.0.0'
       - - $core_compiler
       - - arch=linux-sles15-x86_64
       exclude:
-      - rocm-smi@4.1.0   ## Replaced with rocm-smi-lib
-      - hipfft@4.0.0     ## Not available in spack
+      - 'roctracer-dev@:4.1.0'   ## depends on Python2
+      - 'rocm-smi@4.1.0:'   ## Replaced with rocm-smi-lib
+      - hipfft@4.0.0        ## Not available in spack
   - e4s_specs:
     - matrix:
       - - $e4s_packages
@@ -170,6 +172,7 @@ spack:
         - '%gcc@9.3.0'
         - '%cce@11.0.4'
       - - ^cray-mpich
+      - - ^hip@4.1.0
       - - arch=cray-sles15-zen2
       exclude: 
       - dyninst%cce
@@ -203,7 +206,7 @@ spack:
   - $core_specs
   - $rocm_specs
   - $e4s_specs
-  # - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
+  - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
   #############################################################################
   mirrors:
     facility_builds: /sw/spock/spack-env/mirrors/builds
@@ -509,7 +512,7 @@ spack:
         load: []
         environment:
           unset: []
-      blacklist_implicits: false
+      blacklist_implicits: true
       verbose: true
       whitelist: []
       blacklist:
