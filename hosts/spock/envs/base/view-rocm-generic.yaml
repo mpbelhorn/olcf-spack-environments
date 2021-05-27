@@ -1,0 +1,31 @@
+projections:
+  rccl: ''
+  hipblas: ''
+  hipfft: ''
+  hipsparse: ''
+  hipcub: ''
+  rocblas: ''
+  rocfft: ''
+  rocprim: ''
+  rocrand: ''
+  rocsolver: ''
+  rocsparse: ''
+  rocthrust: ''
+  rocalution: ''
+  comgr: ''
+  rocm-device-libs: ''
+  miopen-hip: ''
+  rocm-cmake: ''
+  rocprofiler-dev: ''
+  roctracer-dev: ''
+  hsakmt-roct: ''
+  hsa-rocr-dev: ''
+  rocm-clang-ocl: ''
+  rocminfo: ''
+  rocm-openmp-extras: llvm
+  llvm-amdgpu: llvm
+  hip-rocclr: rocclr
+  rocm-smi-lib: rocm_smi
+  rocm-opencl-runtime: opencl
+  all: '{name}'
+

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROCM_VERSION="4.1.0"
+ROCM_VERSION="4.2.0"
 VIEW_ROOT="/sw/spock/spack-envs/views/rocm-${ROCM_VERSION}"
 # Alternate view for debugging
 # VIEW_ROOT="/tmp/belhorn/view_tests/rocm-${ROCM_VERSION}"
@@ -38,7 +38,7 @@ fi
 
 # Specific specs, when needed are selected from the output of:
 # ```
-# ROCM_VERSION=4.1.0 . ./find-rocm-specs.sh 
+# ROCM_VERSION=4.2.0 . ./find-rocm-specs.sh 
 # ```
 
 # View conflicts are resolved in first-come:first-used manner. Conflicting specs
@@ -53,7 +53,7 @@ SPECS+=" 'hipfft@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'hipfort@${ROCM_VERSION}%gcc@7.5.0'"
 # SPECS+=" 'hipify-clang@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'hipsparse@${ROCM_VERSION}%gcc@7.5.0'"
-SPECS+=" 'hsa-rocr-dev@${ROCM_VERSION}%gcc@7.5.0'"
+SPECS+=" 'hsa-rocr-dev@${ROCM_VERSION}%gcc@7.5.0 /7lwijot'"
 SPECS+=" 'hsakmt-roct@${ROCM_VERSION}%gcc@7.5.0'"
 # SPECS+=" 'llvm-amdgpu@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'miopen-hip@${ROCM_VERSION}%gcc@7.5.0'"
@@ -63,7 +63,7 @@ SPECS+=" 'rocblas@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocfft@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-clang-ocl@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-cmake@${ROCM_VERSION}%gcc@7.5.0'"
-SPECS+=" 'rocm-device-libs@${ROCM_VERSION}%gcc@7.5.0'"
+SPECS+=" 'rocm-device-libs@${ROCM_VERSION}%gcc@7.5.0 /fqhh65d'"
 SPECS+=" 'rocm-gdb@${ROCM_VERSION}%gcc@7.5.0'"
 # SPECS+=" 'rocm-opencl@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-opencl-runtime@${ROCM_VERSION}%gcc@7.5.0'"
@@ -77,10 +77,10 @@ SPECS+=" 'rocrand@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocsolver@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocsparse@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocthrust@${ROCM_VERSION}%gcc@7.5.0'"
-# SPECS+=" 'roctracer-dev@${ROCM_VERSION}%gcc@7.5.0'" ## Not installed for v4.1.0
+SPECS+=" 'roctracer-dev@${ROCM_VERSION}%gcc@7.5.0'"
 
 VIEW_SPECS_ROUND_ONE="${SPECS}"
-VIEW_SPECS_ROUND_TWO="'llvm-amdgpu@${ROCM_VERSION}%gcc@7.5.0'"
+VIEW_SPECS_ROUND_TWO="'llvm-amdgpu@${ROCM_VERSION}%gcc@7.5.0+openmp'"
 
 [ ! -d "${VIEW_PREFIX}" ] && mkdir -p "${VIEW_PREFIX}"
 TMP_VIEW_ROOT=$(mktemp -d -p ${VIEW_PREFIX} XXXXXX)
