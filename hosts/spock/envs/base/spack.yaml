@@ -512,7 +512,7 @@ spack:
         load: []
         environment:
           unset: []
-      blacklist_implicits: true
+      blacklist_implicits: false
       verbose: true
       whitelist: []
       blacklist:
