@@ -134,7 +134,7 @@ spack:
     - tasmanian
     - umap
     - umpire # +rocm amdgpu_target=gfx908
-    - veloc
+    # - veloc # Fails with `error: too many arguments to function 'int AXL_Init()'`
     - zfp
     # - ascent ^cmake@3.18.2 ## build failure with latest cmake
     # - axom                                       ## build failure
@@ -206,7 +206,7 @@ spack:
   - $core_specs
   - $rocm_specs
   - $e4s_specs
-  - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
+  # - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
   #############################################################################
   mirrors:
     facility_builds: /sw/spock/spack-env/mirrors/builds
