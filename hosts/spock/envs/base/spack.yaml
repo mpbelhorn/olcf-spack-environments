@@ -686,7 +686,7 @@ spack:
     checksum: true
     dirty: false
     build_language: C
-    build_jobs: 16
+    build_jobs: 24
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout:
