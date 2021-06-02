@@ -13,14 +13,17 @@ spack:
   - xl_compilers:
     - '%xl@16.1.1-10'
   - llvm_compilers:
+    - '%clang@12.0.0-0'
     - '%clang@10.0.1-0'
   - nv_compilers:
+    - '%nvhpc@21.3'
     - '%nvhpc@21.2'
     - '%nvhpc@20.9'
     - '%pgi@20.4'
     - '%pgi@20.1'
   - all_compilers:
     - $gcc_compilers
+    - '%gcc@10.2.0'
     - $xl_compilers
     - $llvm_compilers
     - $nv_compilers
