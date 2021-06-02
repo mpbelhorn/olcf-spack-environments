@@ -136,6 +136,11 @@ export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/modules"
 mkdir -p "${FACSPACK_ENV}/.mcache"
 mkdir -p "${FACSPACK_ENV_MODULEROOT}"
 if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
+  echo "Checking static modulefiles..."
+  (cd ${FACSPACK_ENV_MODULEROOT}/site && md5sum --check <(cd ${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site && find . -type f -exec md5sum {} + | sort -k 2))
+  diff --color=always -u --recursive \
+     "${FACSPACK_ENV_MODULEROOT}/site" \
+     "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site"
   cp -dRu --preserve=mode,timestamps \
      "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
      "${FACSPACK_ENV_MODULEROOT}/."
