@@ -760,14 +760,6 @@ spack:
         load: []
         environment:
           unset: []
-      darshan-runtime:
-        suffixes: []
-        filter:
-          environment_blacklist: []
-        load: []
-        environment:
-          unset: []
-        conflict: []
       blacklist_implicits: false
       verbose: true
       whitelist: []
