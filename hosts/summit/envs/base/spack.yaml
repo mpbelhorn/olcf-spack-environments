@@ -61,9 +61,8 @@ spack:
     # - r
     - julia+cxx
   - core_only_compute_packages:
-    - darshan-runtime
-    - darshan-runtime hdf5=pre1.10
-    - darshan-runtime hdf5=post1.10
+    - darshan-runtime@3.2.1
+    - darshan-runtime@3.3.0
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
     - gdrcopy
@@ -617,7 +616,7 @@ spack:
       providers: {}
       compiler: []
     darshan-runtime:
-      variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/summit
+      variants: +lsf+hdf5+grouplogs logpath=/gpfs/alpine/darshan/summit
       buildable: true
       version: []
       target: []
@@ -752,9 +751,7 @@ spack:
         environment:
           unset: []
       darshan-runtime:
-        suffixes:
-          hdf5=pre1.10: hdf5pre110
-          hdf5=post1.10: hdf5post110
+        suffixes: []
         filter:
           environment_blacklist: []
         load: []

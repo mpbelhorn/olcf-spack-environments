@@ -1,4 +1,4 @@
-# Copyright 2013-2020 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2021 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -20,7 +20,10 @@ class DarshanRuntime(Package):
 
     maintainers = ['shanedsnyder', 'carns', 'mpbelhorn']
 
-    version('develop', branch='master')
+    version('master', branch='master', submodules=True)
+    version('3.3.0',      sha256='2e8bccf28acfa9f9394f2084ec18122c66e45d966087fa2e533928e824fcb57a', preferred=True)
+    version('3.3.0-pre2', sha256='0fc09f86f935132b7b05df981b05cdb3796a1ea02c7acd1905323691df65e761')
+    version('3.3.0-pre1', sha256='1c655359455b5122921091bab9961491be58a5f0158f073d09fe8cc772bd0812')
     version('3.2.1', sha256='d63048b7a3d1c4de939875943e3e7a2468a9034fcb68585edbc87f57f622e7f7')
     version('3.2.0', sha256='4035435bdc0fa2a678247fbf8d5a31dfeb3a133baf06577786b1fe8d00a31b7e')
     version('3.1.8', sha256='3ed51c8d5d93b4a8cbb7d53d13052140a9dffe0bc1a3e1ebfc44a36a184b5c82')
@@ -31,20 +34,20 @@ class DarshanRuntime(Package):
 
     depends_on('mpi', when='+mpi')
     depends_on('zlib')
+    depends_on('hdf5', when='+hdf5')
+    depends_on('papi', when='+apxc')
 
     variant('slurm', default=False, description='Use Slurm Job ID')
     variant('cobalt', default=False, description='Use Cobalt Job Id')
     variant('pbs', default=False, description='Use PBS Job Id')
     variant('lsf', default=False, description='Use LSF Job Id')
     variant('mpi', default=True, description='Compile with MPI support')
+    variant('hdf5', default=False, description='Compile with HDF5 module')
+    variant('apmpi', default=False, description='Compile with AutoPerf MPI module')
+    variant('apmpi_sync', default=False, description='Compile with AutoPerf MPI module (with collective synchronization timing)')
+    variant('apxc', default=False, description='Compile with AutoPerf XC module')
     variant('grouplogs', default=False,
             description='Make logs files group-readable')
-    variant(
-        'hdf5', default='none',
-        description='Multithreading support',
-        values=('pre1.10', 'post1.10', 'none'),
-        multi=False
-    )
     variant(
         'logpath',
         default='default',
@@ -52,6 +55,15 @@ class DarshanRuntime(Package):
         values=lambda x: True,
         multi=False
     )
+    conflicts('+hdf5', when='@:3.1.8',
+              msg='+hdf5 variant only available starting from version 3.2.0')
+    conflicts('+apmpi', when='@:3.2.1',
+              msg='+apmpi variant only available starting from version 3.3.0')
+    conflicts('+apmpi_sync', when='@:3.2.1',
+              msg='+apmpi variant only available starting from version 3.3.0')
+    conflicts('+apxc', when='@:3.2.1',
+              msg='+apxc variant only available starting from version 3.3.0')
+
     patch('darshan-prepend.patch')
     patch('darshan-pkgconfig-cray.patch', when='platform=cray')
 
@@ -73,29 +85,38 @@ class DarshanRuntime(Package):
             options = ['CC=%s' % spec['mpi'].mpicc]
         else:
             options = ['--without-mpi']
-        options.extend(['--with-mem-align=8',
-                        '--with-jobid-env=%s' % job_id,
-                        '--with-zlib=%s' % spec['zlib'].prefix])
+
+        if '+hdf5' in spec:
+            options.extend(['--enable-hdf5-mod=%s' % spec['hdf5'].prefix])
+
+        if '+apmpi' in spec:
+            options.extend(['--enable-apmpi-mod'])
+        if '+apmpi_sync' in spec:
+            options.extend(['--enable-apmpi-mod',
+                            '--enable-apmpi-coll-sync'])
+        if '+apxc' in spec:
+            options.extend(['--enable-apxc-mod'])
 
         if spec.satisfies('+grouplogs'):
             options.append('--enable-group-readable-logs')
         else:
             options.append('--disable-group-readable-logs')
 
+        logpath_option = '--with-log-path-by-env=DARSHAN_LOG_DIR_PATH'
         target_logpath = spec.variants['logpath'].value
         if target_logpath == 'default':
             # Set DARSHAN_LOG_DIR_PATH and DARSHAN_LOGFILE_PREPEND in modules.yaml.
-            options.append('--with-log-path-by-env=DARSHAN_LOG_DIR_PATH')
+            pass
         elif os.path.isabs(target_logpath) and os.path.isdir(target_logpath):
-            options.append('--with-log-path=%s' % spec.variants['logpath'].value)
+           logpath_option = '--with-log-path=%s' % spec.variants['logpath'].value
         else:
             raise InstallError("Target log path directory '%s' does not exist."
                     % target_logpath)
 
-        if spec.satisfies('hdf5=pre1.10'):
-            options.append('--enable-HDF5-pre-1.10')
-        elif spec.satisfies('hdf5=post1.10'):
-            options.append('--enable-HDF5-post-1.10')
+        options.extend(['--with-mem-align=8',
+                        logpath_option,
+                        '--with-jobid-env=%s' % job_id,
+                        '--with-zlib=%s' % spec['zlib'].prefix])
 
         with working_dir('spack-build', create=True):
             configure = Executable('../darshan-runtime/configure')
