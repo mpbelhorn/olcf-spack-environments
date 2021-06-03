@@ -250,6 +250,8 @@ spack:
     - matrix:
       - - $gcc_only_compute_packages
       - - $gcc_compilers
+      exclude:
+      - '%gcc@10.2.0 ^cuda@:11.0.3'
     - matrix:
       - - $general_compute_packages
         - $e4s_20.10_packages
