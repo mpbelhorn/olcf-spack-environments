@@ -239,6 +239,7 @@ spack:
   - core_compute_specs:
     - matrix:
       - - $core_only_compute_packages
+        - spectral@20210514
       - - $core_compiler
   - gcc_specs:
     - matrix:
@@ -632,6 +633,8 @@ spack:
       target: []
       providers: {}
       compiler: []
+    spectral:
+      variants: ~examples prologue_dir=/sw/summit/spectral/usr/local
     all:
       compiler: [gcc@8.3.1, gcc, clang, xl, nvhpc, pgi]
       providers:
