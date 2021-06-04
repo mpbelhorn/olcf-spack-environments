@@ -511,6 +511,8 @@ spack:
       target: []
       providers: {}
       compiler: []
+    hpctoolkit:
+      variants: +cuda+mpi~papi
     tasmanian:
       variants: +cuda
       buildable: true
