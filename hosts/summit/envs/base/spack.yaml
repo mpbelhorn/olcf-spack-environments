@@ -69,10 +69,6 @@ spack:
     - gromacs +hwloc+cuda ^cuda@10.2.89
     - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
     - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
-  - gcc_only_compute_packages:
-    - raja
-    - papi
-    - nco
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack
@@ -248,34 +244,27 @@ spack:
         - netlib-scalapack ^openblas threads=openmp
       - - '%gcc@9.3.0'
     - matrix:
-      - - $gcc_only_compute_packages
-      - - $gcc_compilers
-      exclude:
-      - '%gcc@10.2.0 ^cuda@:11.0.3'
-    - matrix:
       - - $general_compute_packages
+        - nco
         - $e4s_20.10_packages
         - $e4s_21.02_packages
       - - '%gcc@8.3.1'
         - '%gcc@9.1.0'
         - '%gcc@9.3.0'
       - - ^cuda@11.0.3
-      # exclude:
-      # - globalarrays%gcc@10.2.0
-      # - trilinos%gcc@10.2.0 # ^mumps
-      # - adios2%gcc@10.2.0
-      # - openpmd-api@0.12.0%gcc@10.2.0 # ^adios2
-      # - rempi%gcc@10.2.0 # code error
-      # # - veloc%gcc@10.2.0 # ^kvtree tests
-      # - papi%gcc@10.2.0 # cuda11/gcc10 incompat
-      # - papi@6.0.0.1%gcc@10.2.0 # cuda11/gcc10 incompat
-      # - '%gcc@10.2.0 ^cuda@:11.0.3'
+      exclude:
+      - '%gcc@10.2.0 ^cuda@:11.0.3'
     - matrix:
       - - $general_compute_packages
         - $e4s_20.10_packages
         - $e4s_21.02_packages
       - - '%gcc@10.2.0'
       - - ^cuda@11.1.1
+      exclude:
+      - globalarrays%gcc@10.2.0
+      - rempi@1.1.0%gcc@10.2.0    # code error
+      - mercury@1.0.1%gcc@10.2.0  # code error
+      - slate@2020.10.00%gcc@10.2.0 # broken custom ICL BLASFinder.cmake macro >:(
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
