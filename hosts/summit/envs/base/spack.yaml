@@ -58,7 +58,7 @@ spack:
     - patchelf
     - libzmq
     - makedepend
-    # - r
+    - r@4.0.5
     - julia+cxx
   - core_only_compute_packages:
     - darshan-runtime@3.2.1
