@@ -643,9 +643,9 @@ spack:
     lmod:
       core_compilers: [gcc@8.3.1]
       all:
-        suffixes:
-          ^python@2.0:2.99: py2
-          ^python@3.0:3.99: py3
+        # suffixes:
+        #   ^python@2.0:2.99: py2
+        #   ^python@3.0:3.99: py3
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
@@ -702,6 +702,7 @@ spack:
         suffixes:
           boost cxxstd=14: cxx14
           boost cxxstd=17: cxx17
+          boost visibility=global: global_symbols
         filter:
           environment_blacklist: []
         conflict: []
@@ -730,6 +731,7 @@ spack:
         suffixes:
           hpx cxxstd=14: cxx14
           hpx cxxstd=17: cxx17
+          hpx ^boost@1.72.0: boost1.72.0
         filter:
           environment_blacklist: []
         conflict: []
@@ -754,6 +756,24 @@ spack:
         load: []
         environment:
           unset: []
+      qthreads:
+        suffixes:
+          qthreads scheduler=distrib: distrib
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      adios2:
+        suffixes:
+          adios2+python: py
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       papi:
         suffixes:
          papi~cuda: no_gpu
@@ -767,22 +787,89 @@ spack:
       verbose: true
       whitelist: []
       blacklist:
-      - python
-      - py-
-      - py-setuptools
-      - hypre+internal-superlu
-      - readline%clang
-      - sqlite%clang
-      - gdbm%clang
+      - '%gcc@8-os'
+      - adios2@2.6.0%clang@10.0.1-0~zfp
+      - adios2@2.6.0%gcc~zfp
+      - berkeley-db
       - cuda
-      - libfabric@1.9.1%gcc@8.3.1 fabrics=sockets,tcp,udp
+      - elfutils~bzip2
+      - gdbm%clang
+      - glib
+      - glproto
       - go-bootstrap
       - gtkplus
-      - openssl
+      - harfbuzz ^cairo~X
+      - help2man
+      - hypre+internal-superlu
+      - inputproto
+      - kbproto
+      - libassuan
+      - libdwarf
+      - libfabric@1.9.1%gcc@8.3.1 fabrics=sockets,tcp,udp
+      - libfontenc
+      - libgcrypt
+      - libgd
+      - libgpg-error
+      - libiconv
+      - libidn2
+      - libksba
+      - libpciaccess
+      - libpthread-stubs
+      - libsigsegv
+      - libsodium
       - libtool@2.4.2
-      - '%gcc@8-os'
-      - adios2@2.6.0%gcc~zfp
-      - adios2@2.6.0%clang@10.0.1-0~zfp
+      - libunistring
+      - libunwind~pic~xz
+      - libuuid
+      - libx11
+      - libxau
+      - libxcb
+      - libxdmcp
+      - libxext
+      - libxfont
+      - libxpm 
+      - libxslt
+      - lua
+      - m4
+      - meson
+      - mkfontdir
+      - mkfontscale
+      - mpfr
+      - mpich
+      - msgpack-c
+      - nasm
+      - ncurses
+      - npth
+      - numactl
+      - openssh
+      - openssl
+      - pango ^cairo~pdf
+      - pinentry
+      - pkgconf
+      - popt
+      - py-
+      - py-certifi
+      - py-docutils
+      - py-mako
+      - py-markupsafe
+      - py-msgpack
+      - py-pygments
+      - py-pyyaml
+      - py-setuptools
+      - py-setuptools
+      - py-virtualenv
+      - py-wheel
+      - python
+      - readline
+      - slurm
+      - tcl
+      - tcsh
+      - util-linux-uuid
+      - util-macros
+      - xcb-proto
+      - xextproto
+      - xtrans
+      - xz~pic
       hash_length: 0
       hierarchy: []
       projections: {}
