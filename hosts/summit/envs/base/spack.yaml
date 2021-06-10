@@ -60,6 +60,7 @@ spack:
     - makedepend
     - r@4.0.5
     - julia+cxx
+    - hpcviewer@2021.03
   - core_only_compute_packages:
     - darshan-runtime@3.2.1
     - darshan-runtime@3.3.0
