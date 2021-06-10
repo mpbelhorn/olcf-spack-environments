@@ -108,7 +108,7 @@ spack:
     - gotcha@1.0.3
     - hdf5@1.10.6+mpi
     - hpctoolkit@2020.08.03
-    - hpx@1.5.1
+    - hpx@1.5.1 # FIXME: +cuda?
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
     - kokkos+openmp@3.2.00
@@ -177,7 +177,7 @@ spack:
     - gotcha@1.0.3
     - hdf5@1.10.7+mpi
     - hpctoolkit@2020.08.03
-    - hpx@1.6.0
+    - hpx@1.6.0 # FIXME: +cuda?
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
     - kokkos+openmp@3.2.00
@@ -271,8 +271,8 @@ spack:
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
-    - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0
-    - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0
+    - hpx %gcc@8.3.1 cxxstd=14 ^boost@1.70.0:1.72.0 # FIXME: +cuda?
+    - hpx %gcc@8.3.1 cxxstd=17 ^boost@1.70.0:1.72.0 # FIXME: +cuda?
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
