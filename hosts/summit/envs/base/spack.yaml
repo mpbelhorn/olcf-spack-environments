@@ -61,8 +61,10 @@ spack:
     - r@4.0.5
     - julia+cxx
     - hpcviewer@2021.03
+    - cube@4.6+gui
   - core_only_compute_packages:
     - darshan-runtime@3.2.1
+    - scorep@7.0+mpi+papi
     - darshan-runtime@3.3.0
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
