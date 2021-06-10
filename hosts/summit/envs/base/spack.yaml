@@ -47,7 +47,7 @@ spack:
     - libevent@2.1.8 +openssl
     - valgrind ~ubsan~mpi~boost
     - ccache
-    - papi
+    - papi~cuda
     - gdb
     - libzmq
     - gnupg
@@ -748,6 +748,15 @@ spack:
         suffixes:
           openblas threads=openmp: omp
           openblas threads=pthreads: pthreads
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
+      papi:
+        suffixes:
+         papi~cuda: no_gpu
         filter:
           environment_blacklist: []
         conflict: []
