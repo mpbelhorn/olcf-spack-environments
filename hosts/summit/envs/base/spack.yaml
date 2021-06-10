@@ -879,6 +879,8 @@ spack:
       core_specs:
       - magma@2.5.3%gcc@8.3.1 ^cuda@11.0.3
       - amgx%gcc@8.3.1 ^cuda@10.2.89
+      - darshan-runtime@3.2.1%gcc@8.3.1
+      - darshan-runtime@3.3.0%gcc@8.3.1
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
