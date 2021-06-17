@@ -139,7 +139,7 @@ spack:
     - rempi@1.1.0
     # - scr@2.0.0            ## slurm unavailable
     - slepc@3.14.0
-    # - stc@0.8.3            ## conflict: ppc64le
+    - stc@0.8.3            ## conflict: ppc64le
     - strumpack@5.0.0~slate
     - sundials@5.4.0
     - superlu-dist@6.3.1~cuda cuda_arch=none
@@ -210,7 +210,7 @@ spack:
     # - scr@2.0.0            ## slurm unavailable
     - slepc@3.14.0
     - slate@2020.10.00+cuda cuda_arch=70 ^openblas@0.3.5
-    # - stc@0.8.3            ## conflict: ppc64le
+    - stc@0.8.3            ## conflict: ppc64le
     - strumpack@5.1.1 ~slate ^openblas threads=openmp
     - sundials@5.7.0
     - superlu-dist@6.4.0+cuda cuda_arch=70
