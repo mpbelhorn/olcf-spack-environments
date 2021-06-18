@@ -274,7 +274,7 @@ spack:
   - $core_specs
   - $gcc_specs
   - $llvm_specs
-  - $aocc_specs
+  # - $aocc_specs
   - $intel_specs
   - $pgi_specs
   #############################################################################
