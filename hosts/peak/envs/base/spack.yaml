@@ -19,10 +19,11 @@ spack:
   - nv_compilers:
     - '%nvhpc@21.2'
     - '%nvhpc@20.9'
-    - '%pgi@20.1'
     - '%pgi@20.4'
+    - '%pgi@20.1'
   - all_compilers:
     - $gcc_compilers
+    - '%gcc@10.2.0'
     - $xl_compilers
     - $llvm_compilers
     - $nv_compilers
@@ -237,6 +238,7 @@ spack:
   - core_compute_specs:
     - matrix:
       - - $core_only_compute_packages
+        - spectral@20210514
       - - $core_compiler
   - gcc_specs:
     - matrix:
@@ -485,6 +487,84 @@ spack:
       target: []
       providers: {}
       compiler: []
+    icu4c:
+      buildable: true
+      version: [66.1]
+      target: []
+      providers: {}
+      compiler: []
+    strumpack:
+      variants: ~butterflypack+cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    camp:
+      variants: +cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    raja:
+      variants: +cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    hpctoolkit:
+      variants: +cuda+mpi~papi
+    tasmanian:
+      variants: +cuda
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    superlu-dist:
+      variants: +cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    sundials:
+      variants: +cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    upcxx:
+      variants: +cuda
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    umpire:
+      variants: ~examples~shared+cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    kokkos:
+      variants: +wrapper+cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
+    kokkos-kernels:
+      variants: +cuda cuda_arch=70
+      buildable: true
+      version: []
+      target: []
+      providers: {}
+      compiler: []
     hdf5:
       variants: +hl+cxx+fortran
       buildable: true
@@ -541,7 +621,7 @@ spack:
       providers: {}
       compiler: []
     darshan-runtime:
-      variants: +lsf+hdf5+grouplogs logpath=/gpfs/alpine/darshan/summit
+      variants: +lsf+hdf5+grouplogs logpath=/gpfs/alpine/darshan/peak
       buildable: true
       version: []
       target: []
@@ -727,16 +807,6 @@ spack:
         load: []
         environment:
           unset: []
-      darshan-runtime:
-        suffixes:
-          hdf5=pre1.10: hdf5pre110
-          hdf5=post1.10: hdf5post110
-        filter:
-          environment_blacklist: []
-        load: []
-        environment:
-          unset: []
-        conflict: []
       blacklist_implicits: false
       verbose: true
       whitelist: []
@@ -745,6 +815,7 @@ spack:
       - adios2@2.6.0%clang@10.0.1-0~zfp
       - adios2@2.6.0%gcc~zfp
       - berkeley-db
+      - cairo@1.16.0~X+fc+ft%gcc@8.3.1
       - cuda
       - elfutils~bzip2
       - gdbm%clang
@@ -797,6 +868,7 @@ spack:
       - numactl
       - openssh
       - openssl
+      - papi@6.0.0.1%gcc@8.3.1 ^cuda@11.1.1 # FIXME
       - pango ^cairo~pdf
       - pinentry
       - pkgconf
@@ -829,8 +901,10 @@ spack:
       hierarchy: []
       projections: {}
       core_specs:
-      - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
+      - magma@2.5.3%gcc@8.3.1 ^cuda@11.0.3
       - amgx%gcc@8.3.1 ^cuda@10.2.89
+      - darshan-runtime@3.2.1%gcc@8.3.1
+      - darshan-runtime@3.3.0%gcc@8.3.1
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
