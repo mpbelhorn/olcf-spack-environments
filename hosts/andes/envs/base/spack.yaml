@@ -153,6 +153,9 @@ spack:
     - matrix:
       - - $core_packages
       - - $core_compiler
+    - cudnn@7.6.5.32-10.2-linux-x64%gcc@8.3.1
+    - cudnn@8.0.4.30-11.0-linux-x64%gcc@8.3.1
+    - nccl@2.7.8-1%gcc@8.3.1 cuda_arch=30,32,35,37 ^cuda@10.2.89
   - gcc_specs:
     - matrix:
       - - $general_compute_packages
@@ -472,8 +475,6 @@ spack:
         suffixes:
           ^python@2.0:2.99: py2
           ^python@3.0:3.99: py3
-          ^cuda@10.2.89: cuda10
-          ^cuda@11.0.2: cuda11
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
@@ -491,6 +492,16 @@ spack:
           set:
             OMPI_MCA_btl: ^vader,openib,tcp
             OMPI_MCA_coll_hcoll_enable: '0'
+          unset: []
+      nccl:
+        suffixes:
+          ^cuda@10.2.0:10.2.99: cuda10.2
+          ^cuda@11.0.0:11.0.99: cuda11.0
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
           unset: []
       openblas:
         suffixes:
