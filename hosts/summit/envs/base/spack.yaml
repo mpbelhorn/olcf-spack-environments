@@ -880,7 +880,6 @@ spack:
       - py-pygments
       - py-pyyaml
       - py-setuptools
-      - py-setuptools
       - py-virtualenv
       - py-wheel
       - python
