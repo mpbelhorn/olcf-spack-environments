@@ -277,6 +277,7 @@ spack:
   # - $aocc_specs
   - $intel_specs
   - $pgi_specs
+  - openmpi%gcc@6.5.0
   #############################################################################
   mirrors:
     facility_builds: /sw/andes/spack-envs/mirrors/builds
@@ -774,6 +775,18 @@ spack:
         append_path:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
+      flags: {}
+  - compiler:
+      spec: gcc@6.5.0
+      operating_system: rhel8
+      modules: [gcc/6.5.0]
+      paths:
+        cc: /sw/andes/gcc/6.5.0/bin/gcc
+        cxx: /sw/andes/gcc/6.5.0/bin/g++
+        f77: /sw/andes/gcc/6.5.0/bin/gfortran
+        fc: /sw/andes/gcc/6.5.0/bin/gfortran
+      extra_rpaths: [/sw/andes/gcc/6.5.0/lib64]
+      environment: {}
       flags: {}
   - compiler:
       spec: gcc@9.3.0
