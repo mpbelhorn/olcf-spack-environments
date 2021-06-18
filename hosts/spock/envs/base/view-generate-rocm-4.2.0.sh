@@ -64,7 +64,9 @@ SPECS+=" 'rocfft@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-clang-ocl@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-cmake@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-device-libs@${ROCM_VERSION}%gcc@7.5.0 /fqhh65d'"
+# SPECS+=" 'rocm-device-libs@${ROCM_VERSION}%gcc@7.5.0 /kxhse6r'"
 SPECS+=" 'rocm-gdb@${ROCM_VERSION}%gcc@7.5.0'"
+SPECS+=" 'rocm-dbgapi@${ROCM_VERSION}%gcc@7.5.0'"
 # SPECS+=" 'rocm-opencl@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-opencl-runtime@${ROCM_VERSION}%gcc@7.5.0'"
 SPECS+=" 'rocm-openmp-extras@${ROCM_VERSION}%gcc@7.5.0'"
@@ -106,13 +108,16 @@ if [ "$?" -eq 0 ]; then
     # Handle special cases with spack making empty dirs in the view for relative
     # symlinks under a package's install prefix.
     [ -d "${TMP_VIEW_ROOT}/hsa/include/hsa" ] && rmdir --ignore-fail-on-non-empty "${TMP_VIEW_ROOT}/hsa/include/hsa"
+    [ -d "${TMP_VIEW_ROOT}/hip/include/hip/hcc_detail" ] \
+      && rmdir --ignore-fail-on-non-empty "${TMP_VIEW_ROOT}/hip/include/hip/hcc_detail"
     # FIXME - replace with a tarball or script.
     cp -vRP ${PATCH_LINKS}/bin \
             ${PATCH_LINKS}/include \
             ${PATCH_LINKS}/lib \
             ${PATCH_LINKS}/hsa \
             ${PATCH_LINKS}/oam \
-            -t ${TMP_VIEW_ROOT}
+            -t ${TMP_VIEW_ROOT} \
+      && ln -s amd_detail ${TMP_VIEW_ROOT}/hip/include/hip/hcc_detail
 
     if [ "$?" -eq 0 ]; then
       if [ -e "${_PREVIOUS_VIEW}.tmp" ]; then

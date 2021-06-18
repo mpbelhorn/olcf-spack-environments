@@ -21,6 +21,7 @@ projections:
   hsakmt-roct: ''
   hsa-rocr-dev: ''
   rocm-clang-ocl: ''
+  rocm-dbgapi: ''
   rocminfo: ''
   rocm-openmp-extras: llvm
   llvm-amdgpu: llvm
