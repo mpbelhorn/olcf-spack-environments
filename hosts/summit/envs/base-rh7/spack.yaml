@@ -828,6 +828,7 @@ spack:
       verbose: true
       whitelist: []
       blacklist:
+      - netlib-scalapack@2.1.0%gcc ^openblas@:0.3.14
       - '%gcc@4-os'
       - adios2@2.6.0%clang@10.0.1-0~zfp
       - adios2@2.6.0%gcc~zfp
