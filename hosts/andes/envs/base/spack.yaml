@@ -69,6 +69,7 @@ spack:
     - hpcviewer
     - pandoc
     - scorep+unwind
+    - scorep~unwind
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
@@ -622,6 +623,15 @@ spack:
         load: []
         environment:
           unset: []
+      scorep:
+        suffixes:
+          scorep+unwind: libunwind
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       r:
         suffixes:
           r+X: X
@@ -661,6 +671,7 @@ spack:
       - ncl%gcc@8.3.1~mpi
       - libiconv@1.16%gcc@8.3.1
       - scorep%gcc@8.3.1+unwind
+      - scorep%gcc@8.3.1~unwind
       whitelist: []
     tcl:
       hash_length: 3
