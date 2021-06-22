@@ -92,7 +92,7 @@ spack:
     - argobots
     - bolt
     - caliper
-    # - darshan-runtime
+    - darshan-runtime
     - dyninst
     - faodel
     - flecsi+cinch
