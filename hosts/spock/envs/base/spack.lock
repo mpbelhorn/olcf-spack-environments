@@ -73,6 +73,10 @@
    "spec": "libzmq%gcc@7.5.0 arch=linux-sles15-x86_64"
   },
   {
+   "hash": "w2jhmudygcyjfrhnjqpdg6akkedv5cx5",
+   "spec": "libpng@1.2.57%gcc@7.5.0 arch=linux-sles15-x86_64"
+  },
+  {
    "hash": "q2fzaxag27gkiixypk4twhewusv35kbv",
    "spec": "gnupg%gcc@7.5.0 arch=linux-sles15-x86_64"
   },
@@ -291,6 +295,14 @@
   {
    "hash": "5hvdlovmlc4ythmp4go52ip73u2tmn45",
    "spec": "rocsparse@4.1.0%gcc@7.5.0 arch=linux-sles15-x86_64"
+  },
+  {
+   "hash": "eatm6krgvdfo2c5ssv7izngblhufmpjh",
+   "spec": "roctracer-dev@4.2.0%gcc@7.5.0 arch=linux-sles15-x86_64"
+  },
+  {
+   "hash": "ipy5336zppxzztkffbjaarsg7auobtjs",
+   "spec": "rocprofiler-dev@4.2.0%gcc@7.5.0 arch=linux-sles15-x86_64"
   },
   {
    "hash": "dhgnhim7plpnuw5x3ffy5s3m4utmb355",
@@ -829,12 +841,16 @@
    "spec": "zfp%cce@11.0.4 arch=cray-sles15-zen2 ^cray-mpich ^hip@4.1.0"
   },
   {
-   "hash": "eatm6krgvdfo2c5ssv7izngblhufmpjh",
-   "spec": "roctracer-dev@4.2.0%gcc@7.5.0 arch=linux-sles15-x86_64"
+   "hash": "uxxbsjop572yj7v6cqwc5ygnjf5kfemd",
+   "spec": "darshan-runtime%gcc@10.2.0 arch=cray-sles15-zen2 ^cray-mpich ^hip@4.1.0"
   },
   {
-   "hash": "ipy5336zppxzztkffbjaarsg7auobtjs",
-   "spec": "rocprofiler-dev@4.2.0%gcc@7.5.0 arch=linux-sles15-x86_64"
+   "hash": "4j7otv2yovdabxaqxk5kqjkj6kgero6x",
+   "spec": "darshan-runtime%gcc@9.3.0 arch=cray-sles15-zen2 ^cray-mpich ^hip@4.1.0"
+  },
+  {
+   "hash": "htd6rsn5ef3i7nivvi6ctuiu32xt464m",
+   "spec": "darshan-runtime%cce@11.0.4 arch=cray-sles15-zen2 ^cray-mpich ^hip@4.1.0"
   }
  ],
  "concrete_specs": {
@@ -10922,6 +10938,39 @@
     "hash": "tqkq7njupd65n7u5botag5y3keadawvz"
    }
   },
+  "w2jhmudygcyjfrhnjqpdg6akkedv5cx5": {
+   "libpng": {
+    "version": "1.2.57",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles15",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "7.5.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "zlib": {
+      "hash": "xujqx3ri73tbwmcwoolo3jnn6ti6vwsh",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "w2jhmudygcyjfrhnjqpdg6akkedv5cx5"
+   }
+  },
   "q2fzaxag27gkiixypk4twhewusv35kbv": {
    "gnupg": {
     "version": "2.2.19",
@@ -15851,6 +15900,219 @@
      }
     },
     "hash": "k5lfiomzt7fsp2fo3sknnubnauh7it3y"
+   }
+  },
+  "eatm6krgvdfo2c5ssv7izngblhufmpjh": {
+   "roctracer-dev": {
+    "version": "4.2.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles15",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "7.5.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "ipo": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "zrwbcmrtzksksah4lnt6thfadnieqsi7",
+      "type": [
+       "build"
+      ]
+     },
+     "hip": {
+      "hash": "cwdvmakakxq46nwabwxyudouvk5qxq2x",
+      "type": [
+       "build"
+      ]
+     },
+     "hsa-rocr-dev": {
+      "hash": "roq7eolrye4whr2pitwmtd7bcdkvanwq",
+      "type": [
+       "build"
+      ]
+     },
+     "hsakmt-roct": {
+      "hash": "kuii2ce2q34hbqguasjfyptvh4i462dj",
+      "type": [
+       "build"
+      ]
+     },
+     "py-cppheaderparser": {
+      "hash": "bbeyrkb6sfwgzcik55s7yz2dksicbaaz",
+      "type": [
+       "build"
+      ]
+     },
+     "py-setuptools": {
+      "hash": "yywinlmokgqjyqibvqtgvceettieu5z3",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "rmg3etskxfh73fmwlucm53dnaip3wi22",
+      "type": [
+       "build"
+      ]
+     },
+     "rocminfo": {
+      "hash": "u625kh2e7nkrtqfy3ldwwbx52tv6wbl2",
+      "type": [
+       "build"
+      ]
+     },
+     "rocprofiler-dev": {
+      "hash": "ipy5336zppxzztkffbjaarsg7auobtjs",
+      "type": [
+       "link"
+      ]
+     }
+    },
+    "hash": "ycw2lk5wqksnpdtzbgbgx257hgflin44"
+   }
+  },
+  "bbeyrkb6sfwgzcik55s7yz2dksicbaaz": {
+   "py-cppheaderparser": {
+    "version": "2.7.4",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles15",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "7.5.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "py-ply": {
+      "hash": "xx2qwaxjrsglz5kss7tetklu27xscm47",
+      "type": [
+       "build",
+       "run"
+      ]
+     },
+     "py-setuptools": {
+      "hash": "yywinlmokgqjyqibvqtgvceettieu5z3",
+      "type": [
+       "build"
+      ]
+     },
+     "python": {
+      "hash": "rmg3etskxfh73fmwlucm53dnaip3wi22",
+      "type": [
+       "build",
+       "run"
+      ]
+     }
+    },
+    "hash": "mf54v3dohmjmyckys3eu37ay2t6pnx7k"
+   }
+  },
+  "xx2qwaxjrsglz5kss7tetklu27xscm47": {
+   "py-ply": {
+    "version": "3.11",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles15",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "7.5.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "python": {
+      "hash": "rmg3etskxfh73fmwlucm53dnaip3wi22",
+      "type": [
+       "build",
+       "run"
+      ]
+     }
+    },
+    "hash": "sni2xtvpuf6g46cgy26qwsfjuohdem7y"
+   }
+  },
+  "ipy5336zppxzztkffbjaarsg7auobtjs": {
+   "rocprofiler-dev": {
+    "version": "4.2.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "sles15",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "7.5.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "ipo": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "zrwbcmrtzksksah4lnt6thfadnieqsi7",
+      "type": [
+       "build"
+      ]
+     },
+     "hsa-rocr-dev": {
+      "hash": "roq7eolrye4whr2pitwmtd7bcdkvanwq",
+      "type": [
+       "link"
+      ]
+     },
+     "hsakmt-roct": {
+      "hash": "kuii2ce2q34hbqguasjfyptvh4i462dj",
+      "type": [
+       "build"
+      ]
+     },
+     "rocminfo": {
+      "hash": "u625kh2e7nkrtqfy3ldwwbx52tv6wbl2",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "pwbd3tiuba2yprq6iyhkf544aofpwkbv"
    }
   },
   "dhgnhim7plpnuw5x3ffy5s3m4utmb355": {
@@ -52816,22 +53078,69 @@
     "hash": "zlwiiokun6qppwrauqa5las2t5ycisti"
    }
   },
-  "eatm6krgvdfo2c5ssv7izngblhufmpjh": {
-   "roctracer-dev": {
-    "version": "4.2.0",
+  "uxxbsjop572yj7v6cqwc5ygnjf5kfemd": {
+   "darshan-runtime": {
+    "version": "3.3.0",
     "arch": {
-     "platform": "linux",
+     "platform": "cray",
      "platform_os": "sles15",
-     "target": "x86_64"
+     "target": {
+      "name": "zen2",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clwb",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "zen"
+      ]
+     }
     },
     "compiler": {
      "name": "gcc",
-     "version": "7.5.0"
+     "version": "10.2.0"
     },
-    "namespace": "builtin",
+    "namespace": "olcf",
     "parameters": {
-     "build_type": "RelWithDebInfo",
-     "ipo": false,
+     "apmpi": false,
+     "apmpi_sync": false,
+     "apxc": false,
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": false,
+     "logpath": "/gpfs/alpine/darshan/spock",
+     "lsf": false,
+     "mpi": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "slurm": true,
      "cflags": [],
      "cppflags": [],
      "cxxflags": [],
@@ -52839,125 +53148,91 @@
      "ldflags": [],
      "ldlibs": []
     },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
     "dependencies": {
-     "cmake": {
-      "hash": "zrwbcmrtzksksah4lnt6thfadnieqsi7",
+     "cray-mpich": {
+      "hash": "2g7okbmgqpd3zk4q4q3awbs4kue7mk6e",
       "type": [
-       "build"
+       "build",
+       "link"
       ]
      },
-     "hip": {
-      "hash": "cwdvmakakxq46nwabwxyudouvk5qxq2x",
+     "zlib": {
+      "hash": "okpkimphjy2o77ldaznr2zpkfotqvw6f",
       "type": [
-       "build"
-      ]
-     },
-     "hsa-rocr-dev": {
-      "hash": "roq7eolrye4whr2pitwmtd7bcdkvanwq",
-      "type": [
-       "build"
-      ]
-     },
-     "hsakmt-roct": {
-      "hash": "kuii2ce2q34hbqguasjfyptvh4i462dj",
-      "type": [
-       "build"
-      ]
-     },
-     "py-cppheaderparser": {
-      "hash": "bbeyrkb6sfwgzcik55s7yz2dksicbaaz",
-      "type": [
-       "build"
-      ]
-     },
-     "py-setuptools": {
-      "hash": "yywinlmokgqjyqibvqtgvceettieu5z3",
-      "type": [
-       "build"
-      ]
-     },
-     "python": {
-      "hash": "rmg3etskxfh73fmwlucm53dnaip3wi22",
-      "type": [
-       "build"
-      ]
-     },
-     "rocminfo": {
-      "hash": "u625kh2e7nkrtqfy3ldwwbx52tv6wbl2",
-      "type": [
-       "build"
-      ]
-     },
-     "rocprofiler-dev": {
-      "hash": "ipy5336zppxzztkffbjaarsg7auobtjs",
-      "type": [
+       "build",
        "link"
       ]
      }
     },
-    "hash": "ycw2lk5wqksnpdtzbgbgx257hgflin44"
+    "hash": "uxxbsjop572yj7v6cqwc5ygnjf5kfemd"
    }
   },
-  "bbeyrkb6sfwgzcik55s7yz2dksicbaaz": {
-   "py-cppheaderparser": {
-    "version": "2.7.4",
+  "4j7otv2yovdabxaqxk5kqjkj6kgero6x": {
+   "darshan-runtime": {
+    "version": "3.3.0",
     "arch": {
-     "platform": "linux",
+     "platform": "cray",
      "platform_os": "sles15",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "7.5.0"
-    },
-    "namespace": "builtin",
-    "parameters": {
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "dependencies": {
-     "py-ply": {
-      "hash": "xx2qwaxjrsglz5kss7tetklu27xscm47",
-      "type": [
-       "build",
-       "run"
-      ]
-     },
-     "py-setuptools": {
-      "hash": "yywinlmokgqjyqibvqtgvceettieu5z3",
-      "type": [
-       "build"
-      ]
-     },
-     "python": {
-      "hash": "rmg3etskxfh73fmwlucm53dnaip3wi22",
-      "type": [
-       "build",
-       "run"
+     "target": {
+      "name": "zen2",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clwb",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "zen"
       ]
      }
     },
-    "hash": "mf54v3dohmjmyckys3eu37ay2t6pnx7k"
-   }
-  },
-  "xx2qwaxjrsglz5kss7tetklu27xscm47": {
-   "py-ply": {
-    "version": "3.11",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "sles15",
-     "target": "x86_64"
-    },
     "compiler": {
      "name": "gcc",
-     "version": "7.5.0"
+     "version": "9.3.0"
     },
-    "namespace": "builtin",
+    "namespace": "olcf",
     "parameters": {
+     "apmpi": false,
+     "apmpi_sync": false,
+     "apxc": false,
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": false,
+     "logpath": "/gpfs/alpine/darshan/spock",
+     "lsf": false,
+     "mpi": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "slurm": true,
      "cflags": [],
      "cppflags": [],
      "cxxflags": [],
@@ -52965,68 +53240,118 @@
      "ldflags": [],
      "ldlibs": []
     },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
     "dependencies": {
-     "python": {
-      "hash": "rmg3etskxfh73fmwlucm53dnaip3wi22",
+     "cray-mpich": {
+      "hash": "7arerssvvhz42cl4k64m2wn3fkk43k5o",
       "type": [
        "build",
-       "run"
-      ]
-     }
-    },
-    "hash": "sni2xtvpuf6g46cgy26qwsfjuohdem7y"
-   }
-  },
-  "ipy5336zppxzztkffbjaarsg7auobtjs": {
-   "rocprofiler-dev": {
-    "version": "4.2.0",
-    "arch": {
-     "platform": "linux",
-     "platform_os": "sles15",
-     "target": "x86_64"
-    },
-    "compiler": {
-     "name": "gcc",
-     "version": "7.5.0"
-    },
-    "namespace": "builtin",
-    "parameters": {
-     "build_type": "RelWithDebInfo",
-     "ipo": false,
-     "cflags": [],
-     "cppflags": [],
-     "cxxflags": [],
-     "fflags": [],
-     "ldflags": [],
-     "ldlibs": []
-    },
-    "dependencies": {
-     "cmake": {
-      "hash": "zrwbcmrtzksksah4lnt6thfadnieqsi7",
-      "type": [
-       "build"
-      ]
-     },
-     "hsa-rocr-dev": {
-      "hash": "roq7eolrye4whr2pitwmtd7bcdkvanwq",
-      "type": [
        "link"
       ]
      },
-     "hsakmt-roct": {
-      "hash": "kuii2ce2q34hbqguasjfyptvh4i462dj",
+     "zlib": {
+      "hash": "krfig5obs5sw6zdl5u5vicnrzhuefc6g",
       "type": [
-       "build"
-      ]
-     },
-     "rocminfo": {
-      "hash": "u625kh2e7nkrtqfy3ldwwbx52tv6wbl2",
-      "type": [
-       "build"
+       "build",
+       "link"
       ]
      }
     },
-    "hash": "pwbd3tiuba2yprq6iyhkf544aofpwkbv"
+    "hash": "4j7otv2yovdabxaqxk5kqjkj6kgero6x"
+   }
+  },
+  "htd6rsn5ef3i7nivvi6ctuiu32xt464m": {
+   "darshan-runtime": {
+    "version": "3.3.0",
+    "arch": {
+     "platform": "cray",
+     "platform_os": "sles15",
+     "target": {
+      "name": "zen2",
+      "vendor": "AuthenticAMD",
+      "features": [
+       "abm",
+       "aes",
+       "avx",
+       "avx2",
+       "bmi1",
+       "bmi2",
+       "clflushopt",
+       "clwb",
+       "clzero",
+       "cx16",
+       "f16c",
+       "fma",
+       "fsgsbase",
+       "mmx",
+       "movbe",
+       "pclmulqdq",
+       "popcnt",
+       "rdseed",
+       "sse",
+       "sse2",
+       "sse4_1",
+       "sse4_2",
+       "sse4a",
+       "ssse3",
+       "xsavec",
+       "xsaveopt"
+      ],
+      "generation": 0,
+      "parents": [
+       "zen"
+      ]
+     }
+    },
+    "compiler": {
+     "name": "cce",
+     "version": "11.0.4"
+    },
+    "namespace": "olcf",
+    "parameters": {
+     "apmpi": false,
+     "apmpi_sync": false,
+     "apxc": false,
+     "cobalt": false,
+     "grouplogs": true,
+     "hdf5": false,
+     "logpath": "/gpfs/alpine/darshan/spock",
+     "lsf": false,
+     "mpi": true,
+     "patches": [
+      "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+     ],
+     "pbs": false,
+     "slurm": true,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "patches": [
+     "efe278f618b00735c814660b980dbedcb397965909e649b81a904b12c48288d8"
+    ],
+    "dependencies": {
+     "cray-mpich": {
+      "hash": "izs66ev65czffa27wut4cqnnhin7flvh",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "yz46hnfxeikrexj6mqicnbwjjunr5nqi",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "htd6rsn5ef3i7nivvi6ctuiu32xt464m"
    }
   }
  }
