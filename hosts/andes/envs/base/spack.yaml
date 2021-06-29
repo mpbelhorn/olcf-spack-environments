@@ -720,6 +720,8 @@ spack:
     - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
+    ## Non-ramdisk staging dir for builds that exceed cgroup mem limits
+    # - /gpfs/alpine/world-shared/stf007/$user/spack-stage/andes
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
