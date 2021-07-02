@@ -508,6 +508,7 @@ spack:
         prefix: /opt/rocm-4.1.0
     rocfft:
       version: [4.1.0]
+      variants: amdgpu_target=gfx908 amdgpu_target_sram_ecc=gfx908
       buildable: false
       externals:
       - spec: rocfft@4.1.0
@@ -726,8 +727,6 @@ spack:
       target: []
       providers: {}
       compiler: []
-    rocfft:
-      variants: amdgpu_target=gfx908 amdgpu_target_sram_ecc=gfx908
     all:
       buildable: true
       version: []
