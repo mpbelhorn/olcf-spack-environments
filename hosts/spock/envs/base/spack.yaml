@@ -69,14 +69,14 @@ spack:
     # - hpx@1.5.1 ## FIXME +rocm ## build failure; otf2 fails with unknown cray platform.
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
-    - kokkos+openmp@3.2.00 +rocm amdgpu_target=gfx908 # +/- omp variants
+    - kokkos@3.2.00 +openmp~rocm amdgpu_target=none # v<3.4 does not support gfx908
     - legion@20.03.0
     # - libnrm@0.1.0 ## hard mpich dependency
     - libquo@1.3.1
     # - magma@2.5.4 ## cuda support only
     - mercury@1.0.1
     - mfem@4.1.0
-    - mpifileutils@0.10.1
+    # - mpifileutils@0.10.1 ## ^libcircle fails to determine MPI through cray wrapper
     - ninja@1.10.1
     # - omega-h@9.29.0 ## build failure
     # - openmpi@3.1.6 ## rejected by site
@@ -87,7 +87,7 @@ spack:
     - pdt@3.25.1
     - petsc@3.14.0+rocm
     - phist@1.9.1
-    - plasma@20.9.20
+    # - plasma@20.9.20 ^openblas ## Fails to find correct blas under cray wrappers
     - precice@2.1.1 #FIXME - partial spec
     - pumi@2.2.2
     # - py-jupyterhub@1.0.0 ## rejected by site
@@ -140,15 +140,14 @@ spack:
     - hpx@1.6.0 ## FIXME: +rocm?
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
-    - kokkos+openmp@3.2.00
-    - kokkos+openmp@3.2.00 +rocm amdgpu_target=gfx908
+    - kokkos@3.2.00 +openmp~rocm amdgpu_target=none # v<3.4 does not support gfx908
     - legion@20.03.0
     # - libnrm@0.1.0 ## hard mpich dependency
     - libquo@1.3.1
     # - magma@2.5.4 ## FIXME: +rocm? 
     - mercury@2.0.0
     - mfem@4.2.0
-    - mpifileutils@0.10.1
+    # - mpifileutils@0.10.1 ## ^libcircle fails to determine MPI through cray wrapper
     - ninja@1.10.2
     - omega-h@9.32.5
     # - openmpi@t4.0.5 ## rejected by site
@@ -159,7 +158,7 @@ spack:
     - pdt@3.25.1
     - petsc@3.14.4 ## FIXME +rocm?
     - phist@1.9.3
-    - plasma@20.9.20
+    # - plasma@20.9.20 ^openblas ## fails to find correct blas under cray wrappers
     - precice@2.2.0
     - pumi@2.2.5
     # - py-jupyterhub@1.0.0 ## rejected by site
@@ -169,11 +168,11 @@ spack:
     - raja@0.13.0
     # - rempi@1.1.0 ## spackage needs porting for cray wrappers
     # - scr@2.0.0 ## libyogrt: configure: error: slurm is not in specified location!
-    - slate@2020.10.00 ~rocm amdgpu_target=none ^blaspp~rocm amdgpu_target=none # ^openblas@0.3.5
+    - slate@2020.10.00 ~rocm amdgpu_target=none ^blaspp~rocm amdgpu_target=none ^openblas
     - slepc@3.14.2
     - stc@0.8.3
     - strumpack@5.1.1 ^openblas threads=openmp
-    - sundials@5.7.0
+    # - sundials@5.7.0 ## fails to find MPI through cray wrappers
     - superlu-dist@6.4.0
     - superlu@5.2.1
     - swig@4.0.2-fortran
@@ -196,7 +195,8 @@ spack:
     - arborx@1.0
     - archer@2.0.0
     - argobots@1.1
-    - ascent@0.7.1 ## failing with cce in vtk-h dependency at rocm/hsa libs
+    # - ascent@0.7.1 ## failing with cce in vtk-h dependency at rocm/hsa libs
+    #                   also fails to locate MPI through the cray wrappers
     # - axom@0.5.0 ## dependency version collision with raja/umpire/blt
     - bolt@2.0
     - cabana@0.3.0
@@ -228,7 +228,7 @@ spack:
     # - magma@2.5.4 ## FIXME: +rocm?
     - mercury@2.0.1
     - mfem@4.2.0
-    - mpifileutils@0.11~xattr
+    # - mpifileutils@0.11~xattr ## ^libcircle fails to determine MPI through cray wrapper
     - ninja@1.10.2
     - omega-h@9.32.5
     # - openmpi@t4.0.5 ## rejected by site
@@ -239,7 +239,7 @@ spack:
     - pdt@3.25.1
     - petsc@3.15.0 ## FIXME: +rocm?
     # - phist@1.9.3
-    - plasma@20.9.20
+    # - plasma@20.9.20 ## fails to find correct blas under cray wrappers
     - precice@2.2.1
     - pumi@2.2.5
     # - py-jupyterhub@1.0.0 ## rejected by site
@@ -249,11 +249,11 @@ spack:
     - raja@0.13.0
     # - rempi@1.1.0 ## spackage needs porting for cray wrappers
     # - scr@3.0rc1 ## libyogrt: configure: error: slurm is not in specified location!
-    - slate@2021.05.02
+    - slate@2021.05.02 ^openblas
     - slepc@3.15.0
     - stc@0.9.0
     - strumpack@5.1.1 ^openblas threads=openmp
-    - sundials@5.7.0
+    # - sundials@5.7.0 ## fails to find MPI through cray wrappers
     - superlu-dist@6.4.0
     - superlu@5.2.1
     - swig@4.0.2
@@ -293,33 +293,38 @@ spack:
       # {netlib-scalapack, omega-h, mumps, trilinos, suite-sparse, hypre} failing with
       #      cce due to openblas0.3.15%cce crayftn problems (unknown CLI args?);
       #      might replace with cray-libsci?
-      - archer%cce
-      - dyninst%cce
-      - hpctoolkit%cce
-      - plasma%cce
-      - caliper%cce
-      - flecsi%cce
-      - ginkgo%cce
-      - globalarrays%cce
-      - hdf5%cce
-      - hypre%cce
-      - kokkos%cce
-      - legion%cce
-      - mfem%cce
-      - openpmd-api%cce
-      - pdt%cce
-      - petsc%cce
+      # TODO: find what `%cce ^matio ^hdf5` and exclude it
+      - archer%cce@11.0.4
+      - archer%gcc@10.2.0 # ^llvm@8.0.0 fails, reason unknown
+      - dyninst%cce@11.0.4
+      - hpctoolkit%cce@11.0.4
+      - plasma%cce@11.0.4
+      - caliper%cce@11.0.4
+      - flecsi%cce@11.0.4
+      - ginkgo%cce@11.0.4
+      - globalarrays%cce@11.0.4
+      - hdf5%cce@11.0.4
+      - hypre%cce@11.0.4
+      - kokkos%cce@11.0.4
+      - legion%cce@11.0.4
+      - mfem%cce@11.0.4
+      - omega-h@9.32.5%cce@11.0.4
+      - openpmd-api%cce@11.0.4
+      - parallel-netcdf%cce@11.0.4
+      - pdt%cce@11.0.4
+      - petsc%cce@11.0.4
       - phist%gcc@10.2.0
-      - phist%cce
-      - precice%cce
-      - raja%cce
-      - slate%cce
-      - slepc%cce
-      - tau%cce
+      - phist%cce@11.0.4
+      - precice%cce@11.0.4
+      - raja%cce@11.0.4
+      - slate%cce@11.0.4
+      - slepc%cce@11.0.4
+      - tau%cce@11.0.4
       - strumpack%gcc+rocm
-      - superlu%cce
-      - superlu-dist%cce
-      - tasmanian%cce
+      - superlu%cce@11.0.4
+      - superlu-dist%cce@11.0.4
+      - tasmanian%cce@11.0.4
+      - trilinos@13.0.1%cce@11.0.4
   specs:
   - $core_specs
   - $e4s_specs
