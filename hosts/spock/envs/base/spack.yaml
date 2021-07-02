@@ -614,12 +614,16 @@ spack:
       variants: +rocm amdgpu_target=gfx908
     superlu-dist:
       variants: +rocm amdgpu_target=gfx908
+    trilinos:
+      variants: +openmp
     umpire:
       # variants: +rocm amdgpu_target=gfx908
       variants: ~rocm amdgpu_target=none
     camp:
       # variants: +rocm amdgpu_target=gfx908
       variants: ~rocm amdgpu_target=none
+    vtk-m:
+      variants: +hip amdgpu_target=gfx908
     ncurses:
       variants: +termlib
       buildable: true
