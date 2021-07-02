@@ -375,7 +375,7 @@ spack:
         prefix: /opt/rocm-4.1.0/hip
         extra_attributes:
           compilers:
-            c: /opt/rocm-4.1.0/llvm/bin/clang++
+            c: /opt/rocm-4.1.0/llvm/bin/clang
             c++: /opt/rocm-4.1.0/llvm/bin/clang++
             hip: /opt/rocm-4.1.0/hip/bin/hipcc
     hip-rocclr:
@@ -404,7 +404,7 @@ spack:
         prefix: /opt/rocm-4.1.0/llvm
         extra_attributes:
           compilers:
-            c: /opt/rocm-4.1.0/llvm/bin/clang++
+            c: /opt/rocm-4.1.0/llvm/bin/clang
             c++: /opt/rocm-4.1.0/llvm/bin/clang++
     rocm-device-libs:
       version: [4.1.0]
@@ -420,7 +420,7 @@ spack:
         prefix: /opt/rocm-4.1.0
         extra_attributes:
           compilers:
-            c: /opt/rocm-4.1.0/llvm/bin/clang++
+            c: /opt/rocm-4.1.0/llvm/bin/clang
             c++: /opt/rocm-4.1.0/llvm/bin/clang++
     hsakmt-roct:
       version: [4.1.0]
