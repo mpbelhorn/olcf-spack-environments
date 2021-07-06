@@ -280,11 +280,14 @@ spack:
       - - '%gcc@10.2.0'
         - '%gcc@9.3.0'
         - '%cce@11.0.4'
-      - - ^cray-mpich
+      - - ^cray-mpich@8.1.4
       - - ^hip@4.1.0
+      - - ^hipblas@4.1.0
+      - - ^rocblas@4.1.0
       - - ^rocrand@4.1.0
+      - - ^rocsolver@4.1.0
+      - - ^rocsparse@4.1.0
       - - ^rocthrust@4.1.0
-      - - ^hipsparse@4.1.0
       - - arch=cray-sles15-zen2
       exclude: 
       # {camp, chai, sundials, umpire} failing with cce due to
@@ -325,10 +328,28 @@ spack:
       - superlu-dist%cce@11.0.4
       - tasmanian%cce@11.0.4
       - trilinos@13.0.1%cce@11.0.4
+    - matrix:
+      - - $e4s_21.05_packages
+      - - '%cce@12.0.0'
+      - - ^cray-mpich@8.1.6
+      - - ^hip@4.1.0
+      - - ^hipblas@4.1.0
+      - - ^hipsparse@4.1.0
+      - - ^rocblas@4.1.0
+      - - ^rocrand@4.1.0
+      - - ^rocsolver@4.1.0
+      - - ^rocsparse@4.1.0
+      - - ^rocthrust@4.1.0
+      - - arch=cray-sles15-zen2
+      exclude:
+      - archer ## elfutils
+      - caliper ## elfutils
+      - dyninst ## os elfutils insufficient
+      - hpctoolkit ## depends on dyninst
   specs:
   - $core_specs
   - $e4s_specs
-  - globalarrays@5.8%cce@11.0.4 arch=cray-sles15-zen2 ^cray-mpich ^cray-libsci
+  - globalarrays@5.8%cce@11.0.4 arch=cray-sles15-zen2 ^cray-mpich@8.1.4 ^cray-libsci@21.04.1.1
   # - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
   #############################################################################
   mirrors:
@@ -351,24 +372,33 @@ spack:
       providers: {}
       variants: +verbs+slurm device=ch4 netmod=ofi pmi=pmi
     cray-mpich:
-      version: [8.1.4]
+      version: [8.1.4, 8.1.6, 8.1.7]
       externals:
       - spec: cray-mpich@8.1.4
         modules:
         - cray-mpich/8.1.4
+      - spec: cray-mpich@8.1.6
+        modules:
+        - cray-mpich/8.1.6
+      - spec: cray-mpich@8.1.7
+        modules:
+        - cray-mpich/8.1.7
       target: []
       compiler: []
       buildable: false
       providers: {}
     cray-libsci:
       buildable: false
-      version: [21.04.1.1]
+      version: [21.04.1.1, 21.06.1.1]
       externals:
       - spec: cray-libsci@21.04.1.1
         modules:
         - cray-libsci/21.04.1.1
+      - spec: cray-libsci@21.06.1.1
+        modules:
+        - cray-libsci/21.06.1.1
     hip:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hip@4.1.0
@@ -378,26 +408,39 @@ spack:
             c: /opt/rocm-4.1.0/llvm/bin/clang
             c++: /opt/rocm-4.1.0/llvm/bin/clang++
             hip: /opt/rocm-4.1.0/hip/bin/hipcc
+      - spec: hip@4.2.0
+        prefix: /opt/rocm-4.2.0/hip
+        extra_attributes:
+          compilers:
+            c: /opt/rocm-4.2.0/llvm/bin/clang
+            c++: /opt/rocm-4.2.0/llvm/bin/clang++
+            hip: /opt/rocm-4.2.0/hip/bin/hipcc
     hip-rocclr:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hip-rocclr@4.1.0
         prefix: /opt/rocm-4.1.0/rocclr
+      - spec: hip-rocclr@4.2.0
+        prefix: /opt/rocm-4.2.0/rocclr
     comgr:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: comgr@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: comgr@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocm-cmake:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-cmake@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocm-cmake@4.2.0
+        prefix: /opt/rocm-4.2.0
     llvm-amdgpu:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: llvm-amdgpu@4.1.0
@@ -406,14 +449,22 @@ spack:
           compilers:
             c: /opt/rocm-4.1.0/llvm/bin/clang
             c++: /opt/rocm-4.1.0/llvm/bin/clang++
+      - spec: llvm-amdgpu@4.2.0
+        prefix: /opt/rocm-4.2.0/llvm
+        extra_attributes:
+          compilers:
+            c: /opt/rocm-4.2.0/llvm/bin/clang
+            c++: /opt/rocm-4.2.0/llvm/bin/clang++
     rocm-device-libs:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-device-libs@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocm-device-libs@4.2.0
+        prefix: /opt/rocm-4.2.0
     hsa-rocr-dev:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hsa-rocr-dev@4.1.0
@@ -422,169 +473,229 @@ spack:
           compilers:
             c: /opt/rocm-4.1.0/llvm/bin/clang
             c++: /opt/rocm-4.1.0/llvm/bin/clang++
+      - spec: hsa-rocr-dev@4.2.0
+        prefix: /opt/rocm-4.2.0
+        extra_attributes:
+          compilers:
+            c: /opt/rocm-4.2.0/llvm/bin/clang
+            c++: /opt/rocm-4.2.0/llvm/bin/clang++
     hsakmt-roct:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hsakmt-roct@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: hsakmt-roct@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocminfo:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocminfo@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocminfo@4.2.0
+        prefix: /opt/rocm-4.2.0
     rccl:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rccl@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rccl@4.2.0
+        prefix: /opt/rocm-4.2.0
     hipify-clang:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hipify-clang@4.1.0
         prefix: /opt/rocm-4.1.0 #FIXME
+      - spec: hipify-clang@4.2.0
+        prefix: /opt/rocm-4.2.0 #FIXME
     hipblas:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hipblas@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: hipblas@4.2.0
+        prefix: /opt/rocm-4.2.0
     hipcub:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hipcub@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: hipcub@4.2.0
+        prefix: /opt/rocm-4.2.0
     hipsparse:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hipsparse@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: hipsparse@4.2.0
+        prefix: /opt/rocm-4.2.0
     hipfort:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hipfort@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: hipfort@4.2.0
+        prefix: /opt/rocm-4.2.0
     hipfft:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: hipfft@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: hipfft@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocm-opencl:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-opencl@4.1.0
         prefix: /opt/rocm-4.1.0/opencl
+      - spec: rocm-opencl@4.2.0
+        prefix: /opt/rocm-4.2.0/opencl
     rocm-clang-ocl:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-clang-ocl@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocm-clang-ocl@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocm-opencl-runtime:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-opencl-runtime@4.1.0
         prefix: /opt/rocm-4.1.0/opencl
+      - spec: rocm-opencl-runtime@4.2.0
+        prefix: /opt/rocm-4.2.0/opencl
     rocm-openmp-extras:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-openmp-extras@4.1.0
         prefix: /opt/rocm-4.1.0/llvm
+      - spec: rocm-openmp-extras@4.2.0
+        prefix: /opt/rocm-4.2.0/llvm
     rocblas:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocblas@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocblas@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocfft:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       variants: amdgpu_target=gfx908 amdgpu_target_sram_ecc=gfx908
       buildable: false
       externals:
       - spec: rocfft@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocfft@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocrand:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocrand@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocrand@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocthrust:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocthrust@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocthrust@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocsolver:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocsolver@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocsolver@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocsparse:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocsparse@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocsparse@4.2.0
+        prefix: /opt/rocm-4.2.0
     roctracer-dev:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: roctracer-dev@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: roctracer-dev@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocprofiler-dev:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocprofiler-dev@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocprofiler-dev@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocprim:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocprim@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocprim@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocm-smi:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocmsmi@4.1.0
         prefix: /opt/rocm-4.1.0/rocm_smi
+      - spec: rocmsmi@4.2.0
+        prefix: /opt/rocm-4.2.0/rocm_smi
     rocm-smi-lib:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-smi-lib@4.1.0
         prefix: /opt/rocm-4.1.0/rocm_smi
+      - spec: rocm-smi-lib@4.2.0
+        prefix: /opt/rocm-4.2.0/rocm_smi
     miopen-hip:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: miopen-hip@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: miopen-hip@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocalution:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocalution@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocalution@4.2.0
+        prefix: /opt/rocm-4.2.0
     rocm-gdb:
-      version: [4.1.0]
+      version: [4.1.0, 4.2.0]
       buildable: false
       externals:
       - spec: rocm-gdb@4.1.0
         prefix: /opt/rocm-4.1.0
+      - spec: rocm-gdb@4.2.0
+        prefix: /opt/rocm-4.2.0
     qt:
       variants: ~ssl
       buildable: true
@@ -737,8 +848,8 @@ spack:
       target: [x86_64]
       providers:
         mpi: [mpich]
-        lapack: [openblas, mkl]
-        blas: [openblas, mlk]
+        lapack: [openblas, cray-libsci@21.04.1.1, cray-libsci@21.06.1.1, mkl]
+        blas: [openblas, cray-libsci@21.04.1.1, cray-libsci@21.06.1.1, mkl]
         scalapack: [netlib-scalapack]
       compiler: [gcc@7.5.0, gcc]
   # Views are managed externally; placing them here triggers a regneration each
@@ -1141,6 +1252,23 @@ spack:
       environment: {}
       extra_rpaths: []
   - compiler:
+      spec: gcc@10.3.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.8/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
+        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-gnu/8.1.0
+      - gcc/10.3.0 ## Override PrgEnv default
+      - craype/2.7.8
+      - craype-accel-amd-gfx908 ## Base performance option
+      environment: {}
+      extra_rpaths: []
+  - compiler:
       spec: cce@11.0.4
       paths:
         cc: /opt/cray/pe/craype/2.7.6/bin/cc
@@ -1153,6 +1281,40 @@ spack:
       modules:
       - PrgEnv-cray
       - cce/11.0.4 ## Override PrgEnv default
+      - craype-accel-amd-gfx908 ## Base performance option
+      environment: {}
+      extra_rpaths: []
+  - compiler:
+      spec: cce@12.0.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.8/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
+        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray/8.1.0
+      - cce/12.0.0 ## Override PrgEnv default
+      - craype/2.7.8
+      - craype-accel-amd-gfx908 ## Base performance option
+      environment: {}
+      extra_rpaths: []
+  - compiler:
+      spec: cce@12.0.1
+      paths:
+        cc: /opt/cray/pe/craype/2.7.8/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
+        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray/8.1.0
+      - cce/12.0.1 ## Override PrgEnv default
+      - craype/2.7.8
       - craype-accel-amd-gfx908 ## Base performance option
       environment: {}
       extra_rpaths: []
