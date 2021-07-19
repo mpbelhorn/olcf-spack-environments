@@ -101,6 +101,9 @@ spack:
     - raja
     - nco
     - magma ^cuda@:10.99
+    - votca-tools@2021
+    - votca-csg@2021.1
+    - votca-xtp@2021
   - e4s_packages:
     - zfp
     - sz
