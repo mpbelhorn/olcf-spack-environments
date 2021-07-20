@@ -290,44 +290,53 @@ spack:
       - - ^rocthrust@4.1.0
       - - arch=cray-sles15-zen2
       exclude: 
-      # {camp, chai, sundials, umpire} failing with cce due to
-      #     hip/hip-rocclr --> mesa18 --> binutils failure chain 
-      #     (needs -fPIC or text relocations?)
-      # {netlib-scalapack, omega-h, mumps, trilinos, suite-sparse, hypre} failing with
-      #      cce due to openblas0.3.15%cce crayftn problems (unknown CLI args?);
-      #      might replace with cray-libsci?
-      # TODO: find what `%cce ^matio ^hdf5` and exclude it
+      # # {camp, chai, sundials, umpire} failing with cce due to
+      # #     hip/hip-rocclr --> mesa18 --> binutils failure chain 
+      # #     (needs -fPIC or text relocations?)
+      # # {netlib-scalapack, omega-h, mumps, trilinos, suite-sparse, hypre} failing with
+      # #      cce due to openblas0.3.15%cce crayftn problems (unknown CLI args?);
+      # #      might replace with cray-libsci?
+      # # TODO: find what `%cce ^matio ^hdf5` and exclude it
       - archer%cce@11.0.4
       - archer%gcc@10.2.0 # ^llvm@8.0.0 fails, reason unknown
       - dyninst%cce@11.0.4
       - hpctoolkit%cce@11.0.4
-      - plasma%cce@11.0.4
+      # - plasma%cce@11.0.4
       - caliper%cce@11.0.4
-      - flecsi%cce@11.0.4
-      - ginkgo%cce@11.0.4
-      - globalarrays%cce@11.0.4
-      - hdf5%cce@11.0.4
-      - hypre%cce@11.0.4
-      - kokkos%cce@11.0.4
-      - legion%cce@11.0.4
-      - mfem%cce@11.0.4
-      - omega-h@9.32.5%cce@11.0.4
-      - openpmd-api%cce@11.0.4
-      - parallel-netcdf%cce@11.0.4
-      - pdt%cce@11.0.4
-      - petsc%cce@11.0.4
+      # - flecsi%cce@11.0.4
+      # - ginkgo%cce@11.0.4
+      # - globalarrays%cce@11.0.4
+      # - hdf5%cce@11.0.4
+      # - hypre%cce@11.0.4
+      # - kokkos%cce@11.0.4
+      # - legion%cce@11.0.4
+      # - mfem%cce@11.0.4
+      # - omega-h@9.32.5%cce@11.0.4
+      # - openpmd-api%cce@11.0.4
+      # - parallel-netcdf%cce@11.0.4
+      # - pdt%cce@11.0.4
+      # - petsc%cce@11.0.4
       - phist%gcc@10.2.0
-      - phist%cce@11.0.4
-      - precice%cce@11.0.4
-      - raja%cce@11.0.4
-      - slate%cce@11.0.4
-      - slepc%cce@11.0.4
-      - tau%cce@11.0.4
+      # - phist%cce@11.0.4
+      # - precice%cce@11.0.4
+      # - raja%cce@11.0.4
+      # - slate%cce@11.0.4
+      # - slepc%cce@11.0.4
+      # - tau%cce@11.0.4
       - strumpack%gcc+rocm
-      - superlu%cce@11.0.4
-      - superlu-dist%cce@11.0.4
-      - tasmanian%cce@11.0.4
-      - trilinos@13.0.1%cce@11.0.4
+      # - superlu%cce@11.0.4
+      # - superlu-dist%cce@11.0.4
+      # - tasmanian%cce@11.0.4
+      # - trilinos@13.0.1%cce@11.0.4
+    # - matrix:
+    #   - - $e4s_21.05_packages
+    #   - - '%gcc@10.3.0'
+    #   - - ^cray-mpich@8.1.6
+    #   - - ^hip@4.1.0
+    #   - - ^rocrand@4.1.0
+    #   - - ^rocthrust@4.1.0
+    #   - - ^hipsparse@4.1.0
+    #   - - arch=cray-sles15-zen2
     - matrix:
       - - $e4s_21.05_packages
       - - '%cce@12.0.0'
@@ -1283,7 +1292,7 @@ spack:
       modules:
       - PrgEnv-cray
       - cce/11.0.4 ## Override PrgEnv default
-      - craype-accel-amd-gfx908 ## Base performance option
+      # - craype-accel-amd-gfx908 ## Base performance option
       environment: {}
       extra_rpaths: []
   - compiler:
@@ -1300,7 +1309,7 @@ spack:
       - PrgEnv-cray/8.1.0
       - cce/12.0.0 ## Override PrgEnv default
       - craype/2.7.8
-      - craype-accel-amd-gfx908 ## Base performance option
+      # - craype-accel-amd-gfx908 ## Base performance option
       environment: {}
       extra_rpaths: []
   - compiler:
@@ -1317,6 +1326,7 @@ spack:
       - PrgEnv-cray/8.1.0
       - cce/12.0.1 ## Override PrgEnv default
       - craype/2.7.8
-      - craype-accel-amd-gfx908 ## Base performance option
+      # - craype-accel-amd-gfx908 ## Base performance option ## breaks cce/mpich
+      # wrt undefined amd hsa libs/amdgpu bc. See logs/{no_accel_module,accel_module_fail}.log
       environment: {}
       extra_rpaths: []
