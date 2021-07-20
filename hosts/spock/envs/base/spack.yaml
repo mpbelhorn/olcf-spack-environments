@@ -828,7 +828,7 @@ spack:
     hdf5:
       variants: +hl+cxx+fortran
       buildable: true
-      version: []
+      version: [1.12.0]
       target: []
       providers: {}
       compiler: []
