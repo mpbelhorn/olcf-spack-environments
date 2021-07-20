@@ -225,7 +225,7 @@ spack:
     - legion@21.03.0
     # - libnrm@0.1.0 ## hard mpich dependency
     - libquo@1.3.1
-    # - magma@2.5.4 ## FIXME: +rocm?
+    - magma@2.6.1
     - mercury@2.0.1
     - mfem@4.2.0
     # - mpifileutils@0.11~xattr ## ^libcircle fails to determine MPI through cray wrapper
@@ -735,6 +735,8 @@ spack:
       variants: ~rocm amdgpu_target=none
     vtk-m:
       variants: +hip amdgpu_target=gfx908
+    magma:
+      variants: ~cuda+rocm amdgpu_target=gfx908
     ncurses:
       variants: +termlib
       buildable: true
