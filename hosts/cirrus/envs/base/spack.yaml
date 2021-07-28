@@ -196,8 +196,6 @@ spack:
   - $core_specs
   - $gcc_specs
   - $intel_specs
-  - paraview%gcc@8.3.1+hdf5+mpi+opengl2+osmesa+silo+visit ^hdf5+mpi ^libpng@:1.6.0
-  - hpctoolkit%gcc@10.3.0
   #############################################################################
   mirrors:
     facility_builds: /sw/cirrus/spack-envs/mirrors/builds
@@ -356,7 +354,7 @@ spack:
       providers: {}
       compiler: []
     darshan-runtime:
-      variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/andes
+      variants: +lsf+grouplogs logpath=/gpfs/wolf/darshan/cirrus
       buildable: true
       version: []
       target: []
@@ -370,7 +368,7 @@ spack:
       buildable: true
       providers: {}
     paraview:
-      variants: +mpi+hdf5+opengl2+osmesa+silo+visit ^hdf5+mpi ^libpng@:1.6.0
+      variants: +mpi+hdf5+opengl2+osmesa+silo+visit
       compiler: [gcc@8.3.1]
       version: []
       target: []
@@ -601,6 +599,7 @@ spack:
     - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
+    - /gpfs/wolf/world-shared/stf007/spack-stage/cirrus 
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
