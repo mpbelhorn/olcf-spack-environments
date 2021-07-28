@@ -39,12 +39,8 @@ spack:
     - imagemagick ^ncurses+termlib
     - r
     - r@4.0.0
-
-
-    
     # - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
     - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
-    - vmd
     - sbt
     - spark+hadoop
     - python@2.7.15
@@ -59,10 +55,6 @@ spack:
     # - vtk+mpi+qt
   - general_compute_packages:
     - mpich
-
-
-    
-    #- openmpi
     - openblas threads=none
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
@@ -166,9 +158,6 @@ spack:
     - octave%gcc@8.3.1 ^gnuplot+X ^fftw~mpi ^hdf5~mpi ^arpack-ng~mpi
     - gromacs@2020.2+hwloc~cuda~mpi %gcc@8.3.1
     - gromacs@2020.2+hwloc~cuda+mpi %gcc@8.3.1
-
-
-    
     #- gromacs@2020.2+hwloc+cuda+mpi %gcc@8.3.1 ^cuda@:10.99
     #- openmpi@3.1.4%gcc@8.3.1+cuda
     #- openmpi@3.1.4%gcc@8.3.1
