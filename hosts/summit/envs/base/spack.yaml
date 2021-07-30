@@ -16,6 +16,7 @@ spack:
     - '%clang@12.0.0-0'
     - '%clang@10.0.1-0'
   - nv_compilers:
+    - '%nvhpc@21.7'
     - '%nvhpc@21.3'
     - '%nvhpc@21.2'
     - '%nvhpc@20.9'
@@ -53,7 +54,7 @@ spack:
     - gnupg
     - gsl
     - nco~mpi-deps
-    - libfabric fabrics=verbs,rxm
+    - libfabric
     - git-lfs
     - patchelf
     - libzmq
@@ -427,6 +428,8 @@ spack:
       target: []
       compiler: []
       providers: {}
+    libfabric:
+      variants: fabrics=verbs,rxm,sockets,tcp,udp
     knem:
       buildable: false
       version: [1.1.3]
@@ -713,15 +716,6 @@ spack:
         load: []
         environment:
           unset: []
-      libfabric:
-        suffixes:
-          libfabric fabrics=verbs: verbs
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
       boost:
         suffixes:
           boost cxxstd=14: cxx14
@@ -815,6 +809,7 @@ spack:
       - adios2@2.6.0%clang@10.0.1-0~zfp
       - adios2@2.6.0%gcc~zfp
       - berkeley-db
+      - cairo@1.16.0~X+fc+ft%gcc@8.3.1
       - cuda
       - elfutils~bzip2
       - gdbm%clang
@@ -829,7 +824,6 @@ spack:
       - kbproto
       - libassuan
       - libdwarf
-      - libfabric@1.9.1%gcc@8.3.1 fabrics=sockets,tcp,udp
       - libfontenc
       - libgcrypt
       - libgd
@@ -867,6 +861,7 @@ spack:
       - numactl
       - openssh
       - openssl
+      - papi@6.0.0.1%gcc@8.3.1 ^cuda@11.1.1 # FIXME
       - pango ^cairo~pdf
       - pinentry
       - pkgconf
@@ -885,6 +880,7 @@ spack:
       - python
       - readline
       - slurm
+      - sqlite%clang
       - tcl
       - tcsh
       - util-linux-uuid
@@ -1054,6 +1050,18 @@ spack:
       spec: nvhpc@21.3
       operating_system: rhel8
       modules: [nvhpc/21.3]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@21.7
+      operating_system: rhel8
+      modules: [nvhpc/21.7]
       paths:
         cc: nvc
         cxx: nvc++
