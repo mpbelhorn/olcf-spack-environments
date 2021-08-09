@@ -63,6 +63,7 @@ spack:
     - julia+cxx
     - hpcviewer@2021.03
     - cube@4.6+gui
+    - googletest
   - core_only_compute_packages:
     - darshan-runtime@3.2.1
     - scorep@7.0+mpi+papi

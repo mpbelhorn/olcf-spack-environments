@@ -227,6 +227,7 @@ spack:
     - matrix:
       - - $core_packages
       - - $core_compiler
+    - googletest%gcc@6.4.0
   - smpi_specs:
     - matrix:
       - - spectrum-mpi
@@ -333,6 +334,7 @@ spack:
   - nv_specs:
     - matrix:
       - - $general_compute_packages
+        - globalarrays
       - - $nv_compilers
       - - ^cmake%gcc@4-os
       - - ^python%gcc@4-os
@@ -351,7 +353,7 @@ spack:
       - mpip%pgi
       - boost%pgi
       - netlib-scalapack%pgi@20.1
-    - magma@2.5.4%nvhpc@21.7 ^cmake%gcc@4-os ^cuda@11-nvhpc21.7
+    - magma@2.5.4%nvhpc@21.7 ^cmake%gcc@4-os ^cuda@10.2.89
   - special_builds:
     ## Cannot build do to error in ompi configure finding liblsf/ls_info.
     ## FIXME - ompi version needs to be checked
@@ -390,7 +392,6 @@ spack:
       - 10.2.89
       - 10.1.243
       - 10.1.168
-      - 11-nvhpc21.7
       externals:
       - spec: cuda@11.1.1
         modules:
@@ -410,10 +411,6 @@ spack:
       - spec: cuda@10.1.168
         modules:
         - cuda/10.1.168
-      - spec: cuda@11-nvhpc21.7
-        modules:
-        - nvhpc/21.7
-        - cuda/nvhpc
       target: []
       providers: {}
       compiler: []
@@ -916,6 +913,7 @@ spack:
       hierarchy: []
       projections: {}
       core_specs:
+      - googletest@1.11.0%gcc@6.4.0
       - magma@2.5.3%gcc@6.4.0 ^cuda@10.2.89
       - amgx%gcc@6.4.0 ^cuda@10.2.89
       - darshan-runtime@3.2.1%gcc@4.8.5

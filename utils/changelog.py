@@ -16,7 +16,8 @@ def parse_file(path):
         specs = f.readlines()
     return specs
 
-NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20210517.no-comp.log'
+NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20210805.no-comp.log'
+# NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20210517.no-comp.log'
 # NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20201202.no-comp.log'
 # NEW_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit.20201116.no-comp.log'
 OLD_SPECS = '/sw/sources/facility-spack/summit/logs/sw-manifest.summit-rhel7.20201116.no-comp.log'

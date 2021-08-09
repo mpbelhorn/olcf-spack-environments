@@ -1,0 +1,22 @@
+#%Module1.0#####################################################################
+##
+## nsight-systems modulefile
+##
+##
+proc ModulesHelp { } {
+        global version
+
+        puts stderr "\tTools to use Nsight Systems"
+        puts stderr "\n\tVersion $version\n"
+}
+
+module-whatis "Nsight Systems module"
+
+# for Tcl script use only
+set     version     2021.3.1.54
+
+prepend-path  PATH            /sw/summit/nsight-systems/$version/bin
+# Per Max Katz, the only thing needed is to add nsys to $PATH
+#prepend-path  LD_LIBRARY_PATH /sw/summit/nsight-systems/$version/
+
+setenv OLCF_NSIGHT_SYSTEMS_ROOT /sw/summit/nsight-systems/$version

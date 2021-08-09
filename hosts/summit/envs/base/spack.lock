@@ -2351,6 +2351,10 @@
   {
    "hash": "h6nsf3ozsbekfnw6jinawtvua7ntucjj",
    "spec": "hypre%nvhpc@21.7 ^autoconf%gcc@8-os ^automake%gcc@8-os ^cmake%gcc@8-os ^m4%gcc@8-os ^numactl%gcc@8-os ^perl%gcc@8-os ^python%gcc@8-os"
+  },
+  {
+   "hash": "ezrajeebfu5fsa7g6zdv7fytttyhgizg",
+   "spec": "googletest%gcc@8.3.1"
   }
  ],
  "concrete_specs": {
@@ -59408,6 +59412,43 @@
      }
     },
     "hash": "cjghvgyvxhbltq44izppaovrokvzhm6a"
+   }
+  },
+  "ezrajeebfu5fsa7g6zdv7fytttyhgizg": {
+   "googletest": {
+    "version": "1.11.0",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "ppc64le"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "8.3.1"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "gmock": false,
+     "ipo": false,
+     "pthreads": true,
+     "shared": true,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "3332sbqiutncor2ignaclr5eft6a2wtr",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "25cby7mvwokzjdt6w3slu2cs5mpyvzy6"
    }
   }
  }
