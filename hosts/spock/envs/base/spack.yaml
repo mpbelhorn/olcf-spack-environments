@@ -6,11 +6,11 @@ spack:
   - core_compiler:
     - '%gcc@7.5.0'
   - gcc_compilers:
+    - '%gcc@10.3.0'
     - '%gcc@10.2.0'
-    - '%gcc@9.3.0'
-    - '%gcc@8.1.0'
   - cray_compilers:
-    - '%cce@11.0.4'
+    - '%cce@12.0.1'
+    - '%cce@12.0.0'
   - all_compilers:
     - $gcc_compilers
     - $cray_compilers
@@ -36,6 +36,7 @@ spack:
     - gnupg
     - python
     - darshan-util
+    - googletest
     # - valgrind ~mpi~boost~ubsan
     # - gsl
     # - nco~mpi-deps
@@ -85,7 +86,7 @@ spack:
     - papyrus@1.0.0
     - parallel-netcdf@1.12.1 ## FIXME - use cray-parallel-netcdf/1.12.1.3
     - pdt@3.25.1
-    - petsc@3.14.0+rocm
+    - petsc@3.14.0
     - phist@1.9.1
     # - plasma@20.9.20 ^openblas ## Fails to find correct blas under cray wrappers
     - precice@2.1.1 #FIXME - partial spec
@@ -278,8 +279,6 @@ spack:
       - - $e4s_21.05_packages
         - $e4s_21.02_packages
       - - '%gcc@10.2.0'
-        - '%gcc@9.3.0'
-        - '%cce@11.0.4'
       - - ^cray-mpich@8.1.4
       - - ^hip@4.1.0
       - - ^hipblas@4.1.0
@@ -355,14 +354,52 @@ spack:
       - caliper ## elfutils
       - dyninst ## os elfutils insufficient
       - hpctoolkit ## depends on dyninst
+  - cpe21.07_specs:
+    - matrix:
+      - - $e4s_21.05_packages
+      - - '%gcc@10.3.0'
+        - '%gcc@10.2.0'
+        - '%cce@12.0.0'
+        - '%cce@12.0.1'
+      - - ^cray-mpich@8.1.7
+      - - ^hip@4.2.0
+      - - ^hipblas@4.2.0
+      - - ^hipsparse@4.2.0
+      - - ^rocblas@4.2.0
+      - - ^rocrand@4.2.0
+      - - ^rocsolver@4.2.0
+      - - ^rocsparse@4.2.0
+      - - ^rocthrust@4.2.0
+      - - arch=cray-sles15-zen2
+      exclude:
+      - darshan-runtime # FIXME; need to build on spock or when gpfs is mounted
+      - archer%gcc # ^llvm@8.0.0 fails, reason unknown
+      - archer%cce
+      - dyninst%cce ## os elfutils insufficient
+      - hpctoolkit%cce ## depends on dyninst
+      - caliper%cce
+      - strumpack%gcc # fails due to failure to find mpi.h
+      - strumpack%cce ^openblas
+      - slate%cce ^openblas
+      # '%cce ^openblas': cce cannot build openblas due to GCC CLI
+      #     args being uninterperable by cce.
+      # TODO: fix or exclude the following specs:
+      # magma%cce : fails due to
+      #     'ld: warning: libgfortran.so.5, needed by lib/libmagma.so, not found
+      #         (try using -rpath or -rpath-link)'
+      #     'ld: /opt/cray/pe/lib64/cce/libcraymath.so.1: undefined reference to
+      #         `_gfortran_erfc_scaled_r8@GFORTRAN_8'
   specs:
   - $core_specs
-  - $e4s_specs
-  - globalarrays@5.8%cce@11.0.4 arch=cray-sles15-zen2 ^cray-mpich@8.1.4 ^cray-libsci@21.04.1.1
+  # - $e4s_specs
+  - $cpe21.07_specs
+  # - globalarrays@5.8%cce@11.0.4 arch=cray-sles15-zen2 ^cray-mpich@8.1.4 ^cray-libsci@21.04.1.1
+  - globalarrays@5.8%cce@12.0.1 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^cray-libsci@21.06.1.1
   # - scorep%gcc@9.3.0 arch=cray-sles15-zen2 # fails with 'Unknown Cray Platform'
   #############################################################################
   mirrors:
     facility_builds: /sw/spock/spack-env/mirrors/builds
+    source_mirror: /sw/sources/facility-spack/source_mirror
   repos:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
@@ -398,7 +435,7 @@ spack:
       providers: {}
     cray-libsci:
       buildable: false
-      version: [21.04.1.1, 21.06.1.1]
+      version: [21.06.1.1]
       externals:
       - spec: cray-libsci@21.04.1.1
         modules:
@@ -406,6 +443,12 @@ spack:
       - spec: cray-libsci@21.06.1.1
         modules:
         - cray-libsci/21.06.1.1
+    tcsh:
+      buildable: false
+      version: [6.20.00]
+      externals:
+      - spec: tcsh@6.20.00
+        prefix: /usr
     hip:
       version: [4.1.0, 4.2.0]
       buildable: false
@@ -414,15 +457,15 @@ spack:
         prefix: /opt/rocm-4.1.0/hip
         extra_attributes:
           compilers:
-            c: /opt/rocm-4.1.0/llvm/bin/clang
-            c++: /opt/rocm-4.1.0/llvm/bin/clang++
+            # c: /opt/rocm-4.1.0/llvm/bin/clang
+            # c++: /opt/rocm-4.1.0/llvm/bin/clang++
             hip: /opt/rocm-4.1.0/hip/bin/hipcc
       - spec: hip@4.2.0
         prefix: /opt/rocm-4.2.0/hip
         extra_attributes:
           compilers:
-            c: /opt/rocm-4.2.0/llvm/bin/clang
-            c++: /opt/rocm-4.2.0/llvm/bin/clang++
+            # c: /opt/rocm-4.2.0/llvm/bin/clang
+            # c++: /opt/rocm-4.2.0/llvm/bin/clang++
             hip: /opt/rocm-4.2.0/hip/bin/hipcc
     hip-rocclr:
       version: [4.1.0, 4.2.0]
@@ -454,16 +497,16 @@ spack:
       externals:
       - spec: llvm-amdgpu@4.1.0
         prefix: /opt/rocm-4.1.0/llvm
-        extra_attributes:
-          compilers:
-            c: /opt/rocm-4.1.0/llvm/bin/clang
-            c++: /opt/rocm-4.1.0/llvm/bin/clang++
+        # extra_attributes:
+        #   compilers:
+        #     c: /opt/rocm-4.1.0/llvm/bin/clang
+        #     c++: /opt/rocm-4.1.0/llvm/bin/clang++
       - spec: llvm-amdgpu@4.2.0
         prefix: /opt/rocm-4.2.0/llvm
-        extra_attributes:
-          compilers:
-            c: /opt/rocm-4.2.0/llvm/bin/clang
-            c++: /opt/rocm-4.2.0/llvm/bin/clang++
+        # extra_attributes:
+        #   compilers:
+        #     c: /opt/rocm-4.2.0/llvm/bin/clang
+        #     c++: /opt/rocm-4.2.0/llvm/bin/clang++
     rocm-device-libs:
       version: [4.1.0, 4.2.0]
       buildable: false
@@ -478,16 +521,16 @@ spack:
       externals:
       - spec: hsa-rocr-dev@4.1.0
         prefix: /opt/rocm-4.1.0
-        extra_attributes:
-          compilers:
-            c: /opt/rocm-4.1.0/llvm/bin/clang
-            c++: /opt/rocm-4.1.0/llvm/bin/clang++
+        # extra_attributes:
+        #   compilers:
+        #     c: /opt/rocm-4.1.0/llvm/bin/clang
+        #     c++: /opt/rocm-4.1.0/llvm/bin/clang++
       - spec: hsa-rocr-dev@4.2.0
         prefix: /opt/rocm-4.2.0
-        extra_attributes:
-          compilers:
-            c: /opt/rocm-4.2.0/llvm/bin/clang
-            c++: /opt/rocm-4.2.0/llvm/bin/clang++
+        # extra_attributes:
+        #   compilers:
+        #     c: /opt/rocm-4.2.0/llvm/bin/clang
+        #     c++: /opt/rocm-4.2.0/llvm/bin/clang++
     hsakmt-roct:
       version: [4.1.0, 4.2.0]
       buildable: false
@@ -705,6 +748,8 @@ spack:
         prefix: /opt/rocm-4.1.0
       - spec: rocm-gdb@4.2.0
         prefix: /opt/rocm-4.2.0
+    petsc:
+      variants: +batch
     qt:
       variants: ~ssl
       buildable: true
@@ -806,11 +851,13 @@ spack:
       providers: {}
       compiler: []
     libfabric:
-      version: [1.11.0.3.71]
+      version: [1.11.0.4.75, 1.11.0.3.71]
       buildable: true
       externals:
       - spec: libfabric@1.11.0.3.71
         prefix: /opt/cray/libfabric/1.11.0.3.71
+      - spec: libfabric@1.11.0.4.75
+        prefix: /opt/cray/libfabric/1.11.0.4.75
     r:
       variants: ~X
       buildable: true
@@ -828,7 +875,7 @@ spack:
     hdf5:
       variants: +hl+cxx+fortran
       buildable: true
-      version: [1.12.0]
+      version: []
       target: []
       providers: {}
       compiler: []
@@ -859,8 +906,8 @@ spack:
       target: [x86_64]
       providers:
         mpi: [mpich]
-        lapack: [openblas, cray-libsci@21.04.1.1, cray-libsci@21.06.1.1, mkl]
-        blas: [openblas, cray-libsci@21.04.1.1, cray-libsci@21.06.1.1, mkl]
+        lapack: [openblas, cray-libsci@21.06.1.1, mkl]
+        blas: [openblas, cray-libsci@21.06.1.1, mkl]
         scalapack: [netlib-scalapack]
       compiler: [gcc@7.5.0, gcc]
   # Views are managed externally; placing them here triggers a regneration each
@@ -1243,23 +1290,23 @@ spack:
       modules:
       - PrgEnv-gnu
       - gcc/9.3.0
-      - craype-accel-amd-gfx908
+      # - craype-accel-amd-gfx908
       environment: {}
       extra_rpaths: []
   - compiler:
       spec: gcc@10.2.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.6/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.6/bin/CC
-        f77: /opt/cray/pe/craype/2.7.6/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.6/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.8/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
+        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
       modules:
       - PrgEnv-gnu
       - gcc/10.2.0
-      - craype-accel-amd-gfx908
+      # - craype-accel-amd-gfx908
       environment: {}
       extra_rpaths: []
   - compiler:
@@ -1275,8 +1322,7 @@ spack:
       modules:
       - PrgEnv-gnu/8.1.0
       - gcc/10.3.0 ## Override PrgEnv default
-      - craype/2.7.8
-      - craype-accel-amd-gfx908 ## Base performance option
+      # - craype-accel-amd-gfx908 ## Base performance option
       environment: {}
       extra_rpaths: []
   - compiler:
@@ -1308,10 +1354,13 @@ spack:
       modules:
       - PrgEnv-cray/8.1.0
       - cce/12.0.0 ## Override PrgEnv default
-      - craype/2.7.8
       # - craype-accel-amd-gfx908 ## Base performance option
-      environment: {}
-      extra_rpaths: []
+      environment:
+        append_path:
+          LD_LIBRARY_PATH: '/opt/cray/pe/gcc-libs'
+      extra_rpaths: 
+        - /opt/cray/pe/gcc-libs
+        - /opt/cray/gcc-libs
   - compiler:
       spec: cce@12.0.1
       paths:
@@ -1325,8 +1374,11 @@ spack:
       modules:
       - PrgEnv-cray/8.1.0
       - cce/12.0.1 ## Override PrgEnv default
-      - craype/2.7.8
       # - craype-accel-amd-gfx908 ## Base performance option ## breaks cce/mpich
       # wrt undefined amd hsa libs/amdgpu bc. See logs/{no_accel_module,accel_module_fail}.log
-      environment: {}
-      extra_rpaths: []
+      environment:
+        append_path:
+          LD_LIBRARY_PATH: '/opt/cray/pe/gcc-libs'
+      extra_rpaths: 
+        - /opt/cray/pe/gcc-libs
+        - /opt/cray/gcc-libs
