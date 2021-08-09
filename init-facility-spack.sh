@@ -173,7 +173,9 @@ function setup_alternate_module_environment {
     module reset
     module purge
     echo "Using custom module root '${FACSPACK_ENV_MODULEROOT}'"
-    export MODULEPATH="$1"
+    if [ -n "${1:-}" ]; then
+      export MODULEPATH="$1"
+    fi
   fi
 }
 
