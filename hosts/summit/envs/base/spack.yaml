@@ -10,6 +10,7 @@ spack:
     - '%gcc@9.1.0'
     - '%gcc@9.3.0'
     - '%gcc@10.2.0'
+    - '%gcc@11.1.0'
   - xl_compilers:
     - '%xl@16.1.1-10'
   - llvm_compilers:
@@ -25,6 +26,7 @@ spack:
   - all_compilers:
     - $gcc_compilers
     - '%gcc@10.2.0'
+    - '%gcc@11.1.0'
     - $xl_compilers
     - $llvm_compilers
     - $nv_compilers
@@ -66,8 +68,8 @@ spack:
     - googletest
   - core_only_compute_packages:
     - darshan-runtime@3.2.1
-    - scorep@7.0+mpi+papi
     - darshan-runtime@3.3.0
+    - scorep@7.0+mpi+papi
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
     - gdrcopy
@@ -339,6 +341,7 @@ spack:
       - - ^cuda@11.0.3
       exclude:
       - '%gcc@10.2.0 ^cuda@:11.0.3'
+      - '%gcc@11.1.0 ^cuda@:11.0.3'
     - matrix:
       - - $general_compute_packages
         - $e4s_20.10_packages
@@ -347,10 +350,24 @@ spack:
       - - '%gcc@10.2.0'
       - - ^cuda@11.1.1
       exclude:
-      - globalarrays%gcc@10.2.0
+      - ascent@0.7.1%gcc@10.2.0   # examples fail with argument mismatch
+      - globalarrays%gcc@10.2.0   # conflict in package
       - rempi@1.1.0%gcc@10.2.0    # code error
       - mercury@1.0.1%gcc@10.2.0  # code error
       - slate@2020.10.00%gcc@10.2.0 # broken custom ICL BLASFinder.cmake macro >:(
+    # - matrix:
+    #   - - $general_compute_packages
+    #     - $e4s_20.10_packages
+    #     - $e4s_21.02_packages
+    #     - $e4s_21.05_packages
+    #   - - '%gcc@11.1.0'
+    #   exclude:
+    #   - slate+cuda
+    #   - ascent@0.7.1 # examples fail with argument mismatch
+    #   - globalarrays  # conflict in package
+    #   - rempi@1.1.0  # code error
+    #   - mercury@1.0.1  # code error
+    #   - slate@2020.10.00 # broken custom ICL BLASFinder.cmake macro >:(
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
@@ -1077,6 +1094,20 @@ spack:
       spec: gcc@10.2.0
       operating_system: rhel8
       modules: [gcc/10.2.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+      flags: {}
+  - compiler:
+      spec: gcc@11.1.0
+      operating_system: rhel8
+      modules: [gcc/11.1.0]
       paths:
         cc: gcc
         cxx: g++
