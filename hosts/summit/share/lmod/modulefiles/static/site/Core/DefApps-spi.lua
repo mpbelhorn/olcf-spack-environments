@@ -8,6 +8,3 @@
 load("xl")
 load("spectrum-mpi")
 load("lsf-tools")
-load("hsi")
-load("darshan-runtime")
-load("xalt")
