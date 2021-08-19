@@ -355,19 +355,46 @@ spack:
       - rempi@1.1.0%gcc@10.2.0    # code error
       - mercury@1.0.1%gcc@10.2.0  # code error
       - slate@2020.10.00%gcc@10.2.0 # broken custom ICL BLASFinder.cmake macro >:(
-    # - matrix:
-    #   - - $general_compute_packages
-    #     - $e4s_20.10_packages
-    #     - $e4s_21.02_packages
-    #     - $e4s_21.05_packages
-    #   - - '%gcc@11.1.0'
-    #   exclude:
-    #   - slate+cuda
-    #   - ascent@0.7.1 # examples fail with argument mismatch
-    #   - globalarrays  # conflict in package
-    #   - rempi@1.1.0  # code error
-    #   - mercury@1.0.1  # code error
-    #   - slate@2020.10.00 # broken custom ICL BLASFinder.cmake macro >:(
+    - matrix:
+      - - $general_compute_packages
+        - $e4s_21.05_packages
+      - - '%gcc@11.1.0'
+      exclude:
+      - ascent@0.7.1 # examples fail with argument mismatch
+      - globalarrays  # conflict in package
+      - rempi@1.1.0  # code error
+      - mercury@1.0.1  # code error
+      - zfp+cuda # FIXME: possibly make zfp+cuda the default?
+      - amrex+cuda # FIXME: make amrex+cuda the default
+      - arborx+cuda
+      - axom~cuda # FIXME: depends on raja+cuda
+      - axom+cuda # FIXME: make axom+cuda the default
+      - cabana+cuda
+      - caliper~cuda # FIXME: depends on papi+cuda
+      - caliper+cuda # FIXME: make caliper+cuda the default
+      - chai+cuda
+      - ginkgo+cuda # FIXME: make ginkgo+cuda the default
+      - heffte+cuda # FIXME: make heffte+cuda the default
+      - hpctoolkit+cuda
+      - hpx+cuda # FIXME: make hpx+cuda the default
+      - kokkos-kernels+cuda
+      - kokkos+cuda
+      - legion+cuda
+      - magma+cuda
+      - papi+cuda
+      - petsc+cuda
+      - precice # FIXME: could be made w/o ^superlu-dist+cuda
+      - raja+cuda
+      - slepc # FIXME: could be made w/o ^superlu-dist+cuda
+      - strumpack+cuda
+      - sundials+cuda
+      - superlu-dist+cuda
+      - slate+cuda
+      - tasmanian+cuda
+      - tau+cuda
+      - umpire+cuda
+      - upcxx+cuda
+      - slate@2020.10.00 # broken custom ICL BLASFinder.cmake macro >:(
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
