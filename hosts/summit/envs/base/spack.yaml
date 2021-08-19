@@ -776,16 +776,20 @@ spack:
     prefix_inspections:
       bin:
         - PATH
+      include:
+        - CPATH
       man:
         - MANPATH
       share/man:
         - MANPATH
       share/aclocal:
         - ACLOCAL_PATH
-      lib:
-        - LD_LIBRARY_PATH
       lib64:
         - LD_LIBRARY_PATH
+        - LIBRARY_PATH
+      lib:
+        - LD_LIBRARY_PATH
+        - LIBRARY_PATH
       lib/pkgconfig:
         - PKG_CONFIG_PATH
       lib64/pkgconfig:
@@ -837,6 +841,7 @@ spack:
       kokkos:
         suffixes:
           kokkos +openmp: omp
+          kokkos +cuda_lambda: cudalambda
         filter:
           environment_blacklist: []
         conflict: []
@@ -866,6 +871,24 @@ spack:
       pcre:
         suffixes:
           pcre+jit: jit
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      petsc:
+        suffixes:
+          petsc~cuda: no_cuda
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
+      umpire:
+        suffixes:
+          umpire~openmp: no_omp
         filter:
           environment_blacklist: []
         load: []
@@ -930,27 +953,35 @@ spack:
           unset: []
       blacklist_implicits: false
       verbose: true
-      whitelist: []
+      whitelist:
+      - mercury~mpi ^libfabric@1.12.1~kdreg  fabrics=rxm,sockets,tcp,udp,verbs
+      - libfabric fabrics=rxm,sockets,tcp,udp,verbs
       blacklist:
       - '%gcc@8-os'
       - adios2@2.6.0%clang@10.0.1-0~zfp
       - adios2@2.6.0%gcc~zfp
       - berkeley-db
+      - binutils~nls
       - cairo@1.16.0~X+fc+ft%gcc@8.3.1
+      - conduit+hdf5 ^hdf5~fortran
       - cuda
+      - dyninst ^elfutils~nls
       - elfutils~bzip2
       - gdbm%clang
+      - gettext ^xz~pic
       - glib
       - glproto
       - go-bootstrap
       - gtkplus
       - harfbuzz ^cairo~X
+      - hdf5@1.8.22+mpi~fortran
       - help2man
       - hypre+internal-superlu
       - inputproto
       - kbproto
       - libassuan
       - libdwarf
+      - libfabric fabrics=rxm,sockets,tcp # whitelist fabrics=rxm,sockets,tcp,udp,verbs
       - libfontenc
       - libgcrypt
       - libgd
@@ -958,6 +989,7 @@ spack:
       - libiconv
       - libidn2
       - libksba
+      - libmonitor~dlopen
       - libpciaccess
       - libpthread-stubs
       - libsigsegv
@@ -972,10 +1004,12 @@ spack:
       - libxdmcp
       - libxext
       - libxfont
+      - libxml2 ^xz~pic
       - libxpm 
       - libxslt
       - lua
       - m4
+      - mercury~mpi ^libfabric@1.12.1~kdreg fabrics=rxm,sockets,tcp
       - meson
       - mkfontdir
       - mkfontscale
@@ -984,12 +1018,13 @@ spack:
       - msgpack-c
       - nasm
       - ncurses
+      - netlib-scalapack@2.1.0%gcc@10.2.0 ^openblas patches=865703b4f405543bbd583413fdeff2226dfda908be33639276c06e5aa7ae2cae
       - npth
       - numactl
       - openssh
       - openssl
-      - papi@6.0.0.1%gcc@8.3.1 ^cuda@11.1.1 # FIXME
       - pango ^cairo~pdf
+      - papi@6.0.0.1%gcc@8.3.1 ^cuda@11.1.1 # FIXME: find spec triggering this build, possibly HPX?
       - pinentry
       - pkgconf
       - popt
@@ -1016,12 +1051,14 @@ spack:
       - xextproto
       - xtrans
       - xz~pic
+      - zsh
       hash_length: 0
       hierarchy: []
       projections: {}
       core_specs:
       - magma@2.5.3%gcc@8.3.1 ^cuda@11.0.3
       - amgx%gcc@8.3.1 ^cuda@10.2.89
+      - scorep@7.0%gcc@8.3.1+mpi+papi~pdt~shmem~unwind
       - darshan-runtime@3.2.1%gcc@8.3.1
       - darshan-runtime@3.3.0%gcc@8.3.1
   config:
