@@ -212,7 +212,7 @@ spack:
     - rempi@1.1.0
     # - scr@2.0.0            ## slurm unavailable
     - slepc@3.14.0
-    - slate@2020.10.00+cuda cuda_arch=70 ^openblas@0.3.5 threads=openmp
+    - slate@2020.10.00+cuda cuda_arch=70 ^openblas@0.3.5 threads=openmp ^blaspp+cuda cuda_arch=70
     - stc@0.8.3            ## conflict: ppc64le
     - strumpack@5.1.1 ~slate ^openblas threads=openmp
     - sundials@5.7.0
@@ -290,7 +290,7 @@ spack:
     - raja@0.13.0
     - rempi@1.1.0
     # - scr@3.0rc1 ## slurm unavailable
-    - slate@2021.05.02 +cuda cuda_arch=70 ^openblas@0.3.5 threads=openmp
+    - slate@2021.05.02 +cuda cuda_arch=70 ^openblas@0.3.5 threads=openmp ^blaspp+cuda cuda_arch=70
     - slepc@3.15.0
     - stc@0.9.0
     - strumpack@5.1.1 ~slate ^openblas threads=openmp
@@ -361,8 +361,13 @@ spack:
         - $e4s_21.05_packages
       - - '%gcc@11.1.0'
       exclude:
+      - conduit
+      - faodel
+      - globalarrays
+      - omega-h
+      - trilinos
+      - unifyfs
       - ascent@0.7.1 # examples fail with argument mismatch
-      - globalarrays  # conflict in package
       - rempi@1.1.0  # code error
       - mercury@1.0.1  # code error
       - zfp+cuda # FIXME: possibly make zfp+cuda the default?
