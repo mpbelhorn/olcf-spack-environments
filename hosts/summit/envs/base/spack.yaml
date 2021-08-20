@@ -450,6 +450,7 @@ spack:
   - nv_specs:
     - matrix:
       - - $general_compute_packages
+        - globalarrays
       - - $nv_compilers
       - - ^cmake%gcc@8-os
       - - ^python%gcc@8-os
@@ -468,6 +469,7 @@ spack:
       - mpip%pgi
       - boost%pgi
       - netlib-scalapack%pgi@20.1
+    - magma@2.6.1%nvhpc@21.7 ^cmake%gcc@8-os ^cuda@11.0.3
   - special_builds:
     ## Cannot build do to error in ompi configure finding liblsf/ls_info.
     ## FIXME - ompi version needs to be checked
