@@ -6,6 +6,7 @@ spack:
   - core_compiler:
     - '%gcc@8.3.1'
   - gcc_compilers:
+    - '%gcc@7.5.0'
     - '%gcc@8.3.1'
     - '%gcc@9.1.0'
     - '%gcc@9.3.0'
@@ -336,6 +337,11 @@ spack:
       - - '%gcc@8.3.1'
         - '%gcc@9.1.0'
         - '%gcc@9.3.0'
+      - - ^cuda@11.0.3
+    - matrix:
+      - - $general_compute_packages
+          # - $e4s_21.05_packages
+      - - '%gcc@7.5.0'
       - - ^cuda@11.0.3
     - matrix:
       - - $general_compute_packages
@@ -1116,6 +1122,20 @@ spack:
         cxx: /usr/bin/g++
         f77: /usr/bin/gfortran
         fc: /usr/bin/gfortran
+      extra_rpaths: []
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+      flags: {}
+  - compiler:
+      spec: gcc@7.5.0
+      operating_system: rhel8
+      modules: [gcc/7.5.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
       extra_rpaths: []
       environment:
         append_path:
