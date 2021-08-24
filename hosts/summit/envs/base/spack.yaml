@@ -469,7 +469,7 @@ spack:
       - mpip%nvhpc
       - boost%nvhpc
       - netlib-scalapack%nvhpc
-      - 'fftw@3.3.9:%pgi'
+      - fftw@3.3.9:%pgi
       - adios2%pgi
       - mpip%pgi
       - boost%pgi
