@@ -72,9 +72,12 @@ spack:
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
     - gdrcopy
-    - gromacs +hwloc+cuda ^cuda@10.2.89
     - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
     - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
+    - gromacs@2020.4 +hwloc+cuda+mpi ^cuda@10.2.89
+    - gromacs@2020.4 +hwloc+cuda~mpi ^cuda@10.2.89
+    - gromacs@2020.2 +hwloc+cuda+mpi ^cuda@10.2.89
+    - gromacs@2020.2 +hwloc+cuda~mpi ^cuda@10.2.89
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack
@@ -85,7 +88,7 @@ spack:
     - boost +mpi
     - netcdf-c
     - netcdf-fortran
-    - netcdf-cxx
+    - netcdf-cxx4~doxygen
     - parallel-netcdf
     - parallel-io
     - hypre
@@ -340,7 +343,6 @@ spack:
       - - ^cuda@11.0.3
     - matrix:
       - - $general_compute_packages
-          # - $e4s_21.05_packages
       - - '%gcc@7.5.0'
       - - ^cuda@11.0.3
     - matrix:
@@ -491,6 +493,8 @@ spack:
   - $xl_specs
   - $nv_specs
   ## - $special_builds ## See note in definition section.
+  # - py-pip%gcc@8.3.1 ^/ethjbxn
+  # - py-pip%gcc@8.3.1 ^/eltc6cg
   #############################################################################
   mirrors:
     facility_builds: /sw/summit/spack-envs/mirrors/builds
@@ -809,9 +813,6 @@ spack:
     lmod:
       core_compilers: [gcc@8.3.1]
       all:
-        # suffixes:
-        #   ^python@2.0:2.99: py2
-        #   ^python@3.0:3.99: py3
         environment:
           set:
             OLCF_${PACKAGE}_ROOT: ${PREFIX}
@@ -952,7 +953,13 @@ spack:
           unset: []
       papi:
         suffixes:
-         papi~cuda: no_gpu
+          papi~cuda: no_gpu
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
         filter:
           environment_blacklist: []
         conflict: []
@@ -964,6 +971,10 @@ spack:
       whitelist:
       - mercury~mpi ^libfabric@1.12.1~kdreg  fabrics=rxm,sockets,tcp,udp,verbs
       - libfabric fabrics=rxm,sockets,tcp,udp,verbs
+      - python@3.8.10%gcc@8.3.1 /ethjbxn
+      - python@3.7.7%gcc@8.3.1 /eltc6cg
+      - python@2.7.15%gcc@8.3.1 /6u3drkn
+      - adios2%gcc@8.3.1
       blacklist:
       - '%gcc@8-os'
       - adios2@2.6.0%clang@10.0.1-0~zfp
@@ -1013,7 +1024,7 @@ spack:
       - libxext
       - libxfont
       - libxml2 ^xz~pic
-      - libxpm 
+      - libxpm
       - libxslt
       - lua
       - m4
@@ -1042,6 +1053,7 @@ spack:
       - py-mako
       - py-markupsafe
       - py-msgpack
+      - py-pip
       - py-pygments
       - py-pyyaml
       - py-setuptools
@@ -1064,7 +1076,10 @@ spack:
       hierarchy: []
       projections: {}
       core_specs:
+      - adios2%gcc@8.3.1
       - magma@2.5.3%gcc@8.3.1 ^cuda@11.0.3
+      - gromacs%gcc@8.3.1+mpi
+      - gromacs%gcc@8.3.1~mpi
       - amgx%gcc@8.3.1 ^cuda@10.2.89
       - scorep@7.0%gcc@8.3.1+mpi+papi~pdt~shmem~unwind
       - darshan-runtime@3.2.1%gcc@8.3.1
@@ -1096,7 +1111,7 @@ spack:
     build_jobs: 6
     ccache: false
     db_lock_timeout: 120
-    package_lock_timeout:
+    package_lock_timeout: null
     shared_linking: rpath
     allow_sgid: true
     concretizer: original
