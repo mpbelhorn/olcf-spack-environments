@@ -56,6 +56,7 @@ spack:
     - gsl
     - nco~mpi-deps
     - libfabric
+    - libfabric ^rdma-core@system
     - git-lfs
     - patchelf
     - libzmq
@@ -542,6 +543,12 @@ spack:
       target: []
       providers: {}
       compiler: []
+    rdma-core:
+      buildable: true
+      version: [system]
+      externals:
+      - spec: rdma-core@system
+        prefix: /usr
     amgx:
       variants: +cuda cuda_arch=70
       version: []
@@ -960,6 +967,9 @@ spack:
         load: []
         environment:
           unset: []
+      libfabric:
+        suffixes:
+          'libfabric ^rdma-core@system': sysrdma
         filter:
           environment_blacklist: []
         conflict: []
@@ -1061,6 +1071,7 @@ spack:
       - py-wheel
       - python
       - readline
+      - rdma-core@system
       - slurm
       - sqlite%clang
       - tcl
