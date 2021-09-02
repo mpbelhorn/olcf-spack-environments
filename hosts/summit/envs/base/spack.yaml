@@ -66,15 +66,19 @@ spack:
     - hpcviewer@2021.03
     - cube@4.6+gui
     - googletest
+    - imagemagick
   - core_only_compute_packages:
-    - darshan-runtime@3.2.1
-    - darshan-runtime@3.3.0
+    - darshan-runtime@3.2.1~hdf5
+    - darshan-runtime@3.2.1+hdf5
+    - darshan-runtime@3.3.0~hdf5
+    - darshan-runtime@3.3.0+hdf5
     - scorep@7.0+mpi+papi
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3.7.7
+    - adios@1.13.1+blosc+bzip2+fortran+hdf5+infiniband+netcdf
     - gdrcopy
-    - gromacs +hwloc+cuda+mpi ^cuda@10.2.89
-    - gromacs +hwloc+cuda~mpi ^cuda@10.2.89
+    - gromacs        +hwloc+cuda+mpi ^cuda@10.2.89
+    - gromacs        +hwloc+cuda~mpi ^cuda@10.2.89
     - gromacs@2020.4 +hwloc+cuda+mpi ^cuda@10.2.89
     - gromacs@2020.4 +hwloc+cuda~mpi ^cuda@10.2.89
     - gromacs@2020.2 +hwloc+cuda+mpi ^cuda@10.2.89
@@ -154,7 +158,10 @@ spack:
     - swig@4.0.2
     - sz@2.1.10
     - tasmanian@7.3
-    - tau@2.29.1+cuda
+    - tau@2.29.1~cuda+mpi+ompt~openmp ^papi~cuda
+    - tau@2.29.1~cuda+mpi+ompt+openmp ^papi~cuda
+    - tau@2.29.1+cuda+mpi+ompt~openmp
+    - tau@2.29.1+cuda+mpi+ompt+openmp
     - trilinos@13.0.0
     # - turbine@1.2.3
     - umap@2.1.0
@@ -225,7 +232,10 @@ spack:
     - swig@4.0.2-fortran
     - sz@2.1.11.1
     - tasmanian@7.3
-    - tau@2.30.1+cuda
+    - tau@2.30.1~cuda+mpi+ompt~openmp ^papi~cuda
+    - tau@2.30.1~cuda+mpi+ompt+openmp ^papi~cuda
+    - tau@2.30.1+cuda+mpi+ompt~openmp
+    - tau@2.30.1+cuda+mpi+ompt+openmp
     - trilinos@13.0.1
     # - turbine@1.2.3
     - umap@2.1.0
@@ -305,7 +315,10 @@ spack:
     - swig@4.0.2-fortran
     - sz@2.1.11.1
     - tasmanian@7.5
-    - tau@2.30.1+cuda
+    - tau@2.30.1~cuda+mpi+ompt~openmp ^papi~cuda
+    - tau@2.30.1~cuda+mpi+ompt+openmp ^papi~cuda
+    - tau@2.30.1+cuda+mpi+ompt~openmp
+    - tau@2.30.1+cuda+mpi+ompt+openmp
     - trilinos@13.0.1
     - turbine@1.3.0
     - umap@2.1.0
@@ -400,7 +413,10 @@ spack:
       - superlu-dist+cuda
       - slate+cuda
       - tasmanian+cuda
-      - tau+cuda
+      - tau~cuda+mpi+ompt~openmp ^papi~cuda
+      - tau~cuda+mpi+ompt+openmp ^papi~cuda
+      - tau+cuda+mpi+ompt~openmp
+      - tau+cuda+mpi+ompt+openmp
       - umpire+cuda
       - upcxx+cuda
       - slate@2020.10.00 # broken custom ICL BLASFinder.cmake macro >:(
@@ -455,6 +471,10 @@ spack:
       - mpip
       - adios2+zpf
       - netlib-lapack
+    - matrix:
+      - - netlib-lapack
+      - - $xl_compilers
+      - - ^cmake%gcc@8-os
   - nv_specs:
     - matrix:
       - - $general_compute_packages
@@ -770,7 +790,7 @@ spack:
       providers: {}
       compiler: []
     darshan-runtime:
-      variants: +lsf+hdf5+grouplogs logpath=/gpfs/alpine/darshan/summit
+      variants: +lsf+grouplogs logpath=/gpfs/alpine/darshan/summit
       buildable: true
       version: []
       target: []
@@ -845,6 +865,15 @@ spack:
           environment_blacklist: []
         load: []
         conflict: []
+      darshan-runtime:
+        suffixes:
+          darshan-runtime~hdf5: lite
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       gromacs:
         suffixes:
           gromacs ~mpi: serial
@@ -884,6 +913,18 @@ spack:
         load: []
         environment:
           unset: []
+      tau:
+        suffixes:
+          tau~cuda: no_cuda
+          tau~openmp: no_omp
+          # tau+cuda: cuda
+          # tau+openmp: omp
+        filter:
+          environment_blacklist: []
+        load: []
+        environment:
+          unset: []
+        conflict: []
       pcre:
         suffixes:
           pcre+jit: jit
@@ -1088,13 +1129,16 @@ spack:
       projections: {}
       core_specs:
       - adios2%gcc@8.3.1
+      - adios@1.13.1%gcc@8.3.1
       - magma@2.5.3%gcc@8.3.1 ^cuda@11.0.3
       - gromacs%gcc@8.3.1+mpi
       - gromacs%gcc@8.3.1~mpi
       - amgx%gcc@8.3.1 ^cuda@10.2.89
       - scorep@7.0%gcc@8.3.1+mpi+papi~pdt~shmem~unwind
-      - darshan-runtime@3.2.1%gcc@8.3.1
-      - darshan-runtime@3.3.0%gcc@8.3.1
+      - darshan-runtime@3.2.1%gcc@8.3.1+hdf5
+      - darshan-runtime@3.2.1%gcc@8.3.1~hdf5
+      - darshan-runtime@3.3.0%gcc@8.3.1+hdf5
+      - darshan-runtime@3.3.0%gcc@8.3.1~hdf5
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
