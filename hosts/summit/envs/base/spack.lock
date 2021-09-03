@@ -3967,6 +3967,10 @@
   {
    "hash": "kc4qh4hsgfdkql5w5e34wwpdc2dovemw",
    "spec": "darshan-runtime@3.3.0%gcc@8.3.1+hdf5"
+  },
+  {
+   "hash": "owt7gkjy37beacwhu5doqtruvluawgop",
+   "spec": "netlib-lapack%xl@16.1.1-10 ^cmake%gcc@8-os"
   }
  ],
  "concrete_specs": {
@@ -88617,6 +88621,44 @@
      }
     },
     "hash": "jez4npxjizrvm464s4c5ujoaugstncay"
+   }
+  },
+  "owt7gkjy37beacwhu5doqtruvluawgop": {
+   "netlib-lapack": {
+    "version": "3.9.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "ppc64le"
+    },
+    "compiler": {
+     "name": "xl",
+     "version": "16.1.1-10"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "build_type": "RelWithDebInfo",
+     "external-blas": false,
+     "ipo": false,
+     "lapacke": true,
+     "shared": true,
+     "xblas": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "cmake": {
+      "hash": "t46d4ppsrhye5ipq2nqy42t63eogaw4r",
+      "type": [
+       "build"
+      ]
+     }
+    },
+    "hash": "yndee4mseqpevlcytfl57yj5wll3oqya"
    }
   }
  }
