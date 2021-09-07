@@ -374,7 +374,6 @@ spack:
       - - arch=cray-sles15-zen2
       exclude:
       - archer%cce
-      - archer%gcc # ^llvm@8.0.0 fails, reason unknown
       - caliper%cce
       - darshan-runtime # FIXME; need to build on spock or when gpfs is mounted
       - dyninst%cce ## os elfutils insufficient
@@ -384,7 +383,6 @@ spack:
       - slate%cce ^openblas
       - 'slepc@3.15.0%cce@12.0.0:12.0.1'
       - strumpack%cce ^openblas
-      - strumpack%gcc # fails due to failure to find mpi.h
       # '%cce ^openblas': cce cannot build openblas due to GCC CLI
       #     args being uninterperable by cce.
       # TODO: fix or exclude the following specs:
