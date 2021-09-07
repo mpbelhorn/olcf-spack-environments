@@ -19,6 +19,7 @@ spack:
     - htop
     - tmux
     - cmake
+    - cmake@3.21.2-dev
     - wget
     - go
     - screen
