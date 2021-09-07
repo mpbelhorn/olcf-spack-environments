@@ -360,8 +360,24 @@ spack:
       - - $e4s_21.05_packages
       - - '%gcc@10.3.0'
         - '%gcc@10.2.0'
+      - - ^cray-mpich@8.1.7
+      - - ^hip@4.3.0
+      - - ^hipblas@4.3.0
+      - - ^hipsparse@4.3.0
+      - - ^rocblas@4.3.0
+      - - ^rocrand@4.3.0
+      - - ^rocsolver@4.3.0
+      - - ^rocsparse@4.3.0
+      - - ^rocthrust@4.3.0
+      - - arch=cray-sles15-zen2
+      exclude:
+      - archer%gcc # ^llvm@8.0.0 fails, reason unknown
+      - darshan-runtime # FIXME; need to build on spock or when gpfs is mounted
+      - strumpack%gcc # fails due to failure to find mpi.h
+    - matrix:
+      - - $e4s_21.05_packages
+      - - '%cce@12.0.1'
         - '%cce@12.0.0'
-        - '%cce@12.0.1'
       - - ^cray-mpich@8.1.7
       - - ^hip@4.2.0
       - - ^hipblas@4.2.0
@@ -452,7 +468,7 @@ spack:
       - spec: tcsh@6.20.00
         prefix: /usr
     hip:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hip@4.1.0
@@ -469,32 +485,45 @@ spack:
             # c: /opt/rocm-4.2.0/llvm/bin/clang
             # c++: /opt/rocm-4.2.0/llvm/bin/clang++
             hip: /opt/rocm-4.2.0/hip/bin/hipcc
+      - spec: hip@4.3.0
+        prefix: /opt/rocm-4.3.0/hip
+        extra_attributes:
+          compilers:
+            # c: /opt/rocm-4.3.0/llvm/bin/clang
+            # c++: /opt/rocm-4.3.0/llvm/bin/clang++
+            hip: /opt/rocm-4.3.0/hip/bin/hipcc
     hip-rocclr:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hip-rocclr@4.1.0
         prefix: /opt/rocm-4.1.0/rocclr
       - spec: hip-rocclr@4.2.0
         prefix: /opt/rocm-4.2.0/rocclr
+      - spec: hip-rocclr@4.3.0
+        prefix: /opt/rocm-4.3.0/rocclr
     comgr:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: comgr@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: comgr@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: comgr@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocm-cmake:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-cmake@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocm-cmake@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocm-cmake@4.3.0
+        prefix: /opt/rocm-4.3.0
     llvm-amdgpu:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: llvm-amdgpu@4.1.0
@@ -509,16 +538,24 @@ spack:
         #   compilers:
         #     c: /opt/rocm-4.2.0/llvm/bin/clang
         #     c++: /opt/rocm-4.2.0/llvm/bin/clang++
+      - spec: llvm-amdgpu@4.3.0
+        prefix: /opt/rocm-4.3.0/llvm
+        # extra_attributes:
+        #   compilers:
+        #     c: /opt/rocm-4.3.0/llvm/bin/clang
+        #     c++: /opt/rocm-4.3.0/llvm/bin/clang++
     rocm-device-libs:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-device-libs@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocm-device-libs@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocm-device-libs@4.3.0
+        prefix: /opt/rocm-4.3.0
     hsa-rocr-dev:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hsa-rocr-dev@4.1.0
@@ -533,120 +570,154 @@ spack:
         #   compilers:
         #     c: /opt/rocm-4.2.0/llvm/bin/clang
         #     c++: /opt/rocm-4.2.0/llvm/bin/clang++
+      - spec: hsa-rocr-dev@4.3.0
+        prefix: /opt/rocm-4.3.0
+        # extra_attributes:
+        #   compilers:
+        #     c: /opt/rocm-4.3.0/llvm/bin/clang
+        #     c++: /opt/rocm-4.3.0/llvm/bin/clang++
     hsakmt-roct:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hsakmt-roct@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: hsakmt-roct@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: hsakmt-roct@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocminfo:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocminfo@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocminfo@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocminfo@4.3.0
+        prefix: /opt/rocm-4.3.0
     rccl:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rccl@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rccl@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rccl@4.3.0
+        prefix: /opt/rocm-4.3.0
     hipify-clang:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hipify-clang@4.1.0
         prefix: /opt/rocm-4.1.0 #FIXME
       - spec: hipify-clang@4.2.0
         prefix: /opt/rocm-4.2.0 #FIXME
+      - spec: hipify-clang@4.3.0
+        prefix: /opt/rocm-4.3.0 #FIXME
     hipblas:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hipblas@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: hipblas@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: hipblas@4.3.0
+        prefix: /opt/rocm-4.3.0
     hipcub:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hipcub@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: hipcub@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: hipcub@4.3.0
+        prefix: /opt/rocm-4.3.0
     hipsparse:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hipsparse@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: hipsparse@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: hipsparse@4.3.0
+        prefix: /opt/rocm-4.3.0
     hipfort:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hipfort@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: hipfort@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: hipfort@4.3.0
+        prefix: /opt/rocm-4.3.0
     hipfft:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: hipfft@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: hipfft@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: hipfft@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocm-opencl:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-opencl@4.1.0
         prefix: /opt/rocm-4.1.0/opencl
       - spec: rocm-opencl@4.2.0
         prefix: /opt/rocm-4.2.0/opencl
+      - spec: rocm-opencl@4.3.0
+        prefix: /opt/rocm-4.3.0/opencl
     rocm-clang-ocl:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-clang-ocl@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocm-clang-ocl@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocm-clang-ocl@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocm-opencl-runtime:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-opencl-runtime@4.1.0
         prefix: /opt/rocm-4.1.0/opencl
       - spec: rocm-opencl-runtime@4.2.0
         prefix: /opt/rocm-4.2.0/opencl
+      - spec: rocm-opencl-runtime@4.3.0
+        prefix: /opt/rocm-4.3.0/opencl
     rocm-openmp-extras:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-openmp-extras@4.1.0
         prefix: /opt/rocm-4.1.0/llvm
       - spec: rocm-openmp-extras@4.2.0
         prefix: /opt/rocm-4.2.0/llvm
+      - spec: rocm-openmp-extras@4.3.0
+        prefix: /opt/rocm-4.3.0/llvm
     rocblas:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocblas@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocblas@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocblas@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocfft:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       variants: amdgpu_target=gfx908 amdgpu_target_sram_ecc=gfx908
       buildable: false
       externals:
@@ -654,102 +725,128 @@ spack:
         prefix: /opt/rocm-4.1.0
       - spec: rocfft@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocfft@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocrand:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocrand@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocrand@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocrand@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocthrust:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocthrust@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocthrust@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocthrust@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocsolver:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocsolver@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocsolver@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocsolver@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocsparse:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocsparse@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocsparse@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocsparse@4.3.0
+        prefix: /opt/rocm-4.3.0
     roctracer-dev:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: roctracer-dev@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: roctracer-dev@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: roctracer-dev@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocprofiler-dev:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocprofiler-dev@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocprofiler-dev@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocprofiler-dev@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocprim:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocprim@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocprim@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocprim@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocm-smi:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocmsmi@4.1.0
         prefix: /opt/rocm-4.1.0/rocm_smi
       - spec: rocmsmi@4.2.0
         prefix: /opt/rocm-4.2.0/rocm_smi
+      - spec: rocmsmi@4.3.0
+        prefix: /opt/rocm-4.3.0/rocm_smi
     rocm-smi-lib:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-smi-lib@4.1.0
         prefix: /opt/rocm-4.1.0/rocm_smi
       - spec: rocm-smi-lib@4.2.0
         prefix: /opt/rocm-4.2.0/rocm_smi
+      - spec: rocm-smi-lib@4.3.0
+        prefix: /opt/rocm-4.3.0/rocm_smi
     miopen-hip:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: miopen-hip@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: miopen-hip@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: miopen-hip@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocalution:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocalution@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocalution@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocalution@4.3.0
+        prefix: /opt/rocm-4.3.0
     rocm-gdb:
-      version: [4.1.0, 4.2.0]
+      version: [4.1.0, 4.2.0, 4.3.0]
       buildable: false
       externals:
       - spec: rocm-gdb@4.1.0
         prefix: /opt/rocm-4.1.0
       - spec: rocm-gdb@4.2.0
         prefix: /opt/rocm-4.2.0
+      - spec: rocm-gdb@4.3.0
+        prefix: /opt/rocm-4.3.0
     petsc:
       variants: +batch
     qt:
