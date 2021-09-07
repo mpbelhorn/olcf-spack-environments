@@ -41,7 +41,7 @@ spack:
     # - valgrind ~mpi~boost~ubsan
     # - gsl
     # - nco~mpi-deps
-    # - imagemagick ^ncurses+termlib
+    - imagemagick
     # - r
     # - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran~mpi
     # - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
