@@ -49,12 +49,14 @@ spack:
     - grads #+netcdf+hdf5
     - hpcviewer
     - ghostscript
+    - jasper~opengl
+    - jasper+opengl
     # - vtk~mpi~qt
     # - vtk~mpi+qt
     # - vtk+mpi~qt
     # - vtk+mpi+qt
   - general_compute_packages:
-    - mpich
+    - openmpi
     - openblas threads=none
     - netlib-lapack
     - netlib-scalapack ^netlib-lapack
@@ -147,6 +149,12 @@ spack:
         - '%gcc@10.3.0'
       exclude:
       - 'strumpack%gcc@9:'
+      - 'openpmd-api@:0.12.0%gcc@10.3.0' # FIXME
+      - 'trilinos@:12.14.1%gcc@10.3.0' # FIXME
+      - 'veloc@:1.4%gcc@10.3.0' # FIXME
+      - 'globalarrays@:5.7%gcc@10.3.0' # FIXME
+      - 'hpctoolkit@:2020.08.03%gcc@10.3.0' # FIXME
+      - 'rempi@:1.1.0%gcc@10.3.0' # FIXME
     - matrix:
       - - $gcc_only_compute_packages
       - - $gcc_compilers
@@ -160,7 +168,7 @@ spack:
     - gromacs@2020.2+hwloc~cuda+mpi %gcc@8.3.1
     #- gromacs@2020.2+hwloc+cuda+mpi %gcc@8.3.1 ^cuda@:10.99
     #- openmpi@3.1.4%gcc@8.3.1+cuda
-    #- openmpi@3.1.4%gcc@8.3.1
+    - openmpi@3.1.4%gcc@8.3.1
     - ncl%gcc@8.3.1~mpi
     - ncl%gcc@8.3.1+mpi
     - ncview%gcc@8.3.1
@@ -192,6 +200,13 @@ spack:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
   packages:
+    openmpi:
+      variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx,hcoll,ofi schedulers=slurm
+      buildable: true
+      version: [4.0.4]
+      target: []
+      providers: {}
+      compiler: []
     mpich:
       variants: +slurm
       buildable: true
@@ -343,7 +358,7 @@ spack:
       providers: {}
       compiler: []
     darshan-runtime:
-      variants: +lsf+grouplogs logpath=/gpfs/wolf/darshan/cirrus
+      variants: +slurm+grouplogs logpath=/gpfs/wolf/darshan/cirrus
       buildable: true
       version: []
       target: []
@@ -368,7 +383,7 @@ spack:
       version: []
       target: [x86_64]
       providers:
-        mpi: [mpich]
+        mpi: [builtin.openmpi]
         lapack: [openblas, mkl]
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
@@ -512,6 +527,15 @@ spack:
         load: []
         environment:
           unset: []
+      jasper:
+        suffixes:
+          jasper+opengl: opengl
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       r:
         suffixes:
           r+X: X
@@ -521,7 +545,7 @@ spack:
         load: []
         environment:
           unset: []
-      blacklist_implicits: true
+      blacklist_implicits: false
       verbose: true
       blacklist:
       - python
@@ -561,7 +585,7 @@ spack:
         conflict:
         - '{name}'
         suffixes:
-          ^mpich@3.3.2: mpich-3.3.2
+          ^openmpi@4.0.4: openmpi-4.0.4
           ^python@2.0:2.99: py2
           ^python@3.0:3.99: py3
         environment:
@@ -570,6 +594,15 @@ spack:
           unset: []
         filter:
           environment_blacklist: []
+        load: []
+      openmpi:
+        environment:
+          set:
+            OMPI_MCA_btl: ^vader,openib,tcp
+          unset: []
+        filter:
+          environment_blacklist: []
+        conflict: []
         load: []
       verbose: false
       whitelist: []
