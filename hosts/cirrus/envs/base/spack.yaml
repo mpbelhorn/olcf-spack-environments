@@ -103,6 +103,7 @@ spack:
     - globalarrays
     - pdt
     - tau
+    - tau +openmp +mpi  ## requested via OLCF SW ticket: OLCFSW-132
     - dyninst
     - hpctoolkit
     - gotcha
