@@ -282,6 +282,7 @@ spack:
   - $intel_specs
   - $pgi_specs
   - openmpi%gcc@6.5.0
+  - cuda@10.2.89%gcc@6.5.0
   #############################################################################
   mirrors:
     facility_builds: /sw/andes/spack-envs/mirrors/builds
