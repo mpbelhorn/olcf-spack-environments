@@ -1239,6 +1239,10 @@
   {
    "hash": "b25dywx7kz4ynaon3x6iqyabewk4t6ej",
    "spec": "votca-xtp@2021%gcc@10.3.0"
+  },
+  {
+   "hash": "xezqpani4772fe2l5at5crw53djarl77",
+   "spec": "cuda@10.2.89%gcc@6.5.0"
   }
  ],
  "concrete_specs": {
@@ -52239,6 +52243,39 @@
      "a2977e2f48c9bc7c9627eaadd4bef5323dcfa0e69a65e66b8c2eb4689b670959"
     ],
     "hash": "hulmcxc372s3f3sq4o2sa2qk43ebvonl"
+   }
+  },
+  "xezqpani4772fe2l5at5crw53djarl77": {
+   "cuda": {
+    "version": "10.2.89",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "gcc",
+     "version": "6.5.0"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libxml2": {
+      "hash": "4y2de3g5j456lx3q5aak2b7bljz5sayc",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "xlbxph4tnchdxuq3zvjmed44y5qxmrcx"
    }
   }
  }
