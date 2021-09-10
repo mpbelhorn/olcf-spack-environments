@@ -546,6 +546,15 @@ spack:
         load: []
         environment:
           unset: []
+      tau:
+        suffixes:
+          tau ~openmp ~mpi: no_omp
+        filter:
+          environment_blacklist: []
+        conflict: []
+        load: []
+        environment:
+          unset: []
       blacklist_implicits: false
       verbose: true
       blacklist:
