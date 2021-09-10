@@ -727,6 +727,14 @@
   {
    "hash": "z2emk3dbpe7omf4me6kacxbzj47sktum",
    "spec": "tau%gcc@10.3.0+mpi+openmp"
+  },
+  {
+   "hash": "patyeyxzs247om65b4mnn34a43rc3klx",
+   "spec": "tau%intel@20.0.4 ^cmake@3.16.2"
+  },
+  {
+   "hash": "tgsuoux3ct2aohspcleskglal2pmzcp3",
+   "spec": "tau%intel@20.0.4+mpi+openmp ^cmake@3.16.2"
   }
  ],
  "concrete_specs": {
@@ -32658,6 +32666,394 @@
      }
     },
     "hash": "lnmvwxle4tyeggoax26fu2n7lghsadk6"
+   }
+  },
+  "patyeyxzs247om65b4mnn34a43rc3klx": {
+   "tau": {
+    "version": "2.30",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.4"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "adios2": false,
+     "binutils": true,
+     "comm": false,
+     "craycnl": false,
+     "cuda": false,
+     "fortran": true,
+     "gasnet": false,
+     "io": true,
+     "level_zero": false,
+     "libdwarf": true,
+     "libelf": true,
+     "libunwind": true,
+     "likwid": false,
+     "mpi": false,
+     "ompt": false,
+     "opari": false,
+     "opencl": false,
+     "openmp": false,
+     "otf2": true,
+     "papi": true,
+     "pdt": true,
+     "phase": false,
+     "ppc64le": false,
+     "profileparam": false,
+     "pthreads": true,
+     "python": false,
+     "rocm": false,
+     "rocprofiler": false,
+     "scorep": false,
+     "shmem": false,
+     "sqlite": false,
+     "x86_64": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "binutils": {
+      "hash": "tepuendxukgjco6ahqv4unanuiikkhrw",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "hwloc": {
+      "hash": "vyffvuevgwkrk5a26tcqnujlct4nleng",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libdwarf": {
+      "hash": "ivhz66pfqozp3pjaoxsjjrx7meru6qrt",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libelf": {
+      "hash": "p65iohxb3epdj5t2yv4hdbt54f7xxjkj",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libunwind": {
+      "hash": "euffvm34oopbg3mgysv7jyjebjsfj7p4",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "otf2": {
+      "hash": "coigrsh7m2fuotlk7xxierhmuksn7ixs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "papi": {
+      "hash": "hodvh3uqb7sphvuznoiy6qb5sq4gjcpp",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pdt": {
+      "hash": "25hgw2oly3mxc3i7lav7zfaroun6bvhl",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "zfb3f5tgygqhlefnfdavlga2bv32gtu2",
+      "type": [
+       "link"
+      ]
+     }
+    },
+    "hash": "vjayqxmryu5blljqz3iz44f5d2ottexb"
+   }
+  },
+  "tepuendxukgjco6ahqv4unanuiikkhrw": {
+   "binutils": {
+    "version": "2.33.1",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.4"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "gold": true,
+     "headers": true,
+     "interwork": false,
+     "ld": false,
+     "libiberty": true,
+     "lto": false,
+     "nls": true,
+     "plugins": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "diffutils": {
+      "hash": "3fem2qpvo7rac6hwzwbqh3tkclyi4osu",
+      "type": [
+       "build"
+      ]
+     },
+     "gettext": {
+      "hash": "oy4hmx3zsudi6fhqmp6u227ufksukor2",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "zfb3f5tgygqhlefnfdavlga2bv32gtu2",
+      "type": [
+       "build",
+       "link"
+      ]
+     }
+    },
+    "hash": "uuvf4saivgml2zyt24z26rxdy6wpfms6"
+   }
+  },
+  "ivhz66pfqozp3pjaoxsjjrx7meru6qrt": {
+   "libdwarf": {
+    "version": "20180129",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.4"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "libelf": {
+      "hash": "p65iohxb3epdj5t2yv4hdbt54f7xxjkj",
+      "type": [
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "zfb3f5tgygqhlefnfdavlga2bv32gtu2",
+      "type": [
+       "link"
+      ]
+     }
+    },
+    "hash": "ivhz66pfqozp3pjaoxsjjrx7meru6qrt"
+   }
+  },
+  "p65iohxb3epdj5t2yv4hdbt54f7xxjkj": {
+   "libelf": {
+    "version": "0.8.13",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.4"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "p65iohxb3epdj5t2yv4hdbt54f7xxjkj"
+   }
+  },
+  "coigrsh7m2fuotlk7xxierhmuksn7ixs": {
+   "otf2": {
+    "version": "2.2",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.4"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "hash": "coigrsh7m2fuotlk7xxierhmuksn7ixs"
+   }
+  },
+  "tgsuoux3ct2aohspcleskglal2pmzcp3": {
+   "tau": {
+    "version": "2.30",
+    "arch": {
+     "platform": "linux",
+     "platform_os": "rhel8",
+     "target": "x86_64"
+    },
+    "compiler": {
+     "name": "intel",
+     "version": "20.0.4"
+    },
+    "namespace": "builtin",
+    "parameters": {
+     "adios2": false,
+     "binutils": true,
+     "comm": false,
+     "craycnl": false,
+     "cuda": false,
+     "fortran": true,
+     "gasnet": false,
+     "io": true,
+     "level_zero": false,
+     "libdwarf": true,
+     "libelf": true,
+     "libunwind": true,
+     "likwid": false,
+     "mpi": true,
+     "ompt": false,
+     "opari": false,
+     "opencl": false,
+     "openmp": true,
+     "otf2": true,
+     "papi": true,
+     "pdt": true,
+     "phase": false,
+     "ppc64le": false,
+     "profileparam": false,
+     "pthreads": true,
+     "python": false,
+     "rocm": false,
+     "rocprofiler": false,
+     "scorep": false,
+     "shmem": false,
+     "sqlite": false,
+     "x86_64": false,
+     "cflags": [],
+     "cppflags": [],
+     "cxxflags": [],
+     "fflags": [],
+     "ldflags": [],
+     "ldlibs": []
+    },
+    "dependencies": {
+     "binutils": {
+      "hash": "tepuendxukgjco6ahqv4unanuiikkhrw",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "hwloc": {
+      "hash": "vyffvuevgwkrk5a26tcqnujlct4nleng",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libdwarf": {
+      "hash": "ivhz66pfqozp3pjaoxsjjrx7meru6qrt",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libelf": {
+      "hash": "p65iohxb3epdj5t2yv4hdbt54f7xxjkj",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "libunwind": {
+      "hash": "euffvm34oopbg3mgysv7jyjebjsfj7p4",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "openmpi": {
+      "hash": "gwvulkohi6avzskr7cmjw6iklnhsj45b",
+      "type": [
+       "build",
+       "link",
+       "run"
+      ]
+     },
+     "otf2": {
+      "hash": "coigrsh7m2fuotlk7xxierhmuksn7ixs",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "papi": {
+      "hash": "hodvh3uqb7sphvuznoiy6qb5sq4gjcpp",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "pdt": {
+      "hash": "25hgw2oly3mxc3i7lav7zfaroun6bvhl",
+      "type": [
+       "build",
+       "link"
+      ]
+     },
+     "zlib": {
+      "hash": "zfb3f5tgygqhlefnfdavlga2bv32gtu2",
+      "type": [
+       "link"
+      ]
+     }
+    },
+    "hash": "2o4xmctfo6a7fn6yv5bdvoeaiviu5sg4"
    }
   }
  }

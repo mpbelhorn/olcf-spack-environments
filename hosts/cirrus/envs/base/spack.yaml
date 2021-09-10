@@ -186,7 +186,7 @@ spack:
       - fftw
       - trilinos
       - mercury
-      - tau
+      #- tau
       - dyninst
       - hpctoolkit
       - veloc
