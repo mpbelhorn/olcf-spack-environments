@@ -473,10 +473,10 @@ spack:
       - mpip
       - adios2+zpf
       - netlib-lapack
-    - matrix:
-      - - netlib-lapack
-      - - $xl_compilers
-      - - ^cmake%gcc@8-os
+    # - matrix:
+    #   - - netlib-lapack
+    #   - - $xl_compilers
+    #   - - ^cmake%gcc@8-os
   - nv_specs:
     - matrix:
       - - $general_compute_packages
