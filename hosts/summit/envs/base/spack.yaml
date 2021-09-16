@@ -160,9 +160,9 @@ spack:
     - swig@4.0.2
     - sz@2.1.10
     - tasmanian@7.3
-    - tau@2.29.1~cuda+mpi+ompt~openmp ^papi~cuda
+    - tau@2.29.1~cuda+mpi~ompt~openmp ^papi~cuda
     - tau@2.29.1~cuda+mpi+ompt+openmp ^papi~cuda
-    - tau@2.29.1+cuda+mpi+ompt~openmp
+    - tau@2.29.1+cuda+mpi~ompt~openmp
     - tau@2.29.1+cuda+mpi+ompt+openmp
     - trilinos@13.0.0
     # - turbine@1.2.3
@@ -234,9 +234,9 @@ spack:
     - swig@4.0.2-fortran
     - sz@2.1.11.1
     - tasmanian@7.3
-    - tau@2.30.1~cuda+mpi+ompt~openmp ^papi~cuda
+    - tau@2.30.1~cuda+mpi~ompt~openmp ^papi~cuda
     - tau@2.30.1~cuda+mpi+ompt+openmp ^papi~cuda
-    - tau@2.30.1+cuda+mpi+ompt~openmp
+    - tau@2.30.1+cuda+mpi~ompt~openmp
     - tau@2.30.1+cuda+mpi+ompt+openmp
     - trilinos@13.0.1
     # - turbine@1.2.3
@@ -317,9 +317,9 @@ spack:
     - swig@4.0.2-fortran
     - sz@2.1.11.1
     - tasmanian@7.5
-    - tau@2.30.1~cuda+mpi+ompt~openmp ^papi~cuda
+    - tau@2.30.1~cuda+mpi~ompt~openmp ^papi~cuda
     - tau@2.30.1~cuda+mpi+ompt+openmp ^papi~cuda
-    - tau@2.30.1+cuda+mpi+ompt~openmp
+    - tau@2.30.1+cuda+mpi~ompt~openmp
     - tau@2.30.1+cuda+mpi+ompt+openmp
     - trilinos@13.0.1
     - turbine@1.3.0
@@ -415,9 +415,9 @@ spack:
       - superlu-dist+cuda
       - slate+cuda
       - tasmanian+cuda
-      - tau~cuda+mpi+ompt~openmp ^papi~cuda
+      - tau~cuda+mpi~ompt~openmp ^papi~cuda
       - tau~cuda+mpi+ompt+openmp ^papi~cuda
-      - tau+cuda+mpi+ompt~openmp
+      - tau+cuda+mpi~ompt~openmp
       - tau+cuda+mpi+ompt+openmp
       - umpire+cuda
       - upcxx+cuda
