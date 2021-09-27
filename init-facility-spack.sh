@@ -223,16 +223,16 @@ case "${FACSPACK_HOST}" in
     setup_alternate_module_environment "${_FS_MP}"
     ;;
   spock)
-    #_FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-x86_64/Core"
-    #_FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
-    ## Next line replaced by following non-standard path:
-    ## _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
-    #_FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles"
-    #_FS_MP+=":/opt/cray/pe/lmod/modulefiles/core"
-    #_FS_MP+=":/opt/cray/pe/lmod/modulefiles/craype-targets/default"
-    #_FS_MP+=":/opt/cray/modulefiles"
-    #_FS_MP+=":/opt/modulefiles" ## tcl modulefiles
     setup_alternate_module_environment "${_FS_MP}"
+    ;;
+  borg)
+    export SPACK_FRONT_END="zen3"
+    export SPACK_BACK_END="zen3"
+    setup_alternate_module_environment "${_FS_MP}"
+    if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+          && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
+    module reset
+    fi
     ;;
   *)
     ;;
