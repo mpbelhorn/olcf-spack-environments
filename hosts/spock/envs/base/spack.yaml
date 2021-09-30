@@ -1221,7 +1221,6 @@ spack:
       - numactl
       - openssh
       - openssl
-      - pinentry
       - pkgconf
       - popt
       - py-certifi
