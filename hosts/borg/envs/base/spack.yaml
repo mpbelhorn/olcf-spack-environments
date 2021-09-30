@@ -303,7 +303,6 @@ spack:
       # #      might replace with cray-libsci?
       # # TODO: find what `%cce ^matio ^hdf5` and exclude it
       - archer%gcc
-      - darshan-runtime # FIXME: need to install after GPFS is mounted
       - strumpack%gcc+rocm
       - umpire@4.1.2%gcc@11.2.0  # SAUE-218
       - chai@2.3.0%gcc@11.2.0    # SAUE-218
@@ -312,6 +311,8 @@ spack:
     - matrix:
       - - $e4s_21.05_packages
       - - '%cce@13.0.0.1'
+        - slate@2021.05.02
+        # - strumpack@5.1.1 threads=openmp
       - - ^cray-mpich@8.1.8
       - - ^hip@4.4.0
       - - ^hipblas@4.4.0
@@ -327,10 +328,13 @@ spack:
       - caliper ## elfutils
       - dyninst ## os elfutils insufficient
       - hpctoolkit ## depends on dyninst
-      - darshan-runtime # FIXME: need to install after GPFS is mounted
+      - slate%cce ^openblas
+      - strumpack%cce ^openblas
     - matrix:
       - - $e4s_21.05_packages
       - - '%cce@12.0.2'
+        - slate@2021.05.02
+        # - strumpack@5.1.1 threads=openmp
       - - ^cray-mpich@8.1.8
       - - ^hip@4.2.0
       - - ^hipblas@4.2.0
@@ -346,7 +350,9 @@ spack:
       - caliper ## elfutils
       - dyninst ## os elfutils insufficient
       - hpctoolkit ## depends on dyninst
-      - darshan-runtime # FIXME: need to install after GPFS is mounted
+      - slate%cce ^openblas
+      - strumpack%cce ^openblas
+      - magma@2.6.1 # SAUE-218; libcraymath symbol error.
   specs:
   - $core_specs
   - $cpe21.08_specs
@@ -859,6 +865,15 @@ spack:
       - spec: openssl@1.1.1
         prefix: /usr
       compiler: []
+    openssh:
+      buildable: false
+      version: [8.4]
+      target: []
+      providers: {}
+      externals:
+      - spec: openssh@8.4
+        prefix: /usr
+      compiler: []
     octave:
       variants: +magick+arpack+curl+fftw+fontconfig+freetype+glpk+gnuplot+hdf5+opengl+qhull+qrupdate+qt+readline+suitesparse+zlib
       buildable: true
@@ -926,8 +941,8 @@ spack:
       target: [x86_64]
       providers:
         mpi: [mpich]
-        lapack: [openblas, cray-libsci@21.08.1.2]
-        blas: [openblas, cray-libsci@21.06.1.1]
+        lapack: [openblas, cray-libsci]
+        blas: [openblas, cray-libsci]
         scalapack: [netlib-scalapack]
       compiler: [gcc@7.5.0, gcc]
   # Views are managed externally; placing them here triggers a regneration each
@@ -1079,12 +1094,15 @@ spack:
         load: []
         environment:
           unset: []
+      boost:
+        suffixes:
+          boost cxxstd=17: cxx17
       blacklist_implicits: false
       verbose: true
       whitelist: []
       blacklist:
       - binutils
-      - boost%gcc cxxstd=98
+      - boost%gcc visibility=global
       - camp~rocm #FIXME suffix
       - dyninst%gcc ^elfutils+bzip2
       - elfutils+bzip2
@@ -1409,7 +1427,10 @@ spack:
         cxx: /opt/cray/pe/craype/2.7.10/bin/CC
         f77: /opt/cray/pe/craype/2.7.10/bin/ftn
         fc: /opt/cray/pe/craype/2.7.10/bin/ftn
-      flags: {}
+      flags:
+        cflags: -Wno-unsupported-target-opt
+        cxxflags: -Wno-unsupported-target-opt
+        cppflags: -Wno-unsupported-target-opt
       operating_system: sles15
       target: any
       modules:
