@@ -122,7 +122,7 @@ def olcf(parser, args):
 
 def olcf_show_env(args):
     '''Shows the concretized specs in an environment.'''
-    env = ev.get_env(args, 'olcf show-env', required=True)
+    env = ev.active_environment()
     if not env:
         raise ev.SpackEnvironmentError('No environment found')
 
