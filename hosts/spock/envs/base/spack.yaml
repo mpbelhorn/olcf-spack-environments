@@ -48,147 +48,6 @@ spack:
     # - vmd
     # - sbt
     # - spark+hadoop
-  - e4s_20.10_packages:
-    # - adios@1.13.1 ## rejected by site
-    - adios2@2.7.1~python ## changed from v2.6.0 due to broken patch
-    - aml@0.1.0
-    - arborx@0.9-beta
-    # - axom@0.3.3 ## dependency version collision with raja/umpire/blt
-    - bolt@1.0
-    - caliper@2.4.0~libdw
-    - darshan-runtime@3.2.1
-    - darshan-util@3.2.1
-    - dyninst@10.2.1
-    - faodel@1.1906.1 #~tcmalloc
-    - flecsi@1+cinch
-    - flit@2.1.0
-    - gasnet@2020.3.0
-    # - ginkgo@1.3.0 ## @1.3.0 +rocm conflicts with ROCm 4.1.0+
-    - globalarrays@5.7
-    - gotcha@1.0.3
-    - hdf5@1.10.6+mpi ## FIXME - use cray-hdf5/ cray-hdf5-parallel
-    - hpctoolkit@2020.08.03
-    # - hpx@1.5.1 ## FIXME +rocm ## build failure; otf2 fails with unknown cray platform.
-    - hypre@2.20.0
-    - kokkos-kernels@3.2.00
-    - kokkos@3.2.00 +openmp~rocm amdgpu_target=none # v<3.4 does not support gfx908
-    - legion@20.03.0
-    # - libnrm@0.1.0 ## hard mpich dependency
-    - libquo@1.3.1
-    # - magma@2.5.4 ## cuda support only
-    - mercury@1.0.1
-    - mfem@4.1.0
-    # - mpifileutils@0.10.1 ## ^libcircle fails to determine MPI through cray wrapper
-    - ninja@1.10.1
-    # - omega-h@9.29.0 ## build failure
-    # - openmpi@3.1.6 ## rejected by site
-    - openpmd-api@0.12.0
-    - papi@6.0.0.1
-    - papyrus@1.0.0
-    - parallel-netcdf@1.12.1 ## FIXME - use cray-parallel-netcdf/1.12.1.3
-    - pdt@3.25.1
-    - petsc@3.14.0
-    - phist@1.9.1
-    # - plasma@20.9.20 ^openblas ## Fails to find correct blas under cray wrappers
-    - precice@2.1.1 #FIXME - partial spec
-    - pumi@2.2.2
-    # - py-jupyterhub@1.0.0 ## rejected by site
-    # - py-libensemble@0.7.1 ## rejected by site
-    # - py-petsc4py@3.13.0 ## rejected by site
-    - qthreads@1.14
-    - raja@0.12.1
-    # - rempi@1.1.0 ## spackage needs porting for cray wrappers
-    # - scr@2.0.0 ## libyogrt: configure: error: slurm is not in specified location!
-    - slepc@3.14.0
-    - stc@0.8.3 ## build failure
-    - strumpack@5.0.0 ^openblas threads=openmp
-    - sundials@5.4.0
-    - superlu-dist@6.3.1
-    - superlu@5.2.1
-    - swig@4.0.2
-    - swig@4.0.2-fortran
-    - sz@2.1.10
-    - tasmanian@7.3
-    # - tau@2.29.1+rocm ## build failure; otf2 dependency
-    - trilinos@13.0.0
-    # - turbine@1.2.3 ## build failure
-    - umap@2.1.0
-    - umpire@4.0.1
-    # - unifyfs@0.9.2 ## Spackage needs patching for Cray
-    # - upcxx@2020.3.0 ## Tries to build for aries network on non-aries cray
-    # - veloc@1.4 ## Fails with `error: too many arguments to function 'int AXL_Init()'`
-    - zfp@0.5.5
-  - e4s_21.02_packages:
-    # - adios@1.13.1 ## rejected by site
-    - adios2@2.7.1~python
-    - aml@0.1.0
-    # - amrex@21.02 ## CMake: Could NOT find MPI_CXX
-    - arborx@0.9-beta
-    # - axom@0.4.0 ## dependency version collision with raja/umpire/blt
-    - bolt@2.0
-    - caliper@2.5.0
-    - darshan-runtime@3.2.1
-    - darshan-util@3.2.1
-    - dyninst@10.2.1
-    - faodel@1.1906.1~tcmalloc
-    - flecsi@1.4+cinch
-    - flit@2.1.0
-    - gasnet@2020.3.0
-    # - ginkgo@1.3.0 ## @1.3.0 +rocm conflicts with ROCm 4.1.0+
-    - globalarrays@5.8
-    - gotcha@1.0.3
-    - hdf5@1.10.7+mpi ## FIXME use cray-hdf5?
-    - hpctoolkit@2020.08.03
-    - hpx@1.6.0 ## FIXME: +rocm?
-    - hypre@2.20.0
-    - kokkos-kernels@3.2.00
-    - kokkos@3.2.00 +openmp~rocm amdgpu_target=none # v<3.4 does not support gfx908
-    - legion@20.03.0
-    # - libnrm@0.1.0 ## hard mpich dependency
-    - libquo@1.3.1
-    # - magma@2.5.4 ## FIXME: +rocm? 
-    - mercury@2.0.0
-    - mfem@4.2.0
-    # - mpifileutils@0.10.1 ## ^libcircle fails to determine MPI through cray wrapper
-    - ninja@1.10.2
-    - omega-h@9.32.5
-    # - openmpi@t4.0.5 ## rejected by site
-    - openpmd-api@0.13.2
-    - papi@6.0.0.1
-    - papyrus@1.0.1
-    - parallel-netcdf@1.12.1
-    - pdt@3.25.1
-    - petsc@3.14.4 ## FIXME +rocm?
-    - phist@1.9.3
-    # - plasma@20.9.20 ^openblas ## fails to find correct blas under cray wrappers
-    - precice@2.2.0
-    - pumi@2.2.5
-    # - py-jupyterhub@1.0.0 ## rejected by site
-    # - py-libensemble@0.7.1 ## rejected by site
-    # - py-petsc4py@3.13.0 ## rejected by site
-    - qthreads@1.16 scheduler=distrib
-    - raja@0.13.0
-    # - rempi@1.1.0 ## spackage needs porting for cray wrappers
-    # - scr@2.0.0 ## libyogrt: configure: error: slurm is not in specified location!
-    - slate@2020.10.00 ~rocm amdgpu_target=none ^blaspp~rocm amdgpu_target=none ^openblas
-    - slepc@3.14.2
-    - stc@0.8.3
-    - strumpack@5.1.1 ^openblas threads=openmp
-    # - sundials@5.7.0 ## fails to find MPI through cray wrappers
-    - superlu-dist@6.4.0
-    - superlu@5.2.1
-    - swig@4.0.2-fortran
-    - sz@2.1.11.1
-    - tasmanian@7.3
-    # - tau@2.30.1+rocm ## libTAUsh-rocm-rocprofiler-gnu-papi-pthread-pdt.so cannot find cray libs
-    - trilinos@13.0.1
-    - turbine@1.3.0
-    - umap@2.1.0
-    - umpire@4.1.2 ## FIXME: various problems with btl
-    # - unifyfs@0.9.2 ## Spackage needs patching for Cray
-    # - upcxx@2020.10.0 ## Tries to build for aries network on non-aries cray
-    # - veloc@1.4 ## Fails with `error: too many arguments to function 'int AXL_Init()'`
-    - zfp@0.5.5
   - e4s_21.05_packages:
     # - adios@1.13.1 ## rejected by site
     - adios2@2.7.1~python
@@ -230,7 +89,7 @@ spack:
     - magma@2.6.1
     - mercury@2.0.1
     - mfem@4.2.0
-    # - mpifileutils@0.11~xattr ## ^libcircle fails to determine MPI through cray wrapper
+    - mpifileutils@0.11~xattr
     - ninja@1.10.2
     - omega-h@9.32.5
     # - openmpi@t4.0.5 ## rejected by site
@@ -266,10 +125,114 @@ spack:
     - trilinos@13.0.1
     - turbine@1.3.0
     - umap@2.1.0
-    # - umpire@4.1.2 ## FIXME: various problems with btl
-    # - unifyfs@0.9.2 ## Spackage needs patching for Cray
+    - umpire@4.1.2 +shared~rocm~cuda amdgpu_target=none
+    - umpire@4.1.2 +shared+rocm~cuda amdgpu_target=gfx908
+    - unifyfs@0.9.2
     # - upcxx@2021.3.0 ## Tries to build for aries network on non-aries cray
     - zfp@0.5.5
+  - e4s_21.08_packages:
+    # - adios@1.13.1
+    - adios2@2.7.1 ~python
+    - aml@0.1.0
+    # - amrex@21.09 ~rocm~cuda
+    - amrex@21.09 +rocm~cuda amdgpu_target=gfx908
+    - arborx@1.0
+    - archer@2.0.0
+    - argobots@1.1
+    - ascent@0.7.1 ~test+shared~cuda
+    # - axom@0.5.0 ~cuda ^umpire@4.1.2 +shared # SAUE-223
+    - bolt@2.0
+    - cabana@0.3.0
+    - caliper@2.6.0 ~cuda
+    - chai@2.4.0 ~benchmarks~examples~tests~rocm~cuda amdgpu_target=none
+    - chai@2.4.0 ~benchmarks~examples~tests+rocm~cuda amdgpu_target=gfx908
+    - conduit@0.7.2
+    - darshan-runtime@3.3.1
+    - darshan-util@3.3.1
+    - datatransferkit@3.1-rc2
+    # - dealii@9.3.1 ~cuda
+    - dyninst@11.0.1
+    - faodel@1.1906.1
+    - flecsi@1.4.2
+    - flit@2.1.0
+    - flux-core@0.28.0
+    - fortrilinos@2.0.0
+    - gasnet@2021.3.0
+    # - geopm@1.1.0
+    - ginkgo@1.4.0~rocm~cuda amdgpu_target=none
+    # - ginkgo@1.4.0+rocm~cuda amdgpu_target=gfx908
+    - globalarrays@5.8
+    - gotcha@1.0.3
+    - hdf5@1.12.0
+    - heffte@2.1.0 +fftw
+    - hpctoolkit@2021.05.15
+    - hpx@1.7.1 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
+    - hypre@2.22.0 ~cuda
+    - kokkos@3.4.01 +openmp
+    - kokkos@3.4.01 +rocm~cuda~wrapper amdgpu_target=gfx908
+    - kokkos-kernels@3.2.00 +openmp
+    - legion@21.03.0
+    # - libnrm@0.1.0 # hard mpich dependency
+    - libquo@1.3.1
+    - libunwind@1.5.0
+    - loki@0.1.7
+    - magma@2.6.1 +rocm~cuda amdgpu_target=gfx908
+    - mercury@2.0.1
+    - metall@0.15
+    - mfem@4.3.0 ~cuda
+    - mpark-variant@1.4.0
+    - mpifileutils@0.11 ~xattr
+    - netlib-scalapack@2.1.0
+    - ninja@1.10.2
+    # - nrm@0.1.0 ## Rejected by site
+    - omega-h@9.32.5
+    - openpmd-api@0.13.4 ^hdf5@1.12.0 +fortran +shared +hl api=default
+    - papi@6.0.0.1
+    - papyrus@1.0.1
+    - parallel-netcdf@1.12.2
+    - parsec@3.0.2012 ~cuda
+    - pdt@3.25.1
+    - petsc@3.15.3
+    # - phist@1.9.4 # SAUE-223
+    # - plasma@20.9.20  ## Fails to find usable blas under libsci
+    - precice@2.2.1
+    - pumi@2.2.6
+    # - qt@5.15.2 ## Only a single build needed;
+    - qthreads@1.16 scheduler=distrib
+    # - qwt@6.1.6 # SAUE-223
+    - raja@0.14.0 ~exercises~examples~tests~rocm~cuda+openmp amdgpu_target=none
+    - raja@0.14.0 ~exercises~examples~tests+rocm~cuda~openmp amdgpu_target=gfx908
+    # - rempi@1.1.0 # spackage needs porting for cray wrappers
+    # - scr@3.0rc1 ## libyogrt: configure: error: slurm is not in specified location!
+    - slate@2021.05.02 ~rocm~cuda amdgpu_target=none ^blaspp~rocm amdgpu_target=none
+    - slate@2021.05.02 +rocm~cuda amdgpu_target=gfx908
+    - slepc@3.15.1
+    # - stat@4.1.0 # Core-only package, perhaps.
+    # - stc@0.9.0 # Swift-turbine compiler; only needs to be installed once.
+    - strumpack@5.1.1 ~slate~rocm~cuda amdgpu_target=none
+    - strumpack@5.1.1 ~slate+rocm~cuda amdgpu_target=gfx908
+    - sundials@5.7.0 ~rocm~cuda amdgpu_target=none ## issues with cray-mpich
+    - sundials@5.7.0 +rocm~cuda amdgpu_target=gfx908 ## issues with cray-mpich
+    - superlu-dist@6.4.0 ~cuda
+    - superlu@5.2.2
+    - swig@4.0.2
+    - swig@4.0.2-fortran
+    - sz@2.1.12
+    - tasmanian@7.5 ~rocm~cuda amdgpu_target=none
+    - tasmanian@7.5 +rocm~cuda amdgpu_target=gfx908
+    ## - tau@2.30.1+craycnl+rocm+scorep+mpi+opari+shmem+gasnet+rocprofiler+roctracer+fortran+papi+otf2
+    ##   Tau builds to be handled separately per compiler
+    - trilinos@13.0.1
+    - turbine@1.3.0
+    - umap@2.1.0
+    - umpire@4.1.2 +shared~rocm~cuda amdgpu_target=none
+    - umpire@4.1.2 +shared+rocm~cuda amdgpu_target=gfx908
+    - unifyfs@0.9.2
+    # - upcxx@2021.3.0 ## Tries to build for aries network on non-aries cray
+    # - variorum@0.4.1 # SAUE-223
+    # - veloc@1.4
+    - vtk-m@1.6.0
+    - zfp@0.5.5~cuda
   - core_specs:
     - matrix:
       - - $core_packages
@@ -277,7 +240,8 @@ spack:
       - - arch=linux-sles15-x86_64
   - cpe21.07_specs:
     - matrix:
-      - - $e4s_21.05_packages
+      - - $e4s_21.08_packages
+        - $e4s_21.05_packages
       - - '%gcc@10.3.0'
         - '%gcc@10.2.0'
       - - ^cray-mpich@8.1.7
@@ -295,7 +259,8 @@ spack:
       - darshan-runtime # FIXME; need to build on spock or when gpfs is mounted
       - strumpack%gcc # fails due to failure to find mpi.h
     - matrix:
-      - - $e4s_21.05_packages
+      - - $e4s_21.08_packages
+        - $e4s_21.05_packages
       - - '%cce@12.0.1'
         - '%cce@12.0.0'
       - - ^cray-mpich@8.1.7
@@ -314,23 +279,15 @@ spack:
       - darshan-runtime # FIXME; need to build on spock or when gpfs is mounted
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
-      # - plasma%cce
-      - stat%cce
-      - tau+elf
       - 'parsec@:2.0.2012' # -Wmisleading-indentation -Werror
       - 'petsc@3.15.0%cce@12.0.0:12.0.1'
       - 'precice@2.2.1%cce@12.0.0:12.0.1'
       - slate%cce ^openblas
       - 'slepc@3.15.0:3.15.1%cce@12.0.0:12.0.1' # config.package.FortranLib syntax error
+      - stat%cce
       - strumpack%cce ^openblas
-      # '%cce ^openblas': cce cannot build openblas due to GCC CLI
-      #     args being uninterperable by cce.
-      # TODO: fix or exclude the following specs:
-      # magma%cce : fails due to
-      #     'ld: warning: libgfortran.so.5, needed by lib/libmagma.so, not found
-      #         (try using -rpath or -rpath-link)'
-      #     'ld: /opt/cray/pe/lib64/cce/libcraymath.so.1: undefined reference to
-      #         `_gfortran_erfc_scaled_r8@GFORTRAN_8'
+      - tau+elf
+      - unifyfs%cce
   specs:
   - $core_specs
   - $cpe21.07_specs
