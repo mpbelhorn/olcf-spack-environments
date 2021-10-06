@@ -108,7 +108,7 @@ if [[ -z "${FACSPACK_MY_ENVS:-}" ]]; then
 elif [[ ! -d "${FACSPACK_MY_ENVS:-}" ]]; then
   echo "${_FS_ERR_MSG} does not exist!"
   return 1
-elif [[ "$(stat -c '%U' ${FACSPACK_MY_ENVS})" != ${USER} ]]; then
+elif [[ "$(stat -c '%U' ${FACSPACK_MY_ENVS})" != ${USER} ]] && [[ ! "${USER}" =~ ^(m9b|belhorn|2ff|jmfinney)$ ]]; then
   echo "${_FS_ERR_MSG} is not owned by ${USER}!"
   return 1
 fi
@@ -223,11 +223,8 @@ case "${FACSPACK_HOST}" in
     setup_alternate_module_environment "${_FS_MP}"
     ;;
   spock)
-    setup_alternate_module_environment "${_FS_MP}"
-    ;;
-  borg)
-    export SPACK_FRONT_END="zen3"
-    export SPACK_BACK_END="zen3"
+    export SPACK_FRONT_END="zen2"
+    export SPACK_BACK_END="zen2"
     setup_alternate_module_environment "${_FS_MP}"
     if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
           && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
