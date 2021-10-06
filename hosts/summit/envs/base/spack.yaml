@@ -477,6 +477,11 @@ spack:
       - mpip
       - adios2+zpf
       - netlib-lapack
+      # xl beta103 libm macro errors:
+      - netcdf-c@4.8.0%xl@16.1.1-beta103
+      - netcdf-fortran@4.4.5%xl@16.1.1-beta103
+      - netcdf-cxx4@4.3.1%xl@16.1.1-beta103
+      - parallel-io@2.3.0%xl@16.1.1-beta103
   - nv_specs:
     - matrix:
       - - $general_compute_packages
