@@ -70,6 +70,9 @@ spack:
     - cube@4.6+gui
     - googletest
     - imagemagick
+    - exuberant-ctags@5.8
+    # - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
+    # - cdo~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
   - core_only_compute_packages:
     - darshan-runtime@3.2.1~hdf5
     - darshan-runtime@3.2.1+hdf5
@@ -474,10 +477,6 @@ spack:
       - mpip
       - adios2+zpf
       - netlib-lapack
-    # - matrix:
-    #   - - netlib-lapack
-    #   - - $xl_compilers
-    #   - - ^cmake%gcc@8-os
   - nv_specs:
     - matrix:
       - - $general_compute_packages
@@ -877,6 +876,10 @@ spack:
         load: []
         environment:
           unset: []
+      cdo:
+        suffixes:
+          cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
+          cdo+aec: aec
       gromacs:
         suffixes:
           gromacs ~mpi: serial
