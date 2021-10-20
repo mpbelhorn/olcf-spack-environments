@@ -136,6 +136,17 @@ export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/modules"
 mkdir -p "${FACSPACK_ENV}/.mcache"
 mkdir -p "${FACSPACK_ENV_MODULEROOT}"
 if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
+  # FIXME: 
+  #   Check and copy files one at a time:
+  #     - if remote file is missing:
+  #       - Print message about copy
+  #       - Copy local to remote
+  #     - else if diff/md5sum is different:
+  #       - Print diff, permissions, uid/gid, and timestamps for both local and remote
+  #         files
+  #       - Prompt copy
+  #     - else:
+  #       - Print message that module is OK.
   echo "Checking static modulefiles..."
   (cd ${FACSPACK_ENV_MODULEROOT}/site && md5sum --check <(cd ${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site && find . -type f -exec md5sum {} + | sort -k 2))
   diff --color=always -u --recursive \
