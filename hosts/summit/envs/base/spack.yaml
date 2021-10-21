@@ -639,6 +639,12 @@ spack:
       - netlib-scalapack%pgi@20.1
       - parallel-io
       - parallelio
+    - matrix:
+      - - scorep@7.0+mpi+papi~pdt+shmem~unwind ^cuda@11.0.3
+        - scorep@7.0+mpi~papi~pdt+shmem~unwind
+      - - $nv_compilers
+      - - ^pkgconf%gcc@8-os
+      - - ^papi%gcc@8-os
   - special_builds:
     ## Cannot build do to error in ompi configure finding liblsf/ls_info.
     ## FIXME - ompi version needs to be checked
