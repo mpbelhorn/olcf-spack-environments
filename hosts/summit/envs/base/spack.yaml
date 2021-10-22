@@ -671,162 +671,27 @@ spack:
   repos:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
+  view: false
   packages:
-    spectrum-mpi:
-      version:
-      - 10.4.0.3-20210112
-      - 10.4.0.0-20200604
-      - 10.3.1.2-20200121
-      target: []
-      compiler: []
+    all:
       buildable: true
-      providers: {}
-    cuda:
-      buildable: false
-      version:
-      - 11.0.3
-      - 11.1.1
-      - 11.4.2
-      - 11.0.2
-      - 10.2.89
-      - 10.1.243
-      - 10.1.168
-      externals:
-      - spec: cuda@11.4.2
-        modules:
-        - cuda/11.4.2
-      - spec: cuda@11.1.1
-        modules:
-        - cuda/11.1.1
-      - spec: cuda@11.0.3
-        modules:
-        - cuda/11.0.3
-      - spec: cuda@11.0.2
-        modules:
-        - cuda/11.0.2
-      - spec: cuda@10.2.89
-        modules:
-        - cuda/10.2.89
-      - spec: cuda@10.1.243
-        modules:
-        - cuda/10.1.243
-      - spec: cuda@10.1.168
-        modules:
-        - cuda/10.1.168
-      target: []
-      providers: {}
-      compiler: []
-      variants: +allow-unsupported-compilers
-    rdma-core:
-      buildable: true
-      version: [system]
-      externals:
-      - spec: rdma-core@system
-        prefix: /usr
-    axom:
-      variants: ~examples~openmp+hdf5+umpire+raja+mpi
+      compiler: [gcc@8.3.1, gcc, clang, xl, nvhpc, pgi]
+      providers:
+        blas: [netlib-lapack]
+        lapack: [netlib-lapack]
+        mpi: [olcf.spectrum-mpi]
+        scalapack: [netlib-scalapack]
+      target: [ppc64le]
+      version: []
     amgx:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
       variants: +cuda cuda_arch=70
       version: []
-      target: []
-      compiler: []
-      buildable: true
-      providers: {}
-    lsf:
-      version: [10.1.0.10]
-      buildable: false
-      externals:
-      - spec: lsf@10.1.0.10
-        prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
-      target: []
-      compiler: []
-      providers: {}
-    hcoll:
-      buildable: false
-      version: [4.4]
-      externals:
-      - spec: hcoll@4.4
-        prefix: /opt/mellanox/hcoll
-      target: []
-      compiler: []
-      providers: {}
-    libfabric:
-      variants: fabrics=verbs,rxm,sockets,tcp,udp
-    gdbm:
-      version: [1.19]
-    knem:
-      buildable: false
-      version: [1.1.3]
-      externals:
-      - spec: knem@1.1.3
-        prefix: /opt/knem-1.1.3.90mlnx1
-      target: []
-      compiler: []
-      providers: {}
-    go-bootstrap:
-      buildable: false
-      version: [1.7.1-bootstrap]
-      externals:
-      - spec: go-bootstrap@1.7.1-bootstrap
-        prefix: /sw/summit/go/1.7.1-bootstrap
-      target: []
-      providers: {}
-      compiler: []
-    gtkplus:
-      version: [3.22.30, 2.24.32]
-      buildable: false
-      externals:
-      - spec: gtkplus@2.24.32
-        prefix: /usr
-      - spec: gtkplus@3.22.30
-        prefix: /usr
-      target: []
-      providers: {}
-      compiler: []
-    openssl:
-      buildable: false
-      version: [1.1.1]
-      externals:
-      - spec: openssl@1.1.1
-        prefix: /usr
-      target: []
-      providers: {}
-      compiler: []
-    libtool:
-      version: [2.4.6]
-      externals:
-      - spec: libtool@2.4.6
-        prefix: /usr
-      buildable: true
-      target: []
-      providers: {}
-      compiler: []
-    perl:
-      version: [5.30.1]
-      buildable: true
-      target: []
-      providers: {}
-      compiler: []
-    fftw:
-      variants: +openmp precision=float,double,long_double
-      buildable: true
-      version: []
-      target: []
-      providers: {}
-      compiler: []
-    icu4c:
-      buildable: true
-      version: [66.1]
-      target: []
-      providers: {}
-      compiler: []
-    strumpack:
-      variants: ~butterflypack~slate~rocm+cuda cuda_arch=70
-      buildable: true
-      version: []
-      target: []
-      providers: {}
-      compiler: []
+    axom:
+      variants: ~examples~openmp+hdf5+umpire+raja+mpi
     # camp:
     #   variants: +cuda cuda_arch=70
     #   buildable: true
@@ -834,118 +699,253 @@ spack:
     #   target: []
     #   providers: {}
     #   compiler: []
+    cuda:
+      buildable: false
+      compiler: []
+      externals:
+        - modules:
+            - cuda/11.4.2
+          spec: cuda@11.4.2
+        - modules:
+            - cuda/11.1.1
+          spec: cuda@11.1.1
+        - modules:
+            - cuda/11.0.3
+          spec: cuda@11.0.3
+        - modules:
+            - cuda/11.0.2
+          spec: cuda@11.0.2
+        - modules:
+            - cuda/10.2.89
+          spec: cuda@10.2.89
+        - modules:
+            - cuda/10.1.243
+          spec: cuda@10.1.243
+        - modules:
+            - cuda/10.1.168
+          spec: cuda@10.1.168
+      providers: {}
+      target: []
+      variants: +allow-unsupported-compilers
+      version:
+        - 11.0.3
+        - 11.1.1
+        - 11.4.2
+        - 11.0.2
+        - 10.2.89
+        - 10.1.243
+        - 10.1.168
+    darshan-runtime:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: +grouplogs scheduler=lsf logpath=/gpfs/alpine/darshan/summit
+      version: []
+    fftw:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: +openmp precision=float,double,long_double
+      version: []
+    gdbm:
+      version: [1.19]
+    go-bootstrap:
+      buildable: false
+      compiler: []
+      externals:
+        - prefix: /sw/summit/go/1.7.1-bootstrap
+          spec: go-bootstrap@1.7.1-bootstrap
+      providers: {}
+      target: []
+      version: [1.7.1-bootstrap]
+    gtkplus:
+      buildable: false
+      compiler: []
+      externals:
+        - prefix: /usr
+          spec: gtkplus@2.24.32
+        - prefix: /usr
+          spec: gtkplus@3.22.30
+      providers: {}
+      target: []
+      version: [3.22.30, 2.24.32]
+    hcoll:
+      buildable: false
+      compiler: []
+      externals:
+        - prefix: /opt/mellanox/hcoll
+          spec: hcoll@4.4
+      providers: {}
+      target: []
+      version: [4.4]
+    hdf5:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: +hl+cxx
+      version: []
     hpctoolkit:
       variants: +cuda+mpi~papi
-    tasmanian:
-      variants: +cuda
+    icu4c:
       buildable: true
-      version: []
-      target: []
-      providers: {}
       compiler: []
-    upcxx:
-      variants: +cuda
-      buildable: true
-      version: []
-      target: []
       providers: {}
-      compiler: []
-    umpire:
-      variants: ~examples
-      buildable: true
-      version: []
       target: []
-      providers: {}
+      version: [66.1]
+    knem:
+      buildable: false
       compiler: []
+      externals:
+        - prefix: /opt/knem-1.1.3.90mlnx1
+          spec: knem@1.1.3
+      providers: {}
+      target: []
+      version: [1.1.3]
     kokkos:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
       variants: +wrapper+cuda cuda_arch=70
-      buildable: true
       version: []
-      target: []
-      providers: {}
-      compiler: []
     kokkos-kernels:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
       variants: +cuda cuda_arch=70
-      buildable: true
       version: []
-      target: []
-      providers: {}
-      compiler: []
-    hdf5:
-      variants: +hl+cxx
+    libfabric:
+      variants: fabrics=verbs,rxm,sockets,tcp,udp
+    libtool:
       buildable: true
-      version: []
-      target: []
-      providers: {}
       compiler: []
-    papi:
-      variants: cpu=POWER9 +cuda
-      buildable: true
-      version: []
-      target: []
+      externals:
+        - prefix: /usr
+          spec: libtool@2.4.6
       providers: {}
-      compiler: []
-    slate:
-      variants: +cuda cuda_arch=70
-      buildable: true
-      version: []
       target: []
-      providers: {}
+      version: [2.4.6]
+    lsf:
+      buildable: false
       compiler: []
+      externals:
+        - prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
+          spec: lsf@10.1.0.10
+      providers: {}
+      target: []
+      version: [10.1.0.10]
     magma:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
       variants: +cuda cuda_arch=70
-      buildable: true
       version: []
-      target: []
-      providers: {}
-      compiler: []
-    netlib-scalapack:
-      variants: +fpic
-      buildable: true
-      version: []
-      target: []
-      providers: {}
-      compiler: []
     netcdf-c:
-      variants: ~hdf4+mpi+parallel-netcdf+shared
       buildable: true
-      version: []
-      target: []
-      providers: {}
       compiler: []
+      providers: {}
+      target: []
+      variants: ~hdf4+mpi+parallel-netcdf+shared
+      version: []
     netcdf-fortran:
       buildable: true
+      compiler: []
+      providers: {}
+      target: []
       version: [4.4.5]
-      target: []
+    netlib-scalapack:
+      buildable: true
       compiler: []
       providers: {}
+      target: []
+      variants: +fpic
+      version: []
+    openssl:
+      buildable: false
+      compiler: []
+      externals:
+        - prefix: /usr
+          spec: openssl@1.1.1
+      providers: {}
+      target: []
+      version: [1.1.1]
+    papi:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: cpu=POWER9 +cuda
+      version: []
     parallel-netcdf:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
       variants: +cxx+fortran+fpic
-      buildable: true
       version: []
-      target: []
-      providers: {}
-      compiler: []
-    darshan-runtime:
-      variants: +grouplogs scheduler=lsf logpath=/gpfs/alpine/darshan/summit
+    perl:
       buildable: true
-      version: []
-      target: []
-      providers: {}
       compiler: []
+      providers: {}
+      target: []
+      version: [5.30.1]
+    rdma-core:
+      buildable: true
+      externals:
+        - prefix: /usr
+          spec: rdma-core@system
+      version: [system]
+    slate:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: +cuda cuda_arch=70
+      version: []
     spectral:
       variants: ~examples prologue_dir=/sw/summit/spectral/usr/local
-    all:
-      compiler: [gcc@8.3.1, gcc, clang, xl, nvhpc, pgi]
-      providers:
-        mpi: [olcf.spectrum-mpi]
-        lapack: [netlib-lapack]
-        blas: [netlib-lapack]
-        scalapack: [netlib-scalapack]
+    spectrum-mpi:
       buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      version:
+        - 10.4.0.3-20210112
+        - 10.4.0.0-20200604
+        - 10.3.1.2-20200121
+    strumpack:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: ~butterflypack~slate~rocm+cuda cuda_arch=70
       version: []
-      target: [ppc64le]
-  view: false
+    tasmanian:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: +cuda
+      version: []
+    umpire:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: ~examples
+      version: []
+    upcxx:
+      buildable: true
+      compiler: []
+      providers: {}
+      target: []
+      variants: +cuda
+      version: []
   modules:
     prefix_inspections:
       bin:
@@ -974,10 +974,19 @@ spack:
         - CMAKE_PREFIX_PATH
     default:
       enable:
-      - lmod
+        - lmod
       lmod:
-        core_compilers: [gcc@8.3.1]
+        adios2:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            adios2+python: py
         all:
+          conflict: []
           environment:
             set:
               OLCF_${PACKAGE}_ROOT: ${PREFIX}
@@ -985,154 +994,110 @@ spack:
           filter:
             environment_blacklist: []
           load: []
-          conflict: []
-        pgi:
-          filter:
-            environment_blacklist: [CPATH, LIBRARY_PATH]
-          load: []
-          environment:
-            unset: []
-          conflict: []
-        spectrum-mpi:
-          environment:
-            set:
-              PAMI_IBV_ENABLE_OOO_AR: '1'
-              PAMI_IBV_QP_SERVICE_LEVEL: '8'
-            unset: []
-          filter:
-            environment_blacklist: []
-          load: []
-          conflict: []
-        darshan-runtime:
-          suffixes:
-            darshan-runtime~hdf5: lite
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        camp:
-          suffixes:
-            camp~cuda~rocm: cpu
-        cdo:
-          suffixes:
-            cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
-            cdo+aec: aec
-        gromacs:
-          suffixes:
-            gromacs ~mpi: serial
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        boost:
-          suffixes:
-            boost cxxstd=14: cxx14
-            boost cxxstd=17: cxx17
-            boost visibility=global: global_symbols
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        arborx:
-          suffixes:
-            arborx~rocm~cuda~openmp: serial
         amrex:
           suffixes:
             amrex~rocm~cuda: cpu
+        arborx:
+          suffixes:
+            arborx~rocm~cuda~openmp: serial
         # ascent:
         #   suffixes:
         #     ascent~cuda: cpu
+        asio:
+          suffixes:
+            asio cxxstd=14: cxx14
+            asio cxxstd=17: cxx17
         axom:
           suffixes:
             axom~cuda: cpu
         blaspp:
           suffixes:
             blaspp~rocm~cuda: cpu
-        lapackpp:
+        boost:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
           suffixes:
-            lapackpp ^blaspp~rocm~cuda: cpu
+            boost cxxstd=14: cxx14
+            boost cxxstd=17: cxx17
+            boost visibility=global: global_symbols
         caliper:
           suffixes:
             caliper~cuda: cpu
+        camp:
+          suffixes:
+            camp~cuda~rocm: cpu
+        cdo:
+          suffixes:
+            cdo+aec: aec
+            cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
         chai:
           suffixes:
             chai~rocm~cuda: cpu
+        core_compilers: [gcc@8.3.1]
+        darshan-runtime:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            darshan-runtime~hdf5: lite
         dealii:
           suffixes:
             dealii~cuda: cpu
         ginkgo:
           suffixes:
             ginkgo~rocm~cuda: cpu
-        asio:
+        gromacs:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
           suffixes:
-            asio cxxstd=14: cxx14
-            asio cxxstd=17: cxx17
+            gromacs ~mpi: serial
         hpx:
           suffixes:
+            hpx ^boost@1.72.0: boost1.72.0
             hpx cxxstd=14: cxx14
             hpx cxxstd=17: cxx17
-            hpx ^boost@1.72.0: boost1.72.0
             hpx ~cuda: cpu
         hypre:
           suffixes:
             hypre~cuda: cpu
         kokkos:
           suffixes:
-            kokkos +openmp: omp
             kokkos +cuda_lambda: cudalambda
+            kokkos +openmp: omp
             kokkos ~rocm~cuda: cpu
         kokkos-kernels:
           suffixes:
-            kokkos-kernels ~cuda: cpu
             kokkos-kernels +openmp: omp
+            kokkos-kernels ~cuda: cpu
+        lapackpp:
+          suffixes:
+            lapackpp ^blaspp~rocm~cuda: cpu
+        libfabric:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            'libfabric ^rdma-core@system': sysrdma
         magma:
           suffixes:
             magma~rocm~cuda: cpu
         mfem:
           suffixes:
             mfem~cuda: cpu
-        scorep:
-          suffixes:
-            scorep+papi: papi
-          conflict: [darshan-runtime, xalt]
-        trilinos:
-          suffixes:
-            trilinos@13.0.1+piro: extra
-        parsec:
-          suffixes:
-            parsec~cuda: cpu
-        raja:
-          suffixes:
-            raja~rocm~cuda: cpu
-        slate:
-          suffixes:
-            slate~rocm~cuda: cpu
-        strumpack:
-          suffixes:
-            strumpack~rocm~cuda: cpu
-            strumpack ^openblas threads=openmp: omp
-        sundials:
-          suffixes:
-            sundials~rocm~cuda: cpu
-        superlu-dist:
-          suffixes:
-            superlu-dist~cuda: cpu
-        tasmanian:
-          suffixes:
-            tasmanian~rocm~cuda: cpu
-        umpire:
-          suffixes:
-            umpire~rocm~cuda: cpu
-            umpire~openmp: no_omp
-        zfp:
-          suffixes:
-            zfp+cuda: gpu
         netcdf-c:
           suffixes:
             netcdf-c ^hdf5+fortran: h5f
@@ -1143,98 +1108,133 @@ spack:
           suffixes:
             netcdf-c ^hdf5+fortran: h5f
         netlib-scalapack:
-          suffixes:
-            netlib-scalapack ^openblas: openblas
-          filter:
-            environment_blacklist: []
           conflict: []
-          load: []
           environment:
             unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            netlib-scalapack ^openblas: openblas
+        openblas:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            openblas threads=openmp: omp
+            openblas threads=pthreads: pthreads
+        papi:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            papi~cuda: no_gpu
+        parsec:
+          suffixes:
+            parsec~cuda: cpu
+        pcre:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            pcre+jit: jit
+        petsc:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            petsc~cuda: no_cuda
+        pgi:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: [CPATH, LIBRARY_PATH]
+          load: []
+        qthreads:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            qthreads scheduler=distrib: distrib
+        raja:
+          suffixes:
+            raja~rocm~cuda: cpu
+        scorep:
+          conflict: [darshan-runtime, xalt]
+          suffixes:
+            scorep+papi: papi
+        slate:
+          suffixes:
+            slate~rocm~cuda: cpu
+        spectral:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          template: olcf/modules/spectral.lua
+        spectrum-mpi:
+          conflict: []
+          environment:
+            set:
+              PAMI_IBV_ENABLE_OOO_AR: '1'
+              PAMI_IBV_QP_SERVICE_LEVEL: '8'
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+        strumpack:
+          suffixes:
+            strumpack ^openblas threads=openmp: omp
+            strumpack~rocm~cuda: cpu
+        sundials:
+          suffixes:
+            sundials~rocm~cuda: cpu
+        superlu-dist:
+          suffixes:
+            superlu-dist~cuda: cpu
+        tasmanian:
+          suffixes:
+            tasmanian~rocm~cuda: cpu
         tau:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
           suffixes:
             tau~cuda: no_cuda
             tau~openmp: no_omp
             # tau+cuda: cuda
             # tau+openmp: omp
-          filter:
-            environment_blacklist: []
-          load: []
-          environment:
-            unset: []
-          conflict: []
-        pcre:
+        trilinos:
           suffixes:
-            pcre+jit: jit
-          filter:
-            environment_blacklist: []
-          load: []
-          environment:
-            unset: []
-          conflict: []
-        petsc:
+            trilinos@13.0.1+piro: extra
+        umpire:
           suffixes:
-            petsc~cuda: no_cuda
-          filter:
-            environment_blacklist: []
-          load: []
-          environment:
-            unset: []
-          conflict: []
-        spectral:
-          template: olcf/modules/spectral.lua
-          filter:
-            environment_blacklist: []
-          load: []
-          environment:
-            unset: []
-          conflict: []
-        openblas:
+            umpire~openmp: no_omp
+            umpire~rocm~cuda: cpu
+        zfp:
           suffixes:
-            openblas threads=openmp: omp
-            openblas threads=pthreads: pthreads
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        qthreads:
-          suffixes:
-            qthreads scheduler=distrib: distrib
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        adios2:
-          suffixes:
-            adios2+python: py
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        papi:
-          suffixes:
-            papi~cuda: no_gpu
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
-        libfabric:
-          suffixes:
-            'libfabric ^rdma-core@system': sysrdma
-          filter:
-            environment_blacklist: []
-          conflict: []
-          load: []
-          environment:
-            unset: []
+            zfp+cuda: gpu
         blacklist_implicits: false
         verbose: true
         whitelist:
