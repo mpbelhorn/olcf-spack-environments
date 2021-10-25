@@ -22,7 +22,7 @@ for repo_root in repo_roots:
 settings = {
     'install_root': spack.store.store.root,
     'template_dirs': template_dirs,
-    'module_roots': {k: module_root(k) for k in ('tcl', 'lmod')},
+    'module_roots': {k: module_root(k, 'default') for k in ('tcl', 'lmod')},
     'misc_cache': spack.caches.misc_cache.root,
     'source_cache': spack.caches.fetch_cache.root,
     'mirrors': dict(spack.config.get('mirrors')),
