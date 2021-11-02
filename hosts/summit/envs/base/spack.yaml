@@ -131,7 +131,7 @@ spack:
     - gotcha@1.0.3
     - hdf5@1.10.6+mpi+fortran
     - hpctoolkit@2020.08.03
-    - hpx@1.5.1 ~cuda ^boost cxxstd=17
+    - hpx@1.5.1 max_cpu_count=176 ~cuda ^boost cxxstd=17
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
     - kokkos+openmp@3.2.00
@@ -208,7 +208,7 @@ spack:
     - gotcha@1.0.3
     - hdf5@1.10.7+mpi+fortran
     - hpctoolkit@2020.08.03
-    - hpx@1.6.0 ~cuda ^boost cxxstd=17
+    - hpx@1.6.0 max_cpu_count=176 ~cuda ^boost cxxstd=17
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
     - kokkos+openmp@3.2.00
@@ -299,7 +299,7 @@ spack:
     - hdf5@1.10.7+mpi+fortran
     - heffte@2.0.0+fftw
     - hpctoolkit@2021.03.01
-    - hpx@1.6.0 +cuda cuda_arch=70 ^boost cxxstd=17
+    - hpx@1.6.0 max_cpu_count=176 +cuda cuda_arch=70 ^boost cxxstd=17
     - hypre@2.20.0
     - kokkos-kernels@3.2.00
     - kokkos@3.4.00 +openmp
@@ -399,8 +399,8 @@ spack:
     - hdf5@1.12.0
     - heffte@2.1.0 +fftw
     - hpctoolkit@2021.05.15
-    - hpx@1.7.1 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
-    - hpx@1.7.1 +cuda cuda_arch=70 ^boost cxxstd=17 ^asio cxxstd=17
+    - hpx@1.7.1 max_cpu_count=176 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
+    - hpx@1.7.1 max_cpu_count=176 +cuda cuda_arch=70 ^boost cxxstd=17 ^asio cxxstd=17
     - hypre@2.22.0 ~cuda
     - hypre@2.22.0 +cuda cuda_arch=70
     - kokkos@3.4.01 +openmp
@@ -506,9 +506,9 @@ spack:
         - '%gcc@9.3.0'
       - - ^cuda@11.0.3
       exclude:
-        - 'boost@1.77.0: %gcc@8.3.1'
-        - 'flecsi%gcc@8.3.1 ^boost@1.77.0:'
-        - 'hpx%gcc@8.3.1 ^boost@1.77.0:'
+      - 'boost@1.77.0 %gcc@8.3.1'
+      - 'flecsi%gcc@8.3.1 ^boost@1.77.0'
+      - hpx%gcc@8.3.1
     # Core-only e4s 21.08 packages
     - qt@5.15.2%gcc@8.3.1
     - stat@4.1.0%gcc@8.3.1
@@ -560,8 +560,18 @@ spack:
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
-    - hpx %gcc@8.3.1 ~cuda cxxstd=14 ^boost@1.70.0:1.72.0 # FIXME: +cuda?
-    - hpx %gcc@8.3.1 ~cuda cxxstd=17 ^boost@1.70.0:1.72.0 # FIXME: +cuda?
+    - hpx %gcc@8.3.1 max_cpu_count=176 ~cuda cuda_arch=none cxxstd=14              ^boost@1.72.0 cxxstd=14 ^asio cxxstd=14
+    - hpx %gcc@8.3.1 max_cpu_count=176 +cuda cuda_arch=70   cxxstd=14 ^cuda@11.0.3 ^boost@1.72.0 cxxstd=14 ^asio cxxstd=14
+    - hpx %gcc@8.3.1 max_cpu_count=176 ~cuda cuda_arch=none cxxstd=17              ^boost@1.72.0 cxxstd=17 ^asio cxxstd=17
+    - hpx %gcc@8.3.1 max_cpu_count=176 +cuda cuda_arch=70   cxxstd=17 ^cuda@11.0.3 ^boost@1.72.0 cxxstd=17 ^asio cxxstd=17
+    - hpx %gcc@9.1.0 max_cpu_count=176 ~cuda cuda_arch=none cxxstd=14              ^boost        cxxstd=14 ^asio cxxstd=14
+    - hpx %gcc@9.1.0 max_cpu_count=176 +cuda cuda_arch=70   cxxstd=14 ^cuda@11.0.3 ^boost        cxxstd=14 ^asio cxxstd=14
+    - hpx %gcc@9.1.0 max_cpu_count=176 ~cuda cuda_arch=none cxxstd=17              ^boost        cxxstd=17 ^asio cxxstd=17
+    - hpx %gcc@9.1.0 max_cpu_count=176 +cuda cuda_arch=70   cxxstd=17 ^cuda@11.0.3 ^boost        cxxstd=17 ^asio cxxstd=17
+    - hpx %gcc@9.3.0 max_cpu_count=176 ~cuda cuda_arch=none cxxstd=14              ^boost        cxxstd=14 ^asio cxxstd=14
+    - hpx %gcc@9.3.0 max_cpu_count=176 +cuda cuda_arch=70   cxxstd=14 ^cuda@11.0.3 ^boost        cxxstd=14 ^asio cxxstd=14
+    - hpx %gcc@9.3.0 max_cpu_count=176 ~cuda cuda_arch=none cxxstd=17              ^boost        cxxstd=17 ^asio cxxstd=17
+    - hpx %gcc@9.3.0 max_cpu_count=176 +cuda cuda_arch=70   cxxstd=17 ^cuda@11.0.3 ^boost        cxxstd=17 ^asio cxxstd=17
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
@@ -789,6 +799,8 @@ spack:
       version: []
     hpctoolkit:
       variants: +cuda+mpi~papi
+    hpx:
+      variants: max_cpu_count=176 
     icu4c:
       buildable: true
       compiler: []
@@ -1336,7 +1348,6 @@ spack:
         - rdma-core@system
         - slurm
         - sqlite%clang
-        - tcl
         - tcsh
         - trilinos@13.0.1%gcc~stratimikos
         - util-linux-uuid
