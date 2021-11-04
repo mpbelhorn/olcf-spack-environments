@@ -2204,6 +2204,38 @@
     {
       "hash": "z5qcosdv52ko7zupn7iskwoyiuklbdti",
       "spec": "trilinos@13.0.1%cce@12.0.0+amesos+amesos2+anasazi+aztec+belos+boost+epetra+epetraext+ifpack+ifpack2+intrepid+intrepid2+isorropia+kokkos+minitensor+ml+muelu+nox+phalanx+piro+rol+rythmos+sacado+shards+shylu+stk+stokhos+stratimikos+superlu-dist+teko+tempus+tpetra+trilinoscouplings+zoltan+zoltan2 gotype=long_long arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.2.0 ^hipblas@4.2.0 ^hipsparse@4.2.0 ^rocblas@4.2.0 ^rocrand@4.2.0 ^rocsolver@4.2.0 ^rocsparse@4.2.0 ^rocthrust@4.2.0"
+    },
+    {
+      "hash": "fttrv3hlsijex5u4ydz7jgu3zigyau4p",
+      "spec": "darshan-runtime@3.3.1%gcc@10.3.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "72h63yuthemx5ztlcxzjmsghvvikfjnv",
+      "spec": "darshan-runtime@3.3.1%gcc@10.2.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "d2dugfw47gosnd7xvs5kduerkf7p2non",
+      "spec": "darshan-runtime@3.3.0%gcc@10.3.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "6lqtymn7bcxgzwqu7oky7hfhromcja3e",
+      "spec": "darshan-runtime@3.3.0%gcc@10.2.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "tr67oqnf3jat3uzaiykzgeybjlmrniml",
+      "spec": "darshan-runtime@3.3.1%cce@12.0.1 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.2.0 ^hipblas@4.2.0 ^hipsparse@4.2.0 ^rocblas@4.2.0 ^rocrand@4.2.0 ^rocsolver@4.2.0 ^rocsparse@4.2.0 ^rocthrust@4.2.0"
+    },
+    {
+      "hash": "4voxihd2slkjkdvujypj5g3cu4lzv7bo",
+      "spec": "darshan-runtime@3.3.1%cce@12.0.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.2.0 ^hipblas@4.2.0 ^hipsparse@4.2.0 ^rocblas@4.2.0 ^rocrand@4.2.0 ^rocsolver@4.2.0 ^rocsparse@4.2.0 ^rocthrust@4.2.0"
+    },
+    {
+      "hash": "rn5es756ud7lpn7o2pe7u5vsndyuaeju",
+      "spec": "darshan-runtime@3.3.0%cce@12.0.1 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.2.0 ^hipblas@4.2.0 ^hipsparse@4.2.0 ^rocblas@4.2.0 ^rocrand@4.2.0 ^rocsolver@4.2.0 ^rocsparse@4.2.0 ^rocthrust@4.2.0"
+    },
+    {
+      "hash": "5qms34vfknecsoajs7qm7abttyeyrxys",
+      "spec": "darshan-runtime@3.3.0%cce@12.0.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.7 ^hip@4.2.0 ^hipblas@4.2.0 ^hipsparse@4.2.0 ^rocblas@4.2.0 ^rocrand@4.2.0 ^rocsolver@4.2.0 ^rocsparse@4.2.0 ^rocthrust@4.2.0"
     }
   ],
   "concrete_specs": {
@@ -98514,6 +98546,678 @@
         }
       ],
       "hash": "vg62gxjnirp4htgbqey4zcdtdgo6q27w"
+    },
+    "fttrv3hlsijex5u4ydz7jgu3zigyau4p": {
+      "name": "darshan-runtime",
+      "version": "3.3.1",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "nond3gf6eqvylgi327c43fodpvw6reiy",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "2gmti56ra2pjhzrrpgjxi75jdhe2kjws",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "46jnuxxq4d6tdtxyrggn7cs6ysycebw3"
+    },
+    "72h63yuthemx5ztlcxzjmsghvvikfjnv": {
+      "name": "darshan-runtime",
+      "version": "3.3.1",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.2.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "tnd55svsohbsiquvgyx65p5weibupapp",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "yxgrl275upxxyrzpuplzdqorkoy6mwae",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "gwixvoifxzyoiu72uksiuftal6ofq7kl"
+    },
+    "d2dugfw47gosnd7xvs5kduerkf7p2non": {
+      "name": "darshan-runtime",
+      "version": "3.3.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "nond3gf6eqvylgi327c43fodpvw6reiy",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "2gmti56ra2pjhzrrpgjxi75jdhe2kjws",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "q6mri6osiszioh6sgprgvsjmio527cvm"
+    },
+    "6lqtymn7bcxgzwqu7oky7hfhromcja3e": {
+      "name": "darshan-runtime",
+      "version": "3.3.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.2.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "tnd55svsohbsiquvgyx65p5weibupapp",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "yxgrl275upxxyrzpuplzdqorkoy6mwae",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "4vojn45mhfsfm5gp5pdk5hc75zpfh225"
+    },
+    "tr67oqnf3jat3uzaiykzgeybjlmrniml": {
+      "name": "darshan-runtime",
+      "version": "3.3.1",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "12.0.1"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "26ekmncs52qrhdycbexundd3rrloueqt",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "a2mf35x4nboisgkblg6zb5kehzrytzo2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "n5rwka5n5v7p2frdjnktnmjvtr5dgs6i"
+    },
+    "4voxihd2slkjkdvujypj5g3cu4lzv7bo": {
+      "name": "darshan-runtime",
+      "version": "3.3.1",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "12.0.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "jxmmog4jxg35ui56udxptj3ndvpncka4",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "cug5gyw4gykbcgbeqz4vgqg77xydkxbs",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "vrfrtsls3ejey6pffdskokvzcykee23f"
+    },
+    "rn5es756ud7lpn7o2pe7u5vsndyuaeju": {
+      "name": "darshan-runtime",
+      "version": "3.3.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "12.0.1"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "26ekmncs52qrhdycbexundd3rrloueqt",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "a2mf35x4nboisgkblg6zb5kehzrytzo2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "zq5x6qavm6fsr3lubals2pbipzlprf3b"
+    },
+    "5qms34vfknecsoajs7qm7abttyeyrxys": {
+      "name": "darshan-runtime",
+      "version": "3.3.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "12.0.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "apmpi": false,
+        "apmpi_sync": false,
+        "apxc": false,
+        "grouplogs": true,
+        "hdf5": false,
+        "logpath": "/gpfs/alpine/darshan/spock",
+        "mpi": true,
+        "scheduler": "slurm",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cray-mpich",
+          "build_hash": "jxmmog4jxg35ui56udxptj3ndvpncka4",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "cug5gyw4gykbcgbeqz4vgqg77xydkxbs",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "cxqvbubywgijeqalhozgik26umn66koi"
     }
   }
 }
