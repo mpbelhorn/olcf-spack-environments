@@ -252,7 +252,6 @@ spack:
       - - arch=cray-sles15-zen2
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
-      - darshan-runtime # FIXME; need to build when gpfs is mounted
       - strumpack%gcc # fails due to failure to find mpi.h
       - unifyfs%gcc@11.2.0
       - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
@@ -276,7 +275,6 @@ spack:
       exclude:
       - archer%cce
       - caliper%cce
-      - darshan-runtime # FIXME; need to build when gpfs is mounted
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
@@ -334,7 +332,6 @@ spack:
       exclude:
       - archer%cce
       - caliper%cce
-      - darshan-runtime # FIXME; need to build when gpfs is mounted
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
