@@ -44,6 +44,7 @@ spack:
     - exuberant-ctags@5.8
     - libpng@1.2.57
     - wget
+    - bazel ^openjdk@11.0:11.99
   - e4s_21.05_packages:
     - adios2@2.7.1~python
     - aml@0.1.0
