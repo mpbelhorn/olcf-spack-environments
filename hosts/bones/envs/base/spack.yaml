@@ -255,7 +255,8 @@ spack:
       - darshan-runtime # FIXME; need to build when gpfs is mounted
       - strumpack%gcc # fails due to failure to find mpi.h
       - unifyfs%gcc@11.2.0
-      - ^conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
+      - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
+      - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
     - matrix:
       - - $e4s_21.08_packages
         - $e4s_21.05_packages
