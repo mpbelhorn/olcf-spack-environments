@@ -14,7 +14,7 @@ spack:
     - '%cce@12.0.3'
     - '%cce@12.0.2'
     - '%cce@12.0.1'
-    - '%cce@12.0.0'
+    # - '%cce@12.0.0'
   - all_compilers:
     - $gcc_compilers
     - $cray_compilers
@@ -260,7 +260,7 @@ spack:
         - $e4s_21.05_packages
         - slate@2021.05.02
       - - '%cce@12.0.1'
-        - '%cce@12.0.0'
+        # - '%cce@12.0.0'
       - - ^cray-mpich@8.1.7
       - - ^hip@4.2.0
       - - ^hipblas@4.2.0
@@ -292,7 +292,8 @@ spack:
         - $e4s_21.05_packages
       - - '%gcc@11.2.0'
         - '%gcc@10.3.0'
-        # - '%gcc@10.2.0'
+        - '%gcc@10.2.0'
+        - '%gcc@9.3.0'
       - - ^cray-mpich@8.1.10
       - - ^hip@4.3.0
       - - ^hipblas@4.3.0
@@ -305,18 +306,18 @@ spack:
       - - arch=cray-sles15-zen2
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
-      - darshan-runtime # FIXME; need to build when gpfs is mounted
       - strumpack%gcc # fails due to failure to find mpi.h
       - unifyfs%gcc@11.2.0
       - 'loki%gcc@11:' ## FIXME: incompatible C++17 used by default
-      - ^conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
+      - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
+      - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
     - matrix:
       - - $e4s_21.08_packages
         - $e4s_21.05_packages
         - slate@2021.05.02
       - - '%cce@12.0.3'
-        # - '%cce@12.0.2'
-        # - '%cce@12.0.1'
+        - '%cce@12.0.2'
+        - '%cce@12.0.1'
         # - '%cce@12.0.0'
       - - ^cray-mpich@8.1.10
       - - ^hip@4.2.0
@@ -974,6 +975,9 @@ spack:
           filter:
             environment_blacklist: []
           load: []
+        amrex:
+          suffixes:
+            amrex~rocm: cpu
         blaspp:
           suffixes:
             blaspp~rocm: cpu
@@ -1046,6 +1050,9 @@ spack:
           suffixes:
             hdf5~mpi+szip: sz
             hdf5~mpi+threadsafe: threadsafe
+        kokkos-kernels:
+          suffixes:
+            kokkos-kernels+openmp: omp
         ncl:
           conflict: []
           environment:
@@ -1097,6 +1104,9 @@ spack:
         tasmanian:
           suffixes:
             tasmanian~rocm: cpu
+        tau:
+          suffixes:
+            tau+openmp: omp
         umpire:
           suffixes:
             umpire~rocm: cpu
@@ -1143,6 +1153,7 @@ spack:
         - inputproto
         - kbproto
         - libassuan
+        - libdwarf
         - libfabric
         - libfontenc
         - libgcrypt
