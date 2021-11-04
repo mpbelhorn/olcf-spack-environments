@@ -68,6 +68,12 @@ _THIS_HOST="$(hostname --long \
              | sed -e 's/\.\(olcf\|ccs\)\..*//' \
                    -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
                    -e 's/[-0-9]*$//')"
+if [[ "${_THIS_HOST:-XX}" == "XX" ]]; then
+  _THIS_HOST="$(sed -e 's/\.\(olcf\|ccs\)\..*//' \
+                    -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
+                    -e  's/[-0-9]*$//' \
+                    -e 's/cm\.//' /etc/hostname)"
+fi
 [[ "${_THIS_HOST:-XX}" == "XX" ]] \
   && echo "ERROR: Current host '${_THIS_HOST}' could not be identified!" \
   && return 1
@@ -79,6 +85,13 @@ _FS_DEFAULT_ENV_PREFIX="/sw/${FACSPACK_HOST}/spack-envs"
 _FS_DEFAULT_ENV_NAME="base"
 export FACSPACK_CONF_HOST="${FACSPACK_SPACK_ROOT}/hosts/${FACSPACK_HOST}"
 export FACSPACK_CONF_COMMON="${FACSPACK_SPACK_ROOT}/share"
+
+_FS_SITE_SOURCE_CACHE="/sw/sources/facility-spack/source_cache"
+if [ -e "${_FS_SITE_SOURCE_CACHE}" -a -w "${_FS_SITE_SOURCE_CACHE}" ]; then
+  export FACSPACK_SOURCE_CACHE="${_FS_SITE_SOURCE_CACHE}"
+else
+  export FACSPACK_SOURCE_CACHE="${FACSPACK_CONF_COMMON}/mirrors/sources"
+fi
 
 # Setup the path to the spack environments prefix. All the spack envs for this
 # system will be installed under this path. The path must be non-blank, exist,
@@ -147,14 +160,16 @@ if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
   #       - Prompt copy
   #     - else:
   #       - Print message that module is OK.
-  echo "Checking static modulefiles..."
-  (cd ${FACSPACK_ENV_MODULEROOT}/site && md5sum --check <(cd ${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site && find . -type f -exec md5sum {} + | sort -k 2))
-  diff --color=always -u --recursive \
-     "${FACSPACK_ENV_MODULEROOT}/site" \
-     "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site"
-  cp -dRu --preserve=mode,timestamps \
-     "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
-     "${FACSPACK_ENV_MODULEROOT}/."
+  if [ -d "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" ]; then
+    echo "Checking static modulefiles..."
+    (cd ${FACSPACK_ENV_MODULEROOT}/site && md5sum --check <(cd ${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site && find . -type f -exec md5sum {} + | sort -k 2))
+    diff --color=always -u --recursive \
+       "${FACSPACK_ENV_MODULEROOT}/site" \
+       "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site"
+    cp -dRu --preserve=mode,timestamps \
+       "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
+       "${FACSPACK_ENV_MODULEROOT}/."
+  fi
 else
   _FS_WARN_MSG="WARNING: Not updating static modulefiles.\n    "
   _FS_WARN_MSG+="Check that '${FACSPACK_ENV_MODULEROOT}/site/Core' "
@@ -174,7 +189,9 @@ function setup_alternate_module_environment {
     module reset
     module purge
     echo "Using custom module root '${FACSPACK_ENV_MODULEROOT}'"
-    export MODULEPATH="$1"
+    if [ -n "${1:-}" ]; then
+      export MODULEPATH="$1"
+    fi
   fi
 }
 
@@ -220,6 +237,15 @@ case "${FACSPACK_HOST}" in
     _FS_MP+=":/usr/share/modulefiles/Core"
     _FS_MP+=":/usr/share/lmod/lmod/modulefiles/Core"
     setup_alternate_module_environment "${_FS_MP}"
+    ;;
+  spock)
+    export SPACK_FRONT_END="zen2"
+    export SPACK_BACK_END="zen2"
+    setup_alternate_module_environment "${_FS_MP}"
+    if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+          && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
+    module reset
+    fi
     ;;
   *)
     ;;
