@@ -279,9 +279,10 @@ spack:
       - hpctoolkit%cce ## depends on dyninst
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.0%cce@12.0.0:12.0.1
+      - petsc@3.15.3%cce@13.0.0.1 # -Wno-unsupported-target-opt breaks mpif90 config tests
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - slate%cce ^openblas
-      - slepc@3.15.0:3.15.1%cce@12.0.0:12.0.3   # config.package.FortranLib syntax error
+      - slepc@3.15.0:3.15.1%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
       - tau+elf
@@ -311,7 +312,7 @@ spack:
       - petsc@3.15.0%cce@12.0.0:12.0.1
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - slate%cce ^openblas
-      - slepc@3.15.0:3.15.1%cce@12.0.0:12.0.3   # config.package.FortranLib syntax error
+      - slepc@3.15.0:3.15.1%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
       - tau+elf
@@ -368,7 +369,7 @@ spack:
       - petsc@3.15.0%cce@12.0.0:12.0.1
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - slate%cce ^openblas
-      - slepc@3.15.0:3.15.1%cce@12.0.0:12.0.3   # config.package.FortranLib syntax error
+      - slepc@3.15.0:3.15.1%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
       - tau+elf
@@ -395,8 +396,10 @@ spack:
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
+      - petsc@3.15.3%cce@13.0.0.1 # -Wno-unsupported-target-opt breaks mpif90 config tests
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - slate%cce ^openblas
+      - slepc@3.15.0:3.15.1%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
       - tau+elf
@@ -418,15 +421,20 @@ spack:
       exclude:
       - archer%cce
       - caliper%cce
+      - datatransferkit@3.1-rc2%cce@13.0.0.5-beta # SCEV Bug; trilinos dependency
       - darshan-runtime # FIXME; need to build when gpfs is mounted
       - dyninst%cce ## os elfutils insufficient
+      - fortrilinos@2.0.0%cce@13.0.0.5-beta # SCEV Bug; trilinos dependency
       - hpctoolkit%cce ## depends on dyninst
+      - omega-h@9.32.5%cce@13.0.0.5-beta # SCEV Bug; trilinos dependency
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - slate%cce ^openblas
+      - slepc@3.15.0:3.15.1%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
       - tau+elf
+      - trilinos@13.0.1%cce@13.0.0.5-beta+ifpack2 # SCEV bug
       - unifyfs%cce
   specs:
   - $core_specs
