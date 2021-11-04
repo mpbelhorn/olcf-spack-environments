@@ -57,7 +57,8 @@ spack:
     - r
     - r@4.0.0
     # - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
-    - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
+    - cdo@1.9.10+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
+    - cdo@1.9.10~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - vmd
     - sbt
     - spark+hadoop
@@ -563,6 +564,7 @@ spack:
       cdo:
         suffixes:
           cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
+          cdo+aec: aec
         filter:
           environment_blacklist: []
         conflict: []
@@ -649,6 +651,9 @@ spack:
       verbose: true
       blacklist:
       - python
+      - py-setuptools
+      - py-virtualenv
+      - py-pip
       - py-
       - slurm
       - go-bootstrap
