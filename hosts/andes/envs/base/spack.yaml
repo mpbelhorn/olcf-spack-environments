@@ -297,6 +297,7 @@ spack:
   repos:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
+  view: false
   packages:
     openmpi:
       variants: +pmi +thread_multiple +legacylaunchers fabrics=ucx,hcoll,ofi schedulers=slurm
@@ -478,251 +479,276 @@ spack:
         blas: [openblas, mlk]
         scalapack: [netlib-scalapack]
       compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
-  view: false
   modules:
-    enable:
-    - lmod
-    - tcl
-    lmod:
-      core_compilers: [gcc@8.3.1]
-      all:
-        suffixes:
-          ^python@2.0:2.99: py2
-          ^python@3.0:3.99: py3
-        environment:
-          set:
-            OLCF_${PACKAGE}_ROOT: ${PREFIX}
-          unset: []
-        filter:
-          environment_blacklist: []
-        load: []
-        conflict: []
-      openmpi:
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          set:
-            OMPI_MCA_btl: ^vader,openib,tcp
-            OMPI_MCA_coll_hcoll_enable: '0'
-          unset: []
-      nccl:
-        suffixes:
-          ^cuda@10.2.0:10.2.99: cuda10.2
-          ^cuda@11.0.0:11.0.99: cuda11.0
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      openblas:
-        suffixes:
-          openblas threads=openmp: omp
-          openblas threads=pthreads: pthreads
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      fftw:
-        suffixes:
-          fftw+openmp: omp
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      hdf5:
-        suffixes:
-          hdf5~mpi+szip: sz
-          hdf5~mpi+threadsafe: threadsafe
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      darshan-runtime:
-        suffixes:
-          hdf5=pre1.10: hdf5pre110
-          hdf5=post1.10: hdf5post110
-        filter:
-          environment_blacklist: []
-        load: []
-        environment:
-          unset: []
-          set:
-            SRUN_EXPORT_ENV: ALL,LD_PRELOAD=${PREFIX}/lib/libdarshan.so
-        conflict: []
-      ncl:
-        suffixes:
-          ncl+mpi: parallel
-          ncl~mpi: serial
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      cdo:
-        suffixes:
-          cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
-          cdo+aec: aec
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      cairo:
-        suffixes:
-          cairo+X: X
-          cairo+pdf: pdf
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      gromacs:
-        suffixes:
-          gromacs~rdtscp: rdtscp_off
-          gromacs~mpi: analysis
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      vtk:
-        suffixes:
-          vtk+mpi: parallel
-          vtk~mpi: serial
-          vtk+qt: qt
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      ferret:
-        suffixes:
-          ferret^hdf5+mpi^netcdf-c+mpi: parallel
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      paraview:
-        suffixes:
-          paraview+python3: pyapi
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      pango:
-        suffixes:
-          pango+X: X
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      scorep:
-        suffixes:
-          scorep+unwind: libunwind
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      r:
-        suffixes:
-          r+X: X
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-        environment:
-          unset: []
-      blacklist_implicits: true
-      verbose: true
-      blacklist:
-      - python
-      - py-setuptools
-      - py-virtualenv
-      - py-pip
-      - py-
-      - slurm
-      - go-bootstrap
-      - openssl
-      - harfbuzz ^cairo~X
-      - pango ^cairo~pdf
-      - '%gcc@8-os'
-      - '%gcc@8-pgi'
-      - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip
-      - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe
-      - gobject-introspection%gcc@8.3.1
-      - libfabric@1.8.0%gcc@8.3.1 fabrics=sockets,tcp,udp
-      - gnuplot%gcc@8.3.1 ^pango+X
-      - mesa%gcc@8.3.1 ^hwloc@2.2.0
-      - llvm%gcc@8.3.1 ^hwloc@2.2.0
-      hash_length: 0
-      hierarchy: []
-      projections: {}
-      core_specs:
-      - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visit ^hdf5+mpi ^libpng@:1.6.0
-      - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visit+python3 ^hdf5+mpi ^libpng@:1.6.0
-      - ncview%gcc@8.3.1
-      - ncl%gcc@8.3.1+mpi
-      - ncl%gcc@8.3.1~mpi
-      - libiconv@1.16%gcc@8.3.1
-      - scorep%gcc@8.3.1+unwind
-      - scorep%gcc@8.3.1~unwind
-      whitelist: []
-    tcl:
-      hash_length: 3
-      naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
-      blacklist:
-      - slurm
-      - go-bootstrap
-      - openssl
-      all:
-        conflict:
-        - '{name}'
-        suffixes:
-          ^openmpi@4.0.4: openmpi-4.0.4
-          ^python@2.0:2.99: py2
-          ^python@3.0:3.99: py3
-        environment:
-          set:
-            OLCF_${PACKAGE}_ROOT: ${PREFIX}
-          unset: []
-        filter:
-          environment_blacklist: []
-        load: []
-      openmpi:
-        environment:
-          set:
-            OMPI_MCA_btl: ^vader,openib,tcp
-          unset: []
-        filter:
-          environment_blacklist: []
-        conflict: []
-        load: []
-      verbose: false
-      whitelist: []
-      blacklist_implicits: false
-      projections: {}
+    prefix_inspections:
+      bin:
+        - PATH
+      include:
+        - CPATH
+      man:
+        - MANPATH
+      share/man:
+        - MANPATH
+      share/aclocal:
+        - ACLOCAL_PATH
+      lib64:
+        - LD_LIBRARY_PATH
+        - LIBRARY_PATH
+      lib:
+        - LD_LIBRARY_PATH
+        - LIBRARY_PATH
+      lib/pkgconfig:
+        - PKG_CONFIG_PATH
+      lib64/pkgconfig:
+        - PKG_CONFIG_PATH
+      share/pkgconfig:
+        - PKG_CONFIG_PATH
+      '':
+        - CMAKE_PREFIX_PATH
+    default:
+      enable:
+      - lmod
+      - tcl
+      lmod:
+        core_compilers: [gcc@8.3.1]
+        all:
+          suffixes:
+            ^python@2.0:2.99: py2
+            ^python@3.0:3.99: py3
+          environment:
+            set:
+              OLCF_${PACKAGE}_ROOT: ${PREFIX}
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          conflict: []
+        openmpi:
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            set:
+              OMPI_MCA_btl: ^vader,openib,tcp
+              OMPI_MCA_coll_hcoll_enable: '0'
+            unset: []
+        nccl:
+          suffixes:
+            ^cuda@10.2.0:10.2.99: cuda10.2
+            ^cuda@11.0.0:11.0.99: cuda11.0
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        openblas:
+          suffixes:
+            openblas threads=openmp: omp
+            openblas threads=pthreads: pthreads
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        fftw:
+          suffixes:
+            fftw+openmp: omp
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        hdf5:
+          suffixes:
+            hdf5~mpi+szip: sz
+            hdf5~mpi+threadsafe: threadsafe
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        darshan-runtime:
+          suffixes:
+            hdf5=pre1.10: hdf5pre110
+            hdf5=post1.10: hdf5post110
+          filter:
+            environment_blacklist: []
+          load: []
+          environment:
+            unset: []
+            set:
+              SRUN_EXPORT_ENV: ALL,LD_PRELOAD=${PREFIX}/lib/libdarshan.so
+          conflict: []
+        ncl:
+          suffixes:
+            ncl+mpi: parallel
+            ncl~mpi: serial
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        cdo:
+          suffixes:
+            cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
+            cdo+aec: aec
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        cairo:
+          suffixes:
+            cairo+X: X
+            cairo+pdf: pdf
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        gromacs:
+          suffixes:
+            gromacs~rdtscp: rdtscp_off
+            gromacs~mpi: analysis
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        vtk:
+          suffixes:
+            vtk+mpi: parallel
+            vtk~mpi: serial
+            vtk+qt: qt
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        ferret:
+          suffixes:
+            ferret^hdf5+mpi^netcdf-c+mpi: parallel
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        paraview:
+          suffixes:
+            paraview+python3: pyapi
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        pango:
+          suffixes:
+            pango+X: X
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        scorep:
+          suffixes:
+            scorep+unwind: libunwind
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        r:
+          suffixes:
+            r+X: X
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+          environment:
+            unset: []
+        blacklist_implicits: true
+        verbose: true
+        blacklist:
+        - python
+        - py-setuptools
+        - py-virtualenv
+        - py-pip
+        - py-
+        - slurm
+        - go-bootstrap
+        - openssl
+        - harfbuzz ^cairo~X
+        - pango ^cairo~pdf
+        - '%gcc@8-os'
+        - '%gcc@8-pgi'
+        - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+szip
+        - netcdf-c~mpi%gcc@8.3.1 ^hdf5~mpi+threadsafe
+        - gobject-introspection%gcc@8.3.1
+        - libfabric@1.8.0%gcc@8.3.1 fabrics=sockets,tcp,udp
+        - gnuplot%gcc@8.3.1 ^pango+X
+        - mesa%gcc@8.3.1 ^hwloc@2.2.0
+        - llvm%gcc@8.3.1 ^hwloc@2.2.0
+        hash_length: 0
+        hierarchy: []
+        projections: {}
+        core_specs:
+        - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visit ^hdf5+mpi ^libpng@:1.6.0
+        - paraview%gcc@8.3.1+mpi+hdf5+opengl2+osmesa+silo+visit+python3 ^hdf5+mpi ^libpng@:1.6.0
+        - ncview%gcc@8.3.1
+        - ncl%gcc@8.3.1+mpi
+        - ncl%gcc@8.3.1~mpi
+        - libiconv@1.16%gcc@8.3.1
+        - scorep%gcc@8.3.1+unwind
+        - scorep%gcc@8.3.1~unwind
+        whitelist: []
+      tcl:
+        hash_length: 3
+        naming_scheme: '{name}/{version}-{compiler.name}-{compiler.version}'
+        blacklist:
+        - slurm
+        - go-bootstrap
+        - openssl
+        all:
+          conflict:
+          - '{name}'
+          suffixes:
+            ^openmpi@4.0.4: openmpi-4.0.4
+            ^python@2.0:2.99: py2
+            ^python@3.0:3.99: py3
+          environment:
+            set:
+              OLCF_${PACKAGE}_ROOT: ${PREFIX}
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+        openmpi:
+          environment:
+            set:
+              OMPI_MCA_btl: ^vader,openib,tcp
+            unset: []
+          filter:
+            environment_blacklist: []
+          conflict: []
+          load: []
+        verbose: false
+        whitelist: []
+        blacklist_implicits: false
+        projections: {}
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
@@ -742,7 +768,7 @@ spack:
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
     extensions:
-    - /sw/sources/facspack/share/spack/extensions/spack-olcf
+    - /sw/sources/facility-spack/andes/share/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache
     verify_ssl: true
     install_missing_compilers: false
@@ -752,7 +778,7 @@ spack:
     build_jobs: 16
     ccache: false
     db_lock_timeout: 120
-    package_lock_timeout:
+    package_lock_timeout: null
     shared_linking: rpath
     allow_sgid: true
     concretizer: original
@@ -788,7 +814,6 @@ spack:
       environment:
         append_path:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
-        unset: []
       flags: {}
   - compiler:
       spec: gcc@8-pgi
@@ -803,7 +828,6 @@ spack:
       environment:
         append_path:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
-        unset: []
       flags: {}
   - compiler:
       spec: gcc@6.5.0
