@@ -9,7 +9,7 @@ from spack.pkg.builtin.magma import Magma as MagmaBase
 
 class Magma(MagmaBase):
     def cmake_args(self):
-        options = super().cmake_args()
+        options = super(Magma, self).cmake_args()
 
         if self.spec.satisfies('%gcc@8: +cuda target=ppc64le'):
             options.append('-DCUDA_NVCC_FLAGS=-Xcompiler;-mno-float128')

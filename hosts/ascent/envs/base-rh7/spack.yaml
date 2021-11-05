@@ -10,6 +10,7 @@ spack:
     - '%gcc@8.1.1'
     # - '%gcc@10.2.0'
   - xl_compilers:
+    - '%xl@16.1.1-10'
     - '%xl@16.1.1-7'
   - llvm_compilers:
     # - '%clang@11.0.0-rc1'
@@ -19,6 +20,9 @@ spack:
     - '%nvhpc@20.9'
     - '%nvhpc@21.2'
     - '%nvhpc@21.3'
+    - '%nvhpc@21.5'
+    - '%nvhpc@21.7'
+    - '%nvhpc@21.9'
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
@@ -152,7 +156,7 @@ spack:
       - - $gcc_only_compute_packages
       - - $gcc_compilers
       exclude:
-      - raja%gcc@10.2.0
+      - 'raja%gcc@8:'
       - 'papi%gcc@8:'
     - matrix:
       - - $general_compute_packages
@@ -166,7 +170,6 @@ spack:
     - gromacs%gcc@6.4.0 +hwloc+cuda ^cuda@10.2.89
     - gromacs%gcc@6.4.0 +hwloc+cuda+mpi ^cuda@10.2.89
     - gromacs%gcc@6.4.0 +hwloc+cuda~mpi ^cuda@10.2.89
-    - kokkos%gcc@8.1.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@10.2.89
     - hpx %gcc@8.1.1 cxxstd=14 +cuda cuda_arch=70 ^boost@1.70.0:1.72.0
     - hpx %gcc@8.1.1 cxxstd=17 +cuda cuda_arch=70 ^boost@1.70.0:1.72.0
   - llvm_specs:
@@ -662,6 +665,7 @@ spack:
     - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
+    - /gpfs/wolf/world-shared/stf007/m9b/spack-stage-ascent
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_SOURCE_CACHE}
@@ -747,6 +751,18 @@ spack:
       environment: {}
       flags: {}
   - compiler:
+      spec: gcc@11.2.0
+      operating_system: rhel7
+      modules: [gcc/11.2.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
       spec: pgi@20.4
       operating_system: rhel7
       modules: [pgi/20.4]
@@ -795,6 +811,42 @@ spack:
       environment: {}
       flags: {}
   - compiler:
+      spec: nvhpc@21.5
+      operating_system: rhel7
+      modules: [nvhpc/21.5]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@21.7
+      operating_system: rhel7
+      modules: [nvhpc/21.7]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@21.9
+      operating_system: rhel7
+      modules: [nvhpc/21.9]
+      paths:
+        cc: nvc
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
+      environment: {}
+      flags: {}
+  - compiler:
       spec: clang@11.0.0-rc1
       operating_system: rhel7
       modules: [llvm/11.0.0-rc1]
@@ -831,5 +883,20 @@ spack:
       - /sw/ascent/xl/16.1.1-7/lib
       - /sw/ascent/xl/16.1.1-7/xlf/16.1.1/lib
       - /sw/ascent/xl/16.1.1-7/xlC/16.1.1/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-10
+      operating_system: rhel7
+      modules: [xl/16.1.1-10]
+      paths:
+        cc: /sw/ascent/xl/16.1.1-10/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/ascent/xl/16.1.1-10/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/ascent/xl/16.1.1-10/xlf/16.1.1/bin/xlf_r
+        fc: /sw/ascent/xl/16.1.1-10/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/ascent/xl/16.1.1-10/lib
+      - /sw/ascent/xl/16.1.1-10/xlf/16.1.1/lib
+      - /sw/ascent/xl/16.1.1-10/xlC/16.1.1/lib
       environment: {}
       flags: {}

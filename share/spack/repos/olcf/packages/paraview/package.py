@@ -29,7 +29,7 @@ class Paraview(ParaviewBase):
 
     def cmake_args(self):
         spec = self.spec
-        cmake_args = super().cmake_args()
+        cmake_args = super(Paraview, self).cmake_args()
 
         if '+visit' in spec:
             cmake_args.extend([
