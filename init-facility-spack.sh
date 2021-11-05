@@ -124,6 +124,11 @@ if [[ "${_THIS_HOST:-XX}" == "summit" ]]; then
     _FS_DEFAULT_ENV_NAME="base-rh7"
     _FS_COPY_STATIC_MODULES="false"
    fi
+elif [[ "${_THIS_HOST:-XX}" == "ascent" ]]; then
+   if [[ "$(grep VERSION_ID /etc/os-release)" =~ ^VERSION_ID=\"7 ]]; then
+    _FS_DEFAULT_ENV_NAME="base-rh7"
+    _FS_COPY_STATIC_MODULES="false"
+   fi
 fi
 
 # Select the name of the spack environment tracked in this repo for which the
@@ -198,6 +203,17 @@ function setup_alternate_module_environment {
 # Host-specific environment modifications
 case "${FACSPACK_HOST}" in
   summit)
+    if [[ "${FACSPACK_ENV_NAME}" == "base-rh7" ]]; then
+      _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
+    else
+      _FS_MP="${_FS_MP:-${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel8-ppc64le/Core}"
+    fi
+    _FS_MP+=":${FACSPACK_ENV_MODULEROOT}/site/Core"
+    _FS_MP+=":/sw/${FACSPACK_HOST}/modulefiles/core"
+    setup_alternate_module_environment "${_FS_MP}"
+    export MODULEPATH="${_FS_MP}"
+    ;;
+  ascent)
     if [[ "${FACSPACK_ENV_NAME}" == "base-rh7" ]]; then
       _FS_MP="${FACSPACK_ENV_MODULEROOT}/spack/linux-rhel7-ppc64le/Core"
     else
