@@ -988,15 +988,7 @@ spack:
       enable:
         - lmod
       lmod:
-        adios2:
-          conflict: []
-          environment:
-            unset: []
-          filter:
-            environment_blacklist: []
-          load: []
-          suffixes:
-            adios2+python: py
+        core_compilers: [gcc@8.3.1]
         all:
           conflict: []
           environment:
@@ -1006,6 +998,15 @@ spack:
           filter:
             environment_blacklist: []
           load: []
+        adios2:
+          conflict: []
+          environment:
+            unset: []
+          filter:
+            environment_blacklist: []
+          load: []
+          suffixes:
+            adios2+python: py
         amrex:
           suffixes:
             amrex~rocm~cuda: cpu
@@ -1049,7 +1050,6 @@ spack:
         chai:
           suffixes:
             chai~rocm~cuda: cpu
-        core_compilers: [gcc@8.3.1]
         darshan-runtime:
           conflict: []
           environment:
