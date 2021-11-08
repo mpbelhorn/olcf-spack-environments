@@ -589,10 +589,18 @@ spack:
       - netlib-lapack
       - parallelio
       # xl beta103 libm macro errors:
-      - netcdf-c@4.8.0%xl@16.1.1-beta103
-      - netcdf-fortran@4.4.5%xl@16.1.1-beta103
-      - netcdf-cxx4@4.3.1%xl@16.1.1-beta103
-      - parallel-io@2.3.0%xl@16.1.1-beta103
+      - netcdf-c%xl@16.1.1-beta102
+      - netcdf-fortran%xl@16.1.1-beta102
+      - netcdf-cxx4%xl@16.1.1-beta102
+      - parallel-io%xl@16.1.1-beta102
+      - netcdf-c%xl@16.1.1-beta103
+      - netcdf-fortran%xl@16.1.1-beta103
+      - netcdf-cxx4%xl@16.1.1-beta103
+      - parallel-io%xl@16.1.1-beta103
+      - netcdf-c%xl@16.1.1-beta104
+      - netcdf-fortran%xl@16.1.1-beta104
+      - netcdf-cxx4%xl@16.1.1-beta104
+      - parallel-io%xl@16.1.1-beta104
   - nv_specs:
     - matrix:
       - - $general_compute_packages
