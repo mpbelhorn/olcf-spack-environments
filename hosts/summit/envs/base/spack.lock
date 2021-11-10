@@ -6328,6 +6328,10 @@
     {
       "hash": "ri4b27alnggsa5ozumkenui7xxoggr6n",
       "spec": "hpx%gcc@9.3.0+cuda cuda_arch=70 cxxstd=17 max_cpu_count=176 ^asio cxxstd=17 ^boost cxxstd=17 ^cuda@11.0.3"
+    },
+    {
+      "hash": "66iqv2gfqnqditokcdqz7zac7xwscrpx",
+      "spec": "bear%gcc@8.3.1"
     }
   ],
   "concrete_specs": {
@@ -138132,6 +138136,48 @@
         }
       ],
       "hash": "v3jxpx6ymefwg3jvdqrswujedd4d5rzw"
+    },
+    "66iqv2gfqnqditokcdqz7zac7xwscrpx": {
+      "name": "bear",
+      "version": "2.2.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "RelWithDebInfo",
+        "ipo": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "bh2mayqiafqrvrzygxcbsbqvkqyge36g",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "python",
+          "build_hash": "mf5534v2uvpmw5dkm5ba45uuz4kshbqd",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "gobn57epgsbqxwwuu2jurpcgdxb2tfu6"
     }
   }
 }
