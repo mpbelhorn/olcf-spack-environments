@@ -5536,6 +5536,10 @@
     {
       "hash": "lpgusjfjwo6saynrz2erxzkpjs67qsxb",
       "spec": "scorep@7.0%pgi@20.1+mpi~papi~pdt+shmem~unwind ^papi%gcc@8-os ^pkgconf%gcc@8-os"
+    },
+    {
+      "hash": "66iqv2gfqnqditokcdqz7zac7xwscrpx",
+      "spec": "bear%gcc@8.3.1"
     }
   ],
   "concrete_specs": {
@@ -115575,6 +115579,48 @@
         }
       ],
       "hash": "qb5tomsyac3ji7jrrbllx4lzuahttlfx"
+    },
+    "66iqv2gfqnqditokcdqz7zac7xwscrpx": {
+      "name": "bear",
+      "version": "2.2.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "RelWithDebInfo",
+        "ipo": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "bh2mayqiafqrvrzygxcbsbqvkqyge36g",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "python",
+          "build_hash": "mf5534v2uvpmw5dkm5ba45uuz4kshbqd",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "gobn57epgsbqxwwuu2jurpcgdxb2tfu6"
     }
   }
 }
