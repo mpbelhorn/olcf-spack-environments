@@ -2,7 +2,7 @@
 family("compiler")
 
 -- Internal variables
-local swroot  = "/sw/peak/xl/16.1.1-beta104"
+local swroot  = "/sw/peak/xl/16.1.1-beta105"
 local xlfbase    = pathJoin(swroot, "xlf", "16.1.0")
 local xlcbase    = pathJoin(swroot, "xlC", "16.1.0")
 local xlmassbase = pathJoin(swroot, "xlmass", "9.1.0")
@@ -46,11 +46,11 @@ prepend_path( "NLSPATH", pathJoin( swroot, "msg", "en_US", "%N"  ) )
 
 -- Info
 help([[
-xlc version: 16.1.1-beta104
-xlf version: 16.1.1-beta104
-xlmass version: 9.1.1-beta104
-xlsmp version: 5.1.1-beta104
+xlc version: 16.1.1-beta105
+xlf version: 16.1.1-beta105
+xlmass version: 9.1.1-beta105
+xlsmp version: 5.1.1-beta105
 ]])
 
-whatis("Description: xlc 16.1.1-beta104, xlf 16.1.1-beta104, xlmass 9.1.0-beta104, xlsmp 5.1.0-beta104")
+whatis("Description: xlc 16.1.1-beta105, xlf 16.1.1-beta105, xlmass 9.1.0-beta105, xlsmp 5.1.0-beta105")
 

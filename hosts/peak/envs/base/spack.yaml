@@ -12,9 +12,6 @@ spack:
     - '%gcc@10.2.0'
   - xl_compilers:
     - '%xl@16.1.1-10'
-    - '%xl@16.1.1-beta103'
-    - '%xl@16.1.1-beta102'
-    - '%xl@16.1.1-beta104'
   - llvm_compilers:
     - '%clang@10.0.1-0'
   - nv_compilers:
@@ -26,6 +23,10 @@ spack:
   - all_compilers:
     - $gcc_compilers
     - $xl_compilers
+    - '%xl@16.1.1-beta103'
+    - '%xl@16.1.1-beta102'
+    - '%xl@16.1.1-beta104'
+    - '%xl@16.1.1-beta105'
     - $llvm_compilers
     - $nv_compilers
   - core_packages:
@@ -1635,6 +1636,21 @@ spack:
       - /sw/peak/xl/16.1.1-beta104/lib
       - /sw/peak/xl/16.1.1-beta104/xlf/16.1.0/lib
       - /sw/peak/xl/16.1.1-beta104/xlC/16.1.0/lib
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: xl@16.1.1-beta105
+      operating_system: rhel8
+      modules: [xl/16.1.1-beta105]
+      paths:
+        cc: /sw/peak/xl/16.1.1-beta105/xlC/16.1.0/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-beta105/xlC/16.1.0/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-beta105/xlf/16.1.0/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-beta105/xlf/16.1.0/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-beta105/lib
+      - /sw/peak/xl/16.1.1-beta105/xlf/16.1.0/lib
+      - /sw/peak/xl/16.1.1-beta105/xlC/16.1.0/lib
       environment: {}
       flags: {}
   - compiler:
