@@ -6,9 +6,11 @@ spack:
   - core_compiler:
     - '%gcc@7.5.0'
   - gcc_compilers:
+    - '%gcc@11.2.0'
     - '%gcc@10.3.0'
-    - '%gcc@10.2.0'
+    - '%gcc@9.3.0'
   - cray_compilers:
+    - '%cce@12.0.3'
     - '%cce@12.0.2'
     - '%cce@12.0.1'
     - '%cce@12.0.0'
@@ -233,10 +235,10 @@ spack:
   - cpe21.07_specs:
     - matrix:
       - - $e4s_21.08_packages
-        - $e4s_21.05_packages
-      - - '%gcc@10.3.0'
-        - '%gcc@10.2.0'
-      - - ^cray-mpich@8.1.7
+      - - '%gcc@11.2.0'
+        - '%gcc@10.3.0'
+        - '%gcc@9.3.0'
+      - - ^cray-mpich@8.1.10
       - - ^hip@4.3.0
       - - ^hipblas@4.3.0
       - - ^hipsparse@4.3.0
@@ -252,11 +254,11 @@ spack:
       - unifyfs%gcc@11.2.0
     - matrix:
       - - $e4s_21.08_packages
-        - $e4s_21.05_packages
         - slate@2021.05.02
-      - - '%cce@12.0.1'
-        - '%cce@12.0.0'
-      - - ^cray-mpich@8.1.7
+      - - '%cce@12.0.3'
+        - '%cce@12.0.2'
+        - '%cce@12.0.1'
+      - - ^cray-mpich@8.1.10
       - - ^hip@4.2.0
       - - ^hipblas@4.2.0
       - - ^hipsparse@4.2.0
@@ -1270,10 +1272,10 @@ spack:
   - compiler:
       spec: gcc@9.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.8/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
-        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1287,10 +1289,10 @@ spack:
   - compiler:
       spec: gcc@10.2.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.8/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
-        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1304,16 +1306,33 @@ spack:
   - compiler:
       spec: gcc@10.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.8/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
-        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
       modules:
-      - PrgEnv-gnu/8.1.0
+      - PrgEnv-gnu
       - gcc/10.3.0
+      - craype-x86-rome
+      - libfabric
+      environment: {}
+      extra_rpaths: []
+  - compiler:
+      spec: gcc@11.2.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-gnu
+      - gcc/11.2.0
       - craype-x86-rome
       - libfabric
       environment: {}
@@ -1365,10 +1384,10 @@ spack:
   - compiler:
       spec: cce@12.0.1
       paths:
-        cc: /opt/cray/pe/craype/2.7.8/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
-        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1388,16 +1407,39 @@ spack:
   - compiler:
       spec: cce@12.0.2
       paths:
-        cc: /opt/cray/pe/craype/2.7.8/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.8/bin/CC
-        f77: /opt/cray/pe/craype/2.7.8/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.8/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
       modules:
       - PrgEnv-cray
       - cce/12.0.2
+      - craype-x86-rome
+      - libfabric
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.11.0.4.75/lib64
+      extra_rpaths:
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  - compiler:
+      spec: cce@12.0.3
+      paths:
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray
+      - cce/12.0.3
       - craype-x86-rome
       - libfabric
       environment:
