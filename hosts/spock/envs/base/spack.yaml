@@ -252,6 +252,9 @@ spack:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
       - strumpack%gcc # fails due to failure to find mpi.h
       - unifyfs%gcc@11.2.0
+      - loki%gcc@11.2.0 # FIXME: default `-std=c++17` error
+      - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
+      - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
     - matrix:
       - - $e4s_21.08_packages
         - slate@2021.05.02
@@ -303,8 +306,8 @@ spack:
       buildable: true
       compiler: [gcc@7.5.0, gcc]
       providers:
-        blas: [openblas, cray-libsci@21.06.1.1]
-        lapack: [openblas, cray-libsci@21.06.1.1]
+        blas: [openblas, cray-libsci@21.08.1.2]
+        lapack: [openblas, cray-libsci@21.08.1.2]
         mpi: [mpich]
         scalapack: [netlib-scalapack]
       target: [zen2]
@@ -342,8 +345,12 @@ spack:
       buildable: false
       externals:
         - modules:
+            - cray-libsci/21.08.1.2
+            - cray-mpich/8.1.10
+          spec: cray-libsci@21.08.1.2
+        - modules:
             - cray-libsci/21.06.1.1
-            - cray-mpich/8.1.7
+            - cray-mpich/8.1.10
           spec: cray-libsci@21.06.1.1
         - modules:
             - cray-libsci/21.04.1.1
@@ -353,6 +360,12 @@ spack:
       buildable: false
       compiler: []
       externals:
+        - modules:
+            - cray-mpich/8.1.10
+          spec: cray-mpich@8.1.10
+        - modules:
+            - cray-mpich/8.1.8
+          spec: cray-mpich@8.1.8
         - modules:
             - cray-mpich/8.1.7
           spec: cray-mpich@8.1.7
@@ -905,6 +918,9 @@ spack:
           filter:
             environment_blacklist: []
           load: []
+        amrex:
+          suffixes:
+            amrex~rocm: cpu
         blaspp:
           suffixes:
             blaspp~rocm: cpu
@@ -977,6 +993,9 @@ spack:
           suffixes:
             hdf5~mpi+szip: sz
             hdf5~mpi+threadsafe: threadsafe
+        kokkos-kernels:
+          suffixes:
+            kokkos-kernels+openmp: omp
         ncl:
           conflict: []
           environment:
@@ -1072,6 +1091,7 @@ spack:
         - berkeley-db
         - boost%gcc visibility=global
         - cray-mpich
+        - cray-libsci
         - glib
         - glproto
         - go-bootstrap
@@ -1079,6 +1099,7 @@ spack:
         - inputproto
         - kbproto
         - libassuan
+        - libdwarf
         - libfabric
         - libfontenc
         - libgcrypt
