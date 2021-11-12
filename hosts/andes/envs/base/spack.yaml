@@ -198,8 +198,8 @@ spack:
     - slepc@3.15.1
     # - stat@4.1.0 ## FIXME: need only one (core) build of this
     # - stc@0.9.0 ## FIXME: need only one (core) build of this
-    - strumpack@5.1.1 ~slate~rocm~cuda cuda_arch=none
-    # - strumpack@5.1.1 ~slate~rocm+cuda cuda_arch=70
+    - strumpack@5.1.1 ~slate~rocm~cuda cuda_arch=none ^openblas threads=openmp
+    # - strumpack@5.1.1 ~slate~rocm+cuda cuda_arch=70 ^openblas threads=openmp
     - sundials@5.7.0 ~rocm~cuda
     # - sundials@5.7.0 ~rocm+cuda cuda_arch=70
     - superlu-dist@6.4.0 ~cuda cuda_arch=none
@@ -243,7 +243,7 @@ spack:
       - 'mpip%gcc@10.0.0:'
       - 'netlib-scalapack@:2.1.0%gcc@10.0.0:'
     - matrix:
-      - - $e4s_packages
+      - - $e4s_21.08_packages
       - - '%gcc@8.3.1'
         - '%gcc@9.3.0'
       exclude:
@@ -270,13 +270,17 @@ spack:
   - llvm_specs:
     - matrix:
       - - $general_compute_packages
-        - $e4s_packages
+        - $e4s_21.08_packages
       - - $llvm_compilers
       exclude:
       - mpip
       - dyninst
       - hpctoolkit
       - strumpack
+      - archer
+      - caliper
+      - plasma
+      - tau
   - aocc_specs:
     - matrix:
       - - $general_compute_packages
@@ -309,9 +313,8 @@ spack:
   - intel_specs:
     - matrix:
       - - $general_compute_packages
-        - $e4s_packages
+        - $e4s_21.08_packages
       - - $intel_compilers
-      - - ^cmake@3.16.2
       exclude:
       - boost
       - trilinos
@@ -320,6 +323,8 @@ spack:
       - dyninst
       - hpctoolkit
       - veloc
+      - plasma
+      - slate
   - pgi_specs:
     - matrix:
       - - $general_compute_packages
@@ -337,7 +342,6 @@ spack:
       - - ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64
-      - - ^rdma-core%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64
       exclude:
       - adios2
@@ -367,7 +371,7 @@ spack:
       buildable: true
       compiler: [gcc@8.3.1, gcc, clang, intel, pgi]
       providers:
-        blas: [openblas, mlk]
+        blas: [openblas, mkl]
         lapack: [openblas, mkl]
         mpi: [builtin.openmpi]
         scalapack: [netlib-scalapack]
@@ -481,6 +485,11 @@ spack:
       target: []
       variants: +fpic
       version: []
+    numactl:
+      buildable: true
+      externals:
+        - prefix: /usr
+          spec: numactl@2.0.12%intel
     octave:
       buildable: true
       compiler: []
@@ -500,10 +509,10 @@ spack:
       compiler: []
       externals:
         - prefix: /usr
-          spec: openssl@1.1.1
+          spec: openssl@1.1.1g
       providers: {}
       target: []
-      version: [1.1.1]
+      version: [1.1.1g]
     parallel-netcdf:
       buildable: true
       compiler: []
@@ -511,6 +520,10 @@ spack:
       target: []
       variants: +cxx+fortran+fpic
       version: []
+    perl:
+      externals:
+        - prefix: /usr
+          spec: perl@5.26.3%intel
     qt:
       buildable: true
       compiler: []
@@ -819,8 +832,8 @@ spack:
     - $spack/share/spack/templates
     build_stage:
     ## Non-ramdisk staging dir for builds that exceed cgroup mem limits
-    # - /gpfs/alpine/world-shared/stf007/$user/spack-stage/andes
-    - $tempdir/$user/spack-stage
+    - /gpfs/alpine/world-shared/stf007/$user/spack-stage/andes
+    # - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
     extensions:
