@@ -11,6 +11,7 @@ spack:
     - '%gcc@10.2.0'
     - '%gcc@9.3.0'
   - cray_compilers:
+    - '%cce@13.0.0'
     - '%cce@12.0.3'
     - '%cce@12.0.2'
     - '%cce@12.0.1'
@@ -339,6 +340,35 @@ spack:
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - slate%cce ^openblas
       - slepc@3.15.0:3.15.1%cce@12.0.0:12.0.3   # config.package.FortranLib syntax error
+      - stat%cce
+      - strumpack%cce ^openblas
+      - tau+elf
+      - unifyfs%cce
+    - matrix:
+      - - $e4s_21.08_packages
+        - slate@2021.05.02
+      - - '%cce@13.0.0'
+      - - ^cray-mpich@8.1.10
+      - - ^hip@4.5.0
+      - - ^hipblas@4.5.0
+      - - ^hipsparse@4.5.0
+      - - ^rocblas@4.5.0
+      - - ^rocrand@4.5.0
+      - - ^rocsolver@4.5.0
+      - - ^rocsparse@4.5.0
+      - - ^rocthrust@4.5.0
+      - - arch=cray-sles15-zen2
+      exclude:
+      - archer%cce
+      - caliper%cce
+      - dyninst%cce ## os elfutils insufficient
+      - hpctoolkit%cce ## depends on dyninst
+      - omega-h@9.32.5%cce@13.0.0 # uses implicit copy assignment operator; -Werror,-Wdeprecated-copy
+      - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
+      - petsc@3.15.0%cce@12.0.0:12.0.1
+      - precice@2.2.1%cce@12.0.0:13.0.0.1
+      - slate%cce ^openblas
+      - slepc@3.15.0:3.15.1%cce@12.0.0:13.0.0.1   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
       - tau+elf
@@ -1541,6 +1571,29 @@ spack:
       modules:
       - PrgEnv-cray
       - cce/12.0.2
+      - craype-x86-rome
+      - libfabric
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.11.0.4.75/lib64
+      extra_rpaths:
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  - compiler:
+      spec: cce@13.0.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.11/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.11/bin/CC
+        f77: /opt/cray/pe/craype/2.7.11/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.11/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray
+      - cce/13.0.0
       - craype-x86-rome
       - libfabric
       environment:
