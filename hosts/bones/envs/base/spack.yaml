@@ -46,6 +46,9 @@ spack:
     - libpng@1.2.57
     - wget
     - bazel ^openjdk@11.0:11.99
+    - openblas@0.3.17 threads=none
+    - openblas@0.3.17 threads=openmp
+    - openblas@0.3.17 threads=pthreads
   - e4s_21.05_packages:
     - adios2@2.7.1~python
     - aml@0.1.0
@@ -182,6 +185,9 @@ spack:
     - netlib-scalapack@2.1.0
     - ninja@1.10.2
     - omega-h@9.32.5
+    - openblas@0.3.17 threads=none
+    - openblas@0.3.17 threads=openmp
+    - openblas@0.3.17 threads=pthreads
     - openpmd-api@0.13.4 ^hdf5@1.12.0 +fortran +shared +hl api=default
     - papi@6.0.0.1
     - papyrus@1.0.1
@@ -335,6 +341,7 @@ spack:
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
+      - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.0%cce@12.0.0:12.0.1
       - precice@2.2.1%cce@12.0.0:13.0.0.1
@@ -364,6 +371,7 @@ spack:
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
       - omega-h@9.32.5%cce@13.0.0 # uses implicit copy assignment operator; -Werror,-Wdeprecated-copy
+      - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.0%cce@12.0.0:12.0.1
       - precice@2.2.1%cce@12.0.0:13.0.0.1
