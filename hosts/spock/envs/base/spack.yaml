@@ -44,6 +44,9 @@ spack:
     - libpng@1.2.57
     - wget
     - bazel ^openjdk@11.0:11.99
+    - openblas@0.3.17 threads=none
+    - openblas@0.3.17 threads=openmp
+    - openblas@0.3.17 threads=pthreads
   - e4s_21.05_packages:
     - adios2@2.7.1~python
     - aml@0.1.0
@@ -181,6 +184,9 @@ spack:
     - ninja@1.10.2
     - omega-h@9.32.5
     - openpmd-api@0.13.4 ^hdf5@1.12.0 +fortran +shared +hl api=default
+    - openblas@0.3.17 threads=none
+    - openblas@0.3.17 threads=openmp
+    - openblas@0.3.17 threads=pthreads
     - papi@6.0.0.1
     - papyrus@1.0.1
     - parallel-netcdf@1.12.2
@@ -282,6 +288,7 @@ spack:
       - slate%cce ^openblas
       - slepc@3.15.0:3.15.1%cce@12.0.0:12.0.3   # config.package.FortranLib syntax error
       - stat%cce
+      - openblas
       - strumpack%cce ^openblas
       - tau+elf
       - unifyfs%cce

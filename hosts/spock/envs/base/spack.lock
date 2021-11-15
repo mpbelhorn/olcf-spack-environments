@@ -1904,6 +1904,54 @@
     {
       "hash": "use42fsmsqt3maeclnojikebovhkabci",
       "spec": "zfp@0.5.5%cce@12.0.1~cuda arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.2.0 ^hipblas@4.2.0 ^hipsparse@4.2.0 ^rocblas@4.2.0 ^rocrand@4.2.0 ^rocsolver@4.2.0 ^rocsparse@4.2.0 ^rocthrust@4.2.0"
+    },
+    {
+      "hash": "gswqcdpyh6shatyipnclcgvv2ihjkkrm",
+      "spec": "openblas@0.3.17%gcc@7.5.0 threads=none arch=linux-sles15-x86_64"
+    },
+    {
+      "hash": "gu7jditqakgv5au65bmo4bgz3wgadqjh",
+      "spec": "openblas@0.3.17%gcc@7.5.0 threads=openmp arch=linux-sles15-x86_64"
+    },
+    {
+      "hash": "rydhpxj6innc6szb4h76cpgfjbpow55m",
+      "spec": "openblas@0.3.17%gcc@7.5.0 threads=pthreads arch=linux-sles15-x86_64"
+    },
+    {
+      "hash": "owvyo4zeses5lkflnzgbz3tnpd43rmdu",
+      "spec": "openblas@0.3.17%gcc@11.2.0 threads=none arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "j7mhwpvbxjxnpkc7lsujoqyrchbzespc",
+      "spec": "openblas@0.3.17%gcc@10.3.0 threads=none arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "rsorhnlzeylnokd4tdllroanrchakvzy",
+      "spec": "openblas@0.3.17%gcc@9.3.0 threads=none arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "f43xvd7hqhdlw55wrerduv2744sqj2q3",
+      "spec": "openblas@0.3.17%gcc@11.2.0 threads=openmp arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "2omupkkj66ragbabrds745yomjfozbbp",
+      "spec": "openblas@0.3.17%gcc@10.3.0 threads=openmp arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "f6wycs2fqkfaj3gnlnt2bgpd3o2qgpkm",
+      "spec": "openblas@0.3.17%gcc@9.3.0 threads=openmp arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "v6lpkl7cswjnwecg26ccoqfrnzqadjmf",
+      "spec": "openblas@0.3.17%gcc@11.2.0 threads=pthreads arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "skhnggw46476l3i2ytfx6r22rwwsdskh",
+      "spec": "openblas@0.3.17%gcc@10.3.0 threads=pthreads arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
+    },
+    {
+      "hash": "t6nkpt76y5mfvdrj6xfapmvieycuogym",
+      "spec": "openblas@0.3.17%gcc@9.3.0 threads=pthreads arch=cray-sles15-zen2 ^cray-mpich@8.1.10 ^hip@4.3.0 ^hipblas@4.3.0 ^hipsparse@4.3.0 ^rocblas@4.3.0 ^rocrand@4.3.0 ^rocsolver@4.3.0 ^rocsparse@4.3.0 ^rocthrust@4.3.0"
     }
   ],
   "concrete_specs": {
@@ -122621,6 +122669,789 @@
         }
       ],
       "hash": "mp7nrqmauxwrxbl3y5c75ignyhmx4p2b"
+    },
+    "gswqcdpyh6shatyipnclcgvv2ihjkkrm": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "none",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "qgkam7uzifryydvfropslqn5ymp3qqzc",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "54x7v5e4i6yxqs6j5nebrbztpy4lftj4"
+    },
+    "gu7jditqakgv5au65bmo4bgz3wgadqjh": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "openmp",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "qgkam7uzifryydvfropslqn5ymp3qqzc",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "kectfqg5xs3d664dtn7psrgrywu4gvw6"
+    },
+    "rydhpxj6innc6szb4h76cpgfjbpow55m": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "pthreads",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "qgkam7uzifryydvfropslqn5ymp3qqzc",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "u35n4i6g325j7ubgnoxhzz2weo75vfjz"
+    },
+    "owvyo4zeses5lkflnzgbz3tnpd43rmdu": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "none",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "eceetpik4kkone6pwxfkzckf275mwhhp",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "3axoyj77dciqbly3xqncjtpsge6evorz"
+    },
+    "j7mhwpvbxjxnpkc7lsujoqyrchbzespc": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "none",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "x5sxgxtyu645c7jf6ayizkhpshr2u2fu",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "3lrw6cray5pj7qli5cqmxwemgnt364bx"
+    },
+    "rsorhnlzeylnokd4tdllroanrchakvzy": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "none",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "6r2pb6utbppvjosps5fdm6bdye5otcka",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "ay2anxsrpjpp6gixjy277tl3wpq22exr"
+    },
+    "f43xvd7hqhdlw55wrerduv2744sqj2q3": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "openmp",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "eceetpik4kkone6pwxfkzckf275mwhhp",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "vkwgxkwml2xe6btk4s4vcxfodbvwp6g7"
+    },
+    "2omupkkj66ragbabrds745yomjfozbbp": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "openmp",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "x5sxgxtyu645c7jf6ayizkhpshr2u2fu",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "pwsrbznngmwyfevmufnxcrgtqgvpcxe2"
+    },
+    "f6wycs2fqkfaj3gnlnt2bgpd3o2qgpkm": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "openmp",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "6r2pb6utbppvjosps5fdm6bdye5otcka",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "i3wnme3uoxt6xlrqa3wt7p6p6yp43pgz"
+    },
+    "v6lpkl7cswjnwecg26ccoqfrnzqadjmf": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "pthreads",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "eceetpik4kkone6pwxfkzckf275mwhhp",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "utlq7wzfauemn5xcgokadzzpw2moe74z"
+    },
+    "skhnggw46476l3i2ytfx6r22rwwsdskh": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "pthreads",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "x5sxgxtyu645c7jf6ayizkhpshr2u2fu",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "qzagqkgiiznoup75kpxihaf34jok2h7z"
+    },
+    "t6nkpt76y5mfvdrj6xfapmvieycuogym": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "pthreads",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "6r2pb6utbppvjosps5fdm6bdye5otcka",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "e2ogrifopmq7a4hkbtzs3yvby6jkspqo"
     }
   }
 }
