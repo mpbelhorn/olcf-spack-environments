@@ -148,11 +148,13 @@ fi
 
 # Set the paths to the spack environment and modulefiles.
 export FACSPACK_ENV="${FACSPACK_MY_ENVS}/${FACSPACK_ENV_NAME}"
-export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/modules"
+export FACSPACK_ENV_MODULEROOT="${FACSPACK_ENV}/${FS_CUSTOM_MODULE_DIR:-modules}"
 
 # Copy git-tracked modules to module root.
 mkdir -p "${FACSPACK_ENV}/.mcache"
 mkdir -p "${FACSPACK_ENV_MODULEROOT}"
+[ ! -d "${FACSPACK_ENV_MODULEROOT}/site" ] && mkdir -p "${FACSPACK_ENV_MODULEROOT}/site"
+
 if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
   # FIXME: 
   #   Check and copy files one at a time:

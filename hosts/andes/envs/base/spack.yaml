@@ -692,9 +692,8 @@ spack:
       projections:
         all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
     module_roots:
-      # FIXME
-      tcl: ${FACSPACK_ENV_MODULEROOT}/flat.preview
-      lmod: ${FACSPACK_ENV_MODULEROOT}/spack.preview
+      tcl: ${FACSPACK_ENV_MODULEROOT}/flat
+      lmod: ${FACSPACK_ENV_MODULEROOT}/spack
     template_dirs:
     - ${FACSPACK_CONF_HOST}/templates
     - ${FACSPACK_CONF_COMMON}/spack/templates
