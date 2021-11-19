@@ -18,11 +18,11 @@ spack:
   - aocc_compilers:
     - '%aocc@2.2.0'
     - '%aocc@3.0.0'
-  - pgi_compilers:
-    - '%pgi@19.10'
+  - nv_compilers:
+    - '%nvhpc@21.9'
   - all_compilers:
     - $gcc_compilers
-    - $pgi_compilers
+    - $nv_compilers
     - $intel_compilers
     - $aocc_compilers
   - core_packages:
@@ -30,8 +30,9 @@ spack:
     - cdo@1.9.10+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - cdo@1.9.10~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - cmake
-    - cuda@10.2.89
+    - cuda@11.2.2
     - cuda@11.0.2
+    - cuda@10.2.89
     - darshan-util
     - emacs ~X
     - exuberant-ctags@5.8
@@ -232,9 +233,10 @@ spack:
     - matrix:
       - - $core_packages
       - - $core_compiler
-    - cudnn@7.6.5.32-10.2%gcc@8.3.1
+    - cudnn@8.1.1.33-11.2%gcc@8.3.1
     - cudnn@8.0.4.30-11.0%gcc@8.3.1
-    - nccl@2.7.8-1%gcc@8.3.1 cuda_arch=30,32,35,37 ^cuda@10.2.89
+    - cudnn@7.6.5.32-10.2%gcc@8.3.1
+    - nccl@2.9.9-1%gcc@8.3.1 cuda_arch=30,32,35,37 ^cuda@10.2.89
   - gcc_specs:
     - matrix:
       - - $general_compute_packages
@@ -294,7 +296,6 @@ spack:
     - matrix:
       - - $general_compute_packages
         - fftw+mpi~openmp
-        - adios2~zfp
       - - '%aocc@3.0.0'
         - '%aocc@2.2.0'
       exclude:
@@ -325,24 +326,27 @@ spack:
       - mercury
       - plasma
       - slate
-  - pgi_specs:
+  - nv_specs:
     - matrix:
       - - $general_compute_packages
-      - - $pgi_compilers
+      - - $nv_compilers
       - - ^libpciaccess%gcc@8-pgi
       - - ^m4%gcc@8-pgi
+      - - ^zlib%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^automake@1.15.1
       - - ^libfabric%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^libevent%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libsigsegv%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libiconv%gcc@8-pgi arch=linux-rhel8-x86_64
-      - - ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^python%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^numactl%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^perl%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^cmake%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^pkgconf%gcc@8-pgi arch=linux-rhel8-x86_64
+      - - ^ncurses%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^findutils%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^gettext%gcc@8-pgi arch=linux-rhel8-x86_64
       - - ^libnl%gcc@8-pgi arch=linux-rhel8-x86_64
-      - - ^ucx%gcc@8-pgi arch=linux-rhel8-x86_64
       exclude:
       - adios2
       - boost
@@ -350,13 +354,16 @@ spack:
       - mpip
       - openblas
       - fftw # bad simd options
+      - hdf5+fortran
+      - parallel-io # ^hdf5+fortran
+      - parallelio # ^hdf5+fortran
   specs:
   - $core_specs
   - $gcc_specs
   - $intel_specs
   - $llvm_specs
   - $aocc_specs
-  # - $nv_specs # TODO: deal with PGI specs later
+  - $nv_specs
   ## FIXME: Put gcc@6.5.0 specs in own defines list
   # - openmpi%gcc@6.5.0
   # - cuda@10.2.89%gcc@6.5.0
@@ -846,6 +853,18 @@ spack:
         f77: /sw/andes/pgi/19.10/linux86-64-llvm/19.10/bin/pgfortran
         fc: /sw/andes/pgi/19.10/linux86-64-llvm/19.10/bin/pgfortran
       extra_rpaths: [/sw/andes/pgi/19.10/linux86-64-llvm/19.10/lib]
+      environment: {}
+      flags: {}
+  - compiler:
+      spec: nvhpc@21.9
+      operating_system: rhel8
+      modules: [nvhpc/21.9]
+      paths:
+        cc: nvc # /sw/andes/nvhpc_sdk/rhel8/Linux_x86_64/21.9/compilers/bin/
+        cxx: nvc++
+        f77: nvfortran
+        fc: nvfortran
+      extra_rpaths: []
       environment: {}
       flags: {}
   - compiler:
