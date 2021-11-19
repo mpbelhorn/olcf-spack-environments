@@ -326,6 +326,10 @@ spack:
       - mercury
       - plasma
       - slate
+      - tau
+      - trilinos
+      - unifyfs
+      - veloc
   - nv_specs:
     - matrix:
       - - $general_compute_packages
