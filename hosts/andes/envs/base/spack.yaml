@@ -566,6 +566,7 @@ spack:
         gromacs:
           suffixes:
             gromacs ~mpi: serial
+            gromacs +cuda: gpu
         libfabric:
           suffixes:
             libfabric ^rdma-core@system: sysrdma
@@ -595,6 +596,8 @@ spack:
             set:
               OMPI_MCA_btl: ^vader,openib,tcp
               OMPI_MCA_coll_hcoll_enable: '0'
+          suffixes:
+            openmpi+cuda: gpu
         pango:
           suffixes:
             pango+X: X
@@ -612,6 +615,11 @@ spack:
         strumpack:
           suffixes:
             strumpack ^openblas threads=openmp: omp
+        tau:
+          suffixes:
+            tau +cuda: gpu
+            tau +ompt: ompt
+            tau +omp: omp
         vtk:
           suffixes:
             vtk+mpi: parallel
