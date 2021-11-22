@@ -274,6 +274,15 @@ case "${FACSPACK_HOST}" in
     module reset
     fi
     ;;
+  crusher)
+    export SPACK_FRONT_END="zen3"
+    export SPACK_BACK_END="zen3"
+    setup_alternate_module_environment "${_FS_MP}"
+    if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+          && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
+    module reset
+    fi
+    ;;
   *)
     ;;
 esac
