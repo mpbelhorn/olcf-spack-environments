@@ -565,6 +565,9 @@ spack:
     ncurses:
       buildable: true
       compiler: []
+      externals:
+        - prefix: /sw/crusher/spack-envs/base/opt/linux-sles15-x86_64/gcc-7.5.0/ncurses-6.2-mg5foemn555y6knv5hvtey3sqrvhinrw
+          spec: ncurses@6.2%cce@13.0.0~symlinks+termlib
       providers: {}
       target: []
       variants: +termlib
@@ -1360,3 +1363,6 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+      # - /opt/cray/pe/lib64 ## Lots of symlinks to cpe-interdependent libs,
+      # might be useful to fix PMI errors when building using the vanilla mpich
+      # wrappers instead of cray driver wrappers
