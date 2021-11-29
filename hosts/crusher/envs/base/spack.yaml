@@ -1304,7 +1304,9 @@ spack:
       - gcc/9.3.0
       - craype-x86-trento
       - libfabric
-      environment: {}
+      environment:
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.14/lib
       extra_rpaths: []
   - compiler:
       spec: gcc@10.3.0
@@ -1321,7 +1323,9 @@ spack:
       - gcc/10.3.0
       - craype-x86-trento
       - libfabric
-      environment: {}
+      environment:
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.14/lib
       extra_rpaths: []
   - compiler:
       spec: gcc@11.2.0
@@ -1338,7 +1342,9 @@ spack:
       - gcc/11.2.0
       - craype-x86-trento
       - libfabric
-      environment: {}
+      environment:
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.14/lib
       extra_rpaths: []
   - compiler:
       spec: cce@13.0.0
@@ -1360,6 +1366,8 @@ spack:
           RFE_811452_DISABLE: '1'
         append_path:
           LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.13.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.14/lib
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
