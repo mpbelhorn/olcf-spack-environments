@@ -547,6 +547,11 @@ spack:
           suffixes:
             cairo+X: X
             cairo+pdf: pdf
+        cuda:
+          environment:
+            set:
+              CUDA_PATH: ${PREFIX}
+              CUDAPATH: ${PREFIX}
         cdo:
           suffixes:
             cdo+aec: aec
