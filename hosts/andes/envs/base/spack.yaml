@@ -878,7 +878,7 @@ spack:
       operating_system: rhel8
       modules: [nvhpc/21.9]
       paths:
-        cc: nvc # /sw/andes/nvhpc_sdk/rhel8/Linux_x86_64/21.9/compilers/bin/
+        cc: nvc
         cxx: nvc++
         f77: nvfortran
         fc: nvfortran
