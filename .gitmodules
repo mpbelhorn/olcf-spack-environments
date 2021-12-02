@@ -1,3 +1,3 @@
 [submodule "spack"]
 	path = spack
-	url = git@github.com:mpbelhorn/olcf-spack.git
+	url = gitlab@gitlab.ccs.ornl.gov:saue-software/olcf-spack.git
