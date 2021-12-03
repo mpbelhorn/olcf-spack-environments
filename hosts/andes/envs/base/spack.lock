@@ -2368,6 +2368,14 @@
     {
       "hash": "hwtib5vuqy6xp6nqx6hpv5jhxcltxurt",
       "spec": "nccl@2.9.9-1%gcc@8.3.1 cuda_arch=30,32,35,37 ^cuda@10.2.89"
+    },
+    {
+      "hash": "calntrekyora5kune543g6nhumo4pznl",
+      "spec": "ncl@6.5.0%gcc@8.3.1~mpi"
+    },
+    {
+      "hash": "b2sfff4urlgjw7gvwemlfpre2moamrew",
+      "spec": "ncl@6.5.0%gcc@8.3.1+mpi"
     }
   ],
   "concrete_specs": {
@@ -86536,6 +86544,384 @@
         }
       ],
       "hash": "33ocqhlerltgyhqd26zkfnnwhki2zzs4"
+    },
+    "calntrekyora5kune543g6nhumo4pznl": {
+      "name": "ncl",
+      "version": "6.5.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "gdal": false,
+        "hdf4": false,
+        "mpi": false,
+        "openmp": true,
+        "patches": [
+          "a2f7ac8be3534cb1238414a74da36efd0c0da718cb00895a8b05a8ffdee279cc",
+          "a612d4180d80eee07b6c9fd7c92e027c32f12c1b5b53a1387a9415a415a136d5"
+        ],
+        "triangle": true,
+        "udunits2": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "a2f7ac8be3534cb1238414a74da36efd0c0da718cb00895a8b05a8ffdee279cc",
+        "a612d4180d80eee07b6c9fd7c92e027c32f12c1b5b53a1387a9415a415a136d5"
+      ],
+      "dependencies": [
+        {
+          "name": "bison",
+          "build_hash": "g6fhjeyqshp3kfbqz3xl7ak7izq6aqsb",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "bzip2",
+          "build_hash": "x6n2puxs5uixkyvmymbyctmvwxu2xkiy",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "cairo",
+          "build_hash": "hi7pwctcxoevssxwusck6pqmjmae5v3o",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "curl",
+          "build_hash": "z4nvc4kfyn23rqi5lwgzwkqtfn77twtu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "esmf",
+          "build_hash": "2wpxpz4begguwfbbb3vq6fff6elvdbcw",
+          "type": [
+            "run"
+          ]
+        },
+        {
+          "name": "flex",
+          "build_hash": "g44eqgab5lth3xmp5xsdhzuogykf2fwm",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "fontconfig",
+          "build_hash": "l2d5phehy7iydhkthjana74ukrud4abn",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "freetype",
+          "build_hash": "gmk3y4j6ryi7jdehhyp5uzesnyd63nzp",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hdf5",
+          "build_hash": "hzy4x5enw3oscus6ivyps7kfvrlsp4li",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libaec",
+          "build_hash": "xeopfop6uvtbnvnw3hc56xvon5a4wcff",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libiconv",
+          "build_hash": "rmh26ubxvhpv4rhu34v6psmrf2dafppg",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libjpeg-turbo",
+          "build_hash": "gjkinojxmxbx4hccm7qmzxghnyxxkws7",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libx11",
+          "build_hash": "xkhpgp6h3utcd3vjpmbxltfi7sxnv2j7",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libxaw",
+          "build_hash": "loiz5pd57k676ip62uzne4wozasycqa2",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libxmu",
+          "build_hash": "56iavzsl2jcu36ppt5ljubhr7noatlcx",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "build_hash": "237c75gmrrzsusti2vikguj7aiiiuofx",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "pixman",
+          "build_hash": "yd2hkgxfzdk7qfodspnph5ucey2arvdv",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "tcsh",
+          "build_hash": "q6ganqgzb345gjdk5yx7movfmil7dyx6",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "udunits",
+          "build_hash": "sjrmdqwff3cot4lhhaxd6kvaffqfeac5",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "mxuues5b52swqslsxvvw5szb4wr6ap5x"
+    },
+    "b2sfff4urlgjw7gvwemlfpre2moamrew": {
+      "name": "ncl",
+      "version": "6.5.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "gdal": false,
+        "hdf4": false,
+        "mpi": true,
+        "openmp": true,
+        "patches": [
+          "a2f7ac8be3534cb1238414a74da36efd0c0da718cb00895a8b05a8ffdee279cc",
+          "a612d4180d80eee07b6c9fd7c92e027c32f12c1b5b53a1387a9415a415a136d5"
+        ],
+        "triangle": true,
+        "udunits2": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "a2f7ac8be3534cb1238414a74da36efd0c0da718cb00895a8b05a8ffdee279cc",
+        "a612d4180d80eee07b6c9fd7c92e027c32f12c1b5b53a1387a9415a415a136d5"
+      ],
+      "dependencies": [
+        {
+          "name": "bison",
+          "build_hash": "g6fhjeyqshp3kfbqz3xl7ak7izq6aqsb",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "bzip2",
+          "build_hash": "x6n2puxs5uixkyvmymbyctmvwxu2xkiy",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "cairo",
+          "build_hash": "hi7pwctcxoevssxwusck6pqmjmae5v3o",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "curl",
+          "build_hash": "z4nvc4kfyn23rqi5lwgzwkqtfn77twtu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "esmf",
+          "build_hash": "63yaw2qnu4g7vygjjkbos5tdarmjeaop",
+          "type": [
+            "run"
+          ]
+        },
+        {
+          "name": "flex",
+          "build_hash": "g44eqgab5lth3xmp5xsdhzuogykf2fwm",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "fontconfig",
+          "build_hash": "l2d5phehy7iydhkthjana74ukrud4abn",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "freetype",
+          "build_hash": "gmk3y4j6ryi7jdehhyp5uzesnyd63nzp",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hdf5",
+          "build_hash": "bim4lcaaw24ryif3u4ifleydjfthwgdb",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libaec",
+          "build_hash": "xeopfop6uvtbnvnw3hc56xvon5a4wcff",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libiconv",
+          "build_hash": "rmh26ubxvhpv4rhu34v6psmrf2dafppg",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libjpeg-turbo",
+          "build_hash": "gjkinojxmxbx4hccm7qmzxghnyxxkws7",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libx11",
+          "build_hash": "xkhpgp6h3utcd3vjpmbxltfi7sxnv2j7",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libxaw",
+          "build_hash": "loiz5pd57k676ip62uzne4wozasycqa2",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libxmu",
+          "build_hash": "56iavzsl2jcu36ppt5ljubhr7noatlcx",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netcdf-c",
+          "build_hash": "k7t7i35hqaesinrflnwjeyc4v2hwx3cr",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "pixman",
+          "build_hash": "yd2hkgxfzdk7qfodspnph5ucey2arvdv",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "tcsh",
+          "build_hash": "q6ganqgzb345gjdk5yx7movfmil7dyx6",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "udunits",
+          "build_hash": "sjrmdqwff3cot4lhhaxd6kvaffqfeac5",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "l33gmcgohrrslwlalianzilfch5ontuv"
     }
   }
 }

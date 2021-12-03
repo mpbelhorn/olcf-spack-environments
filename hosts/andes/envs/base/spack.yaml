@@ -268,6 +268,8 @@ spack:
     - openmpi@3.1.6%gcc@8.3.1
     - ncl%gcc@8.3.1~mpi
     - ncl%gcc@8.3.1+mpi
+    - ncl@6.5.0%gcc@8.3.1~mpi
+    - ncl@6.5.0%gcc@8.3.1+mpi
     - ncview%gcc@8.3.1
     - dftbplus%gcc@8.3.1+elsi+mpi+sockets+transport ^elsi+enable_pexsi
     - r%gcc@8.3.1+X
