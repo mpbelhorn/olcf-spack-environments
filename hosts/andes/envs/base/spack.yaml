@@ -75,6 +75,7 @@ spack:
     - spark+hadoop
     - subversion
     - intel-tbb
+    - texlive@20210325
     - tmux
     - valgrind ~ubsan~mpi~boost
     - vim
