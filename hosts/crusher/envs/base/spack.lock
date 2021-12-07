@@ -2066,10 +2066,6 @@
       "spec": "ninja@1.10.2%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
     },
     {
-      "hash": "wrvjeggfk4vhnf62xv2kgwulbgw6nn65",
-      "spec": "omega-h@9.32.5%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
-    },
-    {
       "hash": "jbopmffe54bkgoifrsgztvwp4chs63ku",
       "spec": "openpmd-api@0.13.4%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hdf5@1.12.0+fortran+hl+shared api=default ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
     },
@@ -2302,10 +2298,6 @@
       "spec": "ninja@1.10.2%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
     },
     {
-      "hash": "wrvjeggfk4vhnf62xv2kgwulbgw6nn65",
-      "spec": "omega-h@9.32.5%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
-    },
-    {
       "hash": "jbopmffe54bkgoifrsgztvwp4chs63ku",
       "spec": "openpmd-api@0.13.4%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hdf5@1.12.0+fortran+hl+shared api=default ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
     },
@@ -2404,6 +2396,10 @@
     {
       "hash": "4v7inwaew2yds3j5ldb56iusfcozw4dt",
       "spec": "zfp@0.5.5%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.11 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "lpnp3vg7kk4fguvpaw6sckylsg6ncoqc",
+      "spec": "git-lfs%gcc@7.5.0 arch=linux-sles15-x86_64"
     }
   ],
   "concrete_specs": {
@@ -98614,111 +98610,6 @@
       ],
       "hash": "xiilxbd5x7zzkyzedt2i4xula47hb6ok"
     },
-    "wrvjeggfk4vhnf62xv2kgwulbgw6nn65": {
-      "name": "omega-h",
-      "version": "9.32.5",
-      "arch": {
-        "platform": "cray",
-        "platform_os": "sles15",
-        "target": {
-          "name": "zen3",
-          "vendor": "AuthenticAMD",
-          "features": [
-            "abm",
-            "aes",
-            "avx",
-            "avx2",
-            "bmi1",
-            "bmi2",
-            "clflushopt",
-            "clwb",
-            "clzero",
-            "cx16",
-            "f16c",
-            "fma",
-            "fsgsbase",
-            "mmx",
-            "movbe",
-            "pclmulqdq",
-            "pku",
-            "popcnt",
-            "rdseed",
-            "sse",
-            "sse2",
-            "sse4_1",
-            "sse4_2",
-            "sse4a",
-            "ssse3",
-            "vaes",
-            "vpclmulqdq",
-            "xsavec",
-            "xsaveopt"
-          ],
-          "generation": 0,
-          "parents": [
-            "zen2"
-          ]
-        }
-      },
-      "compiler": {
-        "name": "cce",
-        "version": "13.0.0"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "build_type": "RelWithDebInfo",
-        "examples": false,
-        "ipo": false,
-        "mpi": true,
-        "optimize": true,
-        "shared": true,
-        "symbols": true,
-        "throw": false,
-        "trilinos": true,
-        "warnings": false,
-        "zlib": true,
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "cmake",
-          "build_hash": "qaot5fr4zh7mx4mjkbpea7jw3hievlng",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "cray-mpich",
-          "build_hash": "e7dnw7ggcv3wzvi36f2j54hrfvjzcymx",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "trilinos",
-          "build_hash": "ydr65di5petvmsjmwlozci5rbljebm44",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "zlib",
-          "build_hash": "qx5p4iereg4sjvfi5uwk6jn56o6se2q4",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "b6grml37wxfs4t2zrsbgtm7hodf3zedf"
-    },
     "jbopmffe54bkgoifrsgztvwp4chs63ku": {
       "name": "openpmd-api",
       "version": "0.13.4",
@@ -104054,6 +103945,45 @@
         }
       ],
       "hash": "wjt4dkzirficzciy3i52mbyrv7ywnzv3"
+    },
+    "lpnp3vg7kk4fguvpaw6sckylsg6ncoqc": {
+      "name": "git-lfs",
+      "version": "2.11.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "git",
+          "build_hash": "ohf4wgzu2fzjjzft5hiehobugeyndr5h",
+          "type": [
+            "run"
+          ]
+        },
+        {
+          "name": "go",
+          "build_hash": "32he75g55vd6kxxm4j7vr5wjq3vnrky6",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "yr65vwmyi2jokfiwhhmh7fjezqk2gfp2"
     }
   }
 }
