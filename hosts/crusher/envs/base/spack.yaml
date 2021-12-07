@@ -36,6 +36,7 @@ spack:
     - libzmq
     - gnupg
     - googletest
+    - git-lfs
     - imagemagick
     - exuberant-ctags@5.8
     - libpng@1.2.57
