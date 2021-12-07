@@ -281,6 +281,7 @@ spack:
       - darshan-runtime # FIXME; need to build when gpfs is mounted
       - dyninst%cce ## os elfutils insufficient
       - hpctoolkit%cce ## depends on dyninst
+      - omega-h@9.32.5%cce@13.0.0 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13.0.0.1 # -Wno-unsupported-target-opt breaks mpif90 config tests
