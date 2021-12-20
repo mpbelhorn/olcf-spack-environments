@@ -236,7 +236,7 @@ spack:
       - - $core_packages
       - - $core_compiler
       - - arch=linux-sles15-x86_64
-  - cpe21.11_specs:
+  - cpe21.12_specs:
     - matrix:
       - - $e4s_21.08_packages
         - $e4s_21.05_packages
@@ -294,7 +294,7 @@ spack:
       - unifyfs%cce
   specs:
   - $core_specs
-  - $cpe21.11_specs
+  - $cpe21.12_specs
   #############################################################################
   mirrors:
     facility_builds: /sw/frontier/spack-env/mirrors/builds
