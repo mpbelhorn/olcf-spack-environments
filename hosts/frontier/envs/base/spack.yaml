@@ -49,7 +49,7 @@ spack:
     - adios2@2.7.1~python
     - aml@0.1.0
     # - amrex@21.05 ~rocm~cuda amdgpu_target=none
-    # - amrex@21.05 +rocm~cuda amdgpu_target=gfx908
+    # - amrex@21.05 +rocm~cuda amdgpu_target=gfx90a
     - arborx@1.0~cuda
     - archer@2.0.0
     - argobots@1.1
@@ -59,7 +59,7 @@ spack:
     - cabana@0.3.0~cuda
     - caliper@2.5.0 ~cuda ^papi~cuda
     - chai@2.3.0
-    - chai@2.3.0~benchmarks~tests+rocm~cuda amdgpu_target=gfx908
+    - chai@2.3.0~benchmarks~tests+rocm~cuda amdgpu_target=gfx90a
     - conduit@0.7.2
     - darshan-runtime@3.3.0 ## installed globally
     - darshan-util@3.3.0 ## installed globally
@@ -82,7 +82,7 @@ spack:
     - kokkos-kernels@3.2.00
     - legion@21.03.0~cuda+hdf5
     - libquo@1.3.1
-    - magma@2.6.1 +rocm~cuda amdgpu_target=gfx908
+    - magma@2.6.1 +rocm~cuda amdgpu_target=gfx90a
     - mercury@2.0.1
     - mfem@4.2.0
     - mpifileutils@0.11
@@ -100,31 +100,31 @@ spack:
     - pumi@2.2.5
     - qthreads@1.16 scheduler=distrib
     - raja@0.13.0 ~rocm~cuda+openmp amdgpu_target=none
-    - raja@0.13.0 +rocm~cuda~openmp amdgpu_target=gfx908
+    - raja@0.13.0 +rocm~cuda~openmp amdgpu_target=gfx90a
     # - rempi@1.1.0 # spackage needs porting for cray wrappers
     # - scr@3.0rc1 ## libyogrt: configure: error: slurm is not in specified location!
     - slate@2021.05.02 ~rocm~cuda amdgpu_target=none ^blaspp~rocm amdgpu_target=none
-    - slate@2021.05.02 +rocm~cuda amdgpu_target=gfx908
+    - slate@2021.05.02 +rocm~cuda amdgpu_target=gfx90a
     - slepc@3.15.0
     # - stc@0.9.0 # Swift-turbine compiler; only needs to be installed once.
     - strumpack@5.1.1 ~slate~rocm~cuda amdgpu_target=none
-    - strumpack@5.1.1 ~slate+rocm~cuda amdgpu_target=gfx908
+    - strumpack@5.1.1 ~slate+rocm~cuda amdgpu_target=gfx90a
     - sundials@5.7.0 ~rocm~cuda amdgpu_target=none
-    - sundials@5.7.0 +rocm~cuda amdgpu_target=gfx908
+    - sundials@5.7.0 +rocm~cuda amdgpu_target=gfx90a
     - superlu-dist@6.4.0~cuda cuda_arch=none
     - superlu@5.2.1
     - swig@4.0.2
     - swig@4.0.2-fortran
     - sz@2.1.11.1
     - tasmanian@7.5 ~rocm~cuda
-    - tasmanian@7.5 +rocm~cuda amdgpu_target=gfx908
+    - tasmanian@7.5 +rocm~cuda amdgpu_target=gfx90a
     - tau@2.30.1~rocm~cuda+mpi~ompt~openmp
     - tau@2.30.1+rocm~cuda+mpi+ompt+openmp
     - trilinos@13.0.1 +amesos +amesos2 +anasazi +aztec +belos +boost +epetra +epetraext +ifpack +ifpack2 +intrepid +intrepid2 +isorropia +kokkos +ml +minitensor +muelu +nox +piro +phalanx +rol +rythmos +sacado +stk +shards +shylu +stokhos +stratimikos +teko +tempus +tpetra +trilinoscouplings +zoltan +zoltan2 +superlu-dist gotype=long_long
     - turbine@1.3.0
     - umap@2.1.0
     - umpire@4.1.2 +shared~rocm~cuda amdgpu_target=none
-    - umpire@4.1.2 +shared+rocm~cuda amdgpu_target=gfx908
+    - umpire@4.1.2 +shared+rocm~cuda amdgpu_target=gfx90a
     - unifyfs@0.9.2
     # - upcxx@2021.3.0~cuda ## Tries to build for aries network on non-aries cray
     - zfp@0.5.5
@@ -132,7 +132,7 @@ spack:
     - adios2@2.7.1 ~python
     - aml@0.1.0
     - amrex@21.09 ~rocm~cuda amdgpu_target=none
-    - amrex@21.09 +rocm~cuda amdgpu_target=gfx908
+    - amrex@21.09 +rocm~cuda amdgpu_target=gfx90a
     - arborx@1.0~cuda
     - archer@2.0.0
     - argobots@1.1
@@ -142,7 +142,7 @@ spack:
     - cabana@0.3.0~cuda
     - caliper@2.6.0 ~cuda ^papi~cuda
     - chai@2.4.0 ~benchmarks~examples~tests~rocm~cuda amdgpu_target=none
-    - chai@2.4.0 ~benchmarks~examples~tests+rocm~cuda amdgpu_target=gfx908
+    - chai@2.4.0 ~benchmarks~examples~tests+rocm~cuda amdgpu_target=gfx90a
     - conduit@0.7.2
     - darshan-runtime@3.3.1
     - darshan-util@3.3.1
@@ -157,7 +157,7 @@ spack:
     - gasnet@2021.3.0
     # - geopm@1.1.0 ## FIXME: need only one (core) build of this package
     - ginkgo@1.4.0~rocm~cuda amdgpu_target=none
-    - ginkgo@1.4.0+rocm~cuda amdgpu_target=gfx908
+    - ginkgo@1.4.0+rocm~cuda amdgpu_target=gfx90a
     - globalarrays@5.8
     - gotcha@1.0.3
     - hdf5@1.12.0
@@ -172,7 +172,7 @@ spack:
     - libquo@1.3.1
     - libunwind@1.5.0
     - loki@0.1.7
-    - magma@2.6.1 +rocm~cuda amdgpu_target=gfx908
+    - magma@2.6.1 +rocm~cuda amdgpu_target=gfx90a
     - mercury@2.0.1
     - metall@0.15
     - mfem@4.3.0 ~cuda
@@ -199,32 +199,32 @@ spack:
     - qthreads@1.16 scheduler=distrib
     # - qwt@6.1.6 # FIXME: need only one (core) build of this
     - raja@0.14.0 ~exercises~examples~tests~rocm~cuda+openmp amdgpu_target=none
-    - raja@0.14.0 ~exercises~examples~tests+rocm~cuda~openmp amdgpu_target=gfx908
+    - raja@0.14.0 ~exercises~examples~tests+rocm~cuda~openmp amdgpu_target=gfx90a
     # - rempi@1.1.0 # spackage needs porting for cray wrappers
     # - scr@3.0rc1 ## libyogrt: configure: error: slurm is not in specified location!
     - slate@2021.05.02 ~rocm~cuda amdgpu_target=none ^blaspp~rocm amdgpu_target=none
-    - slate@2021.05.02 +rocm~cuda amdgpu_target=gfx908
+    - slate@2021.05.02 +rocm~cuda amdgpu_target=gfx90a
     - slepc@3.15.1
     # - stat@4.1.0 ## FIXME: need only one (core) build of this
     # - stc@0.9.0 ## FIXME: need only one (core) build of this
     - strumpack@5.1.1 ~slate~rocm~cuda amdgpu_target=none
-    - strumpack@5.1.1 ~slate+rocm~cuda amdgpu_target=gfx908
+    - strumpack@5.1.1 ~slate+rocm~cuda amdgpu_target=gfx90a
     - sundials@5.7.0 ~rocm~cuda amdgpu_target=none
-    - sundials@5.7.0 +rocm~cuda amdgpu_target=gfx908
+    - sundials@5.7.0 +rocm~cuda amdgpu_target=gfx90a
     - superlu-dist@6.4.0 ~cuda
     - superlu@5.2.2
     - swig@4.0.2
     - swig@4.0.2-fortran
     - sz@2.1.12
     - tasmanian@7.5 ~rocm~cuda amdgpu_target=none
-    - tasmanian@7.5 +rocm~cuda amdgpu_target=gfx908
+    - tasmanian@7.5 +rocm~cuda amdgpu_target=gfx90a
     ## - tau@2.30.1+craycnl+rocm+scorep+mpi+opari+shmem+gasnet+rocprofiler+roctracer+fortran+papi+otf2
     ##   Tau builds to be handled separately per compiler
     - trilinos@13.0.1
     - turbine@1.3.0
     - umap@2.1.0
     - umpire@4.1.2 +shared~rocm~cuda amdgpu_target=none
-    - umpire@4.1.2 +shared+rocm~cuda amdgpu_target=gfx908
+    - umpire@4.1.2 +shared+rocm~cuda amdgpu_target=gfx90a
     - unifyfs@0.9.2
     # - upcxx@2021.3.0~cuda ## Tries to build for aries network on non-aries cray
     # - variorum@0.4.1 # SAUE-223
@@ -320,7 +320,7 @@ spack:
       target: [zen3]
       version: []
     amrex:
-      variants: +rocm amdgpu_target=gfx908
+      variants: +rocm amdgpu_target=gfx90a
     axom:
       variants: ~examples~openmp+hdf5+umpire+raja+mpi
     binutils:
@@ -331,12 +331,12 @@ spack:
       variants: +libiberty
       version: []
     blaspp:
-      variants: ~cuda+rocm amdgpu_target=gfx908
+      variants: ~cuda+rocm amdgpu_target=gfx90a
     camp:
-      # variants: +rocm amdgpu_target=gfx908
+      # variants: +rocm amdgpu_target=gfx90a
       variants: ~rocm amdgpu_target=none
     chai:
-      # variants: ~benchmarks~tests+rocm amdgpu_target=gfx908
+      # variants: ~benchmarks~tests+rocm amdgpu_target=gfx90a
       variants: ~examples~benchmarks~tests~rocm amdgpu_target=none
     comgr:
       buildable: false
@@ -401,7 +401,7 @@ spack:
     gdbm:
       version: [1.19]
     ginkgo:
-      variants: +rocm amdgpu_target=gfx908
+      variants: +rocm amdgpu_target=gfx90a
     hdf5:
       buildable: true
       compiler: []
@@ -549,7 +549,7 @@ spack:
       target: []
       version: [1.4.18]
     magma:
-      variants: ~cuda+rocm amdgpu_target=gfx908
+      variants: ~cuda+rocm amdgpu_target=gfx90a
     miopen-hip:
       buildable: false
       externals:
@@ -686,7 +686,7 @@ spack:
           spec: rocfft@4.3.0
         - prefix: /opt/rocm-4.2.0
           spec: rocfft@4.2.0
-      variants: amdgpu_target=gfx908 amdgpu_target_sram_ecc=gfx908
+      variants: amdgpu_target=gfx90a amdgpu_target_sram_ecc=gfx90a
       version: [4.5.0, 4.3.0, 4.2.0]
     rocm-clang-ocl:
       buildable: false
@@ -859,7 +859,7 @@ spack:
           spec: roctracer-dev@4.2.0
       version: [4.5.0, 4.3.0, 4.2.0]
     slate:
-      variants: +rocm amdgpu_target=gfx908
+      variants: +rocm amdgpu_target=gfx90a
     slurm:
       buildable: false
       compiler: []
@@ -870,11 +870,11 @@ spack:
       target: []
       version: [21.08.0]
     strumpack:
-      variants: ~slate+rocm amdgpu_target=gfx908
+      variants: ~slate+rocm amdgpu_target=gfx90a
     sundials:
-      variants: ~examples~examples-install+rocm amdgpu_target=gfx908
+      variants: ~examples~examples-install+rocm amdgpu_target=gfx90a
     superlu-dist:
-      variants: +rocm amdgpu_target=gfx908
+      variants: +rocm amdgpu_target=gfx90a
     tcsh:
       buildable: false
       externals:
@@ -884,7 +884,7 @@ spack:
     trilinos:
       variants: +amesos +amesos2 +anasazi +aztec +belos +boost +epetra +epetraext +ifpack +ifpack2 +intrepid +intrepid2 +isorropia +kokkos +ml +minitensor +muelu +nox +piro +phalanx +rol +rythmos +sacado +stk +shards +shylu +stokhos +stratimikos +teko +tempus +tpetra +trilinoscouplings +zoltan +zoltan2 +superlu-dist gotype=long_long
     umpire:
-      # variants: +rocm amdgpu_target=gfx908
+      # variants: +rocm amdgpu_target=gfx90a
       variants: ~examples~rocm amdgpu_target=none
     vtk-m:
       variants: +hip amdgpu_target=gfx908
