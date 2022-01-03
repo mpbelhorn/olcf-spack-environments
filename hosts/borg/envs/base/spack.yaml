@@ -1167,7 +1167,6 @@ spack:
           load: []
           suffixes:
             builtin.ncl ^hdf5+mpi^netcdf+mpi: parallel
-            olcf.ncl: serial
         openblas:
           conflict: []
           environment:
