@@ -173,9 +173,37 @@ if [[ "${_FS_COPY_STATIC_MODULES:-true}" == "true" ]]; then
     diff --color=always -u --recursive \
        "${FACSPACK_ENV_MODULEROOT}/site" \
        "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site"
-    cp -dRu --preserve=mode,timestamps \
-       "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site" \
-       "${FACSPACK_ENV_MODULEROOT}/."
+    xfertmp=$(mktemp) \
+      && rsync --dry-run -crlp --out-format='RSYNC_CONFIRM %i %n%L' \
+         "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site/" \
+         "${FACSPACK_ENV_MODULEROOT}/site/" \
+         | grep "RSYNC_CONFIRM >" \
+         | awk '{ print $3 }' > "${xfertmp}" \
+      && echo "The following modulefiles and paths will be updated:" \
+      && echo "+----------- > = sent; < = recieved; c = created; . = not updated; * = message" \
+      && echo "|+---------- (d)irectory; (f)ile; (L)ink; (D)evice; (S)pecial" \
+      && echo "||+--------- (c)hecksum changed" \
+      && echo "|||+-------- (s)ize changed" \
+      && echo "||||+------- (t)imestamp changed" \
+      && echo "|||||+------ (p)permissions changed" \
+      && echo "||||||+----- (o)wner changed" \
+      && echo "|||||||+---- (g)roup changed" \
+      && echo "||||||||+--- N/A" \
+      && echo "|||||||||+-- (a)cl changed" \
+      && echo "||||||||||+- (x)attr changed" \
+      && echo "|||||||||||" \
+      && rsync -n --itemize-changes --files-from=${xfertmp} \
+         "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site/" \
+         "${FACSPACK_ENV_MODULEROOT}/site/"
+    # TODO: Check envvar for non-interactive uses
+    echo "Update modulefiles (y/[n])? "
+    read
+    if [[ ${REPLY} = [yY] ]]; then
+      rsync -v --files-from=${xfertmp} \
+           "${FACSPACK_CONF_HOST}/share/lmod/modulefiles/static/site/" \
+           "${FACSPACK_ENV_MODULEROOT}/site/"
+    fi
+    rm -f "${xfertmp}"
   fi
 else
   _FS_WARN_MSG="WARNING: Not updating static modulefiles.\n    "
