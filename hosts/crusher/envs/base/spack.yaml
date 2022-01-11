@@ -1184,6 +1184,7 @@ spack:
         - berkeley-db
         - boost%gcc visibility=global
         - cray-mpich
+        - cray-libsci
         - glib
         - glproto
         - go-bootstrap
