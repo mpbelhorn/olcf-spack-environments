@@ -1216,6 +1216,7 @@ spack:
         - libxfont
         - libxpm
         - libxslt
+        - llvm
         - lua
         - m4
         - meson
