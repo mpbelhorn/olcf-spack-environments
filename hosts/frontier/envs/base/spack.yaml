@@ -242,13 +242,13 @@ spack:
         - $e4s_21.05_packages
       - - '%gcc@9.3.0'
       - - ^cray-mpich@8.1.12
-      - - ^hip@4.5.2
-      - - ^hipblas@4.5.2
-      - - ^rocblas@4.5.2
-      - - ^rocrand@4.5.2
-      - - ^rocsolver@4.5.2
-      - - ^rocsparse@4.5.2
-      - - ^rocthrust@4.5.2
+      - - ^hip@4.5.0
+      - - ^hipblas@4.5.0
+      - - ^rocblas@4.5.0
+      - - ^rocrand@4.5.0
+      - - ^rocsolver@4.5.0
+      - - ^rocsparse@4.5.0
+      - - ^rocthrust@4.5.0
       - - arch=cray-sles15-zen2
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
@@ -263,13 +263,13 @@ spack:
       - - '%gcc@11.2.0'
         - '%gcc@10.3.0'
       - - ^cray-mpich@8.1.12
-      - - ^hip@4.5.2
-      - - ^hipblas@4.5.2
-      - - ^rocblas@4.5.2
-      - - ^rocrand@4.5.2
-      - - ^rocsolver@4.5.2
-      - - ^rocsparse@4.5.2
-      - - ^rocthrust@4.5.2
+      - - ^hip@4.5.0
+      - - ^hipblas@4.5.0
+      - - ^rocblas@4.5.0
+      - - ^rocrand@4.5.0
+      - - ^rocsolver@4.5.0
+      - - ^rocsparse@4.5.0
+      - - ^rocthrust@4.5.0
       - - arch=cray-sles15-zen3
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
@@ -285,14 +285,14 @@ spack:
         - slate@2021.05.02
       - - '%cce@13.0.0'
       - - ^cray-mpich@8.1.12
-      - - ^hip@4.5.2
-      - - ^hipblas@4.5.2
-      - - ^hipsparse@4.5.2
-      - - ^rocblas@4.5.2
-      - - ^rocrand@4.5.2
-      - - ^rocsolver@4.5.2
-      - - ^rocsparse@4.5.2
-      - - ^rocthrust@4.5.2
+      - - ^hip@4.5.0
+      - - ^hipblas@4.5.0
+      - - ^hipsparse@4.5.0
+      - - ^rocblas@4.5.0
+      - - ^rocrand@4.5.0
+      - - ^rocsolver@4.5.0
+      - - ^rocsparse@4.5.0
+      - - ^rocthrust@4.5.0
       - - arch=cray-sles15-zen3
       exclude:
       - archer%cce
