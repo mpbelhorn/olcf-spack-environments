@@ -90,12 +90,18 @@ spack:
     - adios2 +python ^python@3.7.7
     - adios@1.13.1+blosc+bzip2+fortran+hdf5+infiniband+netcdf
     - gdrcopy
-    - gromacs        +hwloc+cuda+mpi ^cuda@10.2.89
-    - gromacs        +hwloc+cuda~mpi ^cuda@10.2.89
-    - gromacs@2020.4 +hwloc+cuda+mpi ^cuda@10.2.89
-    - gromacs@2020.4 +hwloc+cuda~mpi ^cuda@10.2.89
-    - gromacs@2020.2 +hwloc+cuda+mpi ^cuda@10.2.89
-    - gromacs@2020.2 +hwloc+cuda~mpi ^cuda@10.2.89
+    - gromacs        +hwloc+cuda+mpi        ^cuda@11.0.3
+    - gromacs        +hwloc+cuda~mpi        ^cuda@11.0.3
+    - gromacs        +hwloc+cuda+mpi+plumed ^cuda@11.0.3 ^plumed@2.7.1
+    - gromacs        +hwloc+cuda~mpi+plumed ^cuda@11.0.3 ^plumed@2.7.1
+    - gromacs@2020.4 +hwloc+cuda+mpi        ^cuda@11.0.3
+    - gromacs@2020.4 +hwloc+cuda~mpi        ^cuda@11.0.3
+    - gromacs@2020.4 +hwloc+cuda+mpi+plumed ^cuda@11.0.3
+    - gromacs@2020.4 +hwloc+cuda~mpi+plumed ^cuda@11.0.3
+    - gromacs@2020.2 +hwloc+cuda+mpi        ^cuda@11.0.3
+    - gromacs@2020.2 +hwloc+cuda~mpi        ^cuda@11.0.3
+    - gromacs@2020.2 +hwloc+cuda+mpi+plumed ^cuda@11.0.3
+    - gromacs@2020.2 +hwloc+cuda~mpi+plumed ^cuda@11.0.3
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack
@@ -1077,6 +1083,7 @@ spack:
           load: []
           suffixes:
             gromacs ~mpi: serial
+            gromacs +plumed: plumed
         hpx:
           suffixes:
             hpx ^boost@1.72.0: boost1.72.0
@@ -1178,6 +1185,9 @@ spack:
           filter:
             environment_blacklist: [CPATH, LIBRARY_PATH]
           load: []
+        plumed:
+          suffixes:
+            plumed~mpi: serial
         qthreads:
           conflict: []
           environment:
