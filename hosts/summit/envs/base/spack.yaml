@@ -102,6 +102,8 @@ spack:
     - gromacs@2020.2 +hwloc+cuda~mpi        ^cuda@11.0.3
     - gromacs@2020.2 +hwloc+cuda+mpi+plumed ^cuda@11.0.3
     - gromacs@2020.2 +hwloc+cuda~mpi+plumed ^cuda@11.0.3
+    - openblas threads=pthreads
+    - openblas threads=none
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack
@@ -500,6 +502,7 @@ spack:
   - gcc_specs:
     - matrix:
       - - openblas threads=openmp
+        - openblas threads=pthreads
         - openblas threads=none
         - netlib-scalapack ^openblas threads=openmp
       - - '%gcc@9.3.0'
