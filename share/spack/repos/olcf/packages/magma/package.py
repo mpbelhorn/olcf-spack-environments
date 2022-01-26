@@ -11,6 +11,8 @@ class Magma(MagmaBase):
     def cmake_args(self):
         options = super(Magma, self).cmake_args()
 
+        if self.spec.satisfies('%nvhpc'):
+            options += ['-DCUDA_NVCC_FLAGS=-allow-unsupported-compiler']
         if self.spec.satisfies('%gcc@8: +cuda target=ppc64le'):
             options.append('-DCUDA_NVCC_FLAGS=-Xcompiler;-mno-float128')
         return options
