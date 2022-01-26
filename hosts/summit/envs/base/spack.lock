@@ -6366,14 +6366,6 @@
       "spec": "gromacs%gcc@8.3.1+cuda+hwloc~mpi ^cuda@11.0.3"
     },
     {
-      "hash": "tuajwe4rpw3xwskozrydiadpgf5nmy26",
-      "spec": "gromacs%gcc@8.3.1+cuda+hwloc+mpi+plumed ^cuda@11.0.3 ^plumed@2.7.1"
-    },
-    {
-      "hash": "giyx6wcft5wxgwa2cwm5cucafo7j5ge4",
-      "spec": "gromacs%gcc@8.3.1+cuda+hwloc~mpi+plumed ^cuda@11.0.3 ^plumed@2.7.1"
-    },
-    {
       "hash": "hxsqouvukqtn4vk5yczzqeuvaaqzis5g",
       "spec": "gromacs@2020.4%gcc@8.3.1+cuda+hwloc+mpi ^cuda@11.0.3"
     },
@@ -6416,6 +6408,14 @@
     {
       "hash": "bd66fu4ma3tet3jxa7ynvo6uan54pbmu",
       "spec": "openblas%gcc@9.3.0 threads=pthreads"
+    },
+    {
+      "hash": "fm3nbssu2boze24dfyu4iphbiiei47vb",
+      "spec": "gromacs%gcc@8.3.1+cuda+hwloc+mpi+plumed ^cuda@11.0.3 ^plumed@2.7.3"
+    },
+    {
+      "hash": "ymxya3pswgb2si3letyqhpbfzyc2c2tr",
+      "spec": "gromacs%gcc@8.3.1+cuda+hwloc~mpi+plumed ^cuda@11.0.3 ^plumed@2.7.3"
     }
   ],
   "concrete_specs": {
@@ -140005,418 +140005,6 @@
       ],
       "hash": "h3tjwdfczmiuzcx7si3oyobyb6arwzro"
     },
-    "tuajwe4rpw3xwskozrydiadpgf5nmy26": {
-      "name": "gromacs",
-      "version": "2021.3",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "rhel8",
-        "target": "ppc64le"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "8.3.1"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "blas": false,
-        "build_type": "RelWithDebInfo",
-        "cuda": true,
-        "cycle_subcounters": false,
-        "double": false,
-        "hwloc": true,
-        "ipo": false,
-        "lapack": false,
-        "mdrun_only": false,
-        "mpi": true,
-        "nosuffix": false,
-        "opencl": false,
-        "openmp": true,
-        "plumed": true,
-        "relaxed_double_precision": false,
-        "shared": true,
-        "sycl": false,
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "cmake",
-          "build_hash": "bh2mayqiafqrvrzygxcbsbqvkqyge36g",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "cuda",
-          "build_hash": "vzvzoergwsb3shi2fr3ydgvl3jd6rt5a",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "fftw",
-          "build_hash": "wferzghvr3ja73mrwp6pt235uilh34ui",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "hwloc",
-          "build_hash": "3nlrqztv4acdnpdek6tegeppzylywbgf",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "plumed",
-          "build_hash": "oj3oieiahcwvnhulg6lz5567xcgtf7is",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "spectrum-mpi",
-          "build_hash": "vgx3y6jjgccqihabnuasprb6pyqqfmal",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "ufnhxoq7wj2y6az3c4ah57ylnwycsmof"
-    },
-    "oj3oieiahcwvnhulg6lz5567xcgtf7is": {
-      "name": "plumed",
-      "version": "2.7.1",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "rhel8",
-        "target": "ppc64le"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "8.3.1"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "arrayfire": "none",
-        "gsl": true,
-        "mpi": true,
-        "optional_modules": "all",
-        "shared": true,
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "autoconf",
-          "build_hash": "llzc3rdpyzo632h7724wkkke6dnehvah",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "automake",
-          "build_hash": "de52hff2przbxqqx6kc5eganlnheoc4v",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "gnuconfig",
-          "build_hash": "hjtaszl3rv3ozxo6ciikauc27gtbllfc",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "gsl",
-          "build_hash": "evcsi4fro5ujjipgkvik3hgzwierypyu",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "libtool",
-          "build_hash": "xo4ogwdsifjhymeyv2na3l6whbfvrntw",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "m4",
-          "build_hash": "adimpjcr2uyjc4fc72mpt5j6cy2lwczo",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "netlib-lapack",
-          "build_hash": "rgiqmdb7qvexnuupmpddxj4trdnhcn6m",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "py-cython",
-          "build_hash": "ijvi7nx5fjtonzve7afdvgdusk3rqjct",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "spectrum-mpi",
-          "build_hash": "vgx3y6jjgccqihabnuasprb6pyqqfmal",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "zlib",
-          "build_hash": "us2ipxy2z6ceg34gyfmmvu3pwhh32pn2",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "4gi3emgh74vjbvhlo3q34yn2tej2sw3t"
-    },
-    "ijvi7nx5fjtonzve7afdvgdusk3rqjct": {
-      "name": "py-cython",
-      "version": "0.29.24",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "rhel8",
-        "target": "ppc64le"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "8.3.1"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "py-setuptools",
-          "build_hash": "gqui7ig35xswaxg4zdra2f5mbnc423on",
-          "type": [
-            "build",
-            "run"
-          ]
-        },
-        {
-          "name": "python",
-          "build_hash": "mf5534v2uvpmw5dkm5ba45uuz4kshbqd",
-          "type": [
-            "build",
-            "link",
-            "run"
-          ]
-        }
-      ],
-      "hash": "jc3qyyrxm3w3flil7v2mdnunqqvlkmre"
-    },
-    "giyx6wcft5wxgwa2cwm5cucafo7j5ge4": {
-      "name": "gromacs",
-      "version": "2021.3",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "rhel8",
-        "target": "ppc64le"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "8.3.1"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "blas": false,
-        "build_type": "RelWithDebInfo",
-        "cuda": true,
-        "cycle_subcounters": false,
-        "double": false,
-        "hwloc": true,
-        "ipo": false,
-        "lapack": false,
-        "mdrun_only": false,
-        "mpi": false,
-        "nosuffix": false,
-        "opencl": false,
-        "openmp": true,
-        "plumed": true,
-        "relaxed_double_precision": false,
-        "shared": true,
-        "sycl": false,
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "cmake",
-          "build_hash": "bh2mayqiafqrvrzygxcbsbqvkqyge36g",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "cuda",
-          "build_hash": "vzvzoergwsb3shi2fr3ydgvl3jd6rt5a",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "fftw",
-          "build_hash": "wferzghvr3ja73mrwp6pt235uilh34ui",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "hwloc",
-          "build_hash": "3nlrqztv4acdnpdek6tegeppzylywbgf",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "plumed",
-          "build_hash": "4uebxnogkdtt47wi4rwtqro3oic5pnan",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "se2dat5tvck4wqh6qdq4g22wj72rdjhe"
-    },
-    "4uebxnogkdtt47wi4rwtqro3oic5pnan": {
-      "name": "plumed",
-      "version": "2.7.1",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "rhel8",
-        "target": "ppc64le"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "8.3.1"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "arrayfire": "none",
-        "gsl": true,
-        "mpi": false,
-        "optional_modules": "all",
-        "shared": true,
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "dependencies": [
-        {
-          "name": "autoconf",
-          "build_hash": "llzc3rdpyzo632h7724wkkke6dnehvah",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "automake",
-          "build_hash": "de52hff2przbxqqx6kc5eganlnheoc4v",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "gnuconfig",
-          "build_hash": "hjtaszl3rv3ozxo6ciikauc27gtbllfc",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "gsl",
-          "build_hash": "evcsi4fro5ujjipgkvik3hgzwierypyu",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "libtool",
-          "build_hash": "xo4ogwdsifjhymeyv2na3l6whbfvrntw",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "m4",
-          "build_hash": "adimpjcr2uyjc4fc72mpt5j6cy2lwczo",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "netlib-lapack",
-          "build_hash": "rgiqmdb7qvexnuupmpddxj4trdnhcn6m",
-          "type": [
-            "build",
-            "link"
-          ]
-        },
-        {
-          "name": "py-cython",
-          "build_hash": "ijvi7nx5fjtonzve7afdvgdusk3rqjct",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "zlib",
-          "build_hash": "us2ipxy2z6ceg34gyfmmvu3pwhh32pn2",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "d5fqh3b5ebqdueknx6rotcy7dwd4layk"
-    },
     "hxsqouvukqtn4vk5yczzqeuvaaqzis5g": {
       "name": "gromacs",
       "version": "2020.4",
@@ -140763,6 +140351,48 @@
         }
       ],
       "hash": "2b5gwltzsqvr3nb7wmqz3q4ihwrhcfac"
+    },
+    "ijvi7nx5fjtonzve7afdvgdusk3rqjct": {
+      "name": "py-cython",
+      "version": "0.29.24",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "py-setuptools",
+          "build_hash": "gqui7ig35xswaxg4zdra2f5mbnc423on",
+          "type": [
+            "build",
+            "run"
+          ]
+        },
+        {
+          "name": "python",
+          "build_hash": "mf5534v2uvpmw5dkm5ba45uuz4kshbqd",
+          "type": [
+            "build",
+            "link",
+            "run"
+          ]
+        }
+      ],
+      "hash": "jc3qyyrxm3w3flil7v2mdnunqqvlkmre"
     },
     "fvsom26h2j5gazy3bycqtdptbdb7dltj": {
       "name": "gromacs",
@@ -141581,6 +141211,376 @@
         }
       ],
       "hash": "s34pkkbykbszs66nxny6orea4qygk7nf"
+    },
+    "fm3nbssu2boze24dfyu4iphbiiei47vb": {
+      "name": "gromacs",
+      "version": "2021.4",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "blas": false,
+        "build_type": "RelWithDebInfo",
+        "cuda": true,
+        "cycle_subcounters": false,
+        "double": false,
+        "hwloc": true,
+        "ipo": false,
+        "lapack": false,
+        "mdrun_only": false,
+        "mpi": true,
+        "nosuffix": false,
+        "opencl": false,
+        "openmp": true,
+        "plumed": true,
+        "relaxed_double_precision": false,
+        "shared": true,
+        "sycl": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "bh2mayqiafqrvrzygxcbsbqvkqyge36g",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cuda",
+          "build_hash": "vzvzoergwsb3shi2fr3ydgvl3jd6rt5a",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "fftw",
+          "build_hash": "wferzghvr3ja73mrwp6pt235uilh34ui",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hwloc",
+          "build_hash": "3nlrqztv4acdnpdek6tegeppzylywbgf",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "plumed",
+          "build_hash": "cttmp45llliumqjkpajnfzpzg56iqj6c",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "spectrum-mpi",
+          "build_hash": "vgx3y6jjgccqihabnuasprb6pyqqfmal",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "sl3whlnjxrffi4xqzja3iwl53t5wbkn2"
+    },
+    "cttmp45llliumqjkpajnfzpzg56iqj6c": {
+      "name": "plumed",
+      "version": "2.7.3",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "arrayfire": "none",
+        "gsl": true,
+        "mpi": true,
+        "optional_modules": "all",
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "build_hash": "llzc3rdpyzo632h7724wkkke6dnehvah",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "build_hash": "de52hff2przbxqqx6kc5eganlnheoc4v",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gnuconfig",
+          "build_hash": "hjtaszl3rv3ozxo6ciikauc27gtbllfc",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gsl",
+          "build_hash": "evcsi4fro5ujjipgkvik3hgzwierypyu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "build_hash": "xo4ogwdsifjhymeyv2na3l6whbfvrntw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "build_hash": "adimpjcr2uyjc4fc72mpt5j6cy2lwczo",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "netlib-lapack",
+          "build_hash": "rgiqmdb7qvexnuupmpddxj4trdnhcn6m",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "py-cython",
+          "build_hash": "ijvi7nx5fjtonzve7afdvgdusk3rqjct",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "spectrum-mpi",
+          "build_hash": "vgx3y6jjgccqihabnuasprb6pyqqfmal",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "us2ipxy2z6ceg34gyfmmvu3pwhh32pn2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "kakdcomivok4x2fblbisc2f5amuw7h7n"
+    },
+    "ymxya3pswgb2si3letyqhpbfzyc2c2tr": {
+      "name": "gromacs",
+      "version": "2021.4",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "blas": false,
+        "build_type": "RelWithDebInfo",
+        "cuda": true,
+        "cycle_subcounters": false,
+        "double": false,
+        "hwloc": true,
+        "ipo": false,
+        "lapack": false,
+        "mdrun_only": false,
+        "mpi": false,
+        "nosuffix": false,
+        "opencl": false,
+        "openmp": true,
+        "plumed": true,
+        "relaxed_double_precision": false,
+        "shared": true,
+        "sycl": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "bh2mayqiafqrvrzygxcbsbqvkqyge36g",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cuda",
+          "build_hash": "vzvzoergwsb3shi2fr3ydgvl3jd6rt5a",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "fftw",
+          "build_hash": "wferzghvr3ja73mrwp6pt235uilh34ui",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hwloc",
+          "build_hash": "3nlrqztv4acdnpdek6tegeppzylywbgf",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "plumed",
+          "build_hash": "6f2zmu7qeytqbcs5axlusmwzkr3qox5o",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "uqyqfwcyiabb257gghnmqh6zukg5poof"
+    },
+    "6f2zmu7qeytqbcs5axlusmwzkr3qox5o": {
+      "name": "plumed",
+      "version": "2.7.3",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "arrayfire": "none",
+        "gsl": true,
+        "mpi": false,
+        "optional_modules": "all",
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "autoconf",
+          "build_hash": "llzc3rdpyzo632h7724wkkke6dnehvah",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "automake",
+          "build_hash": "de52hff2przbxqqx6kc5eganlnheoc4v",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gnuconfig",
+          "build_hash": "hjtaszl3rv3ozxo6ciikauc27gtbllfc",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gsl",
+          "build_hash": "evcsi4fro5ujjipgkvik3hgzwierypyu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libtool",
+          "build_hash": "xo4ogwdsifjhymeyv2na3l6whbfvrntw",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "m4",
+          "build_hash": "adimpjcr2uyjc4fc72mpt5j6cy2lwczo",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "netlib-lapack",
+          "build_hash": "rgiqmdb7qvexnuupmpddxj4trdnhcn6m",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "py-cython",
+          "build_hash": "ijvi7nx5fjtonzve7afdvgdusk3rqjct",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "us2ipxy2z6ceg34gyfmmvu3pwhh32pn2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "3xjvb2zsgkatfzdlp26yo7fv7awx577r"
     }
   }
 }

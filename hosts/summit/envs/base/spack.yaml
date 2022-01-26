@@ -92,8 +92,8 @@ spack:
     - gdrcopy
     - gromacs        +hwloc+cuda+mpi        ^cuda@11.0.3
     - gromacs        +hwloc+cuda~mpi        ^cuda@11.0.3
-    - gromacs        +hwloc+cuda+mpi+plumed ^cuda@11.0.3 ^plumed@2.7.1
-    - gromacs        +hwloc+cuda~mpi+plumed ^cuda@11.0.3 ^plumed@2.7.1
+    - gromacs        +hwloc+cuda+mpi+plumed ^cuda@11.0.3 ^plumed@2.7.3
+    - gromacs        +hwloc+cuda~mpi+plumed ^cuda@11.0.3 ^plumed@2.7.3
     - gromacs@2020.4 +hwloc+cuda+mpi        ^cuda@11.0.3
     - gromacs@2020.4 +hwloc+cuda~mpi        ^cuda@11.0.3
     - gromacs@2020.4 +hwloc+cuda+mpi+plumed ^cuda@11.0.3
