@@ -1,0 +1,36 @@
+#%Module1.0
+
+# Copyright (c) 2020, NVIDIA CORPORATION.  All rights reserved.
+#
+# NVIDIA CORPORATION and its licensors retain all intellectual property
+# and proprietary rights in and to this software, related documentation
+# and any modifications thereto.  Any use, reproduction, disclosure or
+# distribution of this software and related documentation without an express
+# license agreement from NVIDIA CORPORATION is strictly prohibited.
+
+conflict nvhpc
+conflict cuda
+
+set nvhome /sw/peak/nvhpc_sdk
+set target Linux_ppc64le
+set version 20.9
+
+set nvcudadir $nvhome/$target/$version/cuda
+set nvmathdir $nvhome/$target/$version/math_libs
+set nvcommdir $nvhome/$target/$version/comm_libs
+
+setenv NVHPC $nvhome
+
+prepend-path PATH $nvcudadir/bin
+
+prepend-path CPATH $nvcudadir/include
+prepend-path CPATH $nvmathdir/include
+prepend-path CPATH $nvcommdir/nccl/include
+prepend-path CPATH $nvcommdir/nvshmem/include
+
+prepend-path MANPATH $nvcompdir/man
+prepend-path LD_LIBRARY_PATH $nvcudadir/lib64
+prepend-path LD_LIBRARY_PATH $nvmathdir/lib64
+prepend-path LD_LIBRARY_PATH $nvcommdir/nccl/lib
+prepend-path LD_LIBRARY_PATH $nvcommdir/nvshmem/lib
+

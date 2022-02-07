@@ -1,0 +1,19 @@
+#%Module1.0#####################################################################
+##
+## nsight-compute modulefile
+##
+##
+proc ModulesHelp { } {
+        global version
+
+        puts stderr "\tTools to use Nsight Compute"
+        puts stderr "\n\tVersion $version\n"
+}
+
+module-whatis "Nsight Compute module"
+
+# for Tcl script use only
+set     version     2021.2.1
+
+prepend-path  PATH            /sw/ascent/nsight-compute/$version
+setenv OLCF_NSIGHT_SYSTEMS_ROOT /sw/ascent/nsight-compute/$version
