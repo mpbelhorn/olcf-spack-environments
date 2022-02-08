@@ -2204,6 +2204,10 @@
     {
       "hash": "gjgvblidg3lz64ktayattrfh4dfoa6qx",
       "spec": "zfp@0.5.5%clang@13.0.0-rocm4.5.0~cuda arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "7mquv4nwx3lkzc3ccb5vzzyyuctb4gnc",
+      "spec": "libtirpc%gcc@7.5.0 arch=linux-sles15-x86_64"
     }
   ],
   "concrete_specs": {
@@ -125781,6 +125785,39 @@
         "extra_attributes": {}
       },
       "hash": "d3xev4nznqqqa2j3ojmujrm7tppfvbow"
+    },
+    "7mquv4nwx3lkzc3ccb5vzzyyuctb4gnc": {
+      "name": "libtirpc",
+      "version": "1.2.6",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "sles15",
+        "target": "x86_64"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "krb5",
+          "build_hash": "vmntmupoo43dwzo64l6ft5r7ukyx5f5v",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "pv5kgmioi5ly7z7dajedkyndi6h6l3dw"
     }
   }
 }

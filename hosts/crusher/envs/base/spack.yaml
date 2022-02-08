@@ -46,6 +46,7 @@ spack:
     - libpng@1.2.57
     - julia+cxx
     - wget
+    - libtirpc
     - bazel ^openjdk@11.0:11.99
     - openblas@0.3.17 threads=none
     - openblas@0.3.17 threads=openmp
