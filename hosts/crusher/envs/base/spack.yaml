@@ -145,6 +145,7 @@ spack:
     - ascent@0.7.1 ~test+shared~cuda
     # - axom@0.5.0 ~cuda ^umpire@4.1.2 +shared # SAUE-223
     - bolt@2.0
+    - boost@1.78.0
     - cabana@0.3.0~cuda
     - caliper@2.6.0 ~cuda ^papi~cuda
     - chai@2.4.0 ~benchmarks~examples~tests~rocm~cuda amdgpu_target=none
@@ -245,6 +246,8 @@ spack:
   - cpe21.12_specs:
     - matrix:
       - - $e4s_21.08_packages
+        - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp amdgpu_target=none
+        - kokkos@3.5.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
       - - '%gcc@9.3.0'
       - - ^cray-mpich@8.1.12
       - - ^hip@4.5.0
@@ -266,6 +269,8 @@ spack:
       - 'magma amdgpu_target=gfx90a ^hip@:4.5.0'
     - matrix:
       - - $e4s_21.08_packages
+        - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp amdgpu_target=none
+        - kokkos@3.5.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
       - - '%gcc@11.2.0'
         - '%gcc@10.3.0'
       - - ^cray-mpich@8.1.12
@@ -288,6 +293,8 @@ spack:
     - matrix:
       - - $e4s_21.08_packages
         - slate@2021.05.02
+        - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp amdgpu_target=none
+        - kokkos@3.5.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
       - - '%cce@13.0.1'
         - '%cce@13.0.0'
       - - ^cray-mpich@8.1.12
@@ -319,6 +326,8 @@ spack:
       - 'magma amdgpu_target=gfx90a ^hip@:4.5.0'
     - matrix:
       - - $e4s_21.08_packages
+        - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp amdgpu_target=none
+        - kokkos@3.5.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
       - - '%clang@13.0.0-rocm4.5.0'
       - - ^cray-mpich@8.1.12
       - - ^hip@4.5.0

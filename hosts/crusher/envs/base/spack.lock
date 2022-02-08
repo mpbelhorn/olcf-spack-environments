@@ -2208,6 +2208,78 @@
     {
       "hash": "7mquv4nwx3lkzc3ccb5vzzyyuctb4gnc",
       "spec": "libtirpc%gcc@7.5.0 arch=linux-sles15-x86_64"
+    },
+    {
+      "hash": "h5wxxmzthnhdb25qv3hge64wueljohax",
+      "spec": "boost@1.78.0%gcc@9.3.0 arch=cray-sles15-zen2 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "gxuti3mdcxqgxpkmcybrt2xqs7uaexrt",
+      "spec": "boost@1.78.0%gcc@11.2.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "om4lwvdz6ho5th4uyr335fk6u6opb646",
+      "spec": "boost@1.78.0%gcc@10.3.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "3i4fkhfheutrnj6ziwf6pdmmgmazcfau",
+      "spec": "boost@1.78.0%cce@13.0.1 arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "6gshzc3gd3f2c6z7xijjcxyckraorhda",
+      "spec": "boost@1.78.0%cce@13.0.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "hbvdowlb65fa4gvjfq273hehm2asig5v",
+      "spec": "boost@1.78.0%clang@13.0.0-rocm4.5.0 arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "wwfw6z3z3siglffltkf3hkgsf4ufqrvm",
+      "spec": "kokkos@3.5.00%gcc@9.3.0~cuda+openmp~rocm~wrapper amdgpu_target=none arch=cray-sles15-zen2 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "gbulymytxdrnaisx2nvnaujedmvq4cf3",
+      "spec": "kokkos@3.5.00%gcc@9.3.0~cuda~openmp+rocm~wrapper amdgpu_target=gfx90a arch=cray-sles15-zen2 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "oe5a774bzyroz3yyihfwiamlc7625ixr",
+      "spec": "kokkos@3.5.00%gcc@11.2.0~cuda+openmp~rocm~wrapper amdgpu_target=none arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "tk2x2qx7wgbfcmaackiiejeoegoc4657",
+      "spec": "kokkos@3.5.00%gcc@10.3.0~cuda+openmp~rocm~wrapper amdgpu_target=none arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "ql7us2ygo5ztgtb3fw4pkqnsf5ap2tfv",
+      "spec": "kokkos@3.5.00%gcc@11.2.0~cuda~openmp+rocm~wrapper amdgpu_target=gfx90a arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "qswimknt5dh32c7dklnxmwj2jcdy5t4d",
+      "spec": "kokkos@3.5.00%gcc@10.3.0~cuda~openmp+rocm~wrapper amdgpu_target=gfx90a arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "tx2qdmyughmx44tgbymycn5lb3etq3ld",
+      "spec": "kokkos@3.5.00%cce@13.0.1~cuda+openmp~rocm~wrapper amdgpu_target=none arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "lhu2g6bzhcoa5dcqlgx5r5fy6teivlff",
+      "spec": "kokkos@3.5.00%cce@13.0.0~cuda+openmp~rocm~wrapper amdgpu_target=none arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "33ntc3mmiepejefq5axpxszrzvko3nco",
+      "spec": "kokkos@3.5.00%cce@13.0.1~cuda~openmp+rocm~wrapper amdgpu_target=gfx90a arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "pbc7pg72szthgsrzew6tswvnh7gnbdww",
+      "spec": "kokkos@3.5.00%cce@13.0.0~cuda~openmp+rocm~wrapper amdgpu_target=gfx90a arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "6x74d4bdcmzzuxtmdaepoxlquj2k37fh",
+      "spec": "kokkos@3.5.00%clang@13.0.0-rocm4.5.0~cuda+openmp~rocm~wrapper amdgpu_target=none arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
+    },
+    {
+      "hash": "dypxh4iljfnephtxd756xmwnpdvci652",
+      "spec": "kokkos@3.5.00%clang@13.0.0-rocm4.5.0~cuda~openmp+rocm~wrapper amdgpu_target=gfx90a arch=cray-sles15-zen3 ^cray-mpich@8.1.12 ^hip@4.5.0 ^hipblas@4.5.0 ^hipsparse@4.5.0 ^rocblas@4.5.0 ^rocrand@4.5.0 ^rocsolver@4.5.0 ^rocsparse@4.5.0 ^rocthrust@4.5.0"
     }
   ],
   "concrete_specs": {
@@ -125818,6 +125890,3174 @@
         }
       ],
       "hash": "pv5kgmioi5ly7z7dajedkyndi6h6l3dw"
+    },
+    "h5wxxmzthnhdb25qv3hge64wueljohax": {
+      "name": "boost",
+      "version": "1.78.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "atomic": true,
+        "chrono": true,
+        "clanglibcpp": false,
+        "container": false,
+        "context": false,
+        "coroutine": false,
+        "cxxstd": "98",
+        "date_time": true,
+        "debug": false,
+        "exception": true,
+        "fiber": false,
+        "filesystem": true,
+        "graph": true,
+        "icu": false,
+        "iostreams": true,
+        "locale": true,
+        "log": true,
+        "math": true,
+        "mpi": false,
+        "multithreaded": true,
+        "numpy": false,
+        "patches": [
+          "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+        ],
+        "pic": false,
+        "program_options": true,
+        "python": false,
+        "random": true,
+        "regex": true,
+        "serialization": true,
+        "shared": true,
+        "signals": true,
+        "singlethreaded": false,
+        "system": true,
+        "taggedlayout": false,
+        "test": true,
+        "thread": true,
+        "timer": true,
+        "versionedlayout": false,
+        "visibility": "hidden",
+        "wave": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+      ],
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "build_hash": "44sfbxej5wixxmrmsadbkrbmy6igmkh6",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "fugwjbuucbov6lpgptii5jyz6ngb24mt",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "sd6imluj24xyjhhyetk7hzrchxgscxzf"
+    },
+    "gxuti3mdcxqgxpkmcybrt2xqs7uaexrt": {
+      "name": "boost",
+      "version": "1.78.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "atomic": true,
+        "chrono": true,
+        "clanglibcpp": false,
+        "container": false,
+        "context": false,
+        "coroutine": false,
+        "cxxstd": "98",
+        "date_time": true,
+        "debug": false,
+        "exception": true,
+        "fiber": false,
+        "filesystem": true,
+        "graph": true,
+        "icu": false,
+        "iostreams": true,
+        "locale": true,
+        "log": true,
+        "math": true,
+        "mpi": false,
+        "multithreaded": true,
+        "numpy": false,
+        "patches": [
+          "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+        ],
+        "pic": false,
+        "program_options": true,
+        "python": false,
+        "random": true,
+        "regex": true,
+        "serialization": true,
+        "shared": true,
+        "signals": true,
+        "singlethreaded": false,
+        "system": true,
+        "taggedlayout": false,
+        "test": true,
+        "thread": true,
+        "timer": true,
+        "versionedlayout": false,
+        "visibility": "hidden",
+        "wave": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+      ],
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "build_hash": "rzpx6prrmeyjbd32b4cbq5dpdf7vv34c",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "ekeupmdcqoimgroigtctln7tqkyh6pdm",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "sz7dm3xk236arzybktbep5ll447nqvnm"
+    },
+    "om4lwvdz6ho5th4uyr335fk6u6opb646": {
+      "name": "boost",
+      "version": "1.78.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "atomic": true,
+        "chrono": true,
+        "clanglibcpp": false,
+        "container": false,
+        "context": false,
+        "coroutine": false,
+        "cxxstd": "98",
+        "date_time": true,
+        "debug": false,
+        "exception": true,
+        "fiber": false,
+        "filesystem": true,
+        "graph": true,
+        "icu": false,
+        "iostreams": true,
+        "locale": true,
+        "log": true,
+        "math": true,
+        "mpi": false,
+        "multithreaded": true,
+        "numpy": false,
+        "patches": [
+          "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+        ],
+        "pic": false,
+        "program_options": true,
+        "python": false,
+        "random": true,
+        "regex": true,
+        "serialization": true,
+        "shared": true,
+        "signals": true,
+        "singlethreaded": false,
+        "system": true,
+        "taggedlayout": false,
+        "test": true,
+        "thread": true,
+        "timer": true,
+        "versionedlayout": false,
+        "visibility": "hidden",
+        "wave": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+      ],
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "build_hash": "u64jpniyplnjru5tymumq5zpbq7iyvkm",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "vewgxtex2b67mlxqc4ukyl2jtoo5ws4a",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "wyllv2con2rm7pd3qk3fizugptcgrorh"
+    },
+    "3i4fkhfheutrnj6ziwf6pdmmgmazcfau": {
+      "name": "boost",
+      "version": "1.78.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "atomic": true,
+        "chrono": true,
+        "clanglibcpp": false,
+        "container": false,
+        "context": false,
+        "coroutine": false,
+        "cxxstd": "98",
+        "date_time": true,
+        "debug": false,
+        "exception": true,
+        "fiber": false,
+        "filesystem": true,
+        "graph": true,
+        "icu": false,
+        "iostreams": true,
+        "locale": true,
+        "log": true,
+        "math": true,
+        "mpi": false,
+        "multithreaded": true,
+        "numpy": false,
+        "patches": [
+          "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+        ],
+        "pic": false,
+        "program_options": true,
+        "python": false,
+        "random": true,
+        "regex": true,
+        "serialization": true,
+        "shared": true,
+        "signals": true,
+        "singlethreaded": false,
+        "system": true,
+        "taggedlayout": false,
+        "test": true,
+        "thread": true,
+        "timer": true,
+        "versionedlayout": false,
+        "visibility": "hidden",
+        "wave": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+      ],
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "build_hash": "hqdghleaeywn7bu2siil3wygajcv44kz",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "3bmqz3nskbmrbj24sd6mny2hutukc3cm",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "zwbsh4o46jejtmagyxcsup7jvyqxje2v"
+    },
+    "6gshzc3gd3f2c6z7xijjcxyckraorhda": {
+      "name": "boost",
+      "version": "1.78.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "atomic": true,
+        "chrono": true,
+        "clanglibcpp": false,
+        "container": false,
+        "context": false,
+        "coroutine": false,
+        "cxxstd": "98",
+        "date_time": true,
+        "debug": false,
+        "exception": true,
+        "fiber": false,
+        "filesystem": true,
+        "graph": true,
+        "icu": false,
+        "iostreams": true,
+        "locale": true,
+        "log": true,
+        "math": true,
+        "mpi": false,
+        "multithreaded": true,
+        "numpy": false,
+        "patches": [
+          "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+        ],
+        "pic": false,
+        "program_options": true,
+        "python": false,
+        "random": true,
+        "regex": true,
+        "serialization": true,
+        "shared": true,
+        "signals": true,
+        "singlethreaded": false,
+        "system": true,
+        "taggedlayout": false,
+        "test": true,
+        "thread": true,
+        "timer": true,
+        "versionedlayout": false,
+        "visibility": "hidden",
+        "wave": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+      ],
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "build_hash": "ofi57aupanaamsyepo4kw67cfdaudah7",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "qx5p4iereg4sjvfi5uwk6jn56o6se2q4",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "wwjqmixjhylb3acvdzbrt4enbzqum7bw"
+    },
+    "hbvdowlb65fa4gvjfq273hehm2asig5v": {
+      "name": "boost",
+      "version": "1.78.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "clang",
+        "version": "13.0.0-rocm4.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "atomic": true,
+        "chrono": true,
+        "clanglibcpp": false,
+        "container": false,
+        "context": false,
+        "coroutine": false,
+        "cxxstd": "98",
+        "date_time": true,
+        "debug": false,
+        "exception": true,
+        "fiber": false,
+        "filesystem": true,
+        "graph": true,
+        "icu": false,
+        "iostreams": true,
+        "locale": true,
+        "log": true,
+        "math": true,
+        "mpi": false,
+        "multithreaded": true,
+        "numpy": false,
+        "patches": [
+          "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+        ],
+        "pic": false,
+        "program_options": true,
+        "python": false,
+        "random": true,
+        "regex": true,
+        "serialization": true,
+        "shared": true,
+        "signals": true,
+        "singlethreaded": false,
+        "system": true,
+        "taggedlayout": false,
+        "test": true,
+        "thread": true,
+        "timer": true,
+        "versionedlayout": false,
+        "visibility": "hidden",
+        "wave": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "57a8401dee8f52b0342e0c8147a5b2db834e8d8f3fbcbbc5950016bd3e9e1ef0"
+      ],
+      "dependencies": [
+        {
+          "name": "bzip2",
+          "build_hash": "xssscuv2ijufncqfoggdlupu6bsbsexl",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "ciggijfm5jbk7swbcir7cuexhvhmcx5k",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "uxyhz6z5taqqpnty2rxbnbbsrwpxlvl7"
+    },
+    "wwfw6z3z3siglffltkf3hkgsf4ufqrvm": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "none"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": true,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": false,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "mbxzasobw3qz7ajditrpprzodujm5xhb",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "nou5rxpwqmxwlxlaa6uop7oswprkqwdm"
+    },
+    "mbxzasobw3qz7ajditrpprzodujm5xhb": {
+      "name": "cmake",
+      "version": "3.22.2",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "ncurses",
+          "build_hash": "bjif62qccfti3q3ej5djgv7pt53o6afo",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "uqwrzhaz32ywa324sbt5nntn5svw44dm",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "js6xku7jv7p2it7gj475yklkl5z6czda"
+    },
+    "gbulymytxdrnaisx2nvnaujedmvq4cf3": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen2",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "9.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "gfx90a"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": false,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": true,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "mbxzasobw3qz7ajditrpprzodujm5xhb",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "hip",
+          "build_hash": "c56dre6sdis4t6cpwoooki6muyksr4zb",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hsa-rocr-dev",
+          "build_hash": "z5w2wecujxwqwnuicn635t2kodgbimac",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "llvm-amdgpu",
+          "build_hash": "wqu2bdqwld7mzbhq4d3npapjjyv2hxat",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "7uofgytor4pkcoia4fa4ovyfqhnwvxov"
+    },
+    "oe5a774bzyroz3yyihfwiamlc7625ixr": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "none"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": true,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": false,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "umeerv4uo3veuwkvo26dnpjmbcm5lv2o",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "vzt4fnb2y35ekspyphufsir4h7vojyvw"
+    },
+    "umeerv4uo3veuwkvo26dnpjmbcm5lv2o": {
+      "name": "cmake",
+      "version": "3.22.2",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "ncurses",
+          "build_hash": "cuek3f5el7a3bdscsvc6ds36nq6mg76t",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "3qiwuj3orruziqpalydsiy7olbg6qasi",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "mbfyhxjwe5ob2psz2pxvzz7mmwaminpw"
+    },
+    "tk2x2qx7wgbfcmaackiiejeoegoc4657": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "none"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": true,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": false,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fvyh6p4irj25tkonolzl6kjbgpnnzf5h",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "dewcj24dh42c56dx5nas6rbaw3pxf6xz"
+    },
+    "fvyh6p4irj25tkonolzl6kjbgpnnzf5h": {
+      "name": "cmake",
+      "version": "3.22.2",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "ncurses",
+          "build_hash": "6pv46fbyr2l6dtstw4qt2jodzjwbevsr",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "64xub7y766t5ensjabr4jnex6zua7jjl",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "asomqlqy56tc2ecun5tnhnxr5sbxcbzq"
+    },
+    "ql7us2ygo5ztgtb3fw4pkqnsf5ap2tfv": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "gfx90a"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": false,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": true,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "umeerv4uo3veuwkvo26dnpjmbcm5lv2o",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "hip",
+          "build_hash": "3a5slq4xprskw2nprex56mh2eg7rolab",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hsa-rocr-dev",
+          "build_hash": "xybnigpisg5g6qfpfejxmgc64eajwti6",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "llvm-amdgpu",
+          "build_hash": "yx4kc23crvsxztaz5qxfgujwycbarifu",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "26kquxtkusnr7ysgh42fwjkslg6yljxi"
+    },
+    "xybnigpisg5g6qfpfejxmgc64eajwti6": {
+      "name": "hsa-rocr-dev",
+      "version": "4.5.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "image": true,
+        "ipo": false,
+        "patches": [
+          "71e6851d9be8113bfb8d71b66a3171e0d0401bae5e6f161c9e7fe32558261a46"
+        ],
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/rocm-4.5.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "71e6851d9be8113bfb8d71b66a3171e0d0401bae5e6f161c9e7fe32558261a46"
+      ],
+      "hash": "xybnigpisg5g6qfpfejxmgc64eajwti6"
+    },
+    "yx4kc23crvsxztaz5qxfgujwycbarifu": {
+      "name": "llvm-amdgpu",
+      "version": "4.5.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.2.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "ipo": false,
+        "openmp": true,
+        "patches": [
+          "d999f3b235e655ee07f6dd2590302082feaa06d32c5c6b53aae9c5cf1e45b644"
+        ],
+        "rocm-device-libs": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/rocm-4.5.0/llvm",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "d999f3b235e655ee07f6dd2590302082feaa06d32c5c6b53aae9c5cf1e45b644"
+      ],
+      "hash": "yx4kc23crvsxztaz5qxfgujwycbarifu"
+    },
+    "qswimknt5dh32c7dklnxmwj2jcdy5t4d": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "gfx90a"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": false,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": true,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fvyh6p4irj25tkonolzl6kjbgpnnzf5h",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "hip",
+          "build_hash": "wwx2in3afhbslqzfvubv2sk2lz4wo7q6",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hsa-rocr-dev",
+          "build_hash": "cq2tyr4v3xygzq3enliat72nl6t4ln4g",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "llvm-amdgpu",
+          "build_hash": "jeuqboksdtkvnbzmihum3hvrt6yunku3",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "idhryakpudrc4zr2jxzhvojhl3ycty4p"
+    },
+    "cq2tyr4v3xygzq3enliat72nl6t4ln4g": {
+      "name": "hsa-rocr-dev",
+      "version": "4.5.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "image": true,
+        "ipo": false,
+        "patches": [
+          "71e6851d9be8113bfb8d71b66a3171e0d0401bae5e6f161c9e7fe32558261a46"
+        ],
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/rocm-4.5.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "71e6851d9be8113bfb8d71b66a3171e0d0401bae5e6f161c9e7fe32558261a46"
+      ],
+      "hash": "cq2tyr4v3xygzq3enliat72nl6t4ln4g"
+    },
+    "jeuqboksdtkvnbzmihum3hvrt6yunku3": {
+      "name": "llvm-amdgpu",
+      "version": "4.5.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "10.3.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "ipo": false,
+        "openmp": true,
+        "patches": [
+          "d999f3b235e655ee07f6dd2590302082feaa06d32c5c6b53aae9c5cf1e45b644"
+        ],
+        "rocm-device-libs": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/rocm-4.5.0/llvm",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "d999f3b235e655ee07f6dd2590302082feaa06d32c5c6b53aae9c5cf1e45b644"
+      ],
+      "hash": "jeuqboksdtkvnbzmihum3hvrt6yunku3"
+    },
+    "tx2qdmyughmx44tgbymycn5lb3etq3ld": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "none"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": true,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": false,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "arzqahsytjhnbiph5ni6uylalzdlzaax",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "qvm4swj7wtijl3mjn3iyyoigabfiknzm"
+    },
+    "arzqahsytjhnbiph5ni6uylalzdlzaax": {
+      "name": "cmake",
+      "version": "3.22.2",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "ncurses",
+          "build_hash": "cshh7n7u3yuga27dgsofbxpyaj2t54rv",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "bzpbdyfygcf7drpwouzdkxg3efdeboqt",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "pwylbss2y6guy6osv3kowpfkvm4qphfl"
+    },
+    "lhu2g6bzhcoa5dcqlgx5r5fy6teivlff": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "none"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": true,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": false,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "zgqrlkyslc7yla272536zsshxul6pco6",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "ma6sriroiclh7o2loevcba7ohfof2w7z"
+    },
+    "zgqrlkyslc7yla272536zsshxul6pco6": {
+      "name": "cmake",
+      "version": "3.22.2",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "ncurses",
+          "build_hash": "ktss6idofhs4xgvctv6pvzlbznzo2nxf",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "3kamc4kwkysxmve4g6daa2ypvftnkt6g",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "d6565n33be5mpx4bna2qvuk5igliickk"
+    },
+    "33ntc3mmiepejefq5axpxszrzvko3nco": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "gfx90a"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": false,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": true,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "arzqahsytjhnbiph5ni6uylalzdlzaax",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "hip",
+          "build_hash": "glzrcpky2ftuadqzysk2no7g7kxmp47k",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hsa-rocr-dev",
+          "build_hash": "kvu4ows4qoah6km4zcpgqqmancwt6jtk",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "llvm-amdgpu",
+          "build_hash": "vyy4mghcroampau3cpjxlb4i2ewlsawk",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "3xpteitfr64qlnghr53y2oowzbtgbrfz"
+    },
+    "pbc7pg72szthgsrzew6tswvnh7gnbdww": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "gfx90a"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": false,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": true,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "zgqrlkyslc7yla272536zsshxul6pco6",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "hip",
+          "build_hash": "632qimta3ufj4xdda42dhbrzeu7bwise",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hsa-rocr-dev",
+          "build_hash": "bs32fny3d53leufvlmycs6fjrrs3xhcx",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "llvm-amdgpu",
+          "build_hash": "qsm2zzsrew5w2ufmu4pfswh4xqisr5kj",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "omf5lr6zzsiyw4jjutohxfog3rmcvxvi"
+    },
+    "bs32fny3d53leufvlmycs6fjrrs3xhcx": {
+      "name": "hsa-rocr-dev",
+      "version": "4.5.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "image": true,
+        "ipo": false,
+        "patches": [
+          "71e6851d9be8113bfb8d71b66a3171e0d0401bae5e6f161c9e7fe32558261a46"
+        ],
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/rocm-4.5.0",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "71e6851d9be8113bfb8d71b66a3171e0d0401bae5e6f161c9e7fe32558261a46"
+      ],
+      "hash": "bs32fny3d53leufvlmycs6fjrrs3xhcx"
+    },
+    "qsm2zzsrew5w2ufmu4pfswh4xqisr5kj": {
+      "name": "llvm-amdgpu",
+      "version": "4.5.0",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "cce",
+        "version": "13.0.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "ipo": false,
+        "openmp": true,
+        "patches": [
+          "d999f3b235e655ee07f6dd2590302082feaa06d32c5c6b53aae9c5cf1e45b644"
+        ],
+        "rocm-device-libs": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "external": {
+        "path": "/opt/rocm-4.5.0/llvm",
+        "module": null,
+        "extra_attributes": {}
+      },
+      "patches": [
+        "d999f3b235e655ee07f6dd2590302082feaa06d32c5c6b53aae9c5cf1e45b644"
+      ],
+      "hash": "qsm2zzsrew5w2ufmu4pfswh4xqisr5kj"
+    },
+    "6x74d4bdcmzzuxtmdaepoxlquj2k37fh": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "clang",
+        "version": "13.0.0-rocm4.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "none"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": true,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": false,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "4wea67oxbr6ltaneui6hevrqbgcqnlwj",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "i2pgw5vheopsjheb5gom3x3fv3opx3ad"
+    },
+    "4wea67oxbr6ltaneui6hevrqbgcqnlwj": {
+      "name": "cmake",
+      "version": "3.22.2",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "clang",
+        "version": "13.0.0-rocm4.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "Release",
+        "doc": false,
+        "ncurses": true,
+        "openssl": true,
+        "ownlibs": true,
+        "qt": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "ncurses",
+          "build_hash": "kif4exht67ggjca7dcaqacd7pn36a3hr",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "4fe2ezkks62gfyjxz3g4gh2ymxs3uhpd",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "4tbkvecn5nkhoibzlgazclnuu3ig6b44"
+    },
+    "dypxh4iljfnephtxd756xmwnpdvci652": {
+      "name": "kokkos",
+      "version": "3.5.00",
+      "arch": {
+        "platform": "cray",
+        "platform_os": "sles15",
+        "target": {
+          "name": "zen3",
+          "vendor": "AuthenticAMD",
+          "features": [
+            "abm",
+            "aes",
+            "avx",
+            "avx2",
+            "bmi1",
+            "bmi2",
+            "clflushopt",
+            "clwb",
+            "clzero",
+            "cx16",
+            "f16c",
+            "fma",
+            "fsgsbase",
+            "mmx",
+            "movbe",
+            "pclmulqdq",
+            "pku",
+            "popcnt",
+            "rdseed",
+            "sse",
+            "sse2",
+            "sse4_1",
+            "sse4_2",
+            "sse4a",
+            "ssse3",
+            "vaes",
+            "vpclmulqdq",
+            "xsavec",
+            "xsaveopt"
+          ],
+          "generation": 0,
+          "parents": [
+            "zen2"
+          ]
+        }
+      },
+      "compiler": {
+        "name": "clang",
+        "version": "13.0.0-rocm4.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "aggressive_vectorization": false,
+        "amdgpu_target": [
+          "gfx90a"
+        ],
+        "build_type": "RelWithDebInfo",
+        "compiler_warnings": false,
+        "cuda": false,
+        "cuda_arch": [
+          "none"
+        ],
+        "cuda_constexpr": false,
+        "cuda_lambda": false,
+        "cuda_ldg_intrinsic": false,
+        "cuda_relocatable_device_code": false,
+        "cuda_uvm": false,
+        "debug": false,
+        "debug_bounds_check": false,
+        "debug_dualview_modify_check": false,
+        "deprecated_code": false,
+        "examples": false,
+        "explicit_instantiation": false,
+        "hpx": false,
+        "hpx_async_dispatch": false,
+        "hwloc": false,
+        "ipo": false,
+        "memkind": false,
+        "numactl": false,
+        "openmp": false,
+        "pic": false,
+        "profiling": true,
+        "profiling_load_print": false,
+        "pthread": false,
+        "qthread": false,
+        "rocm": true,
+        "serial": true,
+        "shared": true,
+        "std": "14",
+        "sycl": false,
+        "tests": false,
+        "tuning": false,
+        "wrapper": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "4wea67oxbr6ltaneui6hevrqbgcqnlwj",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "hip",
+          "build_hash": "tqkjouv3njjbcwhhpoyjlvrz7mswfqdu",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "hsa-rocr-dev",
+          "build_hash": "yjurebndtdlb6464clmkbil2antmozxs",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "llvm-amdgpu",
+          "build_hash": "eqclc5aqxyualzzneiksx7jofe744k5e",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "yj5hulol5f6rcaokezgj6wohr2445rpz"
     }
   }
 }
