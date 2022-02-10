@@ -16,7 +16,7 @@ local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 -- Setup Modulepath for packages built by this compiler
 prepend_path( "MODULEPATH", spack_modules)
 
-local prefix = "/FIXME"
+local prefix = "/sw/ascent/spack-envs/base/opt/linux-rhel8-ppc64le/gcc-8-os/pgi-20.1-djhr6os67abifgpuy2qposefxib2tsac"
 
 prepend_path("CMAKE_PREFIX_PATH", prefix, ":")
 setenv("CC", pathJoin(prefix, "linuxpower/20.1/bin/pgcc"))
