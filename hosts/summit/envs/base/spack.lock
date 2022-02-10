@@ -6416,6 +6416,18 @@
     {
       "hash": "ymxya3pswgb2si3letyqhpbfzyc2c2tr",
       "spec": "gromacs%gcc@8.3.1+cuda+hwloc~mpi+plumed ^cuda@11.0.3 ^plumed@2.7.3"
+    },
+    {
+      "hash": "ji2q7d4wuhroj4z3shgxpgsjwulrbspo",
+      "spec": "openblas%gcc@7.5.0 threads=openmp ^cuda@11.0.3"
+    },
+    {
+      "hash": "lhganpevjink6zxne2t6p3vjkujumabt",
+      "spec": "openblas%gcc@7.5.0 threads=pthreads ^cuda@11.0.3"
+    },
+    {
+      "hash": "7qpuqbo6mdvcrqdzlffyzbbutzidbdvl",
+      "spec": "openblas%gcc@7.5.0 threads=none ^cuda@11.0.3"
     }
   ],
   "concrete_specs": {
@@ -141581,6 +141593,123 @@
         }
       ],
       "hash": "3xjvb2zsgkatfzdlp26yo7fv7awx577r"
+    },
+    "ji2q7d4wuhroj4z3shgxpgsjwulrbspo": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "openmp",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "t7oi7sqelopgwkaqkihcl5cqj22cxofb",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "holt4cqkrag5ovkdsudfoag4hlnpwncp"
+    },
+    "lhganpevjink6zxne2t6p3vjkujumabt": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "pthreads",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "t7oi7sqelopgwkaqkihcl5cqj22cxofb",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "fqamixxrplkpyslujs4s5f2ja3tnqj7w"
+    },
+    "7qpuqbo6mdvcrqdzlffyzbbutzidbdvl": {
+      "name": "openblas",
+      "version": "0.3.17",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "7.5.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "bignuma": false,
+        "consistent_fpcsr": false,
+        "ilp64": false,
+        "locking": true,
+        "pic": true,
+        "shared": true,
+        "threads": "none",
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "perl",
+          "build_hash": "t7oi7sqelopgwkaqkihcl5cqj22cxofb",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "oo6r3brmaigk3kpmpdftkydj62apfdw2"
     }
   }
 }

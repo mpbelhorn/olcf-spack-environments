@@ -528,6 +528,9 @@ spack:
     # - geopm@1.1.0%gcc@8.3.1
     - matrix:
       - - $general_compute_packages
+        - openblas threads=openmp
+        - openblas threads=pthreads
+        - openblas threads=none
       - - '%gcc@7.5.0'
       - - ^cuda@11.0.3
     - matrix:
