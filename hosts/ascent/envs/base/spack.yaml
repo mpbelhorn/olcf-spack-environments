@@ -17,7 +17,7 @@ spack:
     # - '%xl@16.1.1-beta103'
   - llvm_compilers:
     - '%clang@12.0.0-0'
-    # - '%clang@10.0.1-0'
+    - '%clang@10.0.1-0'
   - nv_compilers:
     - '%nvhpc@21.11'
     - '%nvhpc@21.9'
