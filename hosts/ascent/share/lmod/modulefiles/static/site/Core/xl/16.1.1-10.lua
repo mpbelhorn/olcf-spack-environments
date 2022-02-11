@@ -1,3 +1,6 @@
+-- Package family
+family("compiler")
+
 -- Internal variables
 local swroot  = "/sw/ascent/xl/16.1.1-10"
 local xlfbase    = pathJoin(swroot, "xlf", "16.1.1")
@@ -5,14 +8,13 @@ local xlcbase    = pathJoin(swroot, "xlC", "16.1.1")
 local xlmassbase = pathJoin(swroot, "xlmass", "9.1.1")
 local xlsmpbase  = pathJoin(swroot, "xlsmp", "5.1.1")
 
-
--- Package family
-family("compiler")
+local platform = 'linux-rhel8-ppc64le'
+-- local spack_module_root, _ = myFileName():gsub('/site/Core/'..myModuleFullName()..'.*', '/spack')
+local spack_module_root = (myFileName():sub(1, myFileName():find(myModuleFullName(),1,true)-2)):gsub("/site/Core.*",'/spack')
+local spack_modules = pathJoin(spack_module_root, platform, myModuleFullName())
 
 -- Setup Modulepath for packages built by this compiler
----- use only one version sublevel
-local moduleroot = myFileName():sub(1,myFileName():find(myModuleFullName(),1,true)-7)
-prepend_path( "MODULEPATH",  pathJoin(moduleroot, 'xl', '16.1.1-10' ) )
+prepend_path( "MODULEPATH", spack_modules)
 
 
 -- Setup center variables
@@ -51,5 +53,4 @@ xlsmp version: 5.1.1
 ]])
 
 whatis("Description: xlc 16.1.1, xlf 16.1.1, xlmass 9.1.1, xlsmp 5.1.1")
-
 
