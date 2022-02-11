@@ -90,6 +90,10 @@
       "spec": "ccache%gcc@8.3.1"
     },
     {
+      "hash": "wbguexkcvyidrl667iwst66lbayod5uq",
+      "spec": "texinfo%gcc@8.3.1"
+    },
+    {
       "hash": "4okbbitxa7t5whzmkdh4mdstcomatlv6",
       "spec": "papi%gcc@8.3.1~cuda"
     },
@@ -208,6 +212,10 @@
     {
       "hash": "ws7szpc5ctrhafgkzs5gvhdseodcj6zb",
       "spec": "spectrum-mpi%clang@12.0.0-0"
+    },
+    {
+      "hash": "37wvqcbc6c4gpvfbhwfrby6poj446mkw",
+      "spec": "spectrum-mpi%clang@10.0.1-0"
     },
     {
       "hash": "zu46bzgwaar6tpur7fbquukoqakx4rrg",
@@ -12641,6 +12649,54 @@
       },
       "hash": "xyljjuerrvk3j3lmh2njr7yxbllaoxqy"
     },
+    "wbguexkcvyidrl667iwst66lbayod5uq": {
+      "name": "texinfo",
+      "version": "6.5",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "patches": [
+          "12f6edb0c6b270b8c8dba2ce17998c580db01182d871ee32b7b6e4129bd1d23a",
+          "1732115f651cff98989cb0215d8f64da5e0f7911ebf0c13b064920f088f2ffe1"
+        ],
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "patches": [
+        "1732115f651cff98989cb0215d8f64da5e0f7911ebf0c13b064920f088f2ffe1",
+        "12f6edb0c6b270b8c8dba2ce17998c580db01182d871ee32b7b6e4129bd1d23a"
+      ],
+      "dependencies": [
+        {
+          "name": "gnuconfig",
+          "build_hash": "hjtaszl3rv3ozxo6ciikauc27gtbllfc",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "perl",
+          "build_hash": "dvv5kxpjbvg64jbnc4x7gx5i3pjnsuvm",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "pf2ybizlp2byi7jphlmcliwtdujz7ufd"
+    },
     "4okbbitxa7t5whzmkdh4mdstcomatlv6": {
       "name": "papi",
       "version": "6.0.0.1",
@@ -12917,54 +12973,6 @@
         }
       ],
       "hash": "ocuw4gp5ro47karuzma3taiuzmlcm7uv"
-    },
-    "wbguexkcvyidrl667iwst66lbayod5uq": {
-      "name": "texinfo",
-      "version": "6.5",
-      "arch": {
-        "platform": "linux",
-        "platform_os": "rhel8",
-        "target": "ppc64le"
-      },
-      "compiler": {
-        "name": "gcc",
-        "version": "8.3.1"
-      },
-      "namespace": "builtin",
-      "parameters": {
-        "patches": [
-          "12f6edb0c6b270b8c8dba2ce17998c580db01182d871ee32b7b6e4129bd1d23a",
-          "1732115f651cff98989cb0215d8f64da5e0f7911ebf0c13b064920f088f2ffe1"
-        ],
-        "cflags": [],
-        "cppflags": [],
-        "cxxflags": [],
-        "fflags": [],
-        "ldflags": [],
-        "ldlibs": []
-      },
-      "patches": [
-        "1732115f651cff98989cb0215d8f64da5e0f7911ebf0c13b064920f088f2ffe1",
-        "12f6edb0c6b270b8c8dba2ce17998c580db01182d871ee32b7b6e4129bd1d23a"
-      ],
-      "dependencies": [
-        {
-          "name": "gnuconfig",
-          "build_hash": "hjtaszl3rv3ozxo6ciikauc27gtbllfc",
-          "type": [
-            "build"
-          ]
-        },
-        {
-          "name": "perl",
-          "build_hash": "dvv5kxpjbvg64jbnc4x7gx5i3pjnsuvm",
-          "type": [
-            "build",
-            "link"
-          ]
-        }
-      ],
-      "hash": "pf2ybizlp2byi7jphlmcliwtdujz7ufd"
     },
     "2f34exwcsv4wdcebcq3wzkqda3be2ura": {
       "name": "libzmq",
@@ -17898,6 +17906,29 @@
         "ldlibs": []
       },
       "hash": "ws7szpc5ctrhafgkzs5gvhdseodcj6zb"
+    },
+    "37wvqcbc6c4gpvfbhwfrby6poj446mkw": {
+      "name": "spectrum-mpi",
+      "version": "10.4.0.3-20210112",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "clang",
+        "version": "10.0.1-0"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "hash": "37wvqcbc6c4gpvfbhwfrby6poj446mkw"
     },
     "zu46bzgwaar6tpur7fbquukoqakx4rrg": {
       "name": "spectrum-mpi",
