@@ -1404,7 +1404,6 @@ spack:
     - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
-    - /gpfs/wolf/stf007/proj-shared/m9b/ascent/spack-stage
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
@@ -1416,7 +1415,7 @@ spack:
     checksum: true
     dirty: false
     build_language: C
-    build_jobs: 6
+    build_jobs: 10
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout: null
