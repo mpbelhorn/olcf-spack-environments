@@ -1,7 +1,38 @@
 #!/bin/bash
 
-olcf_repo="share/spack/repos/olcf/packages"
-builtin_repo="hosts/peak/spack/var/spack/repos/builtin/packages"
+#####################
+# Obtain the path to this file.
+#   `_THIS`  : path to this file
+#   `TOP_DIR`: path to parent directory of ${_THIS}
+# First determine if script is sourced or executed
+if [[ "$0" != "${BASH_SOURCE:-}" ]]; then
+  # Script is sourced
+  _SOURCED=1
+  if [ -z "${BASH_SOURCE:-}" ]; then
+    _THIS="$(which $0)"
+  else
+    _THIS="${BASH_SOURCE[0]}"
+  fi
+else
+  # Script is executed
+  _SOURCED=0
+  _THIS="${BASH_SOURCE[0]}"
+fi
+while [ -h "$_THIS" ]; do
+  # resolve $_THIS until the file is no longer a symlink
+  TOP_DIR="$( cd -P "$( dirname "$_THIS" )" >/dev/null && pwd )"
+
+  # if $_THIS was a relative symlink, we need to resolve it relative to the
+  # path where the symlink file was located
+  _THIS="$(readlink "$_THIS")"
+  [[ $_THIS != /* ]] && _THIS="$TOP_DIR/$_THIS" 
+done
+TOP_DIR="$( cd -P "$( dirname "$_THIS" )" >/dev/null && pwd )"
+#####################
+
+repo_root="$(dirname ${TOP_DIR})"
+olcf_repo="$repo_root/share/spack/repos/olcf/packages"
+builtin_repo="$repo_root/spack/var/spack/repos/builtin/packages"
 
 # Directories in the OLCF repo.
 ls -1 $olcf_repo \
@@ -31,15 +62,15 @@ done < olcf.pkgs.log
 readarray -t pkgs < olcf.upstream_pkgs.log
 # mapfile -t pkgs < olcf.upstream_pkgs.log
 for pkg in "${pkgs[@]}"; do
-  read -p "Inspect '$pkg' diff? ([y]/n/a) " -n 1 -r
+  read -p "Inspect '$pkg' diff? ([y]/n/q) " -n 1 -r
   echo
   case $REPLY in
      [Nn]*)
        echo "Skipping diff review for '$pkg'"
        continue
        ;;
-     [Aa]*)
-       echo "Aborting!"
+     [Qq]*)
+       echo "Quitting: skipping remaining packages"
        break
        ;;
      [Yy]*)
