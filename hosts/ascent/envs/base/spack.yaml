@@ -1349,6 +1349,7 @@ spack:
         - pkgconf
         - popt
         - py-
+        - py-cython
         - py-certifi
         - py-docutils
         - py-mako
