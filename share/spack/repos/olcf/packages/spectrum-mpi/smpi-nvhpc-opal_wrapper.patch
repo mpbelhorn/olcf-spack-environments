@@ -1,0 +1,36 @@
+--- a/bin/opal_wrapper	2022-02-12 11:09:46.495609000 -0500
++++ b/bin/opal_wrapper	2022-02-12 10:58:24.587617000 -0500
+@@ -98,6 +98,9 @@
+         elif [ "${INNER_FC:0:3}" = "pgf" ]; then
+             export $SMPI_EXT_FCFLAGS="$tmp -lpthread -I${MPI_ROOT}/lib/fortsupport_PGI "
+             fortran_lib_suffix=PGI
++        elif [ "${INNER_FC:0:3}" = "nvf" ]; then
++            export $SMPI_EXT_FCFLAGS="$tmp -lpthread -I${MPI_ROOT}/lib/fortsupport_PGI "
++            fortran_lib_suffix=PGI
+         fi
+     fi
+ }
+@@ -106,12 +109,12 @@
+ {
+     if [ $1 = "${SMPI_CMD_PREFIX}cc" ]; then
+         INNER_CC=`basename "${!SMPI_EXT_CC}"`
+-        if [ "${INNER_CC}" = "pgcc" ]; then
++        if [ "${INNER_CC}" = "pgcc" -o "${INNER_CC}" = "nvc" ]; then
+            export $SMPI_EXT_CFLAGS="-lpthread"
+         fi
+     elif [ $1 = "${SMPI_CMD_PREFIX}c++" -o $1 = "${SMPI_CMD_PREFIX}CC" -o $1 = "${SMPI_CMD_PREFIX}cxx" ]; then
+         INNER_CXX=`basename "${!SMPI_EXT_CXX}"`
+-        if [ "${INNER_CXX}" = "pgCC" -o "${INNER_CXX}" = "pgc++" ]; then
++        if [ "${INNER_CXX}" = "pgCC" -o "${INNER_CXX}" = "pgc++" -o "${INNER_CXX}" = "nvc++" ]; then
+            export $SMPI_EXT_CXXFLAGS="-lpthread"
+         fi
+     fi
+@@ -333,7 +336,7 @@
+                 if [ "$mode" = "xl" ]    ; then fortran_lib_suffix="XL"    ; fi
+                 if [ "$mode" = "pgi" ]   ; then fortran_lib_suffix="PGI"   ; fi
+                 if [ "$mode" = "intel" ] ; then fortran_lib_suffix="Intel" ; fi
+-                module_include_dir="$MPI_ROOT/include/fortsupport_$mode"
++                module_include_dir="$MPI_ROOT/lib/fortsupport_$mode"
+             else
+                 fortran_use_libs=1
+                 fortran_lib_dir="$mode"
