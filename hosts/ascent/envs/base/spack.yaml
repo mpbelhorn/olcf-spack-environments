@@ -1406,6 +1406,8 @@ spack:
     - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
+    ## Placeholder to be used when necessary (see commit message).
+    # - /gpfs/wolf/stf007/proj-shared/$USER/ascent/spack-stage
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
@@ -1417,7 +1419,7 @@ spack:
     checksum: true
     dirty: false
     build_language: C
-    build_jobs: 10
+    build_jobs: 6
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout: null
