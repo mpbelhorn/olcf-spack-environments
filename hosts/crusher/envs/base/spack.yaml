@@ -47,6 +47,9 @@ spack:
     - julia+cxx
     - wget
     - libtirpc
+    - root cxxstd=14
+    - hepmc3+interfaces
+    - geant4
     - bazel ^openjdk@11.0:11.99
     - openblas@0.3.17 threads=none
     - openblas@0.3.17 threads=openmp
@@ -358,6 +361,7 @@ spack:
   specs:
   - $core_specs
   - $cpe21.12_specs
+  - root%gcc@11.2.0 ~davix~examples~x~opengl~tbb~roofit~python~math~gsl cxxstd=14
   #############################################################################
   mirrors:
     facility_builds: /sw/crusher/spack-env/mirrors/builds
@@ -1177,6 +1181,9 @@ spack:
         raja:
           suffixes:
             raja~rocm: cpu
+        root:
+          suffixes:
+            ^cray-libsci: cpe
         slate:
           suffixes:
             slate~rocm: cpu
