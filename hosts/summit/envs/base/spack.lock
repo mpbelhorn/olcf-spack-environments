@@ -6428,6 +6428,14 @@
     {
       "hash": "7qpuqbo6mdvcrqdzlffyzbbutzidbdvl",
       "spec": "openblas%gcc@7.5.0 threads=none ^cuda@11.0.3"
+    },
+    {
+      "hash": "zuipbjgkak5cj5oevlxx3nz2jcqqau4g",
+      "spec": "gdrcopy@2.3%gcc@8.3.1"
+    },
+    {
+      "hash": "wz5z6iog2xsblo4d2goljxuqqpup42bz",
+      "spec": "gdrcopy@2.3%gcc@11.1.0"
     }
   ],
   "concrete_specs": {
@@ -141710,6 +141718,52 @@
         }
       ],
       "hash": "oo6r3brmaigk3kpmpdftkydj62apfdw2"
+    },
+    "zuipbjgkak5cj5oevlxx3nz2jcqqau4g": {
+      "name": "gdrcopy",
+      "version": "2.3",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "hash": "zuipbjgkak5cj5oevlxx3nz2jcqqau4g"
+    },
+    "wz5z6iog2xsblo4d2goljxuqqpup42bz": {
+      "name": "gdrcopy",
+      "version": "2.3",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "11.1.0"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "hash": "wz5z6iog2xsblo4d2goljxuqqpup42bz"
     }
   }
 }

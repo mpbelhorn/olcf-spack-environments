@@ -687,6 +687,8 @@ spack:
   - $llvm_specs
   - $xl_specs
   - $nv_specs
+  - gdrcopy@2.3%gcc@8.3.1
+  - gdrcopy@2.3%gcc@11.1.0
   ## - $special_builds ## See note in definition section.
   # - py-pip%gcc@8.3.1 ^/ethjbxn
   # - py-pip%gcc@8.3.1 ^/eltc6cg
