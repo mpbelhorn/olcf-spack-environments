@@ -606,11 +606,6 @@ spack:
       - tau
       - trilinos+intrepid2+shards+muelu
   - xl_specs:
-    # FIXME: Pin netlib-lapack to v3.8.0 for XL.
-    - matrix:
-      - - netlib-lapack@3.8.0
-      - - $xl_compilers
-      - - ^cmake%gcc@8-os
     - matrix:
       - - $general_compute_packages
         - parallel-io@2.3.0
@@ -618,7 +613,6 @@ spack:
         - boost@1.62.0 +mpi
         - adios2~python+zpf
       - - $xl_compilers
-      - - ^netlib-lapack@3.8.0
       - - ^numactl%gcc@8-os
       - - ^libfabric%gcc@8-os
       - - ^libzmq%gcc@8-os
