@@ -638,6 +638,7 @@ spack:
     - matrix:
       - - $general_compute_packages
         - globalarrays
+        - hdf5+mpi+fortran
       - - $nv_compilers
       - - ^cmake%gcc@8-os
       - - ^pkgconf%gcc@8-os
@@ -651,7 +652,6 @@ spack:
       - adios2%nvhpc
       - mpip%nvhpc
       - boost%nvhpc
-      - hdf5%nvhpc+fortran
       - netlib-scalapack%nvhpc
       - fftw@3.3.9:%pgi
       - adios2%pgi
@@ -1347,6 +1347,7 @@ spack:
         - pkgconf
         - popt
         - py-
+        - py-cython
         - py-certifi
         - py-docutils
         - py-mako

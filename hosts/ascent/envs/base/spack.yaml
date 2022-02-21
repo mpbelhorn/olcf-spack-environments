@@ -529,6 +529,9 @@ spack:
     # - geopm@1.1.0%gcc@8.3.1
     - matrix:
       - - $general_compute_packages
+        - openblas threads=openmp
+        - openblas threads=pthreads
+        - openblas threads=none
       - - '%gcc@7.5.0'
       - - ^cuda@11.0.3
     - matrix:
@@ -604,11 +607,6 @@ spack:
       - tau
       - trilinos+intrepid2+shards+muelu
   - xl_specs:
-    # FIXME: Pin netlib-lapack to v3.8.0 for XL.
-    - matrix:
-      - - netlib-lapack@3.8.0
-      - - $xl_compilers
-      - - ^cmake%gcc@8-os
     - matrix:
       - - $general_compute_packages
         - parallel-io@2.3.0
@@ -616,7 +614,6 @@ spack:
         - boost@1.62.0 +mpi
         - adios2~python+zpf
       - - $xl_compilers
-      - - ^netlib-lapack@3.8.0
       - - ^numactl%gcc@8-os
       - - ^libfabric%gcc@8-os
       - - ^libzmq%gcc@8-os
@@ -685,6 +682,8 @@ spack:
   - $llvm_specs
   - $xl_specs
   - $nv_specs
+  - gdrcopy@2.3%gcc@8.3.1
+  - gdrcopy@2.3%gcc@11.1.0
   ## - $special_builds ## See note in definition section.
   # - py-pip%gcc@8.3.1 ^/ethjbxn
   # - py-pip%gcc@8.3.1 ^/eltc6cg
