@@ -11,5 +11,5 @@ Version ]] .. version
 whatis("Nvidia Nsight Compute")
 
 -- Paths
-prepend_path{"PATH", pathJoin(prefix, "bin"), priority=9999}
+prepend_path{"PATH", prefix, priority=9999}
 setenv("OLCF_NSIGHT_COMPUTE_ROOT", prefix) 
