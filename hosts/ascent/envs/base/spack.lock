@@ -6488,6 +6488,14 @@
     {
       "hash": "wz5z6iog2xsblo4d2goljxuqqpup42bz",
       "spec": "gdrcopy@2.3%gcc@11.1.0"
+    },
+    {
+      "hash": "g6socxuwuyofotgvczcxylxpuhp3hgym",
+      "spec": "suite-sparse%gcc@8.3.1+cuda ^cuda@11.0.3"
+    },
+    {
+      "hash": "nevukcufsr6nz3n4y5nox6zq6dprnlnj",
+      "spec": "suite-sparse%gcc@8.3.1~cuda"
     }
   ],
   "concrete_specs": {
@@ -142777,6 +142785,164 @@
         "ldlibs": []
       },
       "hash": "wz5z6iog2xsblo4d2goljxuqqpup42bz"
+    },
+    "g6socxuwuyofotgvczcxylxpuhp3hgym": {
+      "name": "suite-sparse",
+      "version": "5.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "cuda": true,
+        "openmp": false,
+        "pic": true,
+        "tbb": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fdpqjpwp62exzri4pzxzq6tqudryfput",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "cuda",
+          "build_hash": "wd2wsdfu6yi6onjfuq2jywyms2tzzbra",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "gmp",
+          "build_hash": "cossowtbsttrzkkwso63f4svms3jzd6y",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "m4",
+          "build_hash": "adimpjcr2uyjc4fc72mpt5j6cy2lwczo",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "metis",
+          "build_hash": "hobzrsntdbonucfublyzrbzq2g4xdst2",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "mpfr",
+          "build_hash": "3xhxycybj3wrpe6pnn52yknlsarz45qk",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netlib-lapack",
+          "build_hash": "pmque5sp35g6ohmayomvtzamcagb7st2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "h7o635yb4gc7wnx3izfdlyyxpnelzr2r"
+    },
+    "nevukcufsr6nz3n4y5nox6zq6dprnlnj": {
+      "name": "suite-sparse",
+      "version": "5.10.1",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "cuda": false,
+        "openmp": false,
+        "pic": true,
+        "tbb": false,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fdpqjpwp62exzri4pzxzq6tqudryfput",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gmp",
+          "build_hash": "cossowtbsttrzkkwso63f4svms3jzd6y",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "m4",
+          "build_hash": "adimpjcr2uyjc4fc72mpt5j6cy2lwczo",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "metis",
+          "build_hash": "hobzrsntdbonucfublyzrbzq2g4xdst2",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "mpfr",
+          "build_hash": "3xhxycybj3wrpe6pnn52yknlsarz45qk",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "netlib-lapack",
+          "build_hash": "pmque5sp35g6ohmayomvtzamcagb7st2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "rwwoahol73ajodkcmetkzcevxlvjmsec"
     }
   }
 }

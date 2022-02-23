@@ -105,6 +105,8 @@ spack:
     - gromacs@2020.2 +hwloc+cuda~mpi+plumed ^cuda@11.0.3
     - openblas threads=pthreads
     - openblas threads=none
+    - suite-sparse+cuda ^cuda@11.0.3
+    - suite-sparse~cuda
   - general_compute_packages:
     - netlib-lapack
     - netlib-scalapack
@@ -1232,6 +1234,10 @@ spack:
           suffixes:
             strumpack ^openblas threads=openmp: omp
             strumpack~rocm~cuda: cpu
+        suite-sparse:
+          suffixes:
+            suite-sparse+cuda: gpu
+            suite-sparse+openmp: omp
         sundials:
           suffixes:
             sundials~rocm~cuda: cpu
