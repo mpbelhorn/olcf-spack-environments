@@ -69,6 +69,7 @@ spack:
     - libzmq
     - makedepend
     - r@4.0.5
+    - rust
     - julia+cxx
     - jq
     - hpcviewer@2021.03

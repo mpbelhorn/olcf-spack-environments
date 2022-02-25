@@ -6528,6 +6528,10 @@
     {
       "hash": "v4lzi56me7a226k4vqrrfymhz24qo22c",
       "spec": "hdf5%pgi@20.1+fortran+mpi ^autoconf%gcc@8-os ^automake%gcc@8-os ^cmake%gcc@8-os ^m4%gcc@8-os ^numactl%gcc@8-os ^perl%gcc@8-os ^pkgconf%gcc@8-os ^python%gcc@8-os"
+    },
+    {
+      "hash": "75bii7vh6xt5cok5kqtbe5574sd2eci7",
+      "spec": "rust%gcc@8.3.1"
     }
   ],
   "concrete_specs": {
@@ -144352,6 +144356,217 @@
         }
       ],
       "hash": "q7j2bvbvrd4dzkvwcezqdgufijeu7ltp"
+    },
+    "75bii7vh6xt5cok5kqtbe5574sd2eci7": {
+      "name": "rust",
+      "version": "1.51.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "analysis": true,
+        "clippy": true,
+        "extra_targets": [
+          "none"
+        ],
+        "rls": false,
+        "rustfmt": true,
+        "src": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fdpqjpwp62exzri4pzxzq6tqudryfput",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "gmake",
+          "build_hash": "4slfcuuorsvxeno3vpzwbgvyismbjdte",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "libgit2",
+          "build_hash": "5wc4iydp5sfqlgjuqy3vz6qvem7c6op5",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "libssh2",
+          "build_hash": "un2jijkithpo3itmbcppemrecytjwicv",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "ninja",
+          "build_hash": "4ir6tq3pwaz22ti4ejfloayhotiod4hz",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "tby2dwdk7smipqve5grnvspdd7ytyr53",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "pkgconf",
+          "build_hash": "jhv55fydx5uxnrjvgbkv4gkbnjzuwhff",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "python",
+          "build_hash": "mf5534v2uvpmw5dkm5ba45uuz4kshbqd",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "wfjftvuk5gkmfuwkojftkdsuiuud2tbr"
+    },
+    "5wc4iydp5sfqlgjuqy3vz6qvem7c6op5": {
+      "name": "libgit2",
+      "version": "1.1.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "RelWithDebInfo",
+        "curl": false,
+        "https": "system",
+        "ipo": false,
+        "ssh": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fdpqjpwp62exzri4pzxzq6tqudryfput",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "libssh2",
+          "build_hash": "un2jijkithpo3itmbcppemrecytjwicv",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "tby2dwdk7smipqve5grnvspdd7ytyr53",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "pkgconf",
+          "build_hash": "jhv55fydx5uxnrjvgbkv4gkbnjzuwhff",
+          "type": [
+            "build"
+          ]
+        }
+      ],
+      "hash": "oeqdgsqhselj2hjqmsqlleix4kivzqks"
+    },
+    "un2jijkithpo3itmbcppemrecytjwicv": {
+      "name": "libssh2",
+      "version": "1.8.0",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "gcc",
+        "version": "8.3.1"
+      },
+      "namespace": "builtin",
+      "parameters": {
+        "build_type": "RelWithDebInfo",
+        "ipo": false,
+        "shared": true,
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "dependencies": [
+        {
+          "name": "cmake",
+          "build_hash": "fdpqjpwp62exzri4pzxzq6tqudryfput",
+          "type": [
+            "build"
+          ]
+        },
+        {
+          "name": "openssl",
+          "build_hash": "tby2dwdk7smipqve5grnvspdd7ytyr53",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "xz",
+          "build_hash": "mnrvg4xiuca6yb6dsnpn57ojxew5dqb6",
+          "type": [
+            "build",
+            "link"
+          ]
+        },
+        {
+          "name": "zlib",
+          "build_hash": "us2ipxy2z6ceg34gyfmmvu3pwhh32pn2",
+          "type": [
+            "build",
+            "link"
+          ]
+        }
+      ],
+      "hash": "kmgbqcivtyxgf5fsmp6rapkcn5fd2lai"
     }
   }
 }
