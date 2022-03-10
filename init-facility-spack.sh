@@ -67,7 +67,8 @@ export FACSPACK_SPACK_ROOT="${FACSPACK_SPACK_ROOT/#$(realpath $HOME)/$HOME}"
 _THIS_HOST="$(hostname --long \
              | sed -e 's/\.\(olcf\|ccs\)\..*//' \
                    -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
-                   -e 's/[-0-9]*$//')"
+                   -e 's/[-0-9]*$//' \
+                   -e 's/head\.cm\.//')"
 if [[ "${_THIS_HOST:-XX}" == "XX" ]]; then
   _THIS_HOST="$(sed -e 's/\.\(olcf\|ccs\)\..*//' \
                     -e 's/[-]\?\(login\|ext\|batch\|build\?\)[^\.]*[\.]\?//' \
