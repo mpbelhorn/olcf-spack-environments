@@ -215,19 +215,46 @@ else
 fi
 
 function setup_alternate_module_environment {
-  # Setup alternate module environment
-  if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
-        && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
-    module reset
-    module purge
-    echo "Using facility module root"
+  # Detect if LMOD or TMOD
+  local _msys="unknown"
+  if [ -n "${LMOD_CMD:-}" ]; then
+    _msys="lmod"
+  elif [ -n "${MODULESHOME:-}" ] && [[ ! "${MODULESHOME:-x}" =~ lmod ]]; then
+    _msys="tmod"
   else
-    module reset
-    module purge
-    echo "Using custom module root '${FACSPACK_ENV_MODULEROOT}'"
-    if [ -n "${1:-}" ]; then
-      export MODULEPATH="$1"
+    echo "WARNING: Could not determine module system. Aborting module setup."
+    return
+  fi
+  # Setup alternate module environment
+  if [[ "${_msys}" == "lmod" ]]; then
+    if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+          && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
+      module reset
+      module purge
+      echo "Using facility module root"
+    else
+      module reset
+      module purge
+      echo "Using custom module root '${FACSPACK_ENV_MODULEROOT}'"
+      if [ -n "${1:-}" ]; then
+        export MODULEPATH="$1"
+      fi
     fi
+  fi
+  if [[ "${_msys}" == "tmod" ]]; then
+    local _prgenv="$(module -t list 2>&1 | grep PrgEnv)"
+    if [ -n "${_prgenv:-}" ]; then
+      module unload ${_prgenv}
+    fi
+    if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+          && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
+      echo "Using facility module root"
+    fi
+    else
+      echo "Using custom module root '${FACSPACK_ENV_MODULEROOT}'"
+      if [ -n "${1:-}" ]; then
+        export MODULEPATH="$1"
+      fi
   fi
 }
 
@@ -284,6 +311,15 @@ case "${FACSPACK_HOST}" in
     _FS_MP+=":/usr/share/modulefiles/Core"
     _FS_MP+=":/usr/share/lmod/lmod/modulefiles/Core"
     setup_alternate_module_environment "${_FS_MP}"
+    ;;
+  afw)
+    export SPACK_FRONT_END="zen2"
+    export SPACK_BACK_END="zen2"
+    setup_alternate_module_environment "${_FS_MP}"
+    if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
+          && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
+      echo "WARNING: AFW uses tcl environment modules which this script does not handle correctly"
+    fi
     ;;
   spock)
     export SPACK_FRONT_END="zen2"
