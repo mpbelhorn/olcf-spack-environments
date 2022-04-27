@@ -27,7 +27,7 @@ spack:
   - core_packages:
     - ccache
     - cdo@1.9.10+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
-    - cdo@1.9.10~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
+    - cdo@1.9.10~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf ^eccodes+aec
     - cmake
     - cuda@11.2.2
     - cuda@11.0.2
@@ -36,6 +36,7 @@ spack:
     - emacs ~X
     - exuberant-ctags@5.8
     # - ferret ^hdf5~mpi+cxx+fortran ^netcdf-c~mpi~parallel-netcdf ^netcdf-fortran
+    - flexiblas
     - gdb@10.2
     - git
     - git-lfs
@@ -66,7 +67,7 @@ spack:
     - patchelf
     - python
     - python@2.7.15
-    - r
+    - r+external-lapack ^flexiblas
     - sbt
     - scorep+unwind
     - scorep~unwind
