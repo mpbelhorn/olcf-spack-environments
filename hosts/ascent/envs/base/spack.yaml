@@ -13,7 +13,7 @@ spack:
     - '%gcc@9.3.0'
     - '%gcc@10.2.0'
     - '%gcc@11.1.0'
-    # - '%gcc@11.2.0'
+    - '%gcc@11.2.0'
   - xl_compilers:
     - '%xl@16.1.1-10'
     # - '%xl@16.1.1-beta103'
@@ -313,8 +313,8 @@ spack:
       - - $general_compute_packages
         - $e4s_21.11_cpu_packages
         - $e4s_21.11_gpu_packages_cuda11.4.2
-      # - - '%gcc@11.2.0'
-      - - '%gcc@11.1.0'
+      - - '%gcc@11.2.0'
+        - '%gcc@11.1.0'
         - '%gcc@10.2.0'
       # - - ^cuda@11.4.2
       exclude:
@@ -427,7 +427,7 @@ spack:
     ^zfp%gcc@8-os ^cmake%gcc@8-os ^gnuconfig%gcc@8-os ^pkgconf%gcc@8-os
   - gdrcopy@2.3%gcc@8.3.1
   - gdrcopy@2.3%gcc@11.1.0
-  # - gdrcopy@2.3%gcc@11.2.0
+  - gdrcopy@2.3%gcc@11.2.0
   - boost@1.77.0%gcc@9.1.0~mpi+container
   - boost@1.77.0%gcc@9.1.0+mpi+container
   #############################################################################
@@ -1383,20 +1383,20 @@ spack:
         append_path:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
       flags: {}
-  # - compiler:
-  #     spec: gcc@11.2.0
-  #     operating_system: rhel8
-  #     modules: [gcc/11.2.0]
-  #     paths:
-  #       cc: gcc
-  #       cxx: g++
-  #       f77: gfortran
-  #       fc: gfortran
-  #     extra_rpaths: []
-  #     environment:
-  #       append_path:
-  #         PKG_CONFIG_PATH: /usr/lib64/pkgconfig
-  #     flags: {}
+  - compiler:
+      spec: gcc@11.2.0
+      operating_system: rhel8
+      modules: [gcc/11.2.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+      flags: {}
   - compiler:
       # siterc must ignore certain GNU arguments, eg
       # `switch -Wno-implicit-function-declaration is hide;`
