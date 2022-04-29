@@ -173,7 +173,7 @@ spack:
     - conduit@0.8.2
     - dyninst@12.0.1
     - flux-core@0.35.0
-    - gptune@2.1.0
+    # - gptune@2.1.0 # massive python dependencies
     - hpctoolkit@2022.01.15 ~cuda
     - hypre@2.24.0 ~cuda
     - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp
