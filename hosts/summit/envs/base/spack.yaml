@@ -260,7 +260,7 @@ spack:
   - e4s_22.02_cpu_packages:
     # Minimal delta from v21.11
     - amrex@22.02 ~rocm~cuda
-    - axom@0.6.1 ~cuda
+    ### - axom@0.6.1 ~cuda
     - butterflypack@2.1.0
     - conduit@0.8.2
     - dyninst@12.0.1
@@ -283,11 +283,11 @@ spack:
     - sundials@6.1.1 ~rocm~cuda
     - superlu-dist@7.2.0 ~cuda
     - vtk-m@1.7.1 ~cuda
-    - wannier90@3.1.0
+    # - wannier90@3.1.0
   - e4s_22.02_gpu_packages:
     # Minimal diff from v21.11
     - amrex@22.02 +cuda cuda_arch=70
-    - axom@0.6.1 +cuda cuda_arch=70
+    ### - axom@0.6.1 +cuda cuda_arch=70
     - flux-core@0.35.0 +cuda # not CudaPackage
     - hpctoolkit@2022.01.15 +cuda # not CudaPackage
     - hypre@2.24.0 +cuda cuda_arch=70
@@ -393,7 +393,7 @@ spack:
       - tau~cuda+mpi+ompt+openmp ^papi~cuda
       - tau~cuda+mpi~ompt~openmp ^papi~cuda
       - unifyfs
-      - vtk-m@1.6.0%gcc@11
+      - vtk-m@1.6.0:1.7.1%gcc@11
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
