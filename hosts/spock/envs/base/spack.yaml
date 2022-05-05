@@ -1005,10 +1005,10 @@ spack:
       compiler: []
       externals:
         - prefix: /usr
-          spec: slurm@20.11.6
+          spec: slurm@21.08.7
       providers: {}
       target: []
-      version: [20.11.6]
+      version: [21.08.7]
     sundials:
       variants: ~examples~examples-install
     tcsh:
