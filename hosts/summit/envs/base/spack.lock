@@ -2976,6 +2976,10 @@
     {
       "hash": "uqgbctecpmfwhxkmrrptbw3imzu57zrt",
       "spec": "vtk-m@1.7.1%gcc@10.2.0+cuda cuda_arch=70 ^cuda@11.4.2"
+    },
+    {
+      "hash": "uqagfgiu2z5hyeevwlo2shuaxfephrtj",
+      "spec": "spectrum-mpi%xl@16.1.1-12.1"
     }
   ],
   "concrete_specs": {
@@ -112723,6 +112727,29 @@
         }
       ],
       "hash": "vfu3qqywdoj6pivzuwjo47qnblmu4h6c"
+    },
+    "uqagfgiu2z5hyeevwlo2shuaxfephrtj": {
+      "name": "spectrum-mpi",
+      "version": "10.4.0.3-20210112",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "xl",
+        "version": "16.1.1-12.1"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "hash": "uqagfgiu2z5hyeevwlo2shuaxfephrtj"
     }
   }
 }
