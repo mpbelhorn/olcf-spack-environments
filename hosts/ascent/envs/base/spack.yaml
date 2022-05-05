@@ -16,6 +16,7 @@ spack:
     - '%gcc@11.2.0'
   - xl_compilers:
     - '%xl@16.1.1-10'
+    # - '%xl@16.1.1-12.1'
     # - '%xl@16.1.1-beta103'
   - llvm_compilers:
     - '%clang@12.0.0-0'
@@ -435,6 +436,7 @@ spack:
       - 'parallel-io@2.4.4:'
       - plasma
       # # xl beta103 libm macro errors:
+      # - '%xl@16.1.1-12.1'
       # - netcdf-c@4.8.0%xl@16.1.1-beta103
       # - netcdf-fortran@4.4.5%xl@16.1.1-beta103
       # - netcdf-cxx4@4.3.1%xl@16.1.1-beta103
@@ -1610,6 +1612,24 @@ spack:
         append_path:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
       flags: {}
+  # XL 16.1.1-12.1
+  # - compiler:
+  #     spec: xl@16.1.1-12.1
+  #     operating_system: rhel8
+  #     modules: [xl/16.1.1-12.1]
+  #     paths:
+  #       cc: /sw/ascent/xl/16.1.1-12.1/xlC/16.1.1/bin/xlc_r
+  #       cxx: /sw/ascent/xl/16.1.1-12.1/xlC/16.1.1/bin/xlc++_r
+  #       f77: /sw/ascent/xl/16.1.1-12.1/xlf/16.1.1/bin/xlf_r
+  #       fc: /sw/ascent/xl/16.1.1-12.1/xlf/16.1.1/bin/xlf2008_r
+  #     extra_rpaths:
+  #     - /sw/ascent/xl/16.1.1-12.1/lib
+  #     - /sw/ascent/xl/16.1.1-12.1/xlf/16.1.1/lib
+  #     - /sw/ascent/xl/16.1.1-12.1/xlC/16.1.1/lib
+  #     environment:
+  #       append_path:
+  #         PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+  #     flags: {}
   # XL 16.1.1-beta103
   # - compiler:
   #     spec: xl@16.1.1-beta103
