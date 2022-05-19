@@ -1172,6 +1172,9 @@ spack:
         upcxx:
           suffixes:
             upcxx~cuda: cpu
+        vtk-m:
+          suffixes:
+            vtk-m~cuda: cpu
         zfp:
           suffixes:
             zfp+cuda: gpu
