@@ -1324,6 +1324,9 @@ spack:
           load: []
           suffixes:
             builtin.ncl ^hdf5+mpi^netcdf+mpi: parallel
+        omega-h:
+          suffixes: 
+            omega-h ^superlu-dist~rocm: cpu
         openblas:
           conflict: []
           environment:
@@ -1355,7 +1358,7 @@ spack:
             petsc ~rocm: cpu
         precice:
           suffixes:
-            precice ^petsc~rocm: cpu
+            precice ^superlu-dist~rocm: cpu
         raja:
           suffixes:
             raja~rocm: cpu
@@ -1383,7 +1386,7 @@ spack:
             tau+openmp: omp
         trilinos:
           suffixes:
-            trilinos~rocm: cpu
+            trilinos~rocm ^superlu-dist~rocm: cpu
         umpire:
           suffixes:
             umpire~rocm: cpu
@@ -1472,6 +1475,8 @@ spack:
         - numactl
         - openssh
         - openssl
+        - petsc+rocm ^superlu-dist~rocm
+        - petsc~rocm ^superlu-dist+rocm
         - pkgconf
         - popt
         - py-certifi

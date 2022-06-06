@@ -577,7 +577,7 @@ spack:
         - prefix: /opt/rocm-5.1.0
           spec: hipfort@5.1.0 ^hip@5.1.0
         # - prefix: /opt/rocm-4.5.2
-        #   spec: hipfort@4.5.2
+        #   spec: hipfort@4.5.2 ^hip@4.5.2
         - prefix: /opt/rocm-4.5.0
           spec: hipfort@4.5.0 ^hip@4.5.0
         - prefix: /opt/rocm-4.3.0
@@ -1381,7 +1381,7 @@ spack:
             tau+openmp: omp
         trilinos:
           suffixes:
-            trilinos~rocm: cpu
+            trilinos~rocm ^superlu-dist~rocm: cpu
         umpire:
           suffixes:
             umpire~rocm: cpu
@@ -1470,6 +1470,8 @@ spack:
         - numactl
         - openssh
         - openssl
+        - petsc+rocm ^superlu-dist~rocm
+        - petsc~rocm ^superlu-dist+rocm
         - pkgconf
         - popt
         - py-certifi
