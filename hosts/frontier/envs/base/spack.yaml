@@ -9,11 +9,11 @@ spack:
     - '%gcc@11.2.0'
     - '%gcc@10.3.0'
   - cray_compilers:
-    - '%cce@13.0.2'
     - '%cce@14.0.0'
+    - '%cce@13.0.2'
   - amd_compilers:
-    - '%clang@13.0.0-rocm4.5.0'
     - '%clang@14.0.0-rocm5.1.0'
+    - '%clang@13.0.0-rocm4.5.0'
   - all_compilers:
     - $gcc_compilers
     - $cray_compilers
@@ -245,6 +245,7 @@ spack:
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%gcc@11.2.0
   - cpe_cce_specs:
+    # CCE 13.x
     - matrix:
       - - $e4s_21.11_cpu_specs
         - $e4s_21.11_gpu_packages_rocm4.5.0
@@ -279,6 +280,7 @@ spack:
       - tau+elf
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%cce
+    # CCE 14.x
     - matrix:
       - - $e4s_21.11_cpu_specs
         - $e4s_21.11_gpu_packages_rocm5.1.0
@@ -314,6 +316,7 @@ spack:
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%cce
   - cpe_amd_specs:
+    # ROCm 4.x
     - matrix:
       - - $e4s_21.11_cpu_specs
         - $e4s_21.11_gpu_packages_rocm4.5.0
@@ -342,6 +345,7 @@ spack:
       - tau%clang+elf
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%clang
+    # ROCm 5.x
     - matrix:
       - - $e4s_21.11_cpu_specs
         - $e4s_21.11_gpu_packages_rocm5.1.0
@@ -1419,7 +1423,6 @@ spack:
         - gettext
         - kokkos~rocm
         - libunwind+xz
-        # - libxml2 ^xz~pic
         - xz~pic
         - z3 ^libuuid
         - gobject-introspection ^cairo+X
@@ -1637,6 +1640,7 @@ spack:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
         unset: []
       extra_rpaths: []
+  # GCC 9.3.0
   - compiler:
       spec: gcc@9.3.0
       paths:
@@ -1656,6 +1660,7 @@ spack:
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
       extra_rpaths: []
+  # GCC 10.3.0
   - compiler:
       spec: gcc@10.3.0
       paths:
@@ -1675,6 +1680,7 @@ spack:
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
       extra_rpaths: []
+  # GCC 11.2.0
   - compiler:
       spec: gcc@11.2.0
       paths:
@@ -1694,6 +1700,7 @@ spack:
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
       extra_rpaths: []
+  # CCE 13.0.0
   - compiler:
       spec: cce@13.0.0
       paths:
@@ -1719,6 +1726,7 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # CCE 13.0.1
   - compiler:
       spec: cce@13.0.1
       paths:
@@ -1744,6 +1752,7 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # CCE 13.0.2
   - compiler:
       spec: cce@13.0.2
       paths:
@@ -1769,6 +1778,7 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # CCE 14.0.0
   - compiler:
       spec: cce@14.0.0
       paths:
@@ -1795,6 +1805,7 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # AMD 4.5.0
   - compiler:
       spec: clang@13.0.0-rocm4.5.0
       paths:
@@ -1823,6 +1834,7 @@ spack:
       - /opt/rocm-4.5.0/lib64
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # AMD 5.1.0
   - compiler:
       spec: clang@14.0.0-rocm5.1.0
       paths:
