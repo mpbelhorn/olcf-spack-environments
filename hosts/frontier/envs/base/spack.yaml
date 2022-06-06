@@ -8,10 +8,8 @@ spack:
   - gcc_compilers:
     - '%gcc@11.2.0'
     - '%gcc@10.3.0'
-    - '%gcc@9.3.0'
   - cray_compilers:
     - '%cce@13.0.2'
-    - '%cce@13.0.0'
     - '%cce@14.0.0'
   - amd_compilers:
     - '%clang@13.0.0-rocm4.5.0'
@@ -49,6 +47,7 @@ spack:
     - julia
     - wget
     - bazel ^openjdk@11.0:11.99
+    - fpchecker
     - openblas@0.3.17 threads=none
     - openblas@0.3.17 threads=openmp
     - openblas@0.3.17 threads=pthreads
@@ -229,7 +228,6 @@ spack:
         - $e4s_22.02_gpu_packages_rocm4.5.0
       - - '%gcc@11.2.0'
         - '%gcc@10.3.0'
-        # - '%gcc@9.3.0' # No zen3 support?
       - - arch=cray-sles15-zen3
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
@@ -254,7 +252,6 @@ spack:
         - $e4s_22.02_gpu_packages_rocm4.5.0
         - slate@2021.05.02
       - - '%cce@13.0.2'
-        - '%cce@13.0.0'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%cce
@@ -1326,6 +1323,9 @@ spack:
           load: []
           suffixes:
             builtin.ncl ^hdf5+mpi^netcdf+mpi: parallel
+        omega-h:
+          suffixes: 
+            omega-h ^superlu-dist~rocm: cpu
         openblas:
           conflict: []
           environment:
@@ -1478,6 +1478,8 @@ spack:
         - numactl
         - openssh
         - openssl
+        - petsc+rocm ^superlu-dist~rocm
+        - petsc~rocm ^superlu-dist+rocm
         - pkgconf
         - popt
         - py-certifi

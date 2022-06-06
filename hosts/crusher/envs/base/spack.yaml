@@ -10,8 +10,6 @@ spack:
     - '%gcc@10.3.0'
   - cray_compilers:
     - '%cce@13.0.2'
-    - '%cce@13.0.1'
-    - '%cce@13.0.0'
     - '%cce@14.0.0'
   - amd_compilers:
     - '%clang@13.0.0-rocm4.5.0'
@@ -254,8 +252,6 @@ spack:
         - $e4s_22.02_gpu_packages_rocm4.5.0
         - slate@2021.05.02
       - - '%cce@13.0.2'
-        - '%cce@13.0.1'
-        - '%cce@13.0.0'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%cce
@@ -1233,6 +1229,9 @@ spack:
         amrex:
           suffixes:
             amrex~rocm: cpu
+        arpack-ng:
+          suffixes:
+            arpack-ng ^openblas: openblas
         blaspp:
           suffixes:
             blaspp~rocm: cpu
@@ -1355,10 +1354,10 @@ spack:
             pango+X: X
         petsc:
           suffixes:
-            petsc ~rocm: cpu
+            petsc ~rocm ^superlu-dist~rocm: cpu
         precice:
           suffixes:
-            precice ^superlu-dist~rocm: cpu
+            precice ^petsc~rocm ^superlu-dist~rocm: cpu
         raja:
           suffixes:
             raja~rocm: cpu
@@ -1408,8 +1407,12 @@ spack:
         - binutils
         - boost%gcc cxxstd=98
         - boost%gcc visibility=global
+        - boost~filesystem
+        - boost~math
         - blt ^cmake@3.20.6
         - conduit ^hdf5~fortran
+        - docbook-xml
+        - docbook-xsl
         - dyninst%gcc ^elfutils+bzip2
         - elfutils+bzip2
         - gasnet~pshm
@@ -1499,6 +1502,7 @@ spack:
         - xcb-proto
         - xextproto
         - xtrans
+        - vtk-m+shared # FIXME: Explicit install is ~shared
         - harfbuzz ^cairo~X
         - pango ^cairo~pdf
         - '%gcc@7-os'
@@ -1631,10 +1635,10 @@ spack:
   - compiler:
       spec: gcc@9.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1650,10 +1654,10 @@ spack:
   - compiler:
       spec: gcc@10.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1669,10 +1673,10 @@ spack:
   - compiler:
       spec: gcc@11.2.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1688,10 +1692,10 @@ spack:
   - compiler:
       spec: cce@13.0.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1713,10 +1717,10 @@ spack:
   - compiler:
       spec: cce@13.0.1
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1738,10 +1742,10 @@ spack:
   - compiler:
       spec: cce@13.0.2
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1763,10 +1767,10 @@ spack:
   - compiler:
       spec: cce@14.0.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1789,10 +1793,10 @@ spack:
   - compiler:
       spec: clang@13.0.0-rocm4.5.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1817,10 +1821,10 @@ spack:
   - compiler:
       spec: clang@14.0.0-rocm5.1.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.13/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.13/bin/CC
-        f77: /opt/cray/pe/craype/2.7.13/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.13/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
       flags: {}
       operating_system: sles15
       target: any

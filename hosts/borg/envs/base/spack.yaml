@@ -47,6 +47,7 @@ spack:
     - julia
     - wget
     - bazel ^openjdk@11.0:11.99
+    - fpchecker
     - openblas@0.3.17 threads=none
     - openblas@0.3.17 threads=openmp
     - openblas@0.3.17 threads=pthreads
@@ -509,13 +510,13 @@ spack:
         - prefix: /opt/rocm-5.1.0/rocclr
           spec: hip-rocclr@5.1.0 ^hsa-rocr-dev@5.1.0
         # - prefix: /opt/rocm-4.5.2/rocclr
-        #   spec: hip-rocclr@4.5.2
+        #   spec: hip-rocclr@4.5.2 ^hsa-rocr-dev@4.5.2
         - prefix: /opt/rocm-4.5.0/rocclr
-          spec: hip-rocclr@4.5.0
+          spec: hip-rocclr@4.5.0 ^hsa-rocr-dev@4.5.0
         - prefix: /opt/rocm-4.3.0/rocclr
-          spec: hip-rocclr@4.3.0
+          spec: hip-rocclr@4.3.0 ^hsa-rocr-dev@4.3.0
         - prefix: /opt/rocm-4.2.0/rocclr
-          spec: hip-rocclr@4.2.0
+          spec: hip-rocclr@4.2.0 ^hsa-rocr-dev@4.2.0
       version: 
       - 4.5.0
       - 4.3.0
@@ -526,13 +527,13 @@ spack:
         - prefix: /opt/rocm-5.1.0
           spec: hipblas@5.1.0 ^hip@5.1.0
         # - prefix: /opt/rocm-4.5.2
-        #   spec: hipblas@4.5.2
+        #   spec: hipblas@4.5.2 ^hip@4.5.2
         - prefix: /opt/rocm-4.5.0
-          spec: hipblas@4.5.0
+          spec: hipblas@4.5.0 ^hip@4.5.0
         - prefix: /opt/rocm-4.3.0
-          spec: hipblas@4.3.0
+          spec: hipblas@4.3.0 ^hip@4.3.0
         - prefix: /opt/rocm-4.2.0
-          spec: hipblas@4.2.0
+          spec: hipblas@4.2.0 ^hip@4.2.0
       version: 
       - 4.5.0
       - 4.3.0
@@ -543,13 +544,13 @@ spack:
         - prefix: /opt/rocm-5.1.0
           spec: hipcub@5.1.0 ^hip@5.1.0
         # - prefix: /opt/rocm-4.5.2
-        #   spec: hipcub@4.5.2
+        #   spec: hipcub@4.5.2 ^hip@4.5.2
         - prefix: /opt/rocm-4.5.0
-          spec: hipcub@4.5.0
+          spec: hipcub@4.5.0 ^hip@4.5.0
         - prefix: /opt/rocm-4.3.0
-          spec: hipcub@4.3.0
+          spec: hipcub@4.3.0 ^hip@4.3.0
         - prefix: /opt/rocm-4.2.0
-          spec: hipcub@4.2.0
+          spec: hipcub@4.2.0 ^hip@4.2.0
       version: 
       - 4.5.0
       - 4.3.0
@@ -560,13 +561,13 @@ spack:
         - prefix: /opt/rocm-5.1.0
           spec: hipfft@5.1.0 ^hip@5.1.0
         # - prefix: /opt/rocm-4.5.2
-        #   spec: hipfft@4.5.2
+        #   spec: hipfft@4.5.2 ^hip@4.5.2
         - prefix: /opt/rocm-4.5.0
-          spec: hipfft@4.5.0
+          spec: hipfft@4.5.0 ^hip@4.5.0
         - prefix: /opt/rocm-4.3.0
-          spec: hipfft@4.3.0
+          spec: hipfft@4.3.0 ^hip@4.3.0
         - prefix: /opt/rocm-4.2.0
-          spec: hipfft@4.2.0
+          spec: hipfft@4.2.0 ^hip@4.2.0
       version: 
       - 4.5.0
       - 4.3.0
@@ -1228,6 +1229,9 @@ spack:
         amrex:
           suffixes:
             amrex~rocm: cpu
+        arpack-ng:
+          suffixes:
+            arpack-ng ^openblas: openblas
         blaspp:
           suffixes:
             blaspp~rocm: cpu
@@ -1350,10 +1354,10 @@ spack:
             pango+X: X
         petsc:
           suffixes:
-            petsc ~rocm: cpu
+            petsc ~rocm ^superlu-dist~rocm: cpu
         precice:
           suffixes:
-            precice ^superlu-dist~rocm: cpu
+            precice ^petsc~rocm ^superlu-dist~rocm: cpu
         raja:
           suffixes:
             raja~rocm: cpu
@@ -1403,8 +1407,12 @@ spack:
         - binutils
         - boost%gcc cxxstd=98
         - boost%gcc visibility=global
+        - boost~filesystem
+        - boost~math
         - blt ^cmake@3.20.6
         - conduit ^hdf5~fortran
+        - docbook-xml
+        - docbook-xsl
         - dyninst%gcc ^elfutils+bzip2
         - elfutils+bzip2
         - gasnet~pshm
@@ -1494,6 +1502,7 @@ spack:
         - xcb-proto
         - xextproto
         - xtrans
+        - vtk-m+shared # FIXME: Explicit install is ~shared
         - harfbuzz ^cairo~X
         - pango ^cairo~pdf
         - '%gcc@7-os'
@@ -1705,6 +1714,32 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # - compiler:
+  #     spec: cce@13.0.1
+  #     paths:
+  #       cc: /opt/cray/pe/craype/2.7.15/bin/cc
+  #       cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+  #       f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+  #       fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+  #     flags: {}
+  #     operating_system: sles15
+  #     target: any
+  #     modules:
+  #     - PrgEnv-cray
+  #     - cce/13.0.1
+  #     - craype-x86-trento
+  #     - libfabric
+  #     environment:
+  #       set:
+  #         RFE_811452_DISABLE: '1'
+  #       append_path:
+  #         LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+  #       prepend_path:
+  #         LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
+  #     extra_rpaths:
+  #     - /opt/cray/pe/gcc-libs
+  #     - /opt/cray/gcc-libs
+  - compiler:
       spec: cce@13.0.2
       paths:
         cc: /opt/cray/pe/craype/2.7.15/bin/cc
