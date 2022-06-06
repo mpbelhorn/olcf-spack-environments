@@ -1599,7 +1599,12 @@ spack:
     suppress_gpg_warnings: false
     connect_timeout: 10
     test_stage: ~/.spack/test
-  concretization: separately
+  concretizer:
+    reuse: true
+    targets:
+      granularity: microarchitectures
+      host_compatible: true
+    unify: false
   compilers:
   - compiler:
       spec: gcc@7.5.0

@@ -894,6 +894,9 @@ spack:
       '':
         - CMAKE_PREFIX_PATH
     default:
+      roots:
+        tcl: ${FACSPACK_ENV_MODULEROOT}/flat
+        lmod: ${FACSPACK_ENV_MODULEROOT}/spack
       enable:
         - lmod
       lmod:
@@ -1308,9 +1311,6 @@ spack:
       root: ${FACSPACK_ENV}/opt
       projections:
         all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
-    module_roots:
-      tcl: ${FACSPACK_ENV_MODULEROOT}/flat
-      lmod: ${FACSPACK_ENV_MODULEROOT}/spack
     template_dirs:
     - ${FACSPACK_CONF_HOST}/templates
     - ${FACSPACK_CONF_COMMON}/spack/templates
@@ -1338,7 +1338,12 @@ spack:
     suppress_gpg_warnings: false
     connect_timeout: 10
     test_stage: ~/.spack/test
-  concretization: separately
+  concretizer:
+    reuse: true
+    targets:
+      granularity: microarchitectures
+      host_compatible: true
+    unify: false
   compilers:
   - compiler:
       spec: gcc@8.3.1
