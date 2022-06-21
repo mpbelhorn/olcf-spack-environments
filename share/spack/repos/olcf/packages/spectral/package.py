@@ -53,7 +53,7 @@ class Spectral(CMakePackage):
 
         return args
 
-    def setup_environment(self, spack_env, run_env):
+    def setup_run_environment(self, run_env):
         # At runtime, users must also set the following envvars
         #     (arbitrary values for <fields in rangle/langle brackets>)
         # 'PERSIST_DIR="/mnt/bb/$USER"'

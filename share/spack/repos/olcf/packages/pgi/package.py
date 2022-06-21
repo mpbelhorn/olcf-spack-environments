@@ -151,7 +151,7 @@ class Pgi(Package):
             siterc.write("append SITEDEF=__ORDER_PDP_ENDIAN__=3412;\n")
             siterc.write("append SITEDEF=__BYTE_ORDER__=__ORDER_LITTLE_ENDIAN__;\n")
 
-    def setup_environment(self, spack_env, run_env):
+    def setup_run_environment(self, run_env):
         # FIXME - generalize arch
         prefix = Prefix(self.true_prefix)
 
