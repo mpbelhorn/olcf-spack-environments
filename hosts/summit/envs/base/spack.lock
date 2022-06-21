@@ -3452,6 +3452,10 @@
     {
       "hash": "xrpuhgvl5c6q6ey7mnhot6ok6yfcboee",
       "spec": "netcdf-cxx4%xl@16.1.1-10"
+    },
+    {
+      "hash": "g52kbch6bh3ukialclf3zsb4vosw2f6j",
+      "spec": "spectrum-mpi%nvhpc@22.5"
     }
   ],
   "concrete_specs": {
@@ -136090,6 +136094,29 @@
         "0eac10ed90aeb0459ad8851f88081d439a4e41978e586ec743069e8b059370ac"
       ],
       "hash": "4p33a5ao7btwx4vyjdn5i67n4wi7we6i"
+    },
+    "g52kbch6bh3ukialclf3zsb4vosw2f6j": {
+      "name": "spectrum-mpi",
+      "version": "10.4.0.3-20210112",
+      "arch": {
+        "platform": "linux",
+        "platform_os": "rhel8",
+        "target": "ppc64le"
+      },
+      "compiler": {
+        "name": "nvhpc",
+        "version": "22.5"
+      },
+      "namespace": "olcf",
+      "parameters": {
+        "cflags": [],
+        "cppflags": [],
+        "cxxflags": [],
+        "fflags": [],
+        "ldflags": [],
+        "ldlibs": []
+      },
+      "hash": "g52kbch6bh3ukialclf3zsb4vosw2f6j"
     }
   }
 }
