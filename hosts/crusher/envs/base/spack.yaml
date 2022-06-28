@@ -69,8 +69,8 @@ spack:
     - chai@2.4.0 ~benchmarks~tests~rocm~cuda
     #### - charliecloud@0.25
     - conduit@0.7.2
-    # - darshan-runtime@3.3.1 ## installed globally
-    # - darshan-util@3.3.1    ## installed globally
+    - darshan-runtime@3.3.1 ## installed globally
+    - darshan-util@3.3.1    ## installed globally
     - datatransferkit@3.1-rc3
     - dyninst@11.0.1
     # - exaworks@0.1.0
