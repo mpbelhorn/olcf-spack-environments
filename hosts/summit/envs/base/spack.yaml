@@ -223,10 +223,10 @@ spack:
     - zfp@0.5.5 ~cuda
   - e4s_21.11_gpu_packages:
     - amrex@21.11 ~rocm+cuda cuda_arch=70
-    - arborx@1.1+cuda ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
+    - arborx@1.1+cuda cuda_arch=70 ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
     ### - ascent@0.7.1 ~test~shared+cuda cuda_arch=70 ## FIXME: too much data for compiler-generated constants
     ### - axom@0.5.0 +cuda cuda_arch=70
-    - cabana@0.4.0+cuda
+    - cabana@0.4.0+cuda ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
     - caliper@2.7.0 +cuda cuda_arch=70
     - chai@2.4.0 ~benchmarks~tests~rocm+cuda cuda_arch=70 ^umpire ~shared
     - ginkgo@1.4.0~rocm+cuda cuda_arch=70
