@@ -16,15 +16,23 @@ show-env: Display the long-form concretized specs in a Spack environment lock
 '''
 
 
+import collections
 import sys
 import os
 import argparse
-import llnl.util.tty as tty
-import llnl.util.filesystem as fs
+
+from llnl.util import filesystem, tty
+
 import spack
+import spack.repo
+import spack.config
 import spack.spec
 import spack.environment as ev
 import spack.cmd
+import spack.modules
+import spack.modules.common
+
+from spack.cmd.modules import check_module_set_name
 
 description = 'Custom utilities used by the OLCF'
 section = "olcf"
@@ -34,6 +42,7 @@ level = "long"
 subcommands = [
     ['show-env', 'show'],
     'deploy',
+    'find-missing-modules',
 ]
 
 subcommand_functions = {}
@@ -73,9 +82,9 @@ class OLCFEnv(ev.Environment):
 
         # Make sure log directory exists
         log_path = self.log_path
-        fs.mkdirp(log_path)
+        filesystem.mkdirp(log_path)
 
-        with fs.working_dir(self.path):
+        with filesystem.working_dir(self.path):
             # Link the resulting log file into logs dir
             build_log_link = os.path.join(
                 log_path, '%s-%s.log' % (spec.name, spec.dag_hash(7)))
@@ -114,11 +123,13 @@ def olcf_show_env_setup_parser(subparser):
 def olcf_deploy_setup_parser(subparser):
     """Install concretized specs in the environment"""
 
+def olcf_find_missing_modules_setup_parser(subparser):
+    """Find installed packages that should - but do not - have a modulefile"""
+
 def olcf(parser, args):
     """Look for a function called olcf_<name> and call it."""
     action = subcommand_functions[args.olcf_command]
     action(args)
-
 
 def olcf_show_env(args):
     '''Shows the concretized specs in an environment.'''
@@ -128,6 +139,126 @@ def olcf_show_env(args):
 
     concretized_specs = list(env.concretized_specs())
     display_specs(concretized_specs)
+
+def olcf_find_missing_modules(args):
+    '''Shows package builds missing a modulefile'''
+    env = ev.active_environment()
+    if not env:
+        raise ev.SpackEnvironmentError('No environment found')
+
+    specs = list(env.concretized_specs())
+
+    # TODO: Take an argument for different module types
+    module_type = 'lmod'
+
+    # TODO: Take an argument for different module sets
+    module_set_name = 'default'
+    check_module_set_name(module_set_name)
+
+    existing_modulefiles = []
+    packages_without_modules = []
+    print("Checking environment specs ...")
+    for input_spec, concrete_spec in specs:
+        if not concrete_spec.install_status():
+            continue
+        if not concrete_spec._installed_explicitly():
+            continue
+        try:
+            print("  -", input_spec)
+            existing_modulefiles.append(
+                spack.modules.common.get_module(
+                    module_type,
+                    concrete_spec,
+                    get_full_path=True,
+                    module_set_name=module_set_name,
+                    required=True)
+                )
+        except spack.modules.common.ModuleNotFoundError as e:
+            packages_without_modules.append((input_spec, concrete_spec))
+
+    existing_modulefiles = list(x for x in existing_modulefiles if x)
+    print('Packages with existing modules:')
+    print('\n'.join(sorted(existing_modulefiles)))
+    print()
+    packages_without_modules = sorted(packages_without_modules)
+    hash_list = set()
+    specs_without_modules = list()
+    for _, concrete_spec in packages_without_modules:
+        spec_hash = concrete_spec.dag_hash()
+        if spec_hash not in hash_list:
+            hash_list.add(concrete_spec.dag_hash())
+            specs_without_modules.append(concrete_spec)
+
+    print('Saving spec hashes to "./specs_missing_modules.txt"')
+    with open("specs_missing_modules.txt", mode = "w") as f:
+        formatted_spec_hashes = [
+                '/{0}'.format(spec.dag_hash(7)) for spec in specs_without_modules
+                ]
+        f.write(' '.join(formatted_spec_hashes))
+    print('')
+
+    msg = 'You are about to regenerate {types} module files for:\n'
+    tty.msg(msg.format(types=module_type))
+    spack.cmd.display_specs(specs_without_modules, long=True)
+
+    answer = tty.get_yes_or_no('Do you want to proceed?')
+    if not answer:
+        tty.die('Module file regeneration aborted.')
+
+    # Cycle over the module types and regenerate module files
+    cls = spack.modules.module_types[module_type]
+
+    # Skip unknown packages.
+    writers = [
+        cls(spec, module_set_name) for spec in specs_without_modules
+        if spack.repo.path.exists(spec.name)]
+
+    # Filter blacklisted packages early
+    writers = [x for x in writers if not x.conf.blacklisted]
+
+    # Detect name clashes in module files
+    file2writer = collections.defaultdict(list)
+    for item in writers:
+        file2writer[item.layout.filename].append(item)
+
+    if len(file2writer) != len(writers):
+        message = 'Name clashes detected in module files:\n'
+        conflict_format = '{/hash:7} {name}{@version}'
+        conflict_format += '{%compiler.name}{@compiler.version}{compiler_flags}'
+        conflict_format += '{variants}{arch=architecture}'
+        for filename, writer_list in file2writer.items():
+            if len(writer_list) > 1:
+                message += '\nfile: {0}\n'.format(filename)
+                for x in writer_list:
+                    message += 'spec: {0}\n'.format(
+                            x.spec.format(format_string=conflict_format))
+        tty.error(message)
+        tty.error('Operation aborted')
+        raise SystemExit(1)
+
+    if len(writers) == 0:
+        msg = 'Nothing to be done for {0} module files.'
+        tty.msg(msg.format(module_type))
+        return
+    # If we arrived here we have at least one writer
+    module_type_root = writers[0].layout.dirname()
+
+    # Proceed regenerating module files
+    tty.msg('Regenerating {name} module files'.format(name=module_type))
+    filesystem.mkdirp(module_type_root)
+
+    # Dump module index after potentially removing module tree
+    spack.modules.common.generate_module_index(
+        module_type_root, writers, overwrite=False)
+    for x in writers:
+        try:
+            x.write(overwrite=False) # FIXME: could be overwrite=True, in theory
+        except Exception as e:
+            tty.debug(e)
+            msg = 'Could not write module file [{0}]'
+            tty.warn(msg.format(x.layout.filename))
+            tty.warn('\t--> {0} <--'.format(str(e)))
+
 
 def olcf_deploy(args):
     '''Install concretized specs in the environment.'''
