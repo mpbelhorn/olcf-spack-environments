@@ -64,7 +64,7 @@ spack:
     - libzmq
     - gnupg
     - googletest
-    - imagemagick
+    # - imagemagick
     - exuberant-ctags@5.8
     - gsl
     - nco~mpi-deps
@@ -76,11 +76,11 @@ spack:
     - makedepend
     - r@4.0.5
     - rust
-    - julia
+    # - julia
     - jq
     - hpcviewer@2021.03
     - cube@4.6+gui
-    - bear
+    # - bear
     - ffmpeg+X+avresample+libaom+libmp3lame+libopenjpeg+libopus+libsnappy+libspeex+libvorbis+libvpx+libzmq+nonfree
     - proj
     - eccodes+fortran+png+pthreads+netcdf+aec ^netcdf-c~mpi~parallel-netcdf ^hdf5~mpi
@@ -131,7 +131,7 @@ spack:
     - mpip
     - adios2 ~python
   - e4s_21.11_cpu_packages:
-    - adios2@2.7.1 ~python
+    - adios2 ~python
     #### - adios@1.13.1
     - alquimia@1.0.9
     - aml@0.1.0
@@ -311,6 +311,40 @@ spack:
     - matrix:
       - - $e4s_22.02_gpu_packages 
       - - ^cuda@11.4.2
+  - e4s_22.05_cpu_packages:
+    # Minimal delta from v22.02
+    - amrex@22.05 ~rocm~cuda
+    - butterflypack@2.1.1
+    - conduit@0.8.3
+    - dyninst@12.1.0
+    - flux-core@0.38.0
+    - hpctoolkit@2022.05.15 ~cuda
+    - hypre@2.24.0 ~cuda
+    - kokkos@3.6.00 +openmp~cuda~wrapper
+    - kokkos-kernels@3.6.00 +openmp~cuda
+    - petsc@3.17.1 ~cuda
+    - slepc@3.16.2 ~cuda
+    - strumpack@6.3.1 ~slate~rocm~cuda
+    - sundials@6.2.0 ~rocm~cuda
+  - e4s_22.05_gpu_packages:
+    # Minimal diff from v22.02
+    - amrex@22.05 +cuda cuda_arch=70
+    - flux-core@0.38.0 +cuda # not CudaPackage
+    - hpctoolkit@2022.05.15 +cuda # not CudaPackage
+    - kokkos@3.6.00 ~rocm+cuda+wrapper cuda_arch=70
+    - kokkos-kernels@3.6.00 +cuda cuda_arch=70 ^kokkos@3.6.00~rocm+cuda+wrapper cuda_arch=70
+    - petsc@3.17.1 +cuda cuda_arch=70
+    - slepc@3.17.1 +cuda cuda_arch=70
+    - strumpack@6.3.1 ~slate~rocm+cuda cuda_arch=70
+    - sundials@6.2.0 ~rocm+cuda cuda_arch=70
+  - e4s_22.05_gpu_packages_cuda11.0.3:
+    - matrix:
+      - - $e4s_22.05_gpu_packages 
+      - - ^cuda@11.0.3
+  - e4s_22.05_gpu_packages_cuda11.4.2:
+    - matrix:
+      - - $e4s_22.05_gpu_packages 
+      - - ^cuda@11.4.2
   - core_specs:
     - matrix:
       - - $core_packages
@@ -336,6 +370,8 @@ spack:
         - $e4s_21.11_gpu_packages_cuda11.0.3
         - $e4s_22.02_cpu_packages
         - $e4s_22.02_gpu_packages_cuda11.0.3
+        - $e4s_22.05_cpu_packages
+        - $e4s_22.05_gpu_packages_cuda11.0.3
         - nco
       - - '%gcc@8.3.1'
         - '%gcc@9.1.0'
@@ -347,7 +383,7 @@ spack:
       - hpx%gcc@8.3.1
     # Core-only e4s 21.11 packages
     - qt@5.15.2%gcc@8.3.1
-    - stat@4.1.0%gcc@8.3.1 ^dyninst@11.0.1
+    # - stat@4.1.0%gcc@8.3.1 ^dyninst@11.0.1
     - stc@0.9.0%gcc@8.3.1
     # - geopm@1.1.0%gcc@8.3.1
     - matrix:
@@ -369,6 +405,8 @@ spack:
         - $e4s_21.11_gpu_packages_cuda11.4.2
         - $e4s_22.02_cpu_packages
         - $e4s_22.02_gpu_packages_cuda11.4.2
+        - $e4s_22.05_cpu_packages
+        - $e4s_22.05_gpu_packages_cuda11.4.2
       - - '%gcc@11.2.0'
         - '%gcc@11.1.0'
         - '%gcc@10.2.0'
@@ -404,6 +442,7 @@ spack:
         # - $e4s_21.11_gpu_packages_cuda11.4.2 # cuda RT fails to find math.h
         - $e4s_22.02_cpu_packages
         # - $e4s_22.02_gpu_packages_cuda11.4.2 # cuda RT fails to find math.h
+        - $e4s_22.05_cpu_packages
       - - '%clang@12.0.0-0'
       exclude:
       - caliper # ^elfutils !conflicts clang
@@ -423,6 +462,7 @@ spack:
         # - $e4s_21.11_gpu_packages_cuda11.0.3 # Needs cuda newer than 11.6.2
         - $e4s_22.02_cpu_packages
         # - $e4s_22.02_gpu_packages_cuda11.0.3 # Needs cuda newer than 11.6.2
+        - $e4s_22.05_cpu_packages
       - - '%clang@14.0.0-0'
       exclude:
       - caliper # ^elfutils !conflicts clang
@@ -431,6 +471,7 @@ spack:
       - mpip   # ^elfutils !conflicts clang
       - hpx%clang@14.0.0-0 # gperftools+llvm libunwind clash
       - omega-h%clang@14.0.0-0
+      - flux-core # FIXME: clang14 missing LLVMgold.so plugin
       - kokkos-kernels
       - plasma
       - strumpack
@@ -936,6 +977,9 @@ spack:
             boost cxxstd=14: cxx14
             boost cxxstd=17: cxx17
             boost visibility=global: global_symbols
+        cabana:
+          suffixes:
+            ~cuda: cpu
         caliper:
           suffixes:
             caliper~cuda: cpu
@@ -961,6 +1005,9 @@ spack:
         dealii:
           suffixes:
             dealii~cuda: cpu
+        flux-core:
+          suffixes:
+            ~cuda: cpu
         ginkgo:
           suffixes:
             ginkgo~rocm~cuda: cpu
@@ -977,6 +1024,9 @@ spack:
         heffte:
           suffixes:
             heffte~cuda: cpu
+        hpctoolkit:
+          suffixes:
+            ~cuda: cpu
         hpx:
           suffixes:
             hpx ^boost@1.72.0: boost1.72.0
@@ -1306,7 +1356,7 @@ spack:
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
     extensions:
-    - /sw/sources/facility-spack/summit/share/spack/extensions/spack-olcf
+    - ${FACSPACK_CONF_COMMON}/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache
     verify_ssl: true
     install_missing_compilers: false
@@ -1329,7 +1379,7 @@ spack:
     targets:
       granularity: microarchitectures
       host_compatible: true
-    unify: false # when_possible
+    unify: false
   compilers:
   - compiler:
       spec: gcc@8.3.1
