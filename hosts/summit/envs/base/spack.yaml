@@ -313,26 +313,44 @@ spack:
       - - ^cuda@11.4.2
   - e4s_22.05_cpu_packages:
     # Minimal delta from v22.02
+    - adios2@2.8.0
     - amrex@22.05 ~rocm~cuda
+    - arborx@1.2~cuda
+    - ascent@0.8.0 ~test+shared~cuda
     - butterflypack@2.1.1
     - conduit@0.8.3
     - dyninst@12.1.0
-    - flux-core@0.38.0
+    - flux-core@0.38.0 ~cuda
     - hpctoolkit@2022.05.15 ~cuda
     - hypre@2.24.0 ~cuda
     - kokkos@3.6.00 +openmp~cuda~wrapper
     - kokkos-kernels@3.6.00 +openmp~cuda
+    - libunwind@1.6.2
+    - metall@0.20
+    - mfem@4.4.0 ~cuda
+    - netlib-scalapack@2.2.0
+    - papyrus@1.0.2
     - petsc@3.17.1 ~cuda
-    - slepc@3.16.2 ~cuda
+    - precice@2.4.0
+    # - pruners-ninja@1.0.1
+    - pumi@2.2.7
+    - slepc@3.17.1 ~cuda
     - strumpack@6.3.1 ~slate~rocm~cuda
     - sundials@6.2.0 ~rocm~cuda
+    - upcxx@2022.3.0 ~cuda
   - e4s_22.05_gpu_packages:
     # Minimal diff from v22.02
-    - amrex@22.05 +cuda cuda_arch=70
+    - adios2@2.8.0 +cuda cuda_arch=70
+    - amrex@22.05 ~rocm+cuda cuda_arch=70
+    - arborx@1.2 +cuda cuda_arch=70 ^kokkos@3.6.00~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
+    - cabana@0.4.0 +cuda ^kokkos@3.6.00~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
+    - chai@2.4.0 ~benchmarks~tests~examples~rocm+cuda cuda_arch=70 ^umpire@6.0.0 ~shared
     - flux-core@0.38.0 +cuda # not CudaPackage
     - hpctoolkit@2022.05.15 +cuda # not CudaPackage
     - kokkos@3.6.00 ~rocm+cuda+wrapper cuda_arch=70
     - kokkos-kernels@3.6.00 +cuda cuda_arch=70 ^kokkos@3.6.00~rocm+cuda+wrapper cuda_arch=70
+    - magma@2.6.2 ~rocm+cuda cuda_arch=70
+    - mfem@4.4.0 +cuda cuda_arch=70
     - petsc@3.17.1 +cuda cuda_arch=70
     - slepc@3.17.1 +cuda cuda_arch=70
     - strumpack@6.3.1 ~slate~rocm+cuda cuda_arch=70
@@ -947,6 +965,7 @@ spack:
           load: []
           suffixes:
             adios2+python: py
+            adios2+cuda: gpu
         amrex:
           suffixes:
             amrex~rocm~cuda: cpu
