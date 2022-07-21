@@ -23,7 +23,7 @@ spack:
     - automake
     - libtool
     - patchelf
-    - globus-toolkit
+    - go
     - libszip
     - libaec
     - libgeotiff
