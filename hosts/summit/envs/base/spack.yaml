@@ -332,7 +332,7 @@ spack:
     - papyrus@1.0.2
     - petsc@3.17.1 ~cuda
     - precice@2.4.0
-    # - pruners-ninja@1.0.1
+    # - pruners-ninja@1.0.1 ## Needs MPI-3 PMPI_Ibarrier not in SMPI
     - pumi@2.2.7
     - slepc@3.17.1 ~cuda
     - strumpack@6.3.1 ~slate~rocm~cuda
@@ -451,6 +451,8 @@ spack:
       - tau~cuda+mpi~ompt~openmp ^papi~cuda
       - unifyfs
       - vtk-m@1.6.0:1.7.1%gcc@11
+    - umpire@6.0.0%gcc@10.2.0 +shared~examples~rocm+cuda cuda_arch=70 ^cuda@11.4.2
+    - umpire@2022.03.1%gcc@10.2.0 +shared~examples~rocm+cuda cuda_arch=70 ^cuda@11.4.2
     - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
@@ -1227,6 +1229,7 @@ spack:
           suffixes:
             umpire~openmp: no_omp
             umpire~rocm~cuda: cpu
+            umpire+shared: shared
         upcxx:
           suffixes:
             upcxx~cuda: cpu
