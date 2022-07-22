@@ -14,6 +14,7 @@ spack:
     - '%gcc@10.2.0'
     - '%gcc@11.1.0'
     - '%gcc@11.2.0'
+    - '%gcc@12.1.0'
   - xl_compilers:
     - '%xl@16.1.1-10'
     - '%xl@16.1.1-12.1'
@@ -1519,6 +1520,20 @@ spack:
       spec: gcc@11.2.0
       operating_system: rhel8
       modules: [gcc/11.2.0]
+      paths:
+        cc: gcc
+        cxx: g++
+        f77: gfortran
+        fc: gfortran
+      extra_rpaths: []
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+      flags: {}
+  - compiler:
+      spec: gcc@12.1.0
+      operating_system: rhel8
+      modules: [gcc/12.1.0]
       paths:
         cc: gcc
         cxx: g++
