@@ -9,6 +9,7 @@ spack:
     - '%gcc@11.2.0'
     - '%gcc@10.3.0'
   - cray_compilers:
+    - '%cce@14.0.1'
     - '%cce@14.0.0'
     - '%cce@13.0.2'
   - amd_compilers:
@@ -51,8 +52,11 @@ spack:
     - openblas@0.3.17 threads=none
     - openblas@0.3.17 threads=openmp
     - openblas@0.3.17 threads=pthreads
+    - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
+    - cdo~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf ^eccodes+aec
   - e4s_21.11_cpu_specs:
-    - adios2@2.7.1 ~python
+    # - adios2@2.7.1 ~python
+    - adios2@2.8.1~python
     #### - adios@1.13.1
     # - alquimia@1.0.9 ## FIXME: mpi rank mismatch in pflotran dependency
     - aml@0.1.0
@@ -251,7 +255,6 @@ spack:
         - $e4s_21.11_gpu_packages_rocm4.5.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm4.5.0
-        - slate@2021.05.02
       - - '%cce@13.0.2'
       - - arch=cray-sles15-zen3
       exclude:
@@ -265,6 +268,7 @@ spack:
       - hypre%cce^openblas
       - lammps
       - magma amdgpu_target=gfx90a ^hip@:4.5.0
+      - mfem
       - omega-h@9.32:9.34%cce@:14.0.0 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
@@ -273,7 +277,7 @@ spack:
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - rempi@1.1.0%cce@14.0.0
-      - slate%cce ^openblas
+      - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
@@ -286,13 +290,13 @@ spack:
         - $e4s_21.11_gpu_packages_rocm5.1.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm5.1.0
-        - slate@2021.05.02
-      - - '%cce@14.0.0'
+      - - '%cce@14.0.1'
+        - '%cce@14.0.0'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%cce
       - butterflypack@2.0.0:2.1.0%cce
-      - cabana@0.4.0%cce@13.0.0:14.0.0 # -Werror,-Wdeprecated-copy
+      - cabana@0.4.0%cce@13.0.0:14.0.1 # -Werror,-Wdeprecated-copy
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
       - globalarrays%cce ^openblas
@@ -300,15 +304,16 @@ spack:
       - hypre%cce^openblas
       - lammps
       - magma amdgpu_target=gfx90a ^hip@:4.5.0
-      - omega-h@9.32:9.34%cce@:14.0.0 # -Werror,-Wdeprecated-copy
+      - omega-h@9.32:9.34%cce@:14.0.1 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13 # -Wno-unsupported-target-opt breaks mpif90 config tests
       - petsc+rocm # FIXME
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
-      - rempi@1.1.0%cce@14.0.0
-      - slate%cce ^openblas
+      - precice@2.3.0%cce@14.0.1
+      - rempi@1.1.0%cce@14.0.0:14.0.1
+      - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
       - strumpack%cce ^openblas
@@ -339,7 +344,7 @@ spack:
       - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
       - parsec%clang
       - plasma%clang
-      - slate%clang ^openblas
+      - slate
       - slepc@3.15.0:3.16.2%clang
       - strumpack%clang ^openblas
       - tau%clang+elf
@@ -369,7 +374,7 @@ spack:
       - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
       - parsec%clang
       - plasma%clang
-      - slate%clang ^openblas
+      - slate
       - slepc@3.15.0:3.16.2%clang
       - strumpack%clang ^openblas
       - tau%clang+elf
@@ -378,7 +383,7 @@ spack:
   specs:
   - $core_specs
   - $cpe_gcc_specs
-  - $cpe_cce_specs
+  # - $cpe_cce_specs
   - $cpe_amd_specs
   #############################################################################
   mirrors:
@@ -452,7 +457,7 @@ spack:
           spec: cray-mpich@8.1.12
       providers: {}
       target: []
-      version: [8.1.12, 8.1.16]
+      version: [8.1.16, 8.1.12]
     darshan-runtime:
       buildable: true
       compiler: []
@@ -1263,6 +1268,7 @@ spack:
             environment_blacklist: []
           load: []
           suffixes:
+            cdo+aec: aec
             cdo^hdf5+mpi^netcdf+mpi^fftw+mpi: parallel
         chai:
           suffixes:
@@ -1328,7 +1334,7 @@ spack:
           suffixes:
             builtin.ncl ^hdf5+mpi^netcdf+mpi: parallel
         omega-h:
-          suffixes: 
+          suffixes:
             omega-h ^superlu-dist~rocm: cpu
         openblas:
           conflict: []
@@ -1426,10 +1432,6 @@ spack:
         - xz~pic
         - z3 ^libuuid
         - gobject-introspection ^cairo+X
-        - blaspp ^openblas
-        - slate ^openblas
-        - lapackpp ^openblas
-        - lapackpp ^blaspp~rocm
         - netlib-scalapack ^openblas
         - berkeley-db
         - boost%gcc visibility=global
@@ -1505,7 +1507,9 @@ spack:
         - xcb-proto
         - xextproto
         - xtrans
+        - zstd~programs
         - vtk-m+shared # FIXME: Explicit install is ~shared
+        - vtk-m~fpic
         - harfbuzz ^cairo~X
         - pango ^cairo~pdf
         - '%gcc@7-os'
@@ -1584,7 +1588,8 @@ spack:
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_SOURCE_CACHE}
     extensions:
-    - /sw/sources/facility-spack/crusher/share/spack/extensions/spack-olcf
+    - ${FACSPACK_CONF_COMMON}/spack/extensions/spack-olcf
+    # - /sw/sources/facility-spack/crusher/share/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache
     verify_ssl: true
     install_missing_compilers: false
@@ -1802,6 +1807,33 @@ spack:
           LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.2/lib
+      extra_rpaths:
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  # CCE 14.0.1
+  - compiler:
+      spec: cce@14.0.1
+      paths:
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray/8.3.3
+      - cce/14.0.1
+      - craype-x86-trento
+      - libfabric
+      - cray-pmi/6.1.3
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.3/lib
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
