@@ -453,19 +453,24 @@ spack:
       - unifyfs
       - vtk-m@1.6.0:1.7.1%gcc@11
     - matrix:
-      - - $e4s_22.05_cpu_packages
+      - - $e4s_21.11_cpu_packages
+        - $e4s_22.02_cpu_packages
+        - $e4s_22.05_cpu_packages
       - - '%gcc@12.1.0'
       exclude:
-      - ^cuda@:11.0.3
       - ascent~cuda  # fails due conduit c++17 issues
       - conduit ## up to v0.7.2 incompatible with std=c++17
+      - datatransferkit@3.1-rc3
       - faodel
+      - flux-core
       - globalarrays
       - loki ## FIXME: incompatible C++17 used by default
       - mercury@1.0.1  # code error
       - omega-h
       - parsec+cuda ## missing dwarf .debug_ranges section during linking
       - parsec@3.0.2012+cuda
+      - precice
+      - plumed@2.6.3
       - rempi@1.1.0  # code error
       - slate@2020.10.00 # broken custom ICL BLASFinder.cmake macro >:(
       - tau
