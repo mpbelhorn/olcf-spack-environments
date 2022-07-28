@@ -383,8 +383,14 @@ spack:
   specs:
   - $core_specs
   - $cpe_gcc_specs
-  # - $cpe_cce_specs
+  - $cpe_cce_specs
   - $cpe_amd_specs
+  - hipfort@5.1.0%cce@14.0.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
+  - hipfort@4.5.0%cce@13.0.2 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
+  - hipfort@4.5.0%gcc@10.3.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
+  - hipfort@4.5.0%gcc@11.2.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
+  - hipfort@5.1.0%gcc@10.3.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
+  - hipfort@5.1.0%gcc@11.2.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
   #############################################################################
   mirrors:
     facility_builds: /sw/crusher/spack-env/mirrors/builds
@@ -577,23 +583,6 @@ spack:
           spec: hipfft@4.3.0 ^hip@4.3.0
         - prefix: /opt/rocm-4.2.0
           spec: hipfft@4.2.0 ^hip@4.2.0
-      version: 
-      - 4.5.0
-      - 4.3.0
-      - 4.2.0
-    hipfort:
-      buildable: false
-      externals:
-        - prefix: /opt/rocm-5.1.0
-          spec: hipfort@5.1.0 ^hip@5.1.0
-        # - prefix: /opt/rocm-4.5.2
-        #   spec: hipfort@4.5.2 ^hip@4.5.2
-        - prefix: /opt/rocm-4.5.0
-          spec: hipfort@4.5.0 ^hip@4.5.0
-        - prefix: /opt/rocm-4.3.0
-          spec: hipfort@4.3.0 ^hip@4.3.0
-        - prefix: /opt/rocm-4.2.0
-          spec: hipfort@4.2.0 ^hip@4.2.0
       version: 
       - 4.5.0
       - 4.3.0
@@ -1520,7 +1509,6 @@ spack:
         - hipblas
         - hipcub
         - hipfft
-        - hipfort
         - hipify-clang
         - hipsparse
         - hsa-rocr-dev
