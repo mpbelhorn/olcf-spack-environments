@@ -237,7 +237,6 @@ spack:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
       - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
       - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
-      - hpctoolkit ## FIXME: environment solve doesn't depend_on intel-xed
       - loki%gcc@11 ## FIXME: incompatible C++17 used by default
       - magma amdgpu_target=gfx90a ^hip@:4.5.0
       - petsc+rocm # FIXME
