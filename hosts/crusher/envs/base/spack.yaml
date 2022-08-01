@@ -293,6 +293,25 @@ spack:
         - '%cce@14.0.0'
       - - arch=cray-sles15-zen3
       exclude:
+      # CCE 14.0.1 regression failures
+      - ascent@0.7.1%cce@14.0.1~cuda+shared~test
+      - axom@0.6.1%cce@14.0.1
+      - conduit@0.7.2%cce@14.0.1
+      - conduit@0.8.2%cce@14.0.1
+      - datatransferkit@3.1-rc3%cce@14.0.1
+      - flecsi@1.4.2%cce@14.0.1
+      - fortrilinos@2.0.0%cce@14.0.1
+      - hdf5@1.12.1%cce@14.0.1
+      - legion@21.03.0%cce@14.0.1
+      - nccmp@1.9.0.1%cce@14.0.1
+      - nco@5.0.1%cce@14.0.1
+      - netlib-scalapack@2.1.0%cce@14.0.1
+      - openpmd-api@0.14.3%cce@14.0.1
+      - openpmd-api@0.14.4%cce@14.0.1
+      - plumed@2.6.3%cce@14.0.1
+      - superlu-dist@7.1.1%cce@14.0.1
+      - superlu-dist@7.2.0%cce@14.0.1
+      # General problem packages
       - archer%cce
       - butterflypack@2.0.0:2.1.0%cce
       - cabana@0.4.0%cce@13.0.0:14.0.1 # -Werror,-Wdeprecated-copy
