@@ -385,8 +385,8 @@ spack:
   - $cpe_gcc_specs
   - $cpe_cce_specs
   - $cpe_amd_specs
-  - hipfort@5.1.0%cce@14.0.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
-  - hipfort@4.5.0%cce@13.0.2 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
+  # - hipfort@5.1.0%cce@14.0.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
+  # - hipfort@4.5.0%cce@13.0.2 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
   - hipfort@4.5.0%gcc@10.3.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
   - hipfort@4.5.0%gcc@11.2.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
   - hipfort@5.1.0%gcc@10.3.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
