@@ -201,6 +201,54 @@ spack:
     - kokkos@3.5.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
     - strumpack@6.3.0 ~slate+rocm~cuda amdgpu_target=gfx90a
     - sundials@6.1.1 +rocm~cuda amdgpu_target=gfx90a
+  - e4s_22.05_cpu_specs:
+    # Minimal diff from v22.02
+    - amrex@22.05 ~rocm~cuda
+    - arborx@1.2~cuda
+    - ascent@0.8.0 ~test+shared~cuda
+    # - bricks@r0.1
+    - butterflypack@2.1.1
+    - conduit@0.8.3
+    - dyninst@12.1.0
+    - flux-core@0.38.0
+    - gasnet@2022.3.0
+    # - geopm@1.1.0
+    # - h5bench@1.2
+    - hpctoolkit@2022.04.15 ~cuda
+    - hpctoolkit@2022.05.15 ~cuda
+    - kokkos@3.6.00 +openmp
+    - kokkos-kernels@3.6.00 +openmp
+    - libunwind@1.6.2
+    - metall@0.20
+    - mfem@4.4.0 ~cuda
+    - netlib-scalapack@2.2.0
+    - papyrus@1.0.2
+    - petsc@3.17.1 ~cuda
+    - phist@1.9.5
+    - precice@2.4.0
+    # - pruners-ninja@1.0.1
+    - pumi@2.2.7
+    - slepc@3.17.1 ~cuda
+    - strumpack@6.3.1 ~slate~rocm~cuda
+    - sundials@6.2.0 ~rocm~cuda
+    - upcxx@2022.3.0 ~cuda
+    # - variorum@0.4.1
+  - e4s_22.05_gpu_specs:
+    # Minimal diff from v22.02
+    - amrex@22.05 +rocm~cuda amdgpu_target=gfx90a
+    - arborx@1.2 +rocm amdgpu_target=gfx90a
+    - gasnet@2022.3.0 +rocm amdgpu_target=gfx90a
+    - heffte@2.2.0 +rocm amdgpu_target=gfx90a
+    # - hpctoolkit@2022.04.15 +rocm~cuda # llvm-amdgpu@5.x or newer
+    # - hpctoolkit@2022.05.15 +rocm~cuda # same as above
+    - hpx@1.7.1 +rocm amdgpu_target=gfx90a
+    - kokkos@3.6.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
+    - magma@2.6.2 +rocm~cuda amdgpu_target=gfx90a
+    - petsc@3.17.1 +rocm amdgpu_target=gfx90a
+    - slepc@3.17.1 +rocm amdgpu_target=gfx90a ^petsc@3.17.1 +rocm amdgpu_target=gfx90a
+    - strumpack@6.3.1 ~slate+rocm~cuda amdgpu_target=gfx90a
+    - superlu-dist@7.2.0 +rocm amdgpu_target=gfx90a
+    - upcxx@2022.3.0 +rocm amdgpu_target=gfx90a
   - e4s_21.11_gpu_packages_rocm4.5.0:
     - matrix:
       - - $e4s_21.11_gpu_specs
@@ -209,6 +257,10 @@ spack:
     - matrix:
       - - $e4s_22.02_gpu_specs
       - - ^hip@4.5.0 ^hsa-rocr-dev@4.5.0 ^llvm-amdgpu@4.5.0
+  - e4s_22.05_gpu_packages_rocm4.5.0:
+    - matrix:
+      - - $e4s_22.05_gpu_specs
+      - - ^hip@4.5.0 ^hsa-rocr-dev@4.5.0 ^llvm-amdgpu@4.5.0
   - e4s_21.11_gpu_packages_rocm5.1.0:
     - matrix:
       - - $e4s_21.11_gpu_specs
@@ -216,6 +268,10 @@ spack:
   - e4s_22.02_gpu_packages_rocm5.1.0:
     - matrix:
       - - $e4s_22.02_gpu_specs
+      - - ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^llvm-amdgpu@5.1.0
+  - e4s_22.05_gpu_packages_rocm5.1.0:
+    - matrix:
+      - - $e4s_22.05_gpu_specs
       - - ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^llvm-amdgpu@5.1.0
   - core_specs:
     - matrix:
@@ -230,6 +286,8 @@ spack:
         - $e4s_21.11_gpu_packages_rocm4.5.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm4.5.0
+        - $e4s_22.05_cpu_specs
+        - $e4s_22.05_gpu_packages_rocm4.5.0
       - - '%gcc@11.2.0'
         - '%gcc@10.3.0'
       - - arch=cray-sles15-zen3
@@ -254,11 +312,13 @@ spack:
         - $e4s_21.11_gpu_packages_rocm4.5.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm4.5.0
+        - $e4s_22.05_cpu_specs
+        - $e4s_22.05_gpu_packages_rocm4.5.0
       - - '%cce@13.0.2'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%cce
-      - butterflypack@2.0.0:2.1.0%cce
+      - butterflypack@2.0.0:2.1.1%cce
       - cabana@0.4.0%cce@13.0.0:14.0.0 # -Werror,-Wdeprecated-copy
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
@@ -273,6 +333,7 @@ spack:
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13 # -Wno-unsupported-target-opt breaks mpif90 config tests
       - petsc+rocm # FIXME
+      - phist
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - rempi@1.1.0%cce@14.0.0
@@ -289,15 +350,17 @@ spack:
         - $e4s_21.11_gpu_packages_rocm5.1.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm5.1.0
+        - $e4s_22.05_cpu_specs
+        - $e4s_22.05_gpu_packages_rocm5.1.0
       - - '%cce@14.0.1'
         - '%cce@14.0.0'
       - - arch=cray-sles15-zen3
       exclude:
       # CCE 14.0.1 regression failures
-      - ascent@0.7.1%cce@14.0.1~cuda+shared~test
+      - ascent@0.7.1:0.8.0%cce@14.0.1~cuda+shared~test
       - axom@0.6.1%cce@14.0.1
       - conduit@0.7.2%cce@14.0.1
-      - conduit@0.8.2%cce@14.0.1
+      - conduit@0.8.2:0.8.3%cce@14.0.1
       - datatransferkit@3.1-rc3%cce@14.0.1
       - flecsi@1.4.2%cce@14.0.1
       - fortrilinos@2.0.0%cce@14.0.1
@@ -305,15 +368,17 @@ spack:
       - legion@21.03.0%cce@14.0.1
       - nccmp@1.9.0.1%cce@14.0.1
       - nco@5.0.1%cce@14.0.1
-      - netlib-scalapack@2.1.0%cce@14.0.1
+      - netlib-scalapack@2.1.0:2.2.0%cce@14.0.1
       - openpmd-api@0.14.3%cce@14.0.1
       - openpmd-api@0.14.4%cce@14.0.1
+      - phist
       - plumed@2.6.3%cce@14.0.1
+      - slepc@3.17.1%cce@14.0.1
       - superlu-dist@7.1.1%cce@14.0.1
       - superlu-dist@7.2.0%cce@14.0.1
       # General problem packages
       - archer%cce
-      - butterflypack@2.0.0:2.1.0%cce
+      - butterflypack@2.0.0:2.1.1%cce
       - cabana@0.4.0%cce@13.0.0:14.0.1 # -Werror,-Wdeprecated-copy
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
@@ -329,7 +394,7 @@ spack:
       - petsc+rocm # FIXME
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
-      - precice@2.3.0%cce@14.0.1
+      - precice@2.3.0:2.4.0%cce@14.0.1
       - rempi@1.1.0%cce@14.0.0:14.0.1
       - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
@@ -345,13 +410,15 @@ spack:
         - $e4s_21.11_gpu_packages_rocm4.5.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm4.5.0
+        - $e4s_22.05_cpu_specs
+        - $e4s_22.05_gpu_packages_rocm4.5.0
       - - '%clang@13.0.0-rocm4.5.0'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%clang
       - ascent%clang
       - axom@0.6.1
-      - butterflypack@2.0.0:2.1.0%clang
+      - butterflypack@2.0.0:2.1.1%clang
       - caliper%clang
       - conduit%clang
       - dyninst%clang ## os elfutils insufficient
@@ -361,9 +428,10 @@ spack:
       - omega-h%clang
       - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
       - parsec%clang
+      - phist
       - plasma%clang
       - slate
-      - slepc@3.15.0:3.16.2%clang
+      - slepc%clang
       - strumpack%clang ^openblas
       - tau%clang+elf
       - trilinos@:13.2.0+rocm # FIXME
@@ -374,6 +442,8 @@ spack:
         - $e4s_21.11_gpu_packages_rocm5.1.0
         - $e4s_22.02_cpu_specs
         - $e4s_22.02_gpu_packages_rocm5.1.0
+        - $e4s_22.05_cpu_specs
+        - $e4s_22.05_gpu_packages_rocm5.1.0
       - - '%clang@14.0.0-rocm5.1.0'
       - - arch=cray-sles15-zen3
       exclude:
@@ -381,19 +451,20 @@ spack:
       - archer%clang
       - ascent%clang
       - axom@0.6.1
-      - butterflypack@2.0.0:2.1.0%clang
+      - butterflypack@2.0.0:2.1.1%clang
       - caliper%clang
       - conduit%clang
       - dyninst%clang ## os elfutils insufficient
       - flecsi%clang
       - hpctoolkit%clang ## depends on dyninst
-      - magma@2.6.1%clang
+      - magma@2.6.1:2.6.2%clang
       - omega-h%clang
       - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
       - parsec%clang
+      - phist
       - plasma%clang
       - slate
-      - slepc@3.15.0:3.16.2%clang
+      - slepc%clang
       - strumpack%clang ^openblas
       - tau%clang+elf
       - trilinos@:13.2.0+rocm # FIXME
@@ -1245,6 +1316,9 @@ spack:
         amrex:
           suffixes:
             amrex~rocm: cpu
+        arborx:
+          suffixes:
+            arborx~rocm: cpu
         arpack-ng:
           suffixes:
             arpack-ng ^openblas: openblas
@@ -1301,6 +1375,9 @@ spack:
           load: []
           suffixes:
             fftw+openmp: omp
+        gasnet:
+          suffixes:
+            gasnet~rocm: cpu
         ginkgo:
           suffixes:
             ginkgo~rocm: cpu
@@ -1328,6 +1405,9 @@ spack:
           suffixes:
             heffte~rocm: cpu
             heffte+fftw: fftw
+        hpctoolkit:
+          suffixes:
+            hpctoolkit+rocm: rocm
         kokkos-kernels:
           suffixes:
             kokkos-kernels+openmp: omp
@@ -1385,6 +1465,9 @@ spack:
         slate:
           suffixes:
             slate~rocm: cpu
+        slepc:
+          suffixes:
+            slepc~rocm: cpu
         strumpack:
           suffixes:
             strumpack~rocm: cpu
@@ -1406,6 +1489,9 @@ spack:
         umpire:
           suffixes:
             umpire~rocm: cpu
+        upcxx:
+          suffixes:
+            upcxx~rocm: cpu
         vtk:
           conflict: []
           environment:
