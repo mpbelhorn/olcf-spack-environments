@@ -480,6 +480,8 @@ spack:
   - hipfort@4.5.0%gcc@11.2.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
   - hipfort@5.1.0%gcc@10.3.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
   - hipfort@5.1.0%gcc@11.2.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
+  - hpctoolkit@2022.05.15%gcc@11.2.0+rocm~cuda ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^intel-tbb@2020.3 ^boost@1.78.0~python~numpy~mpi ^papi~rocm ^cray-mpich arch=cray-sles15-zen3
+  - hpctoolkit@2022.05.15%gcc@10.3.0+rocm~cuda ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^intel-tbb@2020.3 ^boost@1.78.0~python~numpy~mpi ^papi~rocm ^cray-mpich arch=cray-sles15-zen3
   #############################################################################
   mirrors:
     facility_builds: /sw/crusher/spack-env/mirrors/builds
