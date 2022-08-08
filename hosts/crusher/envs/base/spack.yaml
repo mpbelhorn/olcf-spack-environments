@@ -249,18 +249,18 @@ spack:
     - strumpack@6.3.1 ~slate+rocm~cuda amdgpu_target=gfx90a
     - superlu-dist@7.2.0 +rocm amdgpu_target=gfx90a
     - upcxx@2022.3.0 +rocm amdgpu_target=gfx90a
-  - e4s_21.11_gpu_packages_rocm4.5.0:
+  - e4s_21.11_gpu_packages_rocm4.5.2:
     - matrix:
       - - $e4s_21.11_gpu_specs
-      - - ^hip@4.5.0 ^hsa-rocr-dev@4.5.0 ^llvm-amdgpu@4.5.0
-  - e4s_22.02_gpu_packages_rocm4.5.0:
+      - - ^hip@4.5.2 ^hsa-rocr-dev@4.5.2 ^llvm-amdgpu@4.5.2
+  - e4s_22.02_gpu_packages_rocm4.5.2:
     - matrix:
       - - $e4s_22.02_gpu_specs
-      - - ^hip@4.5.0 ^hsa-rocr-dev@4.5.0 ^llvm-amdgpu@4.5.0
-  - e4s_22.05_gpu_packages_rocm4.5.0:
+      - - ^hip@4.5.2 ^hsa-rocr-dev@4.5.2 ^llvm-amdgpu@4.5.2
+  - e4s_22.05_gpu_packages_rocm4.5.2:
     - matrix:
       - - $e4s_22.05_gpu_specs
-      - - ^hip@4.5.0 ^hsa-rocr-dev@4.5.0 ^llvm-amdgpu@4.5.0
+      - - ^hip@4.5.2 ^hsa-rocr-dev@4.5.2 ^llvm-amdgpu@4.5.2
   - e4s_21.11_gpu_packages_rocm5.1.0:
     - matrix:
       - - $e4s_21.11_gpu_specs
@@ -283,11 +283,11 @@ spack:
   - cpe_gcc_specs:
     - matrix:
       - - $e4s_21.11_cpu_specs
-        - $e4s_21.11_gpu_packages_rocm4.5.0
+        - $e4s_21.11_gpu_packages_rocm4.5.2
         - $e4s_22.02_cpu_specs
-        - $e4s_22.02_gpu_packages_rocm4.5.0
+        - $e4s_22.02_gpu_packages_rocm4.5.2
         - $e4s_22.05_cpu_specs
-        - $e4s_22.05_gpu_packages_rocm4.5.0
+        - $e4s_22.05_gpu_packages_rocm4.5.2
       - - '%gcc@11.2.0'
         - '%gcc@10.3.0'
       - - arch=cray-sles15-zen3
@@ -296,7 +296,7 @@ spack:
       - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
       - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
       - loki%gcc@11 ## FIXME: incompatible C++17 used by default
-      - magma amdgpu_target=gfx90a ^hip@:4.5.0
+      - magma amdgpu_target=gfx90a ^hip@:4.5.2
       - petsc+rocm # FIXME
       - plasma
       - plumed@2.6.3%gcc@11.2.0
@@ -309,11 +309,11 @@ spack:
     # CCE 13.x
     - matrix:
       - - $e4s_21.11_cpu_specs
-        - $e4s_21.11_gpu_packages_rocm4.5.0
+        - $e4s_21.11_gpu_packages_rocm4.5.2
         - $e4s_22.02_cpu_specs
-        - $e4s_22.02_gpu_packages_rocm4.5.0
+        - $e4s_22.02_gpu_packages_rocm4.5.2
         - $e4s_22.05_cpu_specs
-        - $e4s_22.05_gpu_packages_rocm4.5.0
+        - $e4s_22.05_gpu_packages_rocm4.5.2
       - - '%cce@13.0.2'
       - - arch=cray-sles15-zen3
       exclude:
@@ -326,7 +326,7 @@ spack:
       - hpctoolkit%cce ## depends on dyninst
       - hypre%cce^openblas
       - lammps
-      - magma amdgpu_target=gfx90a ^hip@:4.5.0
+      - magma amdgpu_target=gfx90a ^hip@:4.5.2
       - mfem
       - omega-h@9.32:9.34%cce@:14.0.0 # -Werror,-Wdeprecated-copy
       - openblas
@@ -386,7 +386,7 @@ spack:
       - hpctoolkit%cce ## depends on dyninst
       - hypre%cce^openblas
       - lammps
-      - magma amdgpu_target=gfx90a ^hip@:4.5.0
+      - magma amdgpu_target=gfx90a ^hip@:4.5.2
       - omega-h@9.32:9.34%cce@:14.0.1 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
@@ -407,11 +407,11 @@ spack:
     # ROCm 4.x
     - matrix:
       - - $e4s_21.11_cpu_specs
-        - $e4s_21.11_gpu_packages_rocm4.5.0
+        - $e4s_21.11_gpu_packages_rocm4.5.2
         - $e4s_22.02_cpu_specs
-        - $e4s_22.02_gpu_packages_rocm4.5.0
+        - $e4s_22.02_gpu_packages_rocm4.5.2
         - $e4s_22.05_cpu_specs
-        - $e4s_22.05_gpu_packages_rocm4.5.0
+        - $e4s_22.05_gpu_packages_rocm4.5.2
       - - '%clang@13.0.0-rocm4.5.0'
       - - arch=cray-sles15-zen3
       exclude:
@@ -475,9 +475,9 @@ spack:
   - $cpe_cce_specs
   - $cpe_amd_specs
   # - hipfort@5.1.0%cce@14.0.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
-  # - hipfort@4.5.0%cce@13.0.2 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
-  - hipfort@4.5.0%gcc@10.3.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
-  - hipfort@4.5.0%gcc@11.2.0 ^hip@4.5.0 ^rocm-cmake@4.5.0 arch=cray-sles15-zen3
+  # - hipfort@4.5.2%cce@13.0.2 ^hip@4.5.2 ^rocm-cmake@4.5.2 arch=cray-sles15-zen3
+  - hipfort@4.5.2%gcc@10.3.0 ^hip@4.5.2 ^rocm-cmake@4.5.2 arch=cray-sles15-zen3
+  - hipfort@4.5.2%gcc@11.2.0 ^hip@4.5.2 ^rocm-cmake@4.5.2 arch=cray-sles15-zen3
   - hipfort@5.1.0%gcc@10.3.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
   - hipfort@5.1.0%gcc@11.2.0 ^hip@5.1.0 ^rocm-cmake@5.1.0 arch=cray-sles15-zen3
   - hpctoolkit@2022.05.15%gcc@11.2.0+rocm~cuda ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^intel-tbb@2020.3 ^boost@1.78.0~python~numpy~mpi ^papi~rocm ^cray-mpich arch=cray-sles15-zen3
