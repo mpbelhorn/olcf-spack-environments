@@ -297,6 +297,8 @@ spack:
     - hypre@2.24.0 +cuda cuda_arch=70
     - kokkos@3.5.00 ~rocm+cuda+wrapper cuda_arch=70
     - kokkos-kernels@3.5.00 +cuda cuda_arch=70 ^kokkos@3.5.00~rocm+cuda+wrapper cuda_arch=70
+    - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70
+    # - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70 ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
     - papi@6.0.0.1 +cuda # not CudaPackage
     - petsc@3.16.4 +cuda cuda_arch=70
     - slepc@3.16.2 +cuda cuda_arch=70
@@ -438,6 +440,7 @@ spack:
       - faodel
       - globalarrays
       - globalarrays%gcc@10.2.0   # conflict in package
+      - lammps@20220107+cuda%gcc@10.2.0
       - loki ## FIXME: incompatible C++17 used by default
       - mercury@1.0.1  # code error
       - mercury@1.0.1%gcc@10.2.0  # code error
@@ -1090,6 +1093,9 @@ spack:
           suffixes:
             kokkos-kernels +openmp: omp
             kokkos-kernels ~cuda: cpu
+        lammps:
+          suffixes:
+            lammps+cuda: gpu
         lapackpp:
           suffixes:
             lapackpp ^blaspp~rocm~cuda: cpu
