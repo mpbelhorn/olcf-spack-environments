@@ -299,6 +299,7 @@ spack:
     - kokkos-kernels@3.5.00 +cuda cuda_arch=70 ^kokkos@3.5.00~rocm+cuda+wrapper cuda_arch=70
     - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70
     # - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70 ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
+    - lammps@20220623+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+plumed+cuda cuda_arch=70 ^kokkos@3.6..00
     - papi@6.0.0.1 +cuda # not CudaPackage
     - petsc@3.16.4 +cuda cuda_arch=70
     - slepc@3.16.2 +cuda cuda_arch=70
