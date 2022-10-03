@@ -6,14 +6,18 @@ spack:
   - core_compiler:
     - '%gcc@7.5.0'
   - gcc_compilers:
+    - '%gcc@12.1.0'
     - '%gcc@11.2.0'
     - '%gcc@10.3.0'
   - cray_compilers:
-    - '%cce@14.0.1'
+    - '%cce@14.0.3'
+    - '%cce@14.0.2'
     - '%cce@14.0.0'
     - '%cce@13.0.2'
   - amd_compilers:
+    - '%clang@14.0.0-rocm5.2.0'
     - '%clang@14.0.0-rocm5.1.0'
+    - '%clang@13.0.0-rocm4.5.2'
     - '%clang@13.0.0-rocm4.5.0'
   - all_compilers:
     - $gcc_compilers
@@ -47,6 +51,7 @@ spack:
     - libpng@1.2.57
     - julia
     - wget
+    - libdrm
     - bazel ^openjdk@11.0:11.99
     - fpchecker
     - openblas@0.3.17 threads=none
@@ -273,6 +278,18 @@ spack:
     - matrix:
       - - $e4s_22.05_gpu_specs
       - - ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^llvm-amdgpu@5.1.0
+  - e4s_21.11_gpu_packages_rocm5.2.0:
+    - matrix:
+      - - $e4s_21.11_gpu_specs
+      - - ^hip@5.2.0 ^hsa-rocr-dev@5.2.0 ^llvm-amdgpu@5.2.0
+  - e4s_22.02_gpu_packages_rocm5.2.0:
+    - matrix:
+      - - $e4s_22.02_gpu_specs
+      - - ^hip@5.2.0 ^hsa-rocr-dev@5.2.0 ^llvm-amdgpu@5.2.0
+  - e4s_22.05_gpu_packages_rocm5.2.0:
+    - matrix:
+      - - $e4s_22.05_gpu_specs
+      - - ^hip@5.2.0 ^hsa-rocr-dev@5.2.0 ^llvm-amdgpu@5.2.0
   - core_specs:
     - matrix:
       - - $core_packages
@@ -288,23 +305,26 @@ spack:
         - $e4s_22.02_gpu_packages_rocm4.5.2
         - $e4s_22.05_cpu_specs
         - $e4s_22.05_gpu_packages_rocm4.5.2
-      - - '%gcc@11.2.0'
+        - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
+      - - '%gcc@12.1.0'
+        - '%gcc@11.2.0'
         - '%gcc@10.3.0'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
       - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
       - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
-      - loki%gcc@11 ## FIXME: incompatible C++17 used by default
+      - loki%gcc@11:12.1.0 ## FIXME: incompatible C++17 used by default
       - magma amdgpu_target=gfx90a ^hip@:4.5.2
+      - openpmd-api%gcc@12.1.0+hdf5 ## FIXME: gcc@12.1.0 fails to build hdf5
       - petsc+rocm # FIXME
       - plasma
-      - plumed@2.6.3%gcc@11.2.0
-      - rempi%gcc@10.3.0:11.2.0
+      - plumed@2.6.3%gcc@11.2.0:12.1.0
+      - rempi%gcc@10.3.0:12.1.0
       - slepc@3.15.1:3.16.0
       - strumpack%gcc # fails due to failure to find mpi.h
       - trilinos@:13.2.0+rocm # FIXME
-      - unifyfs%gcc@11.2.0
+      - unifyfs%gcc@11.2.0:12.1.0
   - cpe_cce_specs:
     # CCE 13.x
     - matrix:
@@ -336,7 +356,6 @@ spack:
       - phist
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
-      - rempi@1.1.0%cce@14.0.0
       - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
@@ -352,7 +371,9 @@ spack:
         - $e4s_22.02_gpu_packages_rocm5.1.0
         - $e4s_22.05_cpu_specs
         - $e4s_22.05_gpu_packages_rocm5.1.0
-      - - '%cce@14.0.1'
+        - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
+      - - '%cce@14.0.3'
+        - '%cce@14.0.2'
         - '%cce@14.0.0'
       - - arch=cray-sles15-zen3
       exclude:
@@ -379,7 +400,7 @@ spack:
       # General problem packages
       - archer%cce
       - butterflypack@2.0.0:2.1.1%cce
-      - cabana@0.4.0%cce@13.0.0:14.0.1 # -Werror,-Wdeprecated-copy
+      - cabana@0.4.0%cce@13.0.0:14.0.3 # -Werror,-Wdeprecated-copy
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
       - globalarrays%cce ^openblas
@@ -387,7 +408,7 @@ spack:
       - hypre%cce^openblas
       - lammps
       - magma amdgpu_target=gfx90a ^hip@:4.5.2
-      - omega-h@9.32:9.34%cce@:14.0.1 # -Werror,-Wdeprecated-copy
+      - omega-h@9.32:9.34%cce@:14.0.3 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13 # -Wno-unsupported-target-opt breaks mpif90 config tests
@@ -395,7 +416,7 @@ spack:
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - precice@2.3.0:2.4.0%cce@14.0.1
-      - rempi@1.1.0%cce@14.0.0:14.0.1
+      - rempi@1.1.0%cce@14.0.0:14.0.3 ## ./rempi_message_manager.h:53:3: error: unknown type name 'string'
       - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
@@ -413,6 +434,7 @@ spack:
         - $e4s_22.05_cpu_specs
         - $e4s_22.05_gpu_packages_rocm4.5.2
       - - '%clang@13.0.0-rocm4.5.0'
+        - '%clang@13.0.0-rocm4.5.2'
       - - arch=cray-sles15-zen3
       exclude:
       - archer%clang
@@ -425,8 +447,8 @@ spack:
       - flecsi%clang
       - hpctoolkit%clang ## depends on dyninst
       - magma@2.6.1%clang
+      - magma@2.6.2%clang@13.0.0-rocm4.5.2+rocm # --no-allow-shlib-undefined; libsci missing cray-mpich libs
       - omega-h%clang
-      - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
       - parsec%clang
       - phist
       - plasma%clang
@@ -447,7 +469,6 @@ spack:
       - - '%clang@14.0.0-rocm5.1.0'
       - - arch=cray-sles15-zen3
       exclude:
-      - adios2@2.7.1%clang@14.0.0-rocm5.1.0
       - archer%clang
       - ascent%clang
       - axom@0.6.1
@@ -460,6 +481,42 @@ spack:
       - magma@2.6.1:2.6.2%clang
       - omega-h%clang
       - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
+      - parsec%clang
+      - phist
+      - plasma%clang
+      - slate
+      - slepc%clang
+      - strumpack%clang ^openblas
+      - tau%clang+elf
+      - trilinos@:13.2.0+rocm # FIXME
+      - unifyfs%clang
+    - matrix:
+      - - $e4s_21.11_cpu_specs
+        - $e4s_21.11_gpu_packages_rocm5.2.0
+        - $e4s_22.02_cpu_specs
+        - $e4s_22.02_gpu_packages_rocm5.2.0
+        - $e4s_22.05_cpu_specs
+        - $e4s_22.05_gpu_packages_rocm5.2.0
+      - - '%clang@14.0.0-rocm5.2.0'
+      - - arch=cray-sles15-zen3
+      exclude:
+      # ROCM 5.2.0 errors
+      - raja@0.14.0+rocm # Failure to render templates in rocprim
+      - petsc@3.16.4%clang@14.0.0-rocm5.2.0+rocm # Petsc config script failure to parse rocm headers/libs
+      - petsc@3.17.1%clang@14.0.0-rocm5.2.0+rocm # Petsc config script failure to parse rocm headers/libs
+      # General Errors
+      - archer%clang
+      - ascent%clang
+      - axom@0.6.1
+      - butterflypack@2.0.0:2.1.1%clang
+      - caliper%clang
+      - conduit%clang
+      - dyninst%clang ## os elfutils insufficient
+      - flecsi%clang
+      - hpctoolkit%clang ## depends on dyninst
+      - magma@2.6.1:2.6.2%clang
+      - omega-h%clang
+      - openpmd-api@0.14%clang@14.0.0-rocm5.2.0
       - parsec%clang
       - phist
       - plasma%clang
@@ -1479,6 +1536,9 @@ spack:
         hpctoolkit:
           suffixes:
             hpctoolkit+rocm: rocm
+        hpx:
+          suffixes:
+            hpx~rocm: cpu
         kokkos-kernels:
           suffixes:
             kokkos-kernels+openmp: omp
@@ -1579,7 +1639,6 @@ spack:
         whitelist: []
         blacklist:
         - binutils
-        - boost%gcc cxxstd=98
         - boost%gcc visibility=global
         - boost~filesystem
         - boost~math
@@ -1868,6 +1927,26 @@ spack:
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
       extra_rpaths: []
+  # GCC 12.1.0
+  - compiler:
+      spec: gcc@12.1.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-gnu
+      - gcc/12.1.0
+      - craype-x86-trento
+      - libfabric
+      environment:
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.5/lib
+      extra_rpaths: []
   # CCE 13.0.0
   - compiler:
       spec: cce@13.0.0
@@ -2000,6 +2079,62 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # CCE 14.0.2
+  - compiler:
+      spec: cce@14.0.2
+      paths:
+        # TODO: Check CPE version after upgrade
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray/8.3.3
+      - cce/14.0.2
+      - craype-x86-trento
+      - libfabric
+      - cray-pmi/6.1.3
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.2/lib
+      extra_rpaths:
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  # CCE 14.0.3
+  - compiler:
+      spec: cce@14.0.3
+      paths:
+        # TODO: Check CPE version after upgrade
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray/8.3.3
+      - cce/14.0.2
+      - craype-x86-trento
+      - libfabric
+      - cray-pmi/6.1.5
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.5/lib
+      extra_rpaths:
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
   # AMD 4.5.0
   - compiler:
       spec: clang@13.0.0-rocm4.5.0
@@ -2027,6 +2162,35 @@ spack:
       extra_rpaths:
       - /opt/rocm-4.5.0/lib
       - /opt/rocm-4.5.0/lib64
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  # AMD 4.5.2
+  - compiler:
+      spec: clang@13.0.0-rocm4.5.2
+      paths:
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-amd
+      - amd/4.5.2
+      - craype-x86-trento
+      - libfabric
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
+          LIBRARY_PATH: /opt/rocm-4.5.2/lib:/opt/rocm-4.5.2/lib64
+      extra_rpaths:
+      - /opt/rocm-4.5.2/lib
+      - /opt/rocm-4.5.2/lib64
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
   # AMD 5.1.0
@@ -2057,5 +2221,35 @@ spack:
       extra_rpaths:
       - /opt/rocm-5.1.0/lib
       - /opt/rocm-5.1.0/lib64
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  # AMD 5.2.0
+  - compiler:
+      spec: clang@14.0.0-rocm5.2.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.15/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
+        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-amd/8.3.3
+      - amd/5.2.0
+      - craype-x86-trento
+      - libfabric
+      - cray-pmi/6.1.2
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.2/lib
+          LIBRARY_PATH: /opt/rocm-5.2.0/lib:/opt/rocm-5.2.0/lib64
+      extra_rpaths:
+      - /opt/rocm-5.2.0/lib
+      - /opt/rocm-5.2.0/lib64
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
