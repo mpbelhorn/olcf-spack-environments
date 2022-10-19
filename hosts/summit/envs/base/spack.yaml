@@ -367,6 +367,19 @@ spack:
     - matrix:
       - - $e4s_22.05_gpu_packages 
       - - ^cuda@11.4.2
+  - e4s_22.08_cpu_packages:
+    - hpctoolkit@2022.10.01 ~cuda
+  - e4s_22.08_gpu_packages:
+    # Minimal diff from v22.05
+    - hpctoolkit@2022.10.01 +cuda
+  - e4s_22.08_gpu_packages_cuda11.0.3:
+    - matrix:
+      - - $e4s_22.08_gpu_packages 
+      - - ^cuda@11.0.3
+  - e4s_22.08_gpu_packages_cuda11.4.2:
+    - matrix:
+      - - $e4s_22.08_gpu_packages 
+      - - ^cuda@11.4.2
   - core_specs:
     - matrix:
       - - $core_packages
@@ -394,6 +407,8 @@ spack:
         - $e4s_22.02_gpu_packages_cuda11.0.3
         - $e4s_22.05_cpu_packages
         - $e4s_22.05_gpu_packages_cuda11.0.3
+        - $e4s_22.08_cpu_packages
+        - $e4s_22.08_gpu_packages_cuda11.0.3
         - nco
       - - '%gcc@8.3.1'
         - '%gcc@9.1.0'
@@ -429,6 +444,8 @@ spack:
         - $e4s_22.02_gpu_packages_cuda11.4.2
         - $e4s_22.05_cpu_packages
         - $e4s_22.05_gpu_packages_cuda11.4.2
+        - $e4s_22.08_cpu_packages
+        - $e4s_22.08_gpu_packages_cuda11.4.2
       - - '%gcc@11.2.0'
         - '%gcc@11.1.0'
         - '%gcc@10.2.0'
