@@ -94,6 +94,8 @@ spack:
     - darshan-runtime@3.3.0+hdf5
     - darshan-runtime@3.3.1~hdf5
     - darshan-runtime@3.3.1+hdf5
+    - darshan-runtime@3.4.0~hdf5
+    - darshan-runtime@3.4.0+hdf5
     - scorep@7.0+mpi+papi+shmem ^papi+cuda ^cuda@11.0.3
     - scorep@7.0+mpi~papi+shmem
     - valgrind ~ubsan+mpi+boost
@@ -297,6 +299,9 @@ spack:
     - hypre@2.24.0 +cuda cuda_arch=70
     - kokkos@3.5.00 ~rocm+cuda+wrapper cuda_arch=70
     - kokkos-kernels@3.5.00 +cuda cuda_arch=70 ^kokkos@3.5.00~rocm+cuda+wrapper cuda_arch=70
+    - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70
+    # - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70 ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
+    - lammps@20220623+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+openmp+openmp-package+plumed+cuda cuda_arch=70 ^kokkos@3.6.00
     - papi@6.0.0.1 +cuda # not CudaPackage
     - petsc@3.16.4 +cuda cuda_arch=70
     - slepc@3.16.2 +cuda cuda_arch=70
@@ -364,6 +369,19 @@ spack:
     - matrix:
       - - $e4s_22.05_gpu_packages 
       - - ^cuda@11.4.2
+  - e4s_22.08_cpu_packages:
+    - hpctoolkit@2022.10.01 ~cuda
+  - e4s_22.08_gpu_packages:
+    # Minimal diff from v22.05
+    - hpctoolkit@2022.10.01 +cuda
+  - e4s_22.08_gpu_packages_cuda11.0.3:
+    - matrix:
+      - - $e4s_22.08_gpu_packages 
+      - - ^cuda@11.0.3
+  - e4s_22.08_gpu_packages_cuda11.4.2:
+    - matrix:
+      - - $e4s_22.08_gpu_packages 
+      - - ^cuda@11.4.2
   - core_specs:
     - matrix:
       - - $core_packages
@@ -391,6 +409,8 @@ spack:
         - $e4s_22.02_gpu_packages_cuda11.0.3
         - $e4s_22.05_cpu_packages
         - $e4s_22.05_gpu_packages_cuda11.0.3
+        - $e4s_22.08_cpu_packages
+        - $e4s_22.08_gpu_packages_cuda11.0.3
         - nco
       - - '%gcc@8.3.1'
         - '%gcc@9.1.0'
@@ -426,6 +446,8 @@ spack:
         - $e4s_22.02_gpu_packages_cuda11.4.2
         - $e4s_22.05_cpu_packages
         - $e4s_22.05_gpu_packages_cuda11.4.2
+        - $e4s_22.08_cpu_packages
+        - $e4s_22.08_gpu_packages_cuda11.4.2
       - - '%gcc@11.2.0'
         - '%gcc@11.1.0'
         - '%gcc@10.2.0'
@@ -438,6 +460,7 @@ spack:
       - faodel
       - globalarrays
       - globalarrays%gcc@10.2.0   # conflict in package
+      - lammps@20220107+cuda%gcc@10.2.0
       - loki ## FIXME: incompatible C++17 used by default
       - mercury@1.0.1  # code error
       - mercury@1.0.1%gcc@10.2.0  # code error
@@ -600,6 +623,8 @@ spack:
         scalapack: [netlib-scalapack]
       target: [ppc64le]
       version: []
+    mpi:
+      require: 'spectrum-mpi@10.4.0.3-20210112'
     amgx:
       buildable: true
       compiler: []
@@ -1090,6 +1115,9 @@ spack:
           suffixes:
             kokkos-kernels +openmp: omp
             kokkos-kernels ~cuda: cpu
+        lammps:
+          suffixes:
+            lammps+cuda: gpu
         lapackpp:
           suffixes:
             lapackpp ^blaspp~rocm~cuda: cpu
@@ -1388,6 +1416,8 @@ spack:
         - darshan-runtime@3.3.0%gcc@8.3.1~hdf5
         - darshan-runtime@3.3.1%gcc@8.3.1+hdf5
         - darshan-runtime@3.3.1%gcc@8.3.1~hdf5
+        - darshan-runtime@3.4.0%gcc@8.3.1+hdf5
+        - darshan-runtime@3.4.0%gcc@8.3.1~hdf5
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
