@@ -94,6 +94,8 @@ spack:
     - darshan-runtime@3.3.0+hdf5
     - darshan-runtime@3.3.1~hdf5
     - darshan-runtime@3.3.1+hdf5
+    - darshan-runtime@3.4.0~hdf5
+    - darshan-runtime@3.4.0+hdf5
     - scorep@7.0+mpi+papi+shmem ^papi+cuda ^cuda@11.0.3
     - scorep@7.0+mpi~papi+shmem
     - valgrind ~ubsan+mpi+boost
@@ -621,6 +623,8 @@ spack:
         scalapack: [netlib-scalapack]
       target: [ppc64le]
       version: []
+    mpi:
+      require: 'spectrum-mpi@10.4.0.3-20210112'
     amgx:
       buildable: true
       compiler: []
@@ -1412,6 +1416,8 @@ spack:
         - darshan-runtime@3.3.0%gcc@8.3.1~hdf5
         - darshan-runtime@3.3.1%gcc@8.3.1+hdf5
         - darshan-runtime@3.3.1%gcc@8.3.1~hdf5
+        - darshan-runtime@3.4.0%gcc@8.3.1+hdf5
+        - darshan-runtime@3.4.0%gcc@8.3.1~hdf5
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
