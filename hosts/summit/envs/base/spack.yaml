@@ -386,6 +386,7 @@ spack:
     - matrix:
       - - $core_packages
       - - $core_compiler
+    - julia@1.8.2%gcc@8.3.1 ^llvm%gcc@8.3.1 ^ninja@1.11.1 ^python@3.9.13
   - smpi_specs:
     - matrix:
       - - spectrum-mpi
