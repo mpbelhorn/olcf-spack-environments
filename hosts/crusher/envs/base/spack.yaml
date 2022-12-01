@@ -54,6 +54,7 @@ spack:
     - libdrm
     - bazel ^openjdk@11.0:11.99
     - fpchecker
+    - zstd+programs compression=zlib,lz4,lzma
     - openblas@0.3.17 threads=none
     - openblas@0.3.17 threads=openmp
     - openblas@0.3.17 threads=pthreads
