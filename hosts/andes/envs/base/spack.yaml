@@ -289,6 +289,7 @@ spack:
     - cudnn@8.0.4.30-11.0%gcc@8.3.1
     - cudnn@7.6.5.32-10.2%gcc@8.3.1
     - nccl@2.9.9-1%gcc@8.3.1 cuda_arch=30,32,35,37 ^cuda@10.2.89
+    - julia@1.8.2%gcc@8.3.1 ^llvm%gcc@8.3.1 ^ninja@1.11.1 ^python@3.9.13
   - gcc_specs:
     - matrix:
       - - $general_compute_packages
@@ -776,7 +777,7 @@ spack:
     - ${FACSPACK_CONF_COMMON}/spack/templates
     - $spack/share/spack/templates
     build_stage:
-    - /gpfs/alpine/world-shared/stf007/belhorn/spack-stage/andes
+    # - /gpfs/alpine/world-shared/stf007/belhorn/spack-stage/andes
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
