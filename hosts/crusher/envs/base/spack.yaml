@@ -641,6 +641,7 @@ spack:
       version: []
     hip:
       buildable: false
+      require: '@5.2.0'
       externals:
         - extra_attributes:
             compilers:
@@ -674,6 +675,7 @@ spack:
           spec: hip@4.2.0
     hip-rocclr:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0/rocclr
           spec: hip-rocclr@5.2.0 ^hsa-rocr-dev@5.2.0
@@ -689,6 +691,7 @@ spack:
           spec: hip-rocclr@4.2.0 ^hsa-rocr-dev@4.2.0
     hipblas:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: hipblas@5.2.0 ^hip@5.2.0
@@ -749,11 +752,13 @@ spack:
           spec: hipify-clang@4.2.0
     hipsolver:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: hipsolver@5.2.0 ^hip@5.2.0
     hipsparse:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: hipsparse@5.2.0 ^hip@5.2.0
@@ -972,6 +977,7 @@ spack:
           spec: rocalution@4.2.0 ^hip@4.2.0
     rocblas:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocblas@5.2.0 ^hip@5.2.0
@@ -987,6 +993,7 @@ spack:
           spec: rocblas@4.2.0 ^hip@4.2.0
     rocfft:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocfft@5.2.0 ^hip@5.2.0
@@ -1018,6 +1025,7 @@ spack:
           spec: rocm-clang-ocl@4.2.0
     rocm-cmake:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocm-cmake@5.2.0
@@ -1153,6 +1161,7 @@ spack:
           spec: rocminfo@4.2.0
     rocprim:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocprim@5.2.0 ^hip@5.2.0
@@ -1183,6 +1192,7 @@ spack:
           spec: rocprofiler-dev@4.2.0
     rocrand:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocrand@5.2.0 ^hip@5.2.0
@@ -1213,6 +1223,7 @@ spack:
           spec: rocsolver@4.2.0 ^hip@4.2.0
     rocsparse:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocsparse@5.2.0 ^hip@5.2.0
@@ -1228,6 +1239,7 @@ spack:
           spec: rocsparse@4.2.0 ^hip@4.2.0
     rocthrust:
       buildable: false
+      require: '@5.2.0'
       externals:
         - prefix: /opt/rocm-5.2.0
           spec: rocthrust@5.2.0 ^hip@5.2.0
