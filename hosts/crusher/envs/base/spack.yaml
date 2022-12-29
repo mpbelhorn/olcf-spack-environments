@@ -46,6 +46,7 @@ spack:
     - gnupg
     - googletest
     - git-lfs
+    - cgdb@0.8.0-1
     - imagemagick
     - exuberant-ctags@5.8
     - libpng@1.2.57
