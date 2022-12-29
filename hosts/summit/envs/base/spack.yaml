@@ -53,7 +53,7 @@ spack:
     - nano
     - gnuplot
     - subversion
-    - darshan-util
+    - darshan-util@3.4.0
     - python@2.7.15
     - python@3.7.7
     - mercurial
