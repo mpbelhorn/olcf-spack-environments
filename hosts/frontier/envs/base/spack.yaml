@@ -554,8 +554,7 @@ spack:
   - paraview%gcc@10.3.0+hdf5+osmesa arch=cray-sles15-zen3
   #############################################################################
   mirrors:
-    facility_builds: /sw/frontier/spack-env/mirrors/builds
-    source_mirror: /sw/sources/facility-spack/source_mirror
+    facility_builds: /sw/frontier/spack-envs/mirrors/builds
   repos:
   - ${FACSPACK_CONF_COMMON}/spack/repos/olcf
   #############################################################################
@@ -1718,10 +1717,9 @@ spack:
     build_stage:
     - $tempdir/$user/spack-stage
     - $spack/var/spack/stage
-    source_cache: ${FACSPACK_SOURCE_CACHE}
+    source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
     extensions:
     - ${FACSPACK_CONF_COMMON}/spack/extensions/spack-olcf
-    # - /sw/sources/facility-spack/crusher/share/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache
     verify_ssl: true
     install_missing_compilers: false

@@ -782,7 +782,7 @@ spack:
     - $spack/var/spack/stage
     source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
     extensions:
-    - /sw/sources/facility-spack/andes/share/spack/extensions/spack-olcf
+    - ${FACSPACK_CONF_COMMON}/spack/extensions/spack-olcf
     misc_cache: ${FACSPACK_ENV}/.mcache
     verify_ssl: true
     install_missing_compilers: false
