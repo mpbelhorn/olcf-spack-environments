@@ -45,6 +45,7 @@ spack:
     - libzmq
     - gnupg
     - googletest
+    - gsl@2.7.1
     - git-lfs
     - cvs
     - cgdb@0.8.0-1
