@@ -35,7 +35,7 @@ spack:
     - nano
     - gnuplot +X
     - subversion
-    - darshan-util
+    - darshan-util@3.4.0
     - python
     - mercurial
     - ccache
@@ -80,8 +80,8 @@ spack:
     - chai@2.4.0 ~benchmarks~tests~rocm~cuda
     #### - charliecloud@0.25
     - conduit@0.7.2
-    - darshan-runtime@3.3.1 ## installed globally
-    - darshan-util@3.3.1    ## installed globally
+    - darshan-runtime@3.4.0 ## installed globally
+    - darshan-util@3.4.0    ## installed globally
     - datatransferkit@3.1-rc3
     - dyninst@11.0.1
     # - exaworks@0.1.0
@@ -316,6 +316,9 @@ spack:
       - - arch=cray-sles15-zen3
       exclude:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
+      - axom@0.6.1%gcc@12.1.0 # Problem with umpire in spec?
+      - phist@1.9.5%gcc@12.1.0
+      - precice@2.4.0%gcc@12.1.0 # Problem building petsc
       - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
       - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
       - loki%gcc@11:12.1.0 ## FIXME: incompatible C++17 used by default
@@ -438,6 +441,7 @@ spack:
     #     - $e4s_22.05_cpu_specs
     #     - $e4s_22.05_gpu_packages_rocm4.5.2
     #   - - '%clang@13.0.0-rocm4.5.0'
+    #     - '%clang@13.0.0-rocm4.5.2'
     #   - - arch=cray-sles15-zen3
     #   exclude:
     #   - archer%clang
@@ -450,8 +454,8 @@ spack:
     #   - flecsi%clang
     #   - hpctoolkit%clang ## depends on dyninst
     #   - magma@2.6.1%clang
+    #   - magma@2.6.2%clang@13.0.0-rocm4.5.2+rocm # --no-allow-shlib-undefined; libsci missing cray-mpich libs
     #   - omega-h%clang
-    #   - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
     #   - parsec%clang
     #   - phist
     #   - plasma%clang
@@ -551,7 +555,7 @@ spack:
   # - hpctoolkit@2022.05.15%gcc@11.2.0+rocm~cuda ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^intel-tbb@2020.3 ^boost@1.78.0~python~numpy~mpi ^papi~rocm ^cray-mpich arch=cray-sles15-zen3
   # - hpctoolkit@2022.05.15%gcc@10.3.0+rocm~cuda ^hip@5.1.0 ^hsa-rocr-dev@5.1.0 ^intel-tbb@2020.3 ^boost@1.78.0~python~numpy~mpi ^papi~rocm ^cray-mpich arch=cray-sles15-zen3
   # - visit%gcc@10.3.0 ^hdf5@1.12.2 arch=cray-sles15-zen3
-  - paraview%gcc@10.3.0+hdf5+osmesa arch=cray-sles15-zen3
+  # - paraview%gcc@10.3.0+hdf5+osmesa arch=cray-sles15-zen3
   #############################################################################
   mirrors:
     facility_builds: /sw/frontier/spack-envs/mirrors/builds
@@ -1779,10 +1783,10 @@ spack:
   - compiler:
       spec: gcc@9.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1799,10 +1803,10 @@ spack:
   - compiler:
       spec: gcc@10.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1819,10 +1823,10 @@ spack:
   - compiler:
       spec: gcc@11.2.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1839,10 +1843,10 @@ spack:
   - compiler:
       spec: gcc@12.1.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1859,10 +1863,10 @@ spack:
   - compiler:
       spec: cce@13.0.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1885,10 +1889,10 @@ spack:
   - compiler:
       spec: cce@13.0.1
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1911,10 +1915,10 @@ spack:
   - compiler:
       spec: cce@13.0.2
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -1937,10 +1941,10 @@ spack:
   - compiler:
       spec: cce@14.0.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2020,10 +2024,10 @@ spack:
   #     spec: cce@14.0.3
   #     paths:
   #       # TODO: Check CPE version after upgrade
-  #       cc: /opt/cray/pe/craype/2.7.15/bin/cc
-  #       cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-  #       f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-  #       fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+  #       cc: /opt/cray/pe/craype/2.7.16/bin/cc
+  #       cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+  #       f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+  #       fc: /opt/cray/pe/craype/2.7.16/bin/ftn
   #     flags: {}
   #     operating_system: sles15
   #     target: any
@@ -2047,10 +2051,10 @@ spack:
   - compiler:
       spec: clang@13.0.0-rocm4.5.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.15/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-        f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.16/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2076,10 +2080,10 @@ spack:
   # - compiler:
   #     spec: clang@13.0.0-rocm4.5.2
   #     paths:
-  #       cc: /opt/cray/pe/craype/2.7.15/bin/cc
-  #       cxx: /opt/cray/pe/craype/2.7.15/bin/CC
-  #       f77: /opt/cray/pe/craype/2.7.15/bin/ftn
-  #       fc: /opt/cray/pe/craype/2.7.15/bin/ftn
+  #       cc: /opt/cray/pe/craype/2.7.16/bin/cc
+  #       cxx: /opt/cray/pe/craype/2.7.16/bin/CC
+  #       f77: /opt/cray/pe/craype/2.7.16/bin/ftn
+  #       fc: /opt/cray/pe/craype/2.7.16/bin/ftn
   #     flags: {}
   #     operating_system: sles15
   #     target: any
