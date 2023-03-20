@@ -78,6 +78,7 @@ spack:
     - makedepend
     - r@4.0.5
     - rust
+    - cgdb@0.8.0-1
     # - julia
     - jq
     - hpcviewer@2021.03
