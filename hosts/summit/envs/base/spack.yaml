@@ -572,24 +572,24 @@ spack:
       - netcdf-cxx4%xl@16.1.1-beta103
       - parallel-io%xl@16.1.1-beta103
   - nv_specs:
-    - adios2%nvhpc@22.5~python ^bzip2%gcc@8-os ^c-blosc%gcc@8-os ^libfabric%gcc@8-os ^libffi%gcc@8-os ^libpng%gcc@8-os ^sz%gcc@8-os ^zfp%gcc@8-os ^cmake%gcc@8-os ^gnuconfig%gcc@8-os ^pkgconf%gcc@8-os
-    - netlib-lapack%nvhpc@22.5 ^cmake%gcc@8-os 
-    - netlib-scalapack%nvhpc@22.5 ^cmake%gcc@8-os 
-    # - fftw%nvhpc@22.5 +mpi~openmp ^spectrum-mpi%nvhpc@22.5 ^gnuconfig%gcc@8-os
-    # - fftw%nvhpc@22.5 +mpi+openmp ^spectrum-mpi%nvhpc@22.5 ^gnuconfig%gcc@8-os
-    - hdf5%nvhpc@22.5 ~mpi ^cmake%gcc@8-os ^pkgconf%gcc@8-os
-    - hdf5%nvhpc@22.5 +mpi+fortran ^cmake%gcc@8-os ^pkgconf%gcc@8-os
-    - boost%nvhpc@22.5 ~mpi ^cmake%gcc@8-os ^bzip2%gcc@8-os
-    - boost%nvhpc@22.5 +mpi ^spectrum-mpi%nvhpc@22.5 ^cmake%gcc@8-os ^bzip2%gcc@8-os
-    - parallel-netcdf%nvhpc@22.5                                                 ^spectrum-mpi%nvhpc@22.5 ^zlib%nvhpc@22.5 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os 
-    - netcdf-c%nvhpc@22.5                            ^parallel-netcdf%nvhpc@22.5 ^spectrum-mpi%nvhpc@22.5 ^zlib%nvhpc@22.5 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os ^cmake%gcc@8-os 
-    - netcdf-fortran%nvhpc@22.5 ^netcdf-c%nvhpc@22.5 ^parallel-netcdf%nvhpc@22.5 ^spectrum-mpi%nvhpc@22.5 ^zlib%nvhpc@22.5 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os ^cmake%gcc@8-os 
-    - netcdf-cxx4%nvhpc@22.5    ^netcdf-c%nvhpc@22.5 ^parallel-netcdf%nvhpc@22.5 ^spectrum-mpi%nvhpc@22.5 ^zlib%nvhpc@22.5 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os ^cmake%gcc@8-os 
-    # - parallel-io%nvhpc@22.5 ^spectrum-mpi%nvhpc@22.5 ^parallel-netcdf%nvhpc@22.5 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^cmake%gcc@8-os ^pkgconf%gcc@8-os
-    # - parallelio%nvhpc@22.5  ^spectrum-mpi%nvhpc@22.5 ^parallel-netcdf%nvhpc@22.5 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^cmake%gcc@8-os ^pkgconf%gcc@8-os
-    - hypre%nvhpc@22.5 ^cmake%gcc@8-os ^gnuconfig%gcc@8-os
-    - mpip%nvhpc@22.5 ^python%gcc@8-os ^gnuconfig%gcc@8-os ^libunwind%gcc@8-os
-    # - globalarrays%nvhpc@22.5 ^spectrum-mpi%nvhpc@22.5 ^netlib-lapack%nvhpc@22.5 ^gnuconfig%gcc@8-os ^cmake%gcc@8-os
+    - adios2%nvhpc@22.11~python ^bzip2%gcc@8-os ^c-blosc%gcc@8-os ^libfabric%gcc@8-os ^libffi%gcc@8-os ^libpng%gcc@8-os ^sz%gcc@8-os ^zfp%gcc@8-os ^cmake%gcc@8-os ^gnuconfig%gcc@8-os ^pkgconf%gcc@8-os
+    - netlib-lapack%nvhpc@22.11 ^cmake%gcc@8-os 
+    - netlib-scalapack%nvhpc@22.11 ^cmake%gcc@8-os 
+    # - fftw%nvhpc@22.11 +mpi~openmp ^spectrum-mpi%nvhpc@22.11 ^gnuconfig%gcc@8-os
+    # - fftw%nvhpc@22.11 +mpi+openmp ^spectrum-mpi%nvhpc@22.11 ^gnuconfig%gcc@8-os
+    - hdf5%nvhpc@22.11 ~mpi ^cmake%gcc@8-os ^pkgconf%gcc@8-os
+    - hdf5%nvhpc@22.11 +mpi+fortran ^cmake%gcc@8-os ^pkgconf%gcc@8-os
+    - boost%nvhpc@22.11 ~mpi ^cmake%gcc@8-os ^bzip2%gcc@8-os
+    - boost%nvhpc@22.11 +mpi ^spectrum-mpi%nvhpc@22.11 ^cmake%gcc@8-os ^bzip2%gcc@8-os
+    - parallel-netcdf%nvhpc@22.11                                                 ^spectrum-mpi%nvhpc@22.11 ^zlib%nvhpc@22.11 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os 
+    - netcdf-c%nvhpc@22.11                            ^parallel-netcdf%nvhpc@22.11 ^spectrum-mpi%nvhpc@22.11 ^zlib%nvhpc@22.11 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os ^cmake%gcc@8-os 
+    - netcdf-fortran%nvhpc@22.11 ^netcdf-c%nvhpc@22.11 ^parallel-netcdf%nvhpc@22.11 ^spectrum-mpi%nvhpc@22.11 ^zlib%nvhpc@22.11 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os ^cmake%gcc@8-os 
+    - netcdf-cxx4%nvhpc@22.11    ^netcdf-c%nvhpc@22.11 ^parallel-netcdf%nvhpc@22.11 ^spectrum-mpi%nvhpc@22.11 ^zlib%nvhpc@22.11 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^pkgconf%gcc@8-os ^cmake%gcc@8-os 
+    # - parallel-io%nvhpc@22.11 ^spectrum-mpi%nvhpc@22.11 ^parallel-netcdf%nvhpc@22.11 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^cmake%gcc@8-os ^pkgconf%gcc@8-os
+    # - parallelio%nvhpc@22.11  ^spectrum-mpi%nvhpc@22.11 ^parallel-netcdf%nvhpc@22.11 ^gnuconfig%gcc@8-os ^perl%gcc@8-os ^m4%gcc@8-os ^cmake%gcc@8-os ^pkgconf%gcc@8-os
+    - hypre%nvhpc@22.11 ^cmake%gcc@8-os ^gnuconfig%gcc@8-os
+    - mpip%nvhpc@22.11 ^python%gcc@8-os ^gnuconfig%gcc@8-os ^libunwind%gcc@8-os
+    # - globalarrays%nvhpc@22.11 ^spectrum-mpi%nvhpc@22.11 ^netlib-lapack%nvhpc@22.11 ^gnuconfig%gcc@8-os ^cmake%gcc@8-os
   - special_builds:
     ## Cannot build do to error in ompi configure finding liblsf/ls_info.
     ## FIXME - ompi version needs to be checked
