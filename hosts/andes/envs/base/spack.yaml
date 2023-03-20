@@ -406,6 +406,7 @@ spack:
   - $llvm_specs
   - $aocc_specs
   - $nv_specs
+  # - sundials@5.5.0%gcc@9.3.0~cuda~rocm+f2003+int64 ^openmpi@4.0.4/skxqfei
   ## FIXME: Put gcc@6.5.0 specs in own defines list
   # - openmpi%gcc@6.5.0
   # - cuda@10.2.89%gcc@6.5.0
@@ -699,6 +700,9 @@ spack:
         strumpack:
           suffixes:
             strumpack ^openblas threads=openmp: omp
+        sundials:
+          suffixes:
+            sundials+f2003: fortran
         tau:
           suffixes:
             tau +cuda: gpu
