@@ -20,7 +20,8 @@
 
 # FIXME: Get from user input the date after which any installed explicit
 # packages missing modulefiles should have modules refreshed.
-DATE_START="${START_DATE:-2022-04-25}"
+FOUR_DAYS_AGO="$(\date --date='4 day ago' +"%Y-%m-%d")"
+DATE_START="${START_DATE:-${FOUR_DAYS_AGO}}"
 
 # FIXME: Uniqify this tmp file
 TMP_FILE="/tmp/$USER/new_packages.log"
