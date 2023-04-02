@@ -13,14 +13,13 @@ spack:
     - '%cce@15.0.0'
     - '%cce@14.0.3'
     - '%cce@14.0.2'
+    - '%cce@14.0.1'
     - '%cce@14.0.0'
-    - '%cce@13.0.2'
   - amd_compilers:
     - '%clang@15.0.0-rocm5.4.0'
+    - '%clang@15.0.0-rocm5.3.0'
     - '%clang@14.0.0-rocm5.2.0'
     - '%clang@14.0.0-rocm5.1.0'
-    - '%clang@13.0.0-rocm4.5.2'
-    - '%clang@13.0.0-rocm4.5.0'
   - all_compilers:
     - $gcc_compilers
     - $cray_compilers
@@ -419,7 +418,7 @@ spack:
       - - '%cce@15.0.0'
         - '%cce@14.0.3'
         - '%cce@14.0.2'
-        - '%cce@14.0.0'
+        - '%cce@14.0.1'
       - - arch=cray-sles15-zen3
       exclude:
       # CCE 14.0.1 regression failures
@@ -472,85 +471,6 @@ spack:
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%cce
   - cpe_amd_specs:
-    # ROCm 4.x
-    # - matrix:
-    #   - - $e4s_21.11_cpu_specs
-    #     - $e4s_21.11_gpu_packages_rocm4.5.2
-    #     - $e4s_22.02_cpu_specs
-    #     - $e4s_22.02_gpu_packages_rocm4.5.2
-    #     - $e4s_22.05_cpu_specs
-    #     - $e4s_22.05_gpu_packages_rocm4.5.2
-    #   - - '%clang@13.0.0-rocm4.5.0'
-    #     - '%clang@13.0.0-rocm4.5.2'
-    #   - - arch=cray-sles15-zen3
-    #   exclude:
-    #   - archer%clang
-    #   - ascent%clang
-    #   - axom@0.6.1 # Package constraint problem with umpire in spec
-    #   - butterflypack@2.0.0:2.1.1%clang
-    #   - caliper%clang
-    #   - conduit%clang
-    #   - dyninst%clang ## os elfutils insufficient
-    #   - flecsi%clang
-    #   - hpctoolkit%clang ## depends on dyninst
-    #   - magma@2.6.1%clang
-    #   - magma@2.6.2%clang@13.0.0-rocm4.5.2+rocm # --no-allow-shlib-undefined; libsci missing cray-mpich libs
-    #   - omega-h%clang
-    #   - parsec%clang
-    #   - phist
-    #   - plasma%clang
-    #   - slate
-    #   - slepc%clang
-    #   - strumpack%clang ^openblas
-    #   - tau%clang+elf
-    #   - trilinos@:13.2.0+rocm # FIXME
-    #   - unifyfs%clang
-    # ROCm 5.x
-    # - matrix:
-    #   - - $e4s_21.11_cpu_specs
-    #     - $e4s_21.11_gpu_packages_rocm5.1.0
-    #     - $e4s_22.02_cpu_specs
-    #     - $e4s_22.02_gpu_packages_rocm5.1.0
-    #     - $e4s_22.05_cpu_specs
-    #     - $e4s_22.05_gpu_packages_rocm5.1.0
-    #   - - '%clang@14.0.0-rocm5.1.0'
-    #   - - arch=cray-sles15-zen3
-    #   exclude:
-    #   # Superlu/hyper dependency failures
-    #   - datatransferkit@3.1-rc3%clang@14.0.0-rocm5.1.0
-    #   - fortrilinos@2.0.0%clang@14.0.0-rocm5.1.0
-    #   - hypre@2.23.0%clang@14.0.0-rocm5.1.0
-    #   - hypre@2.24.0%clang@14.0.0-rocm5.1.0
-    #   - mfem@4.3.0%clang@14.0.0-rocm5.1.0
-    #   - petsc@3.16.4%clang@14.0.0-rocm5.1.0~rocm
-    #   - petsc@3.16.4%clang@14.0.0-rocm5.1.0+rocm
-    #   - precice@2.3.0%clang@14.0.0-rocm5.1.0
-    #   - superlu-dist@7.1.1%clang@14.0.0-rocm5.1.0~rocm
-    #   - superlu-dist@7.1.1%clang@14.0.0-rocm5.1.0+rocm
-    #   - superlu-dist@7.2.0%clang@14.0.0-rocm5.1.0~rocm
-    #   # General Failures
-    #   - adios2@2.7.1%clang@14.0.0-rocm5.1.0
-    #   - archer%clang
-    #   - ascent%clang
-    #   - axom@0.6.1 # Package constraint problem with umpire in spec
-    #   - butterflypack@2.0.0:2.1.1%clang
-    #   - caliper%clang
-    #   - conduit%clang
-    #   - dyninst%clang ## os elfutils insufficient
-    #   - flecsi%clang
-    #   - hpctoolkit%clang ## depends on dyninst
-    #   - magma@2.6.1:2.6.2%clang
-    #   - omega-h%clang
-    #   - openpmd-api@0.14%clang@14.0.0-rocm5.1.0
-    #   - parsec%clang
-    #   - phist
-    #   - plasma%clang
-    #   - slate
-    #   - slepc%clang
-    #   - strumpack%clang ^openblas
-    #   - tau%clang+elf
-    #   - trilinos@:13.2.0+rocm # FIXME
-    #   - unifyfs%clang
     - matrix:
       - - $e4s_21.11_cpu_specs
         # - $e4s_21.11_gpu_packages_rocm5.2.0
@@ -560,7 +480,10 @@ spack:
         # - $e4s_22.05_gpu_packages_rocm5.2.0
         - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
         - boost+atomic+chrono+container+context+date_time+exception+fiber+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=17
-      - - '%clang@14.0.0-rocm5.2.0'
+      - - '%clang@15.0.0-rocm5.4.0'
+        - '%clang@15.0.0-rocm5.3.0'
+        - '%clang@14.0.0-rocm5.2.0'
+        - '%clang@14.0.0-rocm5.1.0'
       - - arch=cray-sles15-zen3
       exclude:
       # ROCM 5.2.0 errors
@@ -576,54 +499,39 @@ spack:
       - conduit%clang
       - dyninst%clang ## os elfutils insufficient
       - flecsi%clang
+      - flux-core%clang@15.0.0-rocm5.3.0
+      - flux-core%clang@15.0.0-rocm5.4.0
+      - globalarrays@5.8%clang@15.0.0-rocm5.3.0
+      - globalarrays@5.8%clang@15.0.0-rocm5.4.0
       - hpctoolkit%clang ## depends on dyninst
+      - hypre@2.23.0:2.24.0%clang@15.0.0-rocm5.3.0
+      - hypre@2.23.0:2.24.0%clang@15.0.0-rocm5.4.0
       - magma@2.6.1:2.6.2%clang
+      - mpifileutils@0.11:0.11.1%clang@15.0.0-rocm5.3.0
+      - mpifileutils@0.11:0.11.1%clang@15.0.0-rocm5.4.0
+      - netlib-scalapack@2.1.0%clang@15.0.0-rocm5.3.0
+      - netlib-scalapack@2.1.0%clang@15.0.0-rocm5.4.0
       - omega-h%clang
       - openpmd-api@0.14%clang@14.0.0-rocm5.2.0
+      - papi@6.0.0.1%clang@15.0.0-rocm5.3.0
+      - papi@6.0.0.1%clang@15.0.0-rocm5.4.0
       - parsec%clang
+      - petsc@3.16.4:3.17.1%clang@15.0.0-rocm5.3.0
+      - petsc@3.16.4:3.17.1%clang@15.0.0-rocm5.4.0
       - phist
       - plasma%clang
+      - precice@2.3.0:2.4.0%clang@15.0.0-rocm5.3.0
+      - precice@2.3.0:2.4.0%clang@15.0.0-rocm5.4.0
+      - rempi@1.1.0%clang@15.0.0-rocm5.3.0
+      - rempi@1.1.0%clang@15.0.0-rocm5.4.0
       - slate
       - slepc%clang
       - strumpack%clang ^openblas
+      - superlu-dist@7.1.1:7.2.0%clang@15.0.0-rocm5.3.0
+      - superlu-dist@7.1.1:7.2.0%clang@15.0.0-rocm5.4.0
       - tau%clang+elf
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%clang
-    # - matrix:
-    #   - - $e4s_21.11_cpu_specs
-    #     - $e4s_21.11_gpu_packages_rocm5.4.0
-    #     - $e4s_22.02_cpu_specs
-    #     - $e4s_22.02_gpu_packages_rocm5.4.0
-    #     - $e4s_22.05_cpu_specs
-    #     - $e4s_22.05_gpu_packages_rocm5.4.0
-    #     - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
-    #     - boost+atomic+chrono+container+context+date_time+exception+fiber+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=17
-    #   - - '%clang@15.0.0-rocm5.4.0'
-    #   - - arch=cray-sles15-zen3
-    #   exclude:
-    #   # ROCM 5.4.0 errors
-    #   # General Errors
-    #   - archer%clang
-    #   - ascent%clang
-    #   - axom@0.6.1
-    #   - butterflypack@2.0.0:2.1.1%clang
-    #   - caliper%clang
-    #   - conduit%clang
-    #   - dyninst%clang ## os elfutils insufficient
-    #   - flecsi%clang
-    #   - hpctoolkit%clang ## depends on dyninst
-    #   - magma@2.6.1:2.6.2%clang
-    #   - omega-h%clang
-    #   - openpmd-api@0.14%clang@15.0.0-rocm5.4.0
-    #   - parsec%clang
-    #   - phist
-    #   - plasma%clang
-    #   - slate
-    #   - slepc%clang
-    #   - strumpack%clang ^openblas
-    #   - tau%clang+elf
-    #   - trilinos@:13.2.0+rocm # FIXME
-    #   - unifyfs%clang
   specs:
   - $core_specs
   - $cpe_gcc_specs
@@ -1531,6 +1439,12 @@ spack:
       variants: +amesos +amesos2 +anasazi +aztec +belos +boost +epetra +epetraext +ifpack +ifpack2 +intrepid +intrepid2 +isorropia +kokkos +ml +minitensor +muelu +nox +piro +phalanx +rol +rythmos +sacado +stk +shards +shylu +stokhos +stratimikos +teko +tempus +tpetra +trilinoscouplings +zoltan +zoltan2 +superlu-dist gotype=long_long
     umpire:
       variants: ~examples~rocm
+    unzip:
+      externals:
+        - prefix: /usr
+          spec: unzip@6.0%clang@15.0.0-rocm5.4.0
+        - prefix: /usr
+          spec: unzip@6.0%clang@15.0.0-rocm5.3.0
     vtk-m:
       variants: +hip amdgpu_target=gfx908
   modules:
@@ -2003,10 +1917,10 @@ spack:
   - compiler:
       spec: gcc@9.3.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2017,7 +1931,7 @@ spack:
       - libfabric
       environment:
         prepend_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths: []
   # GCC 10.3.0
   - compiler:
@@ -2103,10 +2017,10 @@ spack:
   - compiler:
       spec: cce@13.0.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2129,10 +2043,10 @@ spack:
   - compiler:
       spec: cce@13.0.1
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2155,10 +2069,10 @@ spack:
   - compiler:
       spec: cce@13.0.2
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2181,10 +2095,10 @@ spack:
   - compiler:
       spec: cce@14.0.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2316,10 +2230,10 @@ spack:
   - compiler:
       spec: clang@13.0.0-rocm4.5.0
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2345,10 +2259,10 @@ spack:
   - compiler:
       spec: clang@13.0.0-rocm4.5.2
       paths:
-        cc: /opt/cray/pe/craype/2.7.16/bin/cc
-        cxx: /opt/cray/pe/craype/2.7.16/bin/CC
-        f77: /opt/cray/pe/craype/2.7.16/bin/ftn
-        fc: /opt/cray/pe/craype/2.7.16/bin/ftn
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
       flags: {}
       operating_system: sles15
       target: any
@@ -2363,7 +2277,7 @@ spack:
         append_path:
           LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
         prepend_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.0.16/lib
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
           LIBRARY_PATH: /opt/rocm-4.5.2/lib:/opt/rocm-4.5.2/lib64
       extra_rpaths:
       - /opt/rocm-4.5.2/lib
@@ -2428,6 +2342,36 @@ spack:
       extra_rpaths:
       - /opt/rocm-5.2.0/lib
       - /opt/rocm-5.2.0/lib64
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  # AMD 5.3.0
+  - compiler:
+      spec: clang@15.0.0-rocm5.3.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-amd/8.3.3
+      - amd/5.3.0
+      - craype-x86-trento
+      - libfabric
+      - cray-pmi/6.1.8
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
+          LIBRARY_PATH: /opt/rocm-5.3.0/lib:/opt/rocm-5.3.0/lib64
+      extra_rpaths:
+      - /opt/rocm-5.3.0/lib
+      - /opt/rocm-5.3.0/lib64
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
   # AMD 5.4.0
