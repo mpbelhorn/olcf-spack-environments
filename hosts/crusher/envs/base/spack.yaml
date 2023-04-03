@@ -6,10 +6,12 @@ spack:
   - core_compiler:
     - '%gcc@7.5.0'
   - gcc_compilers:
+    - '%gcc@12.2.0'
     - '%gcc@12.1.0'
     - '%gcc@11.2.0'
     - '%gcc@10.3.0'
   - cray_compilers:
+    - '%cce@15.0.1'
     - '%cce@15.0.0'
     - '%cce@14.0.3'
     - '%cce@14.0.2'
@@ -335,11 +337,11 @@ spack:
   - cpe_gcc_specs:
     - matrix:
       - - $e4s_21.11_cpu_specs
-        - $e4s_21.11_gpu_packages_rocm5.2.0
+        - $e4s_21.11_gpu_packages_rocm5.3.0
         - $e4s_22.02_cpu_specs
-        - $e4s_22.02_gpu_packages_rocm5.2.0
+        - $e4s_22.02_gpu_packages_rocm5.3.0
         - $e4s_22.05_cpu_specs
-        - $e4s_22.05_gpu_packages_rocm5.2.0
+        - $e4s_22.05_gpu_packages_rocm5.3.0
         - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
         - boost+atomic+chrono+container+context+date_time+exception+fiber+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=17
       - - '%gcc@12.2.0'
@@ -351,7 +353,7 @@ spack:
       - archer%gcc # ^llvm@8.0.0 fails, reason unknown
       - axom@0.6.1 # Pacakge constraint problem with umpire in spec
       - phist@1.9.5%gcc@12.1.0
-      - precice@2.4.0%gcc@12.1.0 # Problem building petsc
+      - precice@2.4.0%gcc@12.1.0:12.2.0 # Problem building petsc
       - ascent@0.7.1%gcc@11.2.0 # conduit@0.7.2 dependency
       - conduit%gcc@11.2.0 # C++17 libstdc++ header changes.
       - fortrilinos@2.0.0%gcc@12.2.0 # cray-libsci undef references
@@ -408,11 +410,11 @@ spack:
     # CCE 14.x
     - matrix:
       - - $e4s_21.11_cpu_specs
-        - $e4s_21.11_gpu_packages_rocm5.2.0
+        - $e4s_21.11_gpu_packages_rocm5.3.0
         - $e4s_22.02_cpu_specs
-        - $e4s_22.02_gpu_packages_rocm5.2.0
+        - $e4s_22.02_gpu_packages_rocm5.3.0
         - $e4s_22.05_cpu_specs
-        - $e4s_22.05_gpu_packages_rocm5.2.0
+        - $e4s_22.05_gpu_packages_rocm5.3.0
         - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
         - boost+atomic+chrono+container+context+date_time+exception+fiber+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=17
       - - '%cce@15.0.0'
@@ -651,7 +653,7 @@ spack:
       version: []
     hip:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - extra_attributes:
             compilers:
@@ -695,7 +697,7 @@ spack:
           spec: hip@4.2.0
     hip-rocclr:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0/rocclr
           spec: hip-rocclr@5.4.0 ^hsa-rocr-dev@5.4.0
@@ -715,7 +717,7 @@ spack:
           spec: hip-rocclr@4.2.0 ^hsa-rocr-dev@4.2.0
     hipblas:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: hipblas@5.4.0 ^hip@5.4.0
@@ -773,7 +775,7 @@ spack:
           spec: hipfft@4.2.0 ^hip@4.2.0
     hipify-clang:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: hipify-clang@5.4.0
@@ -793,7 +795,7 @@ spack:
           spec: hipify-clang@4.2.0
     hipsolver:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: hipsolver@5.4.0 ^hip@5.4.0
@@ -803,7 +805,7 @@ spack:
           spec: hipsolver@5.2.0 ^hip@5.2.0
     hipsparse:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: hipsparse@5.4.0 ^hip@5.4.0
@@ -862,8 +864,8 @@ spack:
     libfabric:
       buildable: true
       externals:
-        - prefix: /opt/cray/libfabric/1.15.0.0
-          spec: libfabric@1.15.0.0
+        - prefix: /opt/cray/libfabric/1.15.2.0
+          spec: libfabric@1.15.2.0
         - prefix: /opt/cray/libfabric/1.13.0.0
           spec: libfabric@1.13.0.0
       version: [1.15.0.0, 1.13.0.0]
@@ -1050,7 +1052,7 @@ spack:
           spec: rocalution@4.2.0 ^hip@4.2.0
     rocblas:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocblas@5.4.0 ^hip@5.4.0
@@ -1070,7 +1072,7 @@ spack:
           spec: rocblas@4.2.0 ^hip@4.2.0
     rocfft:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocfft@5.4.0 ^hip@5.4.0
@@ -1110,7 +1112,7 @@ spack:
           spec: rocm-clang-ocl@4.2.0
     rocm-cmake:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocm-cmake@5.4.0
@@ -1282,7 +1284,7 @@ spack:
           spec: rocminfo@4.2.0
     rocprim:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocprim@5.4.0 ^hip@5.4.0
@@ -1321,7 +1323,7 @@ spack:
           spec: rocprofiler-dev@4.2.0
     rocrand:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocrand@5.4.0 ^hip@5.4.0
@@ -1341,7 +1343,7 @@ spack:
           spec: rocrand@4.2.0 ^hip@4.2.0
     rocsolver:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocsolver@5.4.0 ^hip@5.4.0
@@ -1361,7 +1363,7 @@ spack:
           spec: rocsolver@4.2.0 ^hip@4.2.0
     rocsparse:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocsparse@5.4.0 ^hip@5.4.0
@@ -1381,7 +1383,7 @@ spack:
           spec: rocsparse@4.2.0 ^hip@4.2.0
     rocthrust:
       buildable: false
-      #require: '@5.2.0'
+      require: '@5.3.0'
       externals:
         - prefix: /opt/rocm-5.4.0
           spec: rocthrust@5.4.0 ^hip@5.4.0
@@ -2033,7 +2035,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2059,7 +2061,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2085,7 +2087,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2112,7 +2114,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2139,7 +2141,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2166,7 +2168,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2193,7 +2195,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
       extra_rpaths:
@@ -2213,6 +2215,33 @@ spack:
       modules:
       - PrgEnv-cray/8.3.3
       - cce/15.0.0
+      - craype-x86-trento
+      - libfabric
+      - cray-pmi/6.1.8
+      environment:
+        set:
+          RFE_811452_DISABLE: '1'
+        append_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
+        prepend_path:
+          LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
+      extra_rpaths:
+      - /opt/cray/pe/gcc-libs
+      - /opt/cray/gcc-libs
+  # CCE 15.0.1
+  - compiler:
+      spec: cce@15.0.0
+      paths:
+        cc: /opt/cray/pe/craype/2.7.19/bin/cc
+        cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+        f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+        fc: /opt/cray/pe/craype/2.7.19/bin/ftn
+      flags: {}
+      operating_system: sles15
+      target: any
+      modules:
+      - PrgEnv-cray/8.3.3
+      - cce/15.0.1
       - craype-x86-trento
       - libfabric
       - cray-pmi/6.1.8
@@ -2246,7 +2275,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
           LIBRARY_PATH: /opt/rocm-4.5.2/lib:/opt/rocm-4.5.2/lib64
@@ -2275,7 +2304,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
           LIBRARY_PATH: /opt/rocm-4.5.2/lib:/opt/rocm-4.5.2/lib64
@@ -2305,7 +2334,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
           LIBRARY_PATH: /opt/rocm-5.1.0/lib:/opt/rocm-5.1.0/lib64
@@ -2335,7 +2364,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
           LIBRARY_PATH: /opt/rocm-5.2.0/lib:/opt/rocm-5.2.0/lib64
@@ -2395,7 +2424,7 @@ spack:
         set:
           RFE_811452_DISABLE: '1'
         append_path:
-          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.0.0/lib64
+          LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
         prepend_path:
           LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
           LIBRARY_PATH: /opt/rocm-5.4.0/lib:/opt/rocm-5.4.0/lib64
