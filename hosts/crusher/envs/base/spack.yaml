@@ -417,7 +417,8 @@ spack:
         - $e4s_22.05_gpu_packages_rocm5.3.0
         - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
         - boost+atomic+chrono+container+context+date_time+exception+fiber+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=17
-      - - '%cce@15.0.0'
+      - - '%cce@15.0.1'
+        - '%cce@15.0.0'
         - '%cce@14.0.3'
         - '%cce@14.0.2'
         - '%cce@14.0.1'
@@ -2230,7 +2231,7 @@ spack:
       - /opt/cray/gcc-libs
   # CCE 15.0.1
   - compiler:
-      spec: cce@15.0.0
+      spec: cce@15.0.1
       paths:
         cc: /opt/cray/pe/craype/2.7.19/bin/cc
         cxx: /opt/cray/pe/craype/2.7.19/bin/CC
