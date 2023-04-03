@@ -342,6 +342,14 @@ case "${FACSPACK_HOST}" in
   borg)
     export SPACK_FRONT_END="zen3"
     export SPACK_BACK_END="zen3"
+    export all_proxy="socks://proxy.ccs.ornl.gov:3128"
+    export ftp_proxy="ftp://proxy.ccs.ornl.gov:3128"
+    export http_proxy="http://proxy.ccs.ornl.gov:3128"
+    export https_proxy="http://proxy.ccs.ornl.gov:3128"
+    export HTTP_PROXY="http://proxy.ccs.ornl.gov:3128"
+    export HTTPS_PROXY="http://proxy.ccs.ornl.gov:3128"
+    export proxy="proxy.ccs.ornl.gov:3128"
+    export no_proxy='localhost,127.0.0.0/8,*.ccs.ornl.gov,*.olcf.ornl.gov,*.ncrc.gov'
     setup_alternate_module_environment "${_FS_MP}"
     if [[ "${FACSPACK_MY_ENVS:-YY}" == "${_FS_DEFAULT_ENV_PREFIX:-XX}" \
           && "${FACSPACK_HOST}" == "${_THIS_HOST}" ]]; then
