@@ -68,6 +68,8 @@ spack:
     - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     - cdo~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf ^eccodes+aec
     - parallel
+    - patchelf
+    - libtree
   - e4s_21.11_cpu_specs:
     # - adios2@2.7.1 ~python
     - adios2@2.8.1~python
