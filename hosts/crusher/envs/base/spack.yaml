@@ -437,10 +437,12 @@ spack:
       - nccmp@1.9.0.1%cce@14.0.1
       - nco@5.0.1%cce@14.0.1
       - netlib-scalapack@2.1.0:2.2.0%cce@14.0.1
+      - netlib-scalapack@2.1.0:2.2.0%cce@15.0.1
       - openpmd-api@0.14.3%cce@14.0.1
       - openpmd-api@0.14.4%cce@14.0.1
       - phist
       - plumed@2.6.3%cce@14.0.1
+      - plumed@2.6.3%cce@15.0.1
       - slepc@3.17.1%cce@14.0.1
       - superlu-dist@7.1.1%cce@14.0.1
       - superlu-dist@7.2.0%cce@14.0.1
@@ -450,13 +452,13 @@ spack:
       - cabana@0.4.0%cce@13.0.0:14.0.3 # -Werror,-Wdeprecated-copy
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
-      - flux-core%cce@15.0.0 # czmq dependency uses GNU extension pointer arithmetic.
+      - flux-core%cce@15.0.0:15.0.1 # czmq dependency uses GNU extension pointer arithmetic.
       - globalarrays%cce ^openblas
       - hpctoolkit%cce ## depends on dyninst
       - hypre%cce^openblas
       - lammps
       - mfem@4.4.0%cce@15.0.0 # Compiler ICE
-      - omega-h@9.32:9.34%cce@:15.0.0 # -Werror,-Wdeprecated-copy
+      - omega-h@9.32:9.34%cce@:15.0.1 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13 # -Wno-unsupported-target-opt breaks mpif90 config tests
@@ -465,7 +467,7 @@ spack:
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - precice@2.3.0:2.4.0%cce@14.0.1
       - pumi@2.2.6:2.2.7%cce@15.0.0 # Compiler ICE
-      - rempi@1.1.0%cce@14.0.0:15.0.0 ## ./rempi_message_manager.h:53:3: error: unknown type name 'string'
+      - rempi@1.1.0%cce@14.0.0:15.0.1 ## ./rempi_message_manager.h:53:3: error: unknown type name 'string'
       - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
