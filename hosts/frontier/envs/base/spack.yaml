@@ -11,6 +11,7 @@ spack:
     - '%gcc@11.2.0'
     - '%gcc@10.3.0'
   - cray_compilers:
+    # - '%cce@15.0.1'
     - '%cce@15.0.0'
     # - '%cce@14.0.3'
     - '%cce@14.0.2'
@@ -108,7 +109,7 @@ spack:
     - heffte@2.2.0 ~fftw~cuda
     - heffte@2.2.0 +fftw~cuda
     - hpctoolkit@2021.10.15
-    - hpx@1.7.1 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
+    - hpx@1.7.1 max_cpu_count=128 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
     - hypre@2.23.0 ~cuda
     - kokkos@3.4.01 ~rocm~cuda~wrapper+openmp
     - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp
@@ -232,6 +233,7 @@ spack:
     - gasnet@2022.3.0
     # - geopm@1.1.0
     # - h5bench@1.2
+    - hdf5@1.14.0
     - hpctoolkit@2022.04.15 ~cuda
     - hpctoolkit@2022.05.15 ~cuda
     - kokkos@3.6.00 +openmp
@@ -260,7 +262,7 @@ spack:
     - heffte@2.2.0 +rocm amdgpu_target=gfx90a
     # - hpctoolkit@2022.04.15 +rocm~cuda # llvm-amdgpu@5.x or newer
     # - hpctoolkit@2022.05.15 +rocm~cuda # same as above
-    - hpx@1.7.1 +rocm amdgpu_target=gfx90a
+    - hpx@1.7.1 max_cpu_count=128 +rocm amdgpu_target=gfx90a
     - kokkos@3.6.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
     - magma@2.6.2 +rocm~cuda amdgpu_target=gfx90a
     - petsc@3.17.1 +rocm amdgpu_target=gfx90a
@@ -346,7 +348,7 @@ spack:
         - boost+atomic+chrono+container+date_time+exception+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=98
         - boost+atomic+chrono+container+context+date_time+exception+fiber+filesystem+graph+iostreams+locale+log+math+multithreaded+program_options+random+regex+serialization+shared+signals+system+test+thread+timer+wave cxxstd=17
       - - '%gcc@12.2.0'
-        #- '%gcc@12.1.0'
+        # - '%gcc@12.1.0'
         - '%gcc@11.2.0'
         - '%gcc@10.3.0'
       - - arch=cray-sles15-zen3
@@ -433,14 +435,17 @@ spack:
       - flecsi@1.4.2%cce@14.0.1
       - fortrilinos@2.0.0%cce@14.0.1:15.0.0 # cray-libsci undef references
       - hdf5@1.12.1%cce@14.0.1
+      - hdf5@1.14.0%cce@14.0.1
       - legion@21.03.0%cce@14.0.1
       - nccmp@1.9.0.1%cce@14.0.1
       - nco@5.0.1%cce@14.0.1
       - netlib-scalapack@2.1.0:2.2.0%cce@14.0.1
+      - netlib-scalapack@2.1.0:2.2.0%cce@15.0.1
       - openpmd-api@0.14.3%cce@14.0.1
       - openpmd-api@0.14.4%cce@14.0.1
       - phist
       - plumed@2.6.3%cce@14.0.1
+      - plumed@2.6.3%cce@15.0.1
       - slepc@3.17.1%cce@14.0.1
       - superlu-dist@7.1.1%cce@14.0.1
       - superlu-dist@7.2.0%cce@14.0.1
@@ -450,27 +455,39 @@ spack:
       - cabana@0.4.0%cce@13.0.0:14.0.3 # -Werror,-Wdeprecated-copy
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
-      - flux-core%cce@15.0.0 # czmq dependency uses GNU extension pointer arithmetic.
-      - globalarrays%cce ^openblas
+      - flux-core%cce@15.0.0:15.0.1 # czmq dependency uses GNU extension pointer arithmetic.
+      - globalarrays
       - hpctoolkit%cce ## depends on dyninst
-      - hypre%cce^openblas
+      - hypre%cce # openblas dependency should be replaced with libsci
       - lammps
       - mfem@4.4.0%cce@15.0.0 # Compiler ICE
-      - omega-h@9.32:9.34%cce@:15.0.0 # -Werror,-Wdeprecated-copy
+      - omega-h@9.32:9.34%cce@:15.0.1 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13 # -Wno-unsupported-target-opt breaks mpif90 config tests
+      - petsc%cce@14.0.1
       - petsc+rocm # FIXME
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
       - precice@2.3.0:2.4.0%cce@14.0.1
       - pumi@2.2.6:2.2.7%cce@15.0.0 # Compiler ICE
-      - rempi@1.1.0%cce@14.0.0:15.0.0 ## ./rempi_message_manager.h:53:3: error: unknown type name 'string'
+      - rempi@1.1.0%cce@14.0.0:15.0.1 ## ./rempi_message_manager.h:53:3: error: unknown type name 'string'
       - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
-      - strumpack%cce ^openblas
+      - strumpack@6.1.0%cce@14.0.1
+      - strumpack@6.1.0%cce@14.0.2
+      - strumpack@6.1.0%cce@14.0.3
+      - strumpack@6.1.0%cce@15.0.0
+      - strumpack@6.1.0%cce@15.0.1
+      - strumpack@6.3.0%cce@14.0.1
+      - strumpack@6.3.0%cce@15.0.0~rocm
+      - strumpack@6.3.0%cce@15.0.1
+      - strumpack@6.3.1%cce@14.0.1
+      - strumpack@6.3.1%cce@15.0.0~rocm
+      - strumpack@6.3.1%cce@15.0.1
       - tau+elf
+      - trilinos@:13.2.0%cce@14.0.1
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%cce
   - cpe_amd_specs:
@@ -502,26 +519,53 @@ spack:
       - dyninst%clang ## os elfutils insufficient
       - flecsi%clang
       - flux-core%clang@15.0.0-rocm5.3.0
+      - flux-core%clang@15.0.0-rocm5.4.0
       - globalarrays@5.8%clang@15.0.0-rocm5.3.0
+      - globalarrays@5.8%clang@15.0.0-rocm5.4.0
       - hpctoolkit%clang ## depends on dyninst
       - hypre@2.23.0:2.24.0%clang@15.0.0-rocm5.3.0
+      - hypre@2.23.0:2.24.0%clang@15.0.0-rocm5.4.0
       - magma@2.6.1:2.6.2%clang
+      - mpifileutils%clang@15.0.0-rocm5.3.0
+      - mpifileutils%clang@15.0.0-rocm5.4.0
       - mpifileutils@0.11:0.11.1%clang@15.0.0-rocm5.3.0
+      - mpifileutils@0.11:0.11.1%clang@15.0.0-rocm5.4.0
       - netlib-scalapack@2.1.0%clang@15.0.0-rocm5.3.0
+      - netlib-scalapack@2.1.0%clang@15.0.0-rocm5.4.0
       - omega-h%clang
       - openpmd-api@0.14%clang@14.0.0-rocm5.2.0
       - papi@6.0.0.1%clang@15.0.0-rocm5.3.0
+      - papi@6.0.0.1%clang@15.0.0-rocm5.4.0
       - parsec%clang
       - petsc@3.16.4:3.17.1%clang@15.0.0-rocm5.3.0
+      - petsc@3.16.4:3.17.1%clang@15.0.0-rocm5.4.0
       - phist
       - plasma%clang
       - precice@2.3.0:2.4.0%clang@15.0.0-rocm5.3.0
+      - precice@2.3.0:2.4.0%clang@15.0.0-rocm5.4.0
       - rempi@1.1.0%clang@15.0.0-rocm5.3.0
+      - rempi@1.1.0%clang@15.0.0-rocm5.4.0
       - slate
       - slepc%clang
-      - strumpack%clang ^openblas
+      - strumpack@6.1.0%clang@14.0.0-rocm5.1.0
+      - strumpack@6.1.0%clang@14.0.0-rocm5.2.0
+      - strumpack@6.1.0%clang@15.0.0-rocm5.3.0
+      - strumpack@6.1.0%clang@15.0.0-rocm5.4.0
+      - strumpack@6.3.0%clang@14.0.0-rocm5.1.0
+      - strumpack@6.3.0%clang@14.0.0-rocm5.2.0
+      - strumpack@6.3.0%clang@15.0.0-rocm5.3.0
+      - strumpack@6.3.0%clang@15.0.0-rocm5.4.0
+      - strumpack@6.3.1%clang@14.0.0-rocm5.1.0
+      - strumpack@6.3.1%clang@14.0.0-rocm5.2.0
+      - strumpack@6.3.1%clang@15.0.0-rocm5.3.0
+      - strumpack@6.3.1%clang@15.0.0-rocm5.4.0
       - superlu-dist@7.1.1:7.2.0%clang@15.0.0-rocm5.3.0
+      - superlu-dist@7.1.1:7.2.0%clang@15.0.0-rocm5.4.0
       - tau%clang+elf
+      - trilinos@13.0.1%clang@15.0.0-rocm5.3.0
+      - trilinos@13.2.0%clang@15.0.0-rocm5.3.0
+      - trilinos@13.0.1%clang@15.0.0-rocm5.4.0
+      - trilinos@13.2.0%clang@15.0.0-rocm5.4.0
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%clang
   specs:
@@ -813,6 +857,8 @@ spack:
           spec: hipsparse@4.3.0 ^hip@4.3.0
         - prefix: /opt/rocm-4.2.0
           spec: hipsparse@4.2.0 ^hip@4.2.0
+    hpx:
+      variants: max_cpu_count=128
     hsa-rocr-dev:
       buildable: false
       externals:
@@ -1433,6 +1479,8 @@ spack:
       variants: ~examples~rocm
     unzip:
       externals:
+        - prefix: /usr
+          spec: unzip@6.0%clang@15.0.0-rocm5.4.0
         - prefix: /usr
           spec: unzip@6.0%clang@15.0.0-rocm5.3.0
     vtk-m:
@@ -2216,6 +2264,33 @@ spack:
       extra_rpaths:
       - /opt/cray/pe/gcc-libs
       - /opt/cray/gcc-libs
+  # CCE 15.0.1
+  # - compiler:
+  #     spec: cce@15.0.1
+  #     paths:
+  #       cc: /opt/cray/pe/craype/2.7.19/bin/cc
+  #       cxx: /opt/cray/pe/craype/2.7.19/bin/CC
+  #       f77: /opt/cray/pe/craype/2.7.19/bin/ftn
+  #       fc: /opt/cray/pe/craype/2.7.19/bin/ftn
+  #     flags: {}
+  #     operating_system: sles15
+  #     target: any
+  #     modules:
+  #     - PrgEnv-cray/8.3.3
+  #     - cce/15.0.1
+  #     - craype-x86-trento
+  #     - libfabric
+  #     - cray-pmi/6.1.8
+  #     environment:
+  #       set:
+  #         RFE_811452_DISABLE: '1'
+  #       append_path:
+  #         LD_LIBRARY_PATH: /opt/cray/pe/gcc-libs:/opt/cray/libfabric/1.15.2.0/lib64
+  #       prepend_path:
+  #         LD_LIBRARY_PATH: /opt/cray/pe/pmi/6.1.8/lib
+  #     extra_rpaths:
+  #     - /opt/cray/pe/gcc-libs
+  #     - /opt/cray/gcc-libs
   # AMD 4.5.0
   - compiler:
       spec: clang@13.0.0-rocm4.5.0

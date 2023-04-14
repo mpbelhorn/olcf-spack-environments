@@ -109,7 +109,7 @@ spack:
     - heffte@2.2.0 ~fftw~cuda
     - heffte@2.2.0 +fftw~cuda
     - hpctoolkit@2021.10.15
-    - hpx@1.7.1 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
+    - hpx@1.7.1 max_cpu_count=128 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
     - hypre@2.23.0 ~cuda
     - kokkos@3.4.01 ~rocm~cuda~wrapper+openmp
     - kokkos@3.5.00 ~rocm~cuda~wrapper+openmp
@@ -233,6 +233,7 @@ spack:
     - gasnet@2022.3.0
     # - geopm@1.1.0
     # - h5bench@1.2
+    - hdf5@1.14.0
     - hpctoolkit@2022.04.15 ~cuda
     - hpctoolkit@2022.05.15 ~cuda
     - kokkos@3.6.00 +openmp
@@ -261,7 +262,7 @@ spack:
     - heffte@2.2.0 +rocm amdgpu_target=gfx90a
     # - hpctoolkit@2022.04.15 +rocm~cuda # llvm-amdgpu@5.x or newer
     # - hpctoolkit@2022.05.15 +rocm~cuda # same as above
-    - hpx@1.7.1 +rocm amdgpu_target=gfx90a
+    - hpx@1.7.1 max_cpu_count=128 +rocm amdgpu_target=gfx90a
     - kokkos@3.6.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
     - magma@2.6.2 +rocm~cuda amdgpu_target=gfx90a
     - petsc@3.17.1 +rocm amdgpu_target=gfx90a
@@ -435,6 +436,7 @@ spack:
       - flecsi@1.4.2%cce@14.0.1
       - fortrilinos@2.0.0%cce@14.0.1:15.0.0 # cray-libsci undef references
       - hdf5@1.12.1%cce@14.0.1
+      - hdf5@1.14.0%cce@14.0.1
       - legion@21.03.0%cce@14.0.1
       - nccmp@1.9.0.1%cce@14.0.1
       - nco@5.0.1%cce@14.0.1
@@ -455,15 +457,16 @@ spack:
       - caliper%cce
       - dyninst%cce ## os elfutils insufficient
       - flux-core%cce@15.0.0:15.0.1 # czmq dependency uses GNU extension pointer arithmetic.
-      - globalarrays%cce ^openblas
+      - globalarrays
       - hpctoolkit%cce ## depends on dyninst
-      - hypre%cce^openblas
+      - hypre%cce # openblas dependency should be replaced with libsci
       - lammps
       - mfem@4.4.0%cce@15.0.0 # Compiler ICE
       - omega-h@9.32:9.34%cce@:15.0.1 # -Werror,-Wdeprecated-copy
       - openblas
       - parsec@:3.0.2012   # -Wmisleading-indentation -Werror
       - petsc@3.15.3%cce@13 # -Wno-unsupported-target-opt breaks mpif90 config tests
+      - petsc%cce@14.0.1
       - petsc+rocm # FIXME
       - plasma%cce
       - precice@2.2.1%cce@12.0.0:13.0.0.1
@@ -473,8 +476,19 @@ spack:
       - slate
       - slepc@3.15.0:3.16.2%cce   # config.package.FortranLib syntax error
       - stat%cce
-      - strumpack%cce ^openblas
+      - strumpack@6.1.0%cce@14.0.1
+      - strumpack@6.1.0%cce@14.0.2
+      - strumpack@6.1.0%cce@14.0.3
+      - strumpack@6.1.0%cce@15.0.0
+      - strumpack@6.1.0%cce@15.0.1
+      - strumpack@6.3.0%cce@14.0.1
+      - strumpack@6.3.0%cce@15.0.0~rocm
+      - strumpack@6.3.0%cce@15.0.1
+      - strumpack@6.3.1%cce@14.0.1
+      - strumpack@6.3.1%cce@15.0.0~rocm
+      - strumpack@6.3.1%cce@15.0.1
       - tau+elf
+      - trilinos@:13.2.0%cce@14.0.1
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%cce
   - cpe_amd_specs:
@@ -514,6 +528,8 @@ spack:
       - hypre@2.23.0:2.24.0%clang@15.0.0-rocm5.3.0
       - hypre@2.23.0:2.24.0%clang@15.0.0-rocm5.4.0
       - magma@2.6.1:2.6.2%clang
+      - mpifileutils%clang@15.0.0-rocm5.3.0
+      - mpifileutils%clang@15.0.0-rocm5.4.0
       - mpifileutils@0.11:0.11.1%clang@15.0.0-rocm5.3.0
       - mpifileutils@0.11:0.11.1%clang@15.0.0-rocm5.4.0
       - netlib-scalapack@2.1.0%clang@15.0.0-rocm5.3.0
@@ -533,10 +549,25 @@ spack:
       - rempi@1.1.0%clang@15.0.0-rocm5.4.0
       - slate
       - slepc%clang
-      - strumpack%clang ^openblas
+      - strumpack@6.1.0%clang@14.0.0-rocm5.1.0
+      - strumpack@6.1.0%clang@14.0.0-rocm5.2.0
+      - strumpack@6.1.0%clang@15.0.0-rocm5.3.0
+      - strumpack@6.1.0%clang@15.0.0-rocm5.4.0
+      - strumpack@6.3.0%clang@14.0.0-rocm5.1.0
+      - strumpack@6.3.0%clang@14.0.0-rocm5.2.0
+      - strumpack@6.3.0%clang@15.0.0-rocm5.3.0
+      - strumpack@6.3.0%clang@15.0.0-rocm5.4.0
+      - strumpack@6.3.1%clang@14.0.0-rocm5.1.0
+      - strumpack@6.3.1%clang@14.0.0-rocm5.2.0
+      - strumpack@6.3.1%clang@15.0.0-rocm5.3.0
+      - strumpack@6.3.1%clang@15.0.0-rocm5.4.0
       - superlu-dist@7.1.1:7.2.0%clang@15.0.0-rocm5.3.0
       - superlu-dist@7.1.1:7.2.0%clang@15.0.0-rocm5.4.0
       - tau%clang+elf
+      - trilinos@13.0.1%clang@15.0.0-rocm5.3.0
+      - trilinos@13.2.0%clang@15.0.0-rocm5.3.0
+      - trilinos@13.0.1%clang@15.0.0-rocm5.4.0
+      - trilinos@13.2.0%clang@15.0.0-rocm5.4.0
       - trilinos@:13.2.0+rocm # FIXME
       - unifyfs%clang
   specs:
@@ -828,6 +859,8 @@ spack:
           spec: hipsparse@4.3.0 ^hip@4.3.0
         - prefix: /opt/rocm-4.2.0
           spec: hipsparse@4.2.0 ^hip@4.2.0
+    hpx:
+      variants: max_cpu_count=128
     hsa-rocr-dev:
       buildable: false
       externals:
