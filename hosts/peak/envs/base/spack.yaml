@@ -16,9 +16,10 @@ spack:
     - '%gcc@11.2.0'
     # - '%gcc@12.1.0'
   - xl_compilers:
-    - '%xl@16.1.1-10'
-    - '%xl@16.1.1-12.1'
-    - '%xl@16.1.1-beta103'
+    - '%xl@16.1.1-13'
+    # - '%xl@16.1.1-10'
+    # - '%xl@16.1.1-12.1'
+    # - '%xl@16.1.1-beta103'
   - llvm_compilers:
     # - '%clang@14.0.0-0'
     - '%clang@12.0.0-0'
@@ -88,31 +89,31 @@ spack:
     # - cdo+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
     # - cdo~szip+aec+hdf5+netcdf ^hdf5~mpi+cxx+fortran ^fftw~mpi+openmp ^netcdf-c~mpi~parallel-netcdf
   - core_only_compute_packages:
-    - darshan-runtime@3.2.1~hdf5
-    - darshan-runtime@3.2.1+hdf5
-    - darshan-runtime@3.3.0~hdf5
-    - darshan-runtime@3.3.0+hdf5
-    - darshan-runtime@3.3.1~hdf5
-    - darshan-runtime@3.3.1+hdf5
-    - scorep@7.0+mpi+papi+shmem ^papi+cuda ^cuda@11.0.3
-    - scorep@7.0+mpi~papi+shmem
+    #- darshan-runtime@3.2.1~hdf5
+    #- darshan-runtime@3.2.1+hdf5
+    #- darshan-runtime@3.3.0~hdf5
+    #- darshan-runtime@3.3.0+hdf5
+    - darshan-runtime@3.4.0~hdf5
+    - darshan-runtime@3.4.0+hdf5
+    # - scorep@7.0+mpi+papi+shmem ^papi+cuda ^cuda@11.7.1
+    # - scorep@7.0+mpi~papi+shmem
     - valgrind ~ubsan+mpi+boost
     - adios2 +python ^python@3
     - adios@1.13.1+blosc+bzip2+fortran+hdf5+infiniband+netcdf
     - gdrcopy
-    - gromacs        +hwloc+cuda+mpi        ^cuda@11.0.3
-    - gromacs        +hwloc+cuda~mpi        ^cuda@11.0.3
-    - gromacs@2020.4 +hwloc+cuda+mpi        ^cuda@11.0.3
-    - gromacs@2020.4 +hwloc+cuda~mpi        ^cuda@11.0.3
-    - gromacs@2020.4 +hwloc+cuda+mpi+plumed ^cuda@11.0.3
-    - gromacs@2020.4 +hwloc+cuda~mpi+plumed ^cuda@11.0.3
-    - gromacs@2020.2 +hwloc+cuda+mpi        ^cuda@11.0.3
-    - gromacs@2020.2 +hwloc+cuda~mpi        ^cuda@11.0.3
-    - gromacs@2020.2 +hwloc+cuda+mpi+plumed ^cuda@11.0.3
-    - gromacs@2020.2 +hwloc+cuda~mpi+plumed ^cuda@11.0.3
+    # - gromacs        +hwloc+cuda+mpi        ^cuda@11.7.1
+    # - gromacs        +hwloc+cuda~mpi        ^cuda@11.7.1
+    # - gromacs@2020.4 +hwloc+cuda+mpi        ^cuda@11.7.1
+    # - gromacs@2020.4 +hwloc+cuda~mpi        ^cuda@11.7.1
+    # - gromacs@2020.4 +hwloc+cuda+mpi+plumed ^cuda@11.7.1
+    # - gromacs@2020.4 +hwloc+cuda~mpi+plumed ^cuda@11.7.1
+    # - gromacs@2020.2 +hwloc+cuda+mpi        ^cuda@11.7.1
+    # - gromacs@2020.2 +hwloc+cuda~mpi        ^cuda@11.7.1
+    # - gromacs@2020.2 +hwloc+cuda+mpi+plumed ^cuda@11.7.1
+    # - gromacs@2020.2 +hwloc+cuda~mpi+plumed ^cuda@11.7.1
     - openblas threads=pthreads
     - openblas threads=none
-    - suite-sparse+cuda ^cuda@11.0.3
+    - suite-sparse+cuda ^cuda@11.7.1
     - suite-sparse~cuda
   - general_compute_packages:
     - netlib-lapack
@@ -246,17 +247,17 @@ spack:
     - slepc@3.16.0 +cuda cuda_arch=70
     - strumpack@6.1.0 ~slate~rocm+cuda cuda_arch=70
     - sundials@5.8.0 ~rocm+cuda cuda_arch=70
-    - superlu-dist@7.1.1 +cuda cuda_arch=70
+    - superlu-dist +cuda cuda_arch=70
     - tasmanian@7.7 ~rocm+cuda cuda_arch=70
     - trilinos@13.2.0 +cuda+wrapper cuda_arch=70
     - umpire@6.0.0 ~shared~rocm+cuda cuda_arch=70
     - upcxx@2021.9.0 +cuda
     - vtk-m@1.6.0 +cuda cuda_arch=70
     - zfp@0.5.5 +cuda cuda_arch=70
-  - e4s_21.11_gpu_packages_cuda11.0.3:
+  - e4s_21.11_gpu_packages_cuda11.7.1:
     - matrix:
       - - $e4s_21.11_gpu_packages 
-      - - ^cuda@11.0.3
+      - - ^cuda@11.7.1
   - e4s_21.11_gpu_packages_cuda11.4.2:
     - matrix:
       - - $e4s_21.11_gpu_packages 
@@ -299,7 +300,7 @@ spack:
     - kokkos-kernels@3.5.00 +cuda cuda_arch=70 ^kokkos@3.5.00~rocm+cuda+wrapper cuda_arch=70
     - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70
     # - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70 ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
-    - lammps@20220623+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+openmp+openmp-package+plumed+cuda cuda_arch=70 ^kokkos@3.6.00
+    - lammps@20220623+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+openmp+openmp-package+plumed+cuda cuda_arch=70 ^kokkos@3.6.00~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
     - papi@6.0.0.1 +cuda # not CudaPackage
     - petsc@3.16.4 +cuda cuda_arch=70
     - slepc@3.16.2 +cuda cuda_arch=70
@@ -307,10 +308,10 @@ spack:
     - sundials@6.1.1 ~rocm+cuda cuda_arch=70
     - superlu-dist@7.2.0 +cuda cuda_arch=70
     - vtk-m@1.7.1 +cuda cuda_arch=70
-  - e4s_22.02_gpu_packages_cuda11.0.3:
+  - e4s_22.02_gpu_packages_cuda11.7.1:
     - matrix:
       - - $e4s_22.02_gpu_packages 
-      - - ^cuda@11.0.3
+      - - ^cuda@11.7.1
   - e4s_22.02_gpu_packages_cuda11.4.2:
     - matrix:
       - - $e4s_22.02_gpu_packages 
@@ -359,10 +360,10 @@ spack:
     - slepc@3.17.1 +cuda cuda_arch=70
     - strumpack@6.3.1 ~slate~rocm+cuda cuda_arch=70
     - sundials@6.2.0 ~rocm+cuda cuda_arch=70
-  - e4s_22.05_gpu_packages_cuda11.0.3:
+  - e4s_22.05_gpu_packages_cuda11.7.1:
     - matrix:
       - - $e4s_22.05_gpu_packages 
-      - - ^cuda@11.0.3
+      - - ^cuda@11.7.1
   - e4s_22.05_gpu_packages_cuda11.4.2:
     - matrix:
       - - $e4s_22.05_gpu_packages 
@@ -372,10 +373,10 @@ spack:
   - e4s_22.08_gpu_packages:
     # Minimal diff from v22.05
     - hpctoolkit@2022.10.01 +cuda
-  - e4s_22.08_gpu_packages_cuda11.0.3:
+  - e4s_22.08_gpu_packages_cuda11.7.1:
     - matrix:
       - - $e4s_22.08_gpu_packages 
-      - - ^cuda@11.0.3
+      - - ^cuda@11.7.1
   - e4s_22.08_gpu_packages_cuda11.4.2:
     - matrix:
       - - $e4s_22.08_gpu_packages 
@@ -386,7 +387,7 @@ spack:
       - - $core_compiler
   - smpi_specs:
     - matrix:
-      - - spectrum-mpi@10.4.0.5-20220310
+      - - spectrum-mpi@10.4.0.6-20230210
       - - $all_compilers
   - core_compute_specs:
     - matrix:
@@ -402,18 +403,17 @@ spack:
       - - '%gcc@9.3.0'
     - matrix:
       - - $e4s_21.11_cpu_packages
-        - $e4s_21.11_gpu_packages_cuda11.0.3
+        - $e4s_21.11_gpu_packages_cuda11.7.1
         - $e4s_22.02_cpu_packages
-        - $e4s_22.02_gpu_packages_cuda11.0.3
+        - $e4s_22.02_gpu_packages_cuda11.7.1
         - $e4s_22.05_cpu_packages
-        - $e4s_22.05_gpu_packages_cuda11.0.3
+        - $e4s_22.05_gpu_packages_cuda11.7.1
         - $e4s_22.08_cpu_packages
-        - $e4s_22.08_gpu_packages_cuda11.0.3
+        - $e4s_22.08_gpu_packages_cuda11.7.1
         - nco
       - - '%gcc@8.3.1'
         - '%gcc@9.1.0'
         - '%gcc@9.3.0'
-      # - - ^cuda@11.0.3
       exclude:
       - 'boost@1.77.0 %gcc@8.3.1'
       - 'flecsi%gcc@8.3.1 ^boost@1.77.0'
@@ -436,22 +436,19 @@ spack:
     #     - openblas threads=pthreads
     #     - openblas threads=none
     #   - - '%gcc@7.5.0'
-    # # - - ^cuda@11.0.3
     - matrix:
       - - $e4s_21.11_cpu_packages
-        - $e4s_21.11_gpu_packages_cuda11.4.2
+        - $e4s_21.11_gpu_packages_cuda11.7.1
         - $e4s_22.02_cpu_packages
-        - $e4s_22.02_gpu_packages_cuda11.4.2
+        - $e4s_22.02_gpu_packages_cuda11.7.1
         - $e4s_22.05_cpu_packages
-        - $e4s_22.05_gpu_packages_cuda11.4.2
+        - $e4s_22.05_gpu_packages_cuda11.7.1
         - $e4s_22.08_cpu_packages
-        - $e4s_22.08_gpu_packages_cuda11.4.2
+        - $e4s_22.08_gpu_packages_cuda11.7.1
       - - '%gcc@11.2.0'
         - '%gcc@11.1.0'
         - '%gcc@10.2.0'
-      # - - ^cuda@11.4.2
       exclude:
-      - ^cuda@:11.0.3
       - ascent@0.7.1%gcc@10.2.0   # examples fail with argument mismatch
       - ascent~cuda  # fails due conduit c++17 issues
       - conduit ## up to v0.7.2 incompatible with std=c++17
@@ -496,17 +493,17 @@ spack:
     #   - slate@2020.10.00 # broken custom ICL BLASFinder.cmake macro >:(
     #   - tau
     #   - unifyfs
-    - umpire@6.0.0%gcc@10.2.0 +shared~examples~rocm+cuda cuda_arch=70 ^cuda@11.4.2
-    - umpire@2022.03.1%gcc@10.2.0 +shared~examples~rocm+cuda cuda_arch=70 ^cuda@11.4.2
-    - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.0.3
+    - umpire@6.0.0%gcc@10.2.0 +shared~examples~rocm+cuda cuda_arch=70 ^cuda@11.7.1
+    - umpire@2022.03.1%gcc@10.2.0 +shared~examples~rocm+cuda cuda_arch=70 ^cuda@11.7.1
+    - kokkos%gcc@8.3.1+wrapper+openmp std=14 +cuda cuda_arch=70 ^cuda@11.7.1
     - magma@2.5.3%gcc@8.3.1 ^cuda@10.2.89
     - amgx%gcc@8.3.1 +cuda cuda_arch=70 ^cuda@10.2.89
   - llvm_specs:
     - matrix:
       - - $e4s_21.11_cpu_packages
-        # - $e4s_21.11_gpu_packages_cuda11.4.2 # cuda RT fails to find math.h
+        # - $e4s_21.11_gpu_packages_cuda11.7.1
         - $e4s_22.02_cpu_packages
-        # - $e4s_22.02_gpu_packages_cuda11.4.2 # cuda RT fails to find math.h
+        # - $e4s_22.02_gpu_packages_cuda11.7.1
         - $e4s_22.05_cpu_packages
       - - '%clang@12.0.0-0'
       exclude:
@@ -525,9 +522,9 @@ spack:
     # - matrix:
     #   - - $general_compute_packages
     #     - $e4s_21.11_cpu_packages
-    #     # - $e4s_21.11_gpu_packages_cuda11.0.3 # Needs cuda newer than 11.6.2
+    #     # - $e4s_21.11_gpu_packages_cuda11.7.1 # Needs cuda newer than 11.6.2
     #     - $e4s_22.02_cpu_packages
-    #     # - $e4s_22.02_gpu_packages_cuda11.0.3 # Needs cuda newer than 11.6.2
+    #     # - $e4s_22.02_gpu_packages_cuda11.7.1 # Needs cuda newer than 11.6.2
     #   - - '%clang@14.0.0-0'
     #   exclude:
     #   - caliper # ^elfutils !conflicts clang
@@ -546,6 +543,7 @@ spack:
     # - unifyfs@0.9.2%clang@14.0.0-0
   - xl_specs:
     - matrix:
+      # TODO FIXME: require older boost with XL compilers.
       - - $general_compute_packages
         - parallel-io@2.3.0
         - boost@1.62.0 ~mpi
@@ -617,12 +615,12 @@ spack:
       providers:
         blas: [netlib-lapack]
         lapack: [netlib-lapack]
-        mpi: [olcf.spectrum-mpi@10.4.0.5-20220310]
+        mpi: [olcf.spectrum-mpi@10.4.0.6-20230210]
         scalapack: [netlib-scalapack]
       target: [ppc64le]
       version: []
     mpi:
-      require: 'spectrum-mpi@10.4.0.5-20220310'
+      require: 'spectrum-mpi@10.4.0.6-20230210'
     amgx:
       buildable: true
       compiler: []
@@ -679,6 +677,9 @@ spack:
       compiler: []
       externals:
         - modules:
+            - cuda/11.7.1
+          spec: cuda@11.7.1
+        - modules:
             - cuda/11.4.2
           spec: cuda@11.4.2
         - modules:
@@ -703,9 +704,10 @@ spack:
       target: []
       variants: +allow-unsupported-compilers
       version:
+        - 11.7.1
+        - 11.4.2
         - 11.0.3
         - 11.1.1
-        - 11.4.2
         - 11.0.2
         - 10.2.89
         - 10.1.243
@@ -785,11 +787,11 @@ spack:
       buildable: false
       compiler: []
       externals:
-        - prefix: /opt/knem-1.1.3.90mlnx1
-          spec: knem@1.1.3
+        - prefix: /opt/knem-1.1.4.90mlnx1
+          spec: knem@1.1.4
       providers: {}
       target: []
-      version: [1.1.3]
+      version: [1.1.4]
     libfabric:
       variants: fabrics=rxm,sockets,tcp,udp,verbs
     libtool:
@@ -807,11 +809,11 @@ spack:
       buildable: false
       compiler: []
       externals:
-        - prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.10
-          spec: lsf@10.1.0.10
+        - prefix: /opt/ibm/spectrumcomputing/lsf/10.1.0.13
+          spec: lsf@10.1.0.13
       providers: {}
       target: []
-      version: [10.1.0.10]
+      version: [10.1.0.13]
     m4:
       externals:
         - spec: m4@1.4.19%xl
@@ -922,7 +924,7 @@ spack:
       providers: {}
       target: []
       version:
-       - 10.4.0.5-20220310
+       - 10.4.0.6-20230210
     strumpack:
       buildable: true
       compiler: []
@@ -1404,18 +1406,18 @@ spack:
         core_specs:
         - adios2%gcc@8.3.1
         - adios@1.13.1%gcc@8.3.1
-        - magma@2.5.3%gcc@8.3.1 ^cuda@11.0.3
+        - magma@2.5.3%gcc@8.3.1 ^cuda@11.7.1
         - gromacs%gcc@8.3.1+mpi
         - gromacs%gcc@8.3.1~mpi
         - amgx%gcc@8.3.1 ^cuda@10.2.89
-        - scorep@7.0%gcc@8.3.1+mpi+papi~pdt+shmem~unwind
-        - scorep@7.0%gcc@8.3.1+mpi~papi~pdt+shmem~unwind
-        - darshan-runtime@3.2.1%gcc@8.3.1+hdf5
-        - darshan-runtime@3.2.1%gcc@8.3.1~hdf5
-        - darshan-runtime@3.3.0%gcc@8.3.1+hdf5
-        - darshan-runtime@3.3.0%gcc@8.3.1~hdf5
-        - darshan-runtime@3.3.1%gcc@8.3.1+hdf5
-        - darshan-runtime@3.3.1%gcc@8.3.1~hdf5
+        # - scorep@7.0%gcc@8.3.1+mpi+papi~pdt+shmem~unwind
+        # - scorep@7.0%gcc@8.3.1+mpi~papi~pdt+shmem~unwind
+        # - darshan-runtime@3.2.1%gcc@8.3.1+hdf5
+        # - darshan-runtime@3.2.1%gcc@8.3.1~hdf5
+        # - darshan-runtime@3.3.0%gcc@8.3.1+hdf5
+        # - darshan-runtime@3.3.0%gcc@8.3.1~hdf5
+        - darshan-runtime@3.4.0%gcc@8.3.1+hdf5
+        - darshan-runtime@3.4.0%gcc@8.3.1~hdf5
   config:
     install_tree:
       root: ${FACSPACK_ENV}/opt
@@ -1450,7 +1452,7 @@ spack:
     connect_timeout: 10
     test_stage: ~/.spack/test
   concretizer:
-    reuse: false
+    reuse: true
     targets:
       granularity: microarchitectures
       host_compatible: true
@@ -1795,6 +1797,24 @@ spack:
       - /sw/peak/xl/16.1.1-12.1/lib
       - /sw/peak/xl/16.1.1-12.1/xlf/16.1.1/lib
       - /sw/peak/xl/16.1.1-12.1/xlC/16.1.1/lib
+      environment:
+        append_path:
+          PKG_CONFIG_PATH: /usr/lib64/pkgconfig
+      flags: {}
+  # XL 16.1.1-13
+  - compiler:
+      spec: xl@16.1.1-13
+      operating_system: rhel8
+      modules: [xl/16.1.1-13]
+      paths:
+        cc: /sw/peak/xl/16.1.1-13/xlC/16.1.1/bin/xlc_r
+        cxx: /sw/peak/xl/16.1.1-13/xlC/16.1.1/bin/xlc++_r
+        f77: /sw/peak/xl/16.1.1-13/xlf/16.1.1/bin/xlf_r
+        fc: /sw/peak/xl/16.1.1-13/xlf/16.1.1/bin/xlf2008_r
+      extra_rpaths:
+      - /sw/peak/xl/16.1.1-13/lib
+      - /sw/peak/xl/16.1.1-13/xlf/16.1.1/lib
+      - /sw/peak/xl/16.1.1-13/xlC/16.1.1/lib
       environment:
         append_path:
           PKG_CONFIG_PATH: /usr/lib64/pkgconfig
