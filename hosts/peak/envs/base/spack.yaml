@@ -591,16 +591,16 @@ spack:
   specs:
   - $core_specs
   - $smpi_specs
-  #- $core_compute_specs
-  #- $gcc_specs
-  #- $llvm_specs
-  #- $xl_specs
-  ## - $nv_specs
-  #- gdrcopy@2.3%gcc@8.3.1
-  #- gdrcopy@2.3%gcc@11.1.0
-  #- gdrcopy@2.3%gcc@11.2.0
-  #- boost@1.77.0%gcc@9.1.0~mpi+container
-  #- boost@1.77.0%gcc@9.1.0+mpi+container
+  - $core_compute_specs
+  - $gcc_specs
+  - $llvm_specs
+  - $xl_specs
+  # - $nv_specs
+  - gdrcopy@2.3%gcc@8.3.1
+  - gdrcopy@2.3%gcc@11.1.0
+  - gdrcopy@2.3%gcc@11.2.0
+  - boost@1.77.0%gcc@9.1.0~mpi+container
+  - boost@1.77.0%gcc@9.1.0+mpi+container
   #############################################################################
   mirrors:
     facility_builds: /sw/peak/spack-envs/mirrors/builds
