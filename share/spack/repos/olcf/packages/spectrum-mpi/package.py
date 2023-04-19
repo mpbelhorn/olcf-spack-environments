@@ -15,9 +15,10 @@ class SpectrumMpi(Package):
     homepage = "http://www.ibm.com"
     url      = "http://www.ibm.com/spectrum-10.1.0.2.tar.bz2"
 
+    version('10.4.0.6-20230210', 'af118ac49d5f7356a0a6a257ac79e625',
+        url='file:///ccs/packages/IBM/04-2023/SMPI/ibm_smpi-10.4.0.06-20230210-rh8.ppc64le.tar.gz')
     version('10.4.0.5-20220310', 'a8f98d0c4fc3161413d0bd389539d250',
         url='file:///ccs/packages/IBM/03-2022/SMPI/ibm_smpi-10.4.0.05-20220310-rh8.ppc64le.tar.gz')
-        # 304168d84b29889f797ec30667487e776a02455c93d3f68d766ff3028dcdc9c8
     version('10.4.0.3-20210112', '5f4b67c3d59aa3369f373e13f61c8682',
         preferred=True,
         url='file:///ccs/packages/IBM/02-2021/SMPI/ibm_smpi-10.4.0.03-20210112-rh8.ppc64le.tar.gz')
