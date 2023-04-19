@@ -168,6 +168,8 @@ spack:
     - gmp@6.2.1
     - gotcha@1.0.3
     - hdf5@1.12.1
+    - hdf5@1.12.2
+    - hdf5@1.14.0
     - heffte@2.2.0 +fftw~cuda
     - hpctoolkit@2021.10.15
     - hpx@1.7.1 max_cpu_count=176 ~cuda ^boost cxxstd=17 ^asio cxxstd=17
@@ -192,6 +194,7 @@ spack:
     # - openmpi@4.1.1
     - openpmd-api@0.14.3 ^hdf5@1.12.0 +fortran +shared +hl api=default
     - papi@6.0.0.1~cuda
+    - papi@7.0.1~cuda
     - papyrus@1.0.1
     - parallel-netcdf@1.12.2
     # - paraview@5.9.1
@@ -305,6 +308,7 @@ spack:
     # - lammps@20220107+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+cuda cuda_arch=70 ^kokkos~rocm+cuda+wrapper+cuda_lambda cuda_arch=70
     - lammps@20220623+colloid+mc+class2+kspace+kokkos+rigid+body+molecule+openmp+openmp-package+plumed+cuda cuda_arch=70 ^kokkos@3.6.00
     - papi@6.0.0.1 +cuda # not CudaPackage
+    - papi@7.0.1 +cuda
     - petsc@3.16.4 +cuda cuda_arch=70
     - slepc@3.16.2 +cuda cuda_arch=70
     - strumpack@6.3.0 ~slate~rocm+cuda cuda_arch=70
