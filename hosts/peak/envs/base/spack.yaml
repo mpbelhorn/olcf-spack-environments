@@ -256,11 +256,11 @@ spack:
     - zfp@0.5.5 +cuda cuda_arch=70
   - e4s_21.11_gpu_packages_cuda11.7.1:
     - matrix:
-      - - $e4s_21.11_gpu_packages 
+      - - $e4s_21.11_gpu_packages
       - - ^cuda@11.7.1
   - e4s_21.11_gpu_packages_cuda11.4.2:
     - matrix:
-      - - $e4s_21.11_gpu_packages 
+      - - $e4s_21.11_gpu_packages
       - - ^cuda@11.4.2
   - e4s_22.02_cpu_packages:
     # Minimal delta from v21.11
@@ -310,11 +310,11 @@ spack:
     - vtk-m@1.7.1 +cuda cuda_arch=70
   - e4s_22.02_gpu_packages_cuda11.7.1:
     - matrix:
-      - - $e4s_22.02_gpu_packages 
+      - - $e4s_22.02_gpu_packages
       - - ^cuda@11.7.1
   - e4s_22.02_gpu_packages_cuda11.4.2:
     - matrix:
-      - - $e4s_22.02_gpu_packages 
+      - - $e4s_22.02_gpu_packages
       - - ^cuda@11.4.2
   - e4s_22.05_cpu_packages:
     # Minimal delta from v22.02
@@ -362,11 +362,11 @@ spack:
     - sundials@6.2.0 ~rocm+cuda cuda_arch=70
   - e4s_22.05_gpu_packages_cuda11.7.1:
     - matrix:
-      - - $e4s_22.05_gpu_packages 
+      - - $e4s_22.05_gpu_packages
       - - ^cuda@11.7.1
   - e4s_22.05_gpu_packages_cuda11.4.2:
     - matrix:
-      - - $e4s_22.05_gpu_packages 
+      - - $e4s_22.05_gpu_packages
       - - ^cuda@11.4.2
   - e4s_22.08_cpu_packages:
     - hpctoolkit@2022.10.01 ~cuda
@@ -375,11 +375,11 @@ spack:
     - hpctoolkit@2022.10.01 +cuda
   - e4s_22.08_gpu_packages_cuda11.7.1:
     - matrix:
-      - - $e4s_22.08_gpu_packages 
+      - - $e4s_22.08_gpu_packages
       - - ^cuda@11.7.1
   - e4s_22.08_gpu_packages_cuda11.4.2:
     - matrix:
-      - - $e4s_22.08_gpu_packages 
+      - - $e4s_22.08_gpu_packages
       - - ^cuda@11.4.2
   - core_specs:
     - matrix:
@@ -394,6 +394,7 @@ spack:
       - - $core_only_compute_packages
         # - spectral@20210514
       - - $core_compiler
+      - - arch=linux-rhel8-ppc64le
   - gcc_specs:
     - matrix:
       - - openblas threads=openmp
@@ -415,8 +416,8 @@ spack:
         - '%gcc@9.1.0'
         - '%gcc@9.3.0'
       exclude:
-      - 'boost@1.77.0 %gcc@8.3.1'
-      - 'flecsi%gcc@8.3.1 ^boost@1.77.0'
+      - boost@1.77.0 %gcc@8.3.1
+      - flecsi%gcc@8.3.1 ^boost@1.77.0
       - hpx%gcc@8.3.1
     # Core-only e4s 21.11 packages
     - qt@5.15.2%gcc@8.3.1
@@ -592,15 +593,15 @@ spack:
   - $core_specs
   - $smpi_specs
   - $core_compute_specs
-  - $gcc_specs
-  - $llvm_specs
-  - $xl_specs
-  # - $nv_specs
-  - gdrcopy@2.3%gcc@8.3.1
-  - gdrcopy@2.3%gcc@11.1.0
-  - gdrcopy@2.3%gcc@11.2.0
-  - boost@1.77.0%gcc@9.1.0~mpi+container
-  - boost@1.77.0%gcc@9.1.0+mpi+container
+  # - $gcc_specs
+  # - $llvm_specs
+  # - $xl_specs
+  # # - $nv_specs
+  # - gdrcopy@2.3%gcc@8.3.1
+  # - gdrcopy@2.3%gcc@11.1.0
+  # - gdrcopy@2.3%gcc@11.2.0
+  # - boost@1.77.0%gcc@9.1.0~mpi+container
+  # - boost@1.77.0%gcc@9.1.0+mpi+container
   #############################################################################
   mirrors:
     facility_builds: /sw/peak/spack-envs/mirrors/builds
@@ -615,12 +616,12 @@ spack:
       providers:
         blas: [netlib-lapack]
         lapack: [netlib-lapack]
-        mpi: [olcf.spectrum-mpi@10.4.0.6-20230210]
+        mpi: [spectrum-mpi@10.4.0.6-20230210]
         scalapack: [netlib-scalapack]
       target: [ppc64le]
       version: []
     mpi:
-      require: 'spectrum-mpi@10.4.0.6-20230210'
+      require: spectrum-mpi@10.4.0.6-20230210
     amgx:
       buildable: true
       compiler: []
@@ -1144,9 +1145,6 @@ spack:
         netcdf-fortran:
           suffixes:
             netcdf-c ^hdf5+fortran: h5f
-        netcdf-fortran:
-          suffixes:
-            netcdf-c ^hdf5+fortran: h5f
         netlib-scalapack:
           conflict: []
           environment:
@@ -1443,8 +1441,10 @@ spack:
     build_jobs: 6
     ccache: false
     db_lock_timeout: 120
-    package_lock_timeout: null
-    shared_linking: rpath
+    package_lock_timeout: 2
+    shared_linking:
+      type: rpath
+      bind: false
     allow_sgid: true
     concretizer: clingo
     locks: true
@@ -1457,6 +1457,20 @@ spack:
       granularity: microarchitectures
       host_compatible: true
     unify: false
+  # bootstrap:
+  #   enable: true
+  #   root: ${FACSPACK_ENV}/bootstrap
+  #   sources:
+  #   - name: 'github-actions-v0.4'
+  #     metadata: $spack/share/spack/bootstrap/github-actions-v0.4
+  #   - name: 'github-actions-v0.3'
+  #     metadata: $spack/share/spack/bootstrap/github-actions-v0.3
+  #   - name: 'spack-install'
+  #     metadata: $spack/share/spack/bootstrap/spack-install
+  #   trusted:
+  #     github-actions-v0.4: true
+  #     github-actions-v0.3: true
+  #     spack-install: true
   compilers:
   - compiler:
       spec: gcc@8.3.1
