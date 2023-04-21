@@ -1441,7 +1441,7 @@ spack:
     build_jobs: 6
     ccache: false
     db_lock_timeout: 120
-    package_lock_timeout: 2
+    package_lock_timeout: null
     shared_linking:
       type: rpath
       bind: false
