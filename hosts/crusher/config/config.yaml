@@ -1,0 +1,34 @@
+config:
+  install_tree:
+    root: /sw/crusher/spack-envs/base/opt
+    projections:
+      all: ${ARCHITECTURE}/${COMPILERNAME}-${COMPILERVER}/${PACKAGE}-${VERSION}-${HASH}
+  template_dirs:
+  - ${FACSPACK_CONF_HOST}/templates
+  - ${FACSPACK_CONF_COMMON}/spack/templates
+  - $spack/share/spack/templates
+  build_stage:
+  - $tempdir/$user/spack-stage
+  - $spack/var/spack/stage
+  source_cache: ${FACSPACK_CONF_COMMON}/mirrors/sources
+  extensions:
+  - ${FACSPACK_CONF_COMMON}/spack/extensions/spack-olcf
+  misc_cache: /sw/crusher/spack-envs/base/.mcache
+  verify_ssl: true
+  install_missing_compilers: false
+  checksum: true
+  dirty: false
+  build_language: C
+  build_jobs: 6
+  ccache: false
+  db_lock_timeout: 120
+  package_lock_timeout: null
+  shared_linking:
+    type: rpath
+    bind: false
+  allow_sgid: true
+  concretizer: clingo
+  locks: true
+  suppress_gpg_warnings: false
+  connect_timeout: 10
+  test_stage: ~/.spack/test
