@@ -223,6 +223,7 @@ spack:
     # Minimal diff from v22.02
     - adios2@2.8.3~python
     - amrex@22.05 ~rocm~cuda
+    - amrex@22.11 ~rocm~cuda+particles
     - arborx@1.2~cuda
     - ascent@0.8.0 ~test+shared~cuda
     # - bricks@r0.1
@@ -257,11 +258,13 @@ spack:
   - e4s_22.05_gpu_specs:
     # Minimal diff from v22.02
     - amrex@22.05 +rocm~cuda amdgpu_target=gfx90a
+    - amrex@22.11 +rocm~cuda amdgpu_target=gfx90a +particles
     - arborx@1.2 +rocm amdgpu_target=gfx90a
     - gasnet@2022.3.0 +rocm amdgpu_target=gfx90a
     - heffte@2.2.0 +rocm amdgpu_target=gfx90a
     # - hpctoolkit@2022.04.15 +rocm~cuda # llvm-amdgpu@5.x or newer
     # - hpctoolkit@2022.05.15 +rocm~cuda # same as above
+    # - hpctoolkit@2022.10.01 +rocm~cuda # same as above
     - hpx@1.7.1 max_cpu_count=128 +rocm amdgpu_target=gfx90a
     - kokkos@3.6.00 +rocm~cuda~wrapper~openmp amdgpu_target=gfx90a
     - magma@2.6.2 +rocm~cuda amdgpu_target=gfx90a
@@ -274,14 +277,20 @@ spack:
     - matrix:
       - - $e4s_21.11_gpu_specs
       - - ^hip@4.5.2 ^hsa-rocr-dev@4.5.2 ^llvm-amdgpu@4.5.2
+      exclude:
+        - "hpctoolkit@2022.04.15:"
   - e4s_22.02_gpu_packages_rocm4.5.2:
     - matrix:
       - - $e4s_22.02_gpu_specs
       - - ^hip@4.5.2 ^hsa-rocr-dev@4.5.2 ^llvm-amdgpu@4.5.2
+      exclude:
+        - "hpctoolkit@2022.04.15:"
   - e4s_22.05_gpu_packages_rocm4.5.2:
     - matrix:
       - - $e4s_22.05_gpu_specs
       - - ^hip@4.5.2 ^hsa-rocr-dev@4.5.2 ^llvm-amdgpu@4.5.2
+      exclude:
+        - "hpctoolkit@2022.04.15:"
   - e4s_21.11_gpu_packages_rocm5.1.0:
     - matrix:
       - - $e4s_21.11_gpu_specs
