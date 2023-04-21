@@ -797,7 +797,9 @@ spack:
     ccache: false
     db_lock_timeout: 120
     package_lock_timeout: null
-    shared_linking: rpath
+    shared_linking:
+      type: rpath
+      bind: false
     allow_sgid: true
     concretizer: clingo
     locks: true
